@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+        <class>proj2.entity.ArbitrosEntity</class>
+        <class>pt.ipvc.backend.entity.AtletasEntity</class>
+        <class>pt.ipvc.backend.entity.CompeticoesEntity</class>
+        <class>pt.ipvc.backend.entity.ContratosEntity</class>
+        <class>pt.ipvc.backend.entity.DivulgacoesEntity</class>
+        <class>pt.ipvc.backend.entity.EquipasEntity</class>
+        <class>pt.ipvc.backend.entity.InscricoesEntity</class>
+        <class>pt.ipvc.backend.entity.ModalidadesEntity</class>
+        <class>pt.ipvc.backend.entity.PremiosEntity</class>
+        <class>pt.ipvc.backend.entity.ProvaArbitroEntity</class>
+        <class>pt.ipvc.backend.entity.ProvasEntity</class>
+        <class>pt.ipvc.backend.entity.RecintosEntity</class>
+        <class>pt.ipvc.backend.entity.RecintosTipoRecintoEntity</class>
+        <class>pt.ipvc.backend.entity.TipoDivulgacaoEntity</class>
+        <class>pt.ipvc.backend.entity.TipoPremioEntity</class>
+        <class>pt.ipvc.backend.entity.TipoRecintoEntity</class>
+        <class>pt.ipvc.backend.entity.VendaBilhetesEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://proj-ii.postgres.database.azure.com:5432/postgres"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.username" value="hugocarvalho@proj-ii"/>
+            <property name="hibernate.connection.password" value="Adminadmin1"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
