@@ -175,12 +175,10 @@ public class RecintosTipoRecintoEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, int idRecinto, int idTipoRecinto){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        int idRecinto = 1;
-        int idTipoRecinto = 1;
 
         try {
             transaction.begin();

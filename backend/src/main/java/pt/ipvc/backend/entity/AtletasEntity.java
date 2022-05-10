@@ -38,9 +38,6 @@ public class AtletasEntity {
     @Basic
     @Column(name = "posicao")
     private String posicao;
-    @Basic
-    @Column(name = "associacao")
-    private String associacao;
     @OneToMany(mappedBy = "atletasByIdAtleta")
     private Collection<ContratosEntity> contratosById;
     @OneToMany(mappedBy = "atletasByIdAtleta")
@@ -53,7 +50,7 @@ public class AtletasEntity {
      *********************** QUERIES ***********************
      ******************************************************* */
 
-    public static void create(String nome, String genero, String dataNascimento, double peso, double altura, String naturalidade, String nacionalidade, String posicao, String associacao) {
+    public static void create(String nome, String genero, String dataNascimento, double peso, double altura, String naturalidade, String nacionalidade, String posicao) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -68,7 +65,6 @@ public class AtletasEntity {
             entity.setNaturalidade(naturalidade);
             entity.setNacionalidade(nacionalidade);
             entity.setPosicao(posicao);
-            entity.setAssociacao(associacao);
             entityManager.persist(entity);
             transaction.commit();
         } finally {
@@ -150,19 +146,11 @@ public class AtletasEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String nome, String genero, String dataNascimento, double altura, double peso, String naturalidade, String nacionalidade, String posicao ){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String nome = "Teste";
-        String genero = "Macho";
-        String dataNascimento = "2000-01-01";
-        double altura= 1.50;
-        double peso = 60;
-        String naturalidade = "Amadora";
-        String nacionalidade = "Angola";
-        String posicao = "Guarda-Sandes";
-        String associacao = "Sagres-Mini";
+
 
         try {
             transaction.begin();
@@ -176,7 +164,6 @@ public class AtletasEntity {
             atleta.setNaturalidade(naturalidade);
             atleta.setNacionalidade(nacionalidade);
             atleta.setPosicao(posicao);
-            atleta.setAssociacao(associacao);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -257,13 +244,7 @@ public class AtletasEntity {
         this.posicao = posicao;
     }
 
-    public String getAssociacao() {
-        return associacao;
-    }
 
-    public void setAssociacao(String associacao) {
-        this.associacao = associacao;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -283,7 +264,6 @@ public class AtletasEntity {
         if (nacionalidade != null ? !nacionalidade.equals(that.nacionalidade) : that.nacionalidade != null)
             return false;
         if (posicao != null ? !posicao.equals(that.posicao) : that.posicao != null) return false;
-        if (associacao != null ? !associacao.equals(that.associacao) : that.associacao != null) return false;
 
         return true;
     }
@@ -303,7 +283,6 @@ public class AtletasEntity {
         result = 31 * result + (naturalidade != null ? naturalidade.hashCode() : 0);
         result = 31 * result + (nacionalidade != null ? nacionalidade.hashCode() : 0);
         result = 31 * result + (posicao != null ? posicao.hashCode() : 0);
-        result = 31 * result + (associacao != null ? associacao.hashCode() : 0);
         return result;
     }
 
@@ -335,7 +314,6 @@ public class AtletasEntity {
                 ", naturalidade='" + naturalidade + '\'' +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 ", posicao='" + posicao + '\'' +
-                ", associacao='" + associacao + '\'' +
                 '}';
     }
 

@@ -148,30 +148,18 @@ public class ArbitrosEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String nome, String dataNascimento, String naturalidade, String nacionalidade, String associacao, String categoria ){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String nome = "Teste Arbitro";
-        //String genero = "Macho";
-        String dataNascimento = "2000-01-01";
-        double altura= 1.50;
-        double peso = 60;
-        String naturalidade = "Amadora Arbitro";
-        String nacionalidade = "Angola Arbitro";
-        //String posicao = "Guarda-Sandes Arbitro";
-        String associacao = "Sagres-Mini Arbitro";
-        String categoria = "Internacional e Regional";
+
 
         try {
             transaction.begin();
             TypedQuery<ArbitrosEntity> query = entityManager.createNamedQuery("Arbitros.readById", ArbitrosEntity.class);
             ArbitrosEntity arbitro = query.setParameter(1, id).getSingleResult();
             arbitro.setNome(nome);
-            //arbitro.setGenero(genero);
             arbitro.setDataNascimento(Date.valueOf(dataNascimento));
-            //arbitro.setAltura(altura);
-            //arbitro.setPeso(peso);
             arbitro.setNaturalidade(naturalidade);
             arbitro.setNacionalidade(nacionalidade);
             arbitro.setAssociacao(associacao);

@@ -281,15 +281,10 @@ public class ProvasEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String dataProva, int idEquipaCasa, int idEquipaFora, int idRecinto, int idCompeticao){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String dataProva = "1999-12-12";
-        int idRecinto = 5;
-        int idCompeticao = 1;
-        int idEquipaFora = 2;
-        int idEquipaCasa = 1;
 
         try {
             transaction.begin();

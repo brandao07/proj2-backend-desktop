@@ -209,13 +209,10 @@ public class DivulgacoesEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String dataDivulgacao, int idCompeticao, int idTipoDivulgacao){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String dataDivulgacao = "2000-01-01";
-        int idCompeticao = 1;
-        int idTipoDivulgacao = 2;
 
         try {
             transaction.begin();

@@ -1,37 +1,43 @@
 package pt.ipvc.backend.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
-@NamedQuery(name = "TipoDivulgacao.readById", query = "SELECT a FROM TipoDivulgacaoEntity a WHERE a.id = ?1")
-@NamedQuery(name = "TipoDivulgacao.readAll", query = "SELECT a FROM TipoDivulgacaoEntity a")
-@Table(name = "tipo_divulgacao", schema = "public", catalog = "postgres")
-public class TipoDivulgacaoEntity {
+@NamedQuery(name = "FavoritosEquipas.readById", query = "SELECT a FROM FavoritosEquipasEntity a WHERE a.idCliente = ?1")
+@NamedQuery(name = "FavoritosEquipas.readAll", query = "SELECT a FROM FavoritosEquipasEntity a")
+
+@Table(name = "favoritos_equipas", schema = "public", catalog = "postgres")
+@IdClass(FavoritosEquipasEntityPK.class)
+public class FavoritosEquipasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private int id;
-    @Basic
-    @Column(name = "nome")
-    private String nome;
-    @OneToMany(mappedBy = "tipoDivulgacaoByIdTipoDivulgacao")
-    private Collection<DivulgacoesEntity> divulgacoesById;
+    @Column(name = "id_equipa")
+    private int idEquipa;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id_cliente")
+    private int idCliente;
+    @ManyToOne
+    @JoinColumn(name = "id_equipa", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private EquipasEntity equipasByIdEquipa;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private ClientesEntity clientesByIdCliente;
 
-    public int getId() {
-        return id;
+    public int getIdEquipa() {
+        return idEquipa;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEquipa(int idEquipa) {
+        this.idEquipa = idEquipa;
     }
 
-    public String getNome() {
-        return nome;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     @Override
@@ -39,33 +45,42 @@ public class TipoDivulgacaoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TipoDivulgacaoEntity that = (TipoDivulgacaoEntity) o;
+        FavoritosEquipasEntity that = (FavoritosEquipasEntity) o;
 
-        if (id != that.id) return false;
-        if (nome != null ? !nome.equals(that.nome) : that.nome != null) return false;
+        if (idEquipa != that.idEquipa) return false;
+        if (idCliente != that.idCliente) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (nome != null ? nome.hashCode() : 0);
+        int result = idEquipa;
+        result = 31 * result + idCliente;
         return result;
     }
 
-    public Collection<DivulgacoesEntity> getDivulgacoesById() {
-        return divulgacoesById;
+    public EquipasEntity getEquipasByIdEquipa() {
+        return equipasByIdEquipa;
     }
 
-    public void setDivulgacoesById(Collection<DivulgacoesEntity> divulgacoesById) {
-        this.divulgacoesById = divulgacoesById;
+    public void setEquipasByIdEquipa(EquipasEntity equipasByIdEquipa) {
+        this.equipasByIdEquipa = equipasByIdEquipa;
+    }
+
+    public ClientesEntity getClientesByIdCliente() {
+        return clientesByIdCliente;
+    }
+
+    public void setClientesByIdCliente(ClientesEntity clientesByIdCliente) {
+        this.clientesByIdCliente = clientesByIdCliente;
     }
 
     @Override
     public String toString() {
-        return "TipoDivulgacaoEntity{" +
-                "nome='" + nome + '\'' +
+        return "FavoritosEquipasEntity{" +
+                "idEquipa=" + idEquipa +
+                ", idCliente=" + idCliente +
                 '}';
     }
 
@@ -73,14 +88,15 @@ public class TipoDivulgacaoEntity {
      *********************** QUERIES ***********************
      ******************************************************* */
 
-    public static void create(String nome) {
+    public static void create(int idCliente, int idEquipa) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TipoDivulgacaoEntity entity = new TipoDivulgacaoEntity();
-            entity.setNome(nome);
+            FavoritosEquipasEntity entity = new FavoritosEquipasEntity();
+            entity.setIdCliente(idCliente);
+            entity.setIdEquipa(idEquipa);
             entityManager.persist(entity);
             transaction.commit();
         } finally {
@@ -96,10 +112,10 @@ public class TipoDivulgacaoEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<TipoDivulgacaoEntity> query = entityManager.createNamedQuery("TipoDivulgacao.readById", TipoDivulgacaoEntity.class);
-            TipoDivulgacaoEntity divulgacao = query.setParameter(1, id).getSingleResult();
+            TypedQuery<FavoritosEquipasEntity> query = entityManager.createNamedQuery("FavoritosEquipas.readById", FavoritosEquipasEntity.class);
+            FavoritosEquipasEntity favoritosEquipas = query.setParameter(1, id).getSingleResult();
 
-            System.out.println(divulgacao.toString());
+            System.out.println(favoritosEquipas.toString());
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -114,9 +130,9 @@ public class TipoDivulgacaoEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<TipoDivulgacaoEntity> query = entityManager.createNamedQuery("TipoDivulgacao.readAll", TipoDivulgacaoEntity.class);
-            for(TipoDivulgacaoEntity divulgacao : query.getResultList()){
-                System.out.println(divulgacao.toString());
+            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readAll", ProvaArbitroEntity.class);
+            for(ProvaArbitroEntity provaArbitro : query.getResultList()){
+                System.out.println(provaArbitro.toString());
             }
             transaction.commit();
         } finally{
@@ -132,9 +148,9 @@ public class TipoDivulgacaoEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<TipoDivulgacaoEntity> query = entityManager.createNamedQuery("TipoDivulgacao.readById", TipoDivulgacaoEntity.class);
-            TipoDivulgacaoEntity divulgacao = query.setParameter(1, id).getSingleResult();
-            entityManager.remove(divulgacao);
+            TypedQuery<FavoritosEquipasEntity> query = entityManager.createNamedQuery("FavoritosEquipas.readById", FavoritosEquipasEntity.class);
+            FavoritosEquipasEntity favoritosEquipas = query.setParameter(1, id).getSingleResult();
+            entityManager.remove(favoritosEquipas);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -150,9 +166,9 @@ public class TipoDivulgacaoEntity {
 
         try {
             transaction.begin();
-            TypedQuery<TipoDivulgacaoEntity> query = entityManager.createNamedQuery("TipoDivulgacao.readAll", TipoDivulgacaoEntity.class);
-            for(TipoDivulgacaoEntity divulgacao : query.getResultList()){
-                entityManager.remove(divulgacao);
+            TypedQuery<FavoritosEquipasEntity> query = entityManager.createNamedQuery("FavoritosEquipas.readAll", FavoritosEquipasEntity.class);
+            for(FavoritosEquipasEntity favoritosEquipas : query.getResultList()){
+                entityManager.remove(favoritosEquipas);
             }
             transaction.commit();
         } finally{
@@ -162,17 +178,17 @@ public class TipoDivulgacaoEntity {
         }
     }
 
-    public static void update(int id, String nome){
+    public static void update(int id, int idCliente, int idEquipa){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
         try {
             transaction.begin();
-            TypedQuery<TipoDivulgacaoEntity> query = entityManager.createNamedQuery("TipoDivulgacao.readById", TipoDivulgacaoEntity.class);
-            TipoDivulgacaoEntity recinto = query.setParameter(1, id).getSingleResult();
-            recinto.setNome(nome);
-
+            TypedQuery<FavoritosEquipasEntity> query = entityManager.createNamedQuery("FavoritosEquipas.readById", FavoritosEquipasEntity.class);
+            FavoritosEquipasEntity favoritosEquipas = query.setParameter(1, id).getSingleResult();
+            favoritosEquipas.setIdEquipa(idEquipa);
+            favoritosEquipas.setIdCliente(idCliente);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -180,5 +196,6 @@ public class TipoDivulgacaoEntity {
             entityManagerFactory.close();
         }
     }
-
 }
+
+

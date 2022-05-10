@@ -222,15 +222,10 @@ public class ContratosEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String dataInicio, String dataFim, int idAtleta, int idEquipa){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String dataInicio = "2000-01-01";
-        String dataFim = "2000-01-01";
-        int idAtleta = 1;
-        int idEquipa = 1;
-
         try {
             transaction.begin();
             TypedQuery<ContratosEntity> query = entityManager.createNamedQuery("Contratos.readById", ContratosEntity.class);

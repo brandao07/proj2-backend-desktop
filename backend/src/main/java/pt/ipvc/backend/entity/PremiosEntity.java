@@ -171,18 +171,16 @@ public class PremiosEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, int idCompeticao, int idTipoPremio){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        int idPremio = 1;
-        int idCompeticao = 1;
 
         try {
             transaction.begin();
             TypedQuery<PremiosEntity> query = entityManager.createNamedQuery("Premios.readById", PremiosEntity.class);
             PremiosEntity premio = query.setParameter(1, id).getSingleResult();
-            premio.setIdTipoPremio(idPremio);
+            premio.setIdTipoPremio(idTipoPremio);
             premio.setIdCompeticao(idCompeticao);
             transaction.commit();
         } finally{

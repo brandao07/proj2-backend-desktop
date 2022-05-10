@@ -3,51 +3,41 @@ package pt.ipvc.backend.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "prova_arbitro", schema = "public", catalog = "postgres")
-@NamedQuery(name = "ProvaArbitros.readById", query = "SELECT a FROM ProvaArbitroEntity a WHERE a.idArbitro = ?1")
-@NamedQuery(name = "ProvaArbitros.readAll", query = "SELECT a FROM ProvaArbitroEntity a")
-@IdClass(ProvaArbitroEntityPK.class)
-public class ProvaArbitroEntity {
+@NamedQuery(name = "FavoritosCompeticoes.readById", query = "SELECT a FROM FavoritosCompeticoesEntity a WHERE a.idCliente = ?1")
+@NamedQuery(name = "FavoritosCompeticoes.readAll", query = "SELECT a FROM FavoritosCompeticoesEntity a")
+
+@Table(name = "favoritos_competicoes", schema = "public", catalog = "postgres")
+@IdClass(FavoritosCompeticoesEntityPK.class)
+public class FavoritosCompeticoesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_prova")
-    private int idProva;
+    @Column(name = "id_cliente")
+    private int idCliente;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_arbitro")
-    private int idArbitro;
-    @Basic
-    @Column(name = "designacao")
-    private String designacao;
+    @Column(name = "id_competicoes")
+    private int idCompeticoes;
     @ManyToOne
-    @JoinColumn(name = "id_prova", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private ProvasEntity provasByIdProva;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    private ClientesEntity clientesByIdCliente;
     @ManyToOne
-    @JoinColumn(name = "id_arbitro", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private ArbitrosEntity arbitrosByIdArbitro;
+    @JoinColumn(name = "id_competicoes", referencedColumnName = "id", nullable = false , insertable = false, updatable = false)
+    private CompeticoesEntity competicoesByIdCompeticoes;
 
-    public int getIdProva() {
-        return idProva;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdProva(int idProva) {
-        this.idProva = idProva;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public int getIdArbitro() {
-        return idArbitro;
+    public int getIdCompeticoes() {
+        return idCompeticoes;
     }
 
-    public void setIdArbitro(int idArbitro) {
-        this.idArbitro = idArbitro;
-    }
-
-    public String getDesignacao() {
-        return designacao;
-    }
-
-    public void setDesignacao(String designacao) {
-        this.designacao = designacao;
+    public void setIdCompeticoes(int idCompeticoes) {
+        this.idCompeticoes = idCompeticoes;
     }
 
     @Override
@@ -55,43 +45,42 @@ public class ProvaArbitroEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProvaArbitroEntity that = (ProvaArbitroEntity) o;
+        FavoritosCompeticoesEntity that = (FavoritosCompeticoesEntity) o;
 
-        if (idProva != that.idProva) return false;
-        if (idArbitro != that.idArbitro) return false;
-        if (designacao != null ? !designacao.equals(that.designacao) : that.designacao != null) return false;
+        if (idCliente != that.idCliente) return false;
+        if (idCompeticoes != that.idCompeticoes) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idProva;
-        result = 31 * result + idArbitro;
-        result = 31 * result + (designacao != null ? designacao.hashCode() : 0);
+        int result = idCliente;
+        result = 31 * result + idCompeticoes;
         return result;
     }
 
-    public ProvasEntity getProvasByIdProva() {
-        return provasByIdProva;
+    public ClientesEntity getClientesByIdCliente() {
+        return clientesByIdCliente;
     }
 
-    public void setProvasByIdProva(ProvasEntity provasByIdProva) {
-        this.provasByIdProva = provasByIdProva;
+    public void setClientesByIdCliente(ClientesEntity clientesByIdCliente) {
+        this.clientesByIdCliente = clientesByIdCliente;
     }
 
-    public ArbitrosEntity getArbitrosByIdArbitro() {
-        return arbitrosByIdArbitro;
+    public CompeticoesEntity getCompeticoesByIdCompeticoes() {
+        return competicoesByIdCompeticoes;
     }
 
-    public void setArbitrosByIdArbitro(ArbitrosEntity arbitrosByIdArbitro) {
-        this.arbitrosByIdArbitro = arbitrosByIdArbitro;
+    public void setCompeticoesByIdCompeticoes(CompeticoesEntity competicoesByIdCompeticoes) {
+        this.competicoesByIdCompeticoes = competicoesByIdCompeticoes;
     }
 
     @Override
     public String toString() {
-        return "ProvaArbitroEntity{" +
-                "designacao='" + designacao + '\'' +
+        return "FavoritosCompeticoesEntity{" +
+                "idCliente=" + idCliente +
+                ", idCompeticoes=" + idCompeticoes +
                 '}';
     }
 
@@ -99,16 +88,15 @@ public class ProvaArbitroEntity {
      *********************** QUERIES ***********************
      ******************************************************* */
 
-    public static void create(int idProva, int idArbitro, String designacao) {
+    public static void create(int idCliente, int idCompeticao) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            ProvaArbitroEntity entity = new ProvaArbitroEntity();
-            entity.setIdArbitro(idArbitro);
-            entity.setIdProva(idProva);
-            entity.setDesignacao(designacao);
+            FavoritosCompeticoesEntity entity = new FavoritosCompeticoesEntity();
+            entity.setIdCliente(idCliente);
+            entity.setIdCompeticoes(idCompeticao);
             entityManager.persist(entity);
             transaction.commit();
         } finally {
@@ -124,10 +112,10 @@ public class ProvaArbitroEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readById", ProvaArbitroEntity.class);
-            ProvaArbitroEntity provaArbitro = query.setParameter(1, id).getSingleResult();
+            TypedQuery<FavoritosCompeticoesEntity> query = entityManager.createNamedQuery("FavoritosCompeticoes.readById", FavoritosCompeticoesEntity.class);
+            FavoritosCompeticoesEntity favoritosCompeticoes = query.setParameter(1, id).getSingleResult();
 
-            System.out.println(provaArbitro.toString());
+            System.out.println(favoritosCompeticoes.toString());
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -142,8 +130,8 @@ public class ProvaArbitroEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readAll", ProvaArbitroEntity.class);
-            for(ProvaArbitroEntity provaArbitro : query.getResultList()){
+            TypedQuery<FavoritosCompeticoesEntity> query = entityManager.createNamedQuery("FavoritosCompeticoes.readAll", FavoritosCompeticoesEntity.class);
+            for(FavoritosCompeticoesEntity provaArbitro : query.getResultList()){
                 System.out.println(provaArbitro.toString());
             }
             transaction.commit();
@@ -160,9 +148,9 @@ public class ProvaArbitroEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readById", ProvaArbitroEntity.class);
-            ProvaArbitroEntity provaArbitro = query.setParameter(1, id).getSingleResult();
-            entityManager.remove(provaArbitro);
+            TypedQuery<FavoritosCompeticoesEntity> query = entityManager.createNamedQuery("FavoritosCompeticoes.readById", FavoritosCompeticoesEntity.class);
+            FavoritosCompeticoesEntity favoritosCompeticoes = query.setParameter(1, id).getSingleResult();
+            entityManager.remove(favoritosCompeticoes);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -178,9 +166,9 @@ public class ProvaArbitroEntity {
 
         try {
             transaction.begin();
-            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readAll", ProvaArbitroEntity.class);
-            for(ProvaArbitroEntity provaArbitro : query.getResultList()){
-                entityManager.remove(provaArbitro);
+            TypedQuery<FavoritosCompeticoesEntity> query = entityManager.createNamedQuery("FavoritosCompeticoes.readAll", FavoritosCompeticoesEntity.class);
+            for(FavoritosCompeticoesEntity favoritosCompeticoes : query.getResultList()){
+                entityManager.remove(favoritosCompeticoes);
             }
             transaction.commit();
         } finally{
@@ -190,18 +178,17 @@ public class ProvaArbitroEntity {
         }
     }
 
-    public static void update(int id, int idProva, int idArbitro, String designacao){
+    public static void update(int id, int idCliente, int idCompeticao){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
         try {
             transaction.begin();
-            TypedQuery<ProvaArbitroEntity> query = entityManager.createNamedQuery("ProvaArbitros.readById", ProvaArbitroEntity.class);
-            ProvaArbitroEntity provaArbitro = query.setParameter(1, id).getSingleResult();
-            provaArbitro.setDesignacao(designacao);
-            provaArbitro.setIdProva(idProva);
-            provaArbitro.setIdArbitro(idArbitro);
+            TypedQuery<FavoritosCompeticoesEntity> query = entityManager.createNamedQuery("FavoritosCompeticoes.readById", FavoritosCompeticoesEntity.class);
+            FavoritosCompeticoesEntity favoritosCompeticoes = query.setParameter(1, id).getSingleResult();
+            favoritosCompeticoes.setIdCompeticoes(idCompeticao);
+            favoritosCompeticoes.setIdCliente(idCliente);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();

@@ -162,11 +162,10 @@ public class TipoPremioEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String nome){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String nome = "Teste";
 
         try {
             transaction.begin();

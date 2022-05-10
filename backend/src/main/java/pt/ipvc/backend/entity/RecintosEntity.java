@@ -5,7 +5,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "recintos", schema = "public", catalog = "postgres")
-    @NamedQuery(name = "Recintos.readById", query = "SELECT a FROM RecintosEntity a WHERE a.id = ?1")
+@NamedQuery(name = "Recintos.readById", query = "SELECT a FROM RecintosEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Recintos.readAll", query = "SELECT a FROM RecintosEntity a")
 public class RecintosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -204,13 +204,10 @@ public class RecintosEntity {
         }
     }
 
-    public static void update(int id){
+    public static void update(int id, String pais, String nome, int capacidade){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        String nome = "Recinto Conas";
-        String pais = "Pico";
-        int capacidade = 100000;
 
         try {
             transaction.begin();

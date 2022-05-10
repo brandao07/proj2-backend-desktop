@@ -3,26 +3,20 @@ package pt.ipvc.backend.entity;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name = "VendaBilhetes.readById", query = "SELECT a FROM VendaBilhetesEntity a WHERE a.id = ?1")
-@NamedQuery(name = "VendaBilhetes.readAll", query = "SELECT a FROM VendaBilhetesEntity a")
-@Table(name = "venda_bilhetes", schema = "public", catalog = "postgres")
-public class VendaBilhetesEntity {
+@NamedQuery(name = "Administradores.readById", query = "SELECT a FROM AdministradoresEntity a WHERE a.id = ?1")
+@NamedQuery(name = "Administradores.readAll", query = "SELECT a FROM AdministradoresEntity a")
+@Table(name = "administradores", schema = "public", catalog = "postgres")
+public class AdministradoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "numero_lugar")
-    private int numeroLugar;
-    @Basic
-    @Column(name = "id_prova")
-    private Integer idProva;
-    @Basic
-    @Column(name = "preco")
-    private Double preco;
+    @Column(name = "id_utilizador")
+    private Integer idUtilizador;
     @ManyToOne
-    @JoinColumn(name = "id_prova", referencedColumnName = "id", insertable = false, updatable = false)
-    private ProvasEntity provasByIdProva;
+    @JoinColumn(name = "id_utilizador", referencedColumnName = "id", insertable = false, updatable = false)
+    private UtilizadoresEntity utilizadoresByIdUtilizador;
 
     public int getId() {
         return id;
@@ -32,28 +26,12 @@ public class VendaBilhetesEntity {
         this.id = id;
     }
 
-    public int getNumeroLugar() {
-        return numeroLugar;
+    public Integer getIdUtilizador() {
+        return idUtilizador;
     }
 
-    public void setNumeroLugar(int numeroLugar) {
-        this.numeroLugar = numeroLugar;
-    }
-
-    public Integer getIdProva() {
-        return idProva;
-    }
-
-    public void setIdProva(Integer idProva) {
-        this.idProva = idProva;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setIdUtilizador(Integer idUtilizador) {
+        this.idUtilizador = idUtilizador;
     }
 
     @Override
@@ -61,12 +39,10 @@ public class VendaBilhetesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VendaBilhetesEntity that = (VendaBilhetesEntity) o;
+        AdministradoresEntity that = (AdministradoresEntity) o;
 
         if (id != that.id) return false;
-        if (numeroLugar != that.numeroLugar) return false;
-        if (idProva != null ? !idProva.equals(that.idProva) : that.idProva != null) return false;
-        if (preco != null ? !preco.equals(that.preco) : that.preco != null) return false;
+        if (idUtilizador != null ? !idUtilizador.equals(that.idUtilizador) : that.idUtilizador != null) return false;
 
         return true;
     }
@@ -74,27 +50,23 @@ public class VendaBilhetesEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + numeroLugar;
-        result = 31 * result + (idProva != null ? idProva.hashCode() : 0);
-        result = 31 * result + (preco != null ? preco.hashCode() : 0);
+        result = 31 * result + (idUtilizador != null ? idUtilizador.hashCode() : 0);
         return result;
     }
 
-    public ProvasEntity getProvasByIdProva() {
-        return provasByIdProva;
+    public UtilizadoresEntity getUtilizadoresByIdUtilizador() {
+        return utilizadoresByIdUtilizador;
     }
 
-    public void setProvasByIdProva(ProvasEntity provasByIdProva) {
-        this.provasByIdProva = provasByIdProva;
+    public void setUtilizadoresByIdUtilizador(UtilizadoresEntity utilizadoresByIdUtilizador) {
+        this.utilizadoresByIdUtilizador = utilizadoresByIdUtilizador;
     }
 
     @Override
     public String toString() {
-        return "VendaBilhetesEntity{" +
-                "numeroLugar=" + numeroLugar +
-                ", idProva=" + idProva +
-                ", preco=" + preco +
-                ", provasByIdProva=" + provasByIdProva +
+        return "AdministradoresEntity{" +
+                "id=" + id +
+                ", idUtilizador=" + idUtilizador +
                 '}';
     }
 
@@ -102,16 +74,14 @@ public class VendaBilhetesEntity {
      *********************** QUERIES ***********************
      ******************************************************* */
 
-    public static void create(int numeroLugar, int idProva, double preco) {
+    public static void create(int idUtilizador) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            VendaBilhetesEntity entity = new VendaBilhetesEntity();
-            entity.setNumeroLugar(numeroLugar);
-            entity.setPreco(preco);
-            entity.setIdProva(idProva);
+            AdministradoresEntity entity = new AdministradoresEntity();
+            entity.setIdUtilizador(idUtilizador);
             entityManager.persist(entity);
             transaction.commit();
         } finally {
@@ -127,10 +97,10 @@ public class VendaBilhetesEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<VendaBilhetesEntity> query = entityManager.createNamedQuery("VendaBilhetes.readById", VendaBilhetesEntity.class);
-            VendaBilhetesEntity vendaBilhetes = query.setParameter(1, id).getSingleResult();
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readById", AdministradoresEntity.class);
+            AdministradoresEntity administradores = query.setParameter(1, id).getSingleResult();
 
-            System.out.println(vendaBilhetes.toString());
+            System.out.println(administradores.toString());
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -145,9 +115,9 @@ public class VendaBilhetesEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<VendaBilhetesEntity> query = entityManager.createNamedQuery("VendaBilhetes.readAll", VendaBilhetesEntity.class);
-            for(VendaBilhetesEntity vendaBilhetes : query.getResultList()){
-                System.out.println(vendaBilhetes.toString());
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readAll", AdministradoresEntity.class);
+            for(AdministradoresEntity administradores : query.getResultList()){
+                System.out.println(administradores.toString());
             }
             transaction.commit();
         } finally{
@@ -163,9 +133,9 @@ public class VendaBilhetesEntity {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<VendaBilhetesEntity> query = entityManager.createNamedQuery("VendaBilhetes.readById", VendaBilhetesEntity.class);
-            VendaBilhetesEntity vendaBilhetes = query.setParameter(1, id).getSingleResult();
-            entityManager.remove(vendaBilhetes);
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readById", AdministradoresEntity.class);
+            AdministradoresEntity administradores = query.setParameter(1, id).getSingleResult();
+            entityManager.remove(administradores);
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -181,9 +151,9 @@ public class VendaBilhetesEntity {
 
         try {
             transaction.begin();
-            TypedQuery<VendaBilhetesEntity> query = entityManager.createNamedQuery("VendaBilhetes.readAll", VendaBilhetesEntity.class);
-            for(VendaBilhetesEntity vendaBilhetes : query.getResultList()){
-                entityManager.remove(vendaBilhetes);
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readAll", AdministradoresEntity.class);
+            for(AdministradoresEntity administradores : query.getResultList()){
+                entityManager.remove(administradores);
             }
             transaction.commit();
         } finally{
@@ -193,18 +163,18 @@ public class VendaBilhetesEntity {
         }
     }
 
-    public static void update(int id, int numeroLugar, double preco, int idProva){
+    public static void update(int id, int idUtilizador){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
 
+
         try {
             transaction.begin();
-            TypedQuery<VendaBilhetesEntity> query = entityManager.createNamedQuery("VendaBilhetes.readById", VendaBilhetesEntity.class);
-            VendaBilhetesEntity vendaBilhetes = query.setParameter(1, id).getSingleResult();
-            vendaBilhetes.setNumeroLugar(numeroLugar);
-            vendaBilhetes.setPreco(preco);
-            vendaBilhetes.setIdProva(idProva);
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readById", AdministradoresEntity.class);
+            AdministradoresEntity administradores = query.setParameter(1, id).getSingleResult();
+            administradores.setIdUtilizador(idUtilizador);
+
             transaction.commit();
         } finally{
             if (transaction.isActive()) transaction.rollback();
@@ -212,4 +182,6 @@ public class VendaBilhetesEntity {
             entityManagerFactory.close();
         }
     }
+
+
 }
