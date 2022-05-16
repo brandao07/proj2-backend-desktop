@@ -2,6 +2,7 @@ package pt.ipvc.fx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pt.ipvc.backend.bll.AdministradorBLL;
 import pt.ipvc.backend.bll.UtilizadorBLL;
 import pt.ipvc.backend.entity.UtilizadoresEntity;
 
@@ -65,7 +66,7 @@ public class RegistoController {
         }
 
         labelErro.setText("Utilizador Criado Com Sucesso");
-        UtilizadoresEntity.create(username, password, email);
+        AdministradorBLL.criarAdminstrador(username, email, password);
 
 }
 

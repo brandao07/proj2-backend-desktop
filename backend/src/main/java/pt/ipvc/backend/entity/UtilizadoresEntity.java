@@ -9,6 +9,9 @@ import java.util.Collection;
 @Entity
 @NamedQuery(name = "Utilizadores.readById", query = "SELECT a FROM UtilizadoresEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Utilizadores.readAll", query = "SELECT a FROM UtilizadoresEntity a")
+@NamedQuery(name = "Utilizadores.readByUsername", query = "SELECT a FROM UtilizadoresEntity a WHERE a.username = ?1")
+
+
 @Table(name = "utilizadores", schema = "public", catalog = "postgres")
 public class UtilizadoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +55,25 @@ public class UtilizadoresEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
+    }
+
+    public static int readByUsername(String username){
+        int id;
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<UtilizadoresEntity> query = entityManager.createNamedQuery("Utilizadores.readByUsername", UtilizadoresEntity.class);
+            UtilizadoresEntity utilizadores = query.setParameter(1, username).getSingleResult();
+            id = utilizadores.getId();
+            transaction.commit();
+        } finally{
+            if (transaction.isActive()) transaction.rollback();
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return id;
     }
 
     public static void read(int id) {

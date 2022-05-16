@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.AdminHomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.AdminHomePageController">
    <children>
-      <AnchorPane layoutX="199.0" prefHeight="400.0" prefWidth="401.0">
+      <AnchorPane layoutX="199.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow />
          </effect>
       </AnchorPane>
-      <AnchorPane prefHeight="400.0" prefWidth="196.0" style="-fx-background-color: #f0f7ff;">
+      <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
          <children>
-            <JFXButton layoutX="1.0" layoutY="64.0" prefHeight="45.0" prefWidth="203.0" text="          Adic. Dados" />
-            <AnchorPane layoutX="-9.0" prefHeight="407.0" prefWidth="62.0" style="-fx-background-color: #fff;">
+            <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
                <effect>
                   <DropShadow />
                </effect>
             </AnchorPane>
-            <Label layoutX="63.0" layoutY="44.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" />
-            <JFXButton layoutX="-3.0" layoutY="197.0" prefHeight="45.0" prefWidth="207.0" text="                  Remov. Dados" />
-            <JFXButton layoutX="-2.0" layoutY="153.0" prefHeight="45.0" prefWidth="206.0" text="             Editar Dados" />
-            <JFXButton layoutX="-3.0" layoutY="109.0" prefHeight="45.0" prefWidth="207.0" text="                    Consultar Dados" />
-            <JFXButton layoutX="-2.0" layoutY="286.0" prefHeight="45.0" prefWidth="206.0" text="                 Promover Utili." />
-            <Label layoutX="64.0" layoutY="265.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" />
-            <JFXButton layoutX="-7.0" layoutY="331.0" prefHeight="45.0" prefWidth="211.0" text="                     Consultar Infor." />
+            <Label layoutX="40.0" layoutY="142.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" />
+            <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="358.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" />
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="174.0" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="211.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="248.0" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="285.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="393.0" prefHeight="37.0" prefWidth="201.0" text="Promover Utilizador">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="430.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Informação">
+               <graphic>
+                  <Icon content="HELP_OUTLINE" />
+               </graphic>
+            </JFXButton>
          </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </AnchorPane>
    </children>
 </AnchorPane>

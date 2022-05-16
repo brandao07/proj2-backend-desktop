@@ -65,8 +65,6 @@ public class UtilizadorBLL {
         return false;
     }
 
-
-
     public static boolean validarLogin(String username , String password){
         ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
 
@@ -76,5 +74,24 @@ public class UtilizadorBLL {
         }
         return false;
     }
+
+    public static UtilizadoresEntity utilizador (String username){
+        UtilizadoresEntity utilizador = null;
+        ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
+
+        for (UtilizadoresEntity  utilizador_ativo: utilizadores) {
+            if (utilizador.getEmail().equals(username)){
+                utilizador = utilizador_ativo;
+                return utilizador;
+            }
+            if (utilizador.getUsername().equals(username)){
+                utilizador = utilizador_ativo;
+                return utilizador;
+            }
+        }
+
+        return utilizador;
+    }
+
 
 }

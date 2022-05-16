@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name = "Administradores.readById", query = "SELECT a FROM AdministradoresEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Administradores.readAll", query = "SELECT a FROM AdministradoresEntity a")
+@NamedQuery(name="JOINQUERY", query="SELECT a FROM AdministradoresEntity a INNER JOIN UtilizadoresEntity u ON a.idUtilizador = ?1 and a.idUtilizador = u.id")
+
+
 @Table(name = "administradores", schema = "public", catalog = "postgres")
 public class AdministradoresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,7 +94,8 @@ public class AdministradoresEntity {
         }
     }
 
-    public static void read(int id) {
+    public static int read(int id) {
+        int id_return;
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -99,7 +103,7 @@ public class AdministradoresEntity {
             transaction.begin();
             TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readById", AdministradoresEntity.class);
             AdministradoresEntity administradores = query.setParameter(1, id).getSingleResult();
-
+            id_return = administradores.getIdUtilizador();
             System.out.println(administradores.toString());
             transaction.commit();
         } finally{
@@ -107,6 +111,31 @@ public class AdministradoresEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
+
+        return id_return;
+    }
+
+    public static boolean join(int id) {
+        int id_return = -1;
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("JOINQUERY", AdministradoresEntity.class);
+            AdministradoresEntity administradores = query.setParameter(1, id).getSingleResult();
+            id_return = administradores.getId();
+            transaction.commit();
+        } finally{
+            if (transaction.isActive()) transaction.rollback();
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        if (id_return >= 0){
+            return true;
+        }
+
+        return false;
     }
 
     public static void readAll() {
