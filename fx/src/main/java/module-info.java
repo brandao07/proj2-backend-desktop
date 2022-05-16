@@ -5,7 +5,10 @@ module pt.ipvc.fx {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires pt.ipvc.backend;
+    requires annotations;
     exports pt.ipvc.fx;
 
     opens pt.ipvc.fx to javafx.fxml;
+    exports pt.ipvc.fx.controller;
+    opens pt.ipvc.fx.controller to javafx.fxml;
 }

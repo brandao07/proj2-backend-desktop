@@ -1,7 +1,9 @@
 package pt.ipvc.backend.entity;
 
 import javax.persistence.*;
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -70,7 +72,8 @@ public class UtilizadoresEntity {
         }
     }
 
-    public static void readAll() {
+    public static ArrayList<UtilizadoresEntity> readAll() {
+        ArrayList<UtilizadoresEntity> info = new ArrayList<>();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -78,7 +81,7 @@ public class UtilizadoresEntity {
             transaction.begin();
             TypedQuery<UtilizadoresEntity> query = entityManager.createNamedQuery("Utilizadores.readAll", UtilizadoresEntity.class);
             for(UtilizadoresEntity utilizadores : query.getResultList()){
-                System.out.println(utilizadores.toString());
+                info.add(utilizadores);
             }
             transaction.commit();
         } finally{
@@ -86,6 +89,7 @@ public class UtilizadoresEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
+        return info;
     }
 
     public static void delete(int id){

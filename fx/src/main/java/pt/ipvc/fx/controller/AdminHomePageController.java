@@ -1,2 +1,4 @@
-package pt.ipvc.fx.controller;public class AdminHomePageController {
+package pt.ipvc.fx.controller;
+
+public class AdminHomePageController {
 }

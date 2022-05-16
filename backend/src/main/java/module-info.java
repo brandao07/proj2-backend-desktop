@@ -4,4 +4,5 @@ open module pt.ipvc.backend {
     requires org.hibernate.orm.core;
 
     exports pt.ipvc.backend.entity;
+    exports pt.ipvc.backend.bll;
 }

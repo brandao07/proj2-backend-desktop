@@ -1,4 +1,4 @@
-package pt.ipvc.fx;
+package pt.ipvc.fx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
