@@ -48,8 +48,16 @@ public class RegistoController {
             labelErro.setText("Este email já existe");
             return;
         }
+        if(!UtilizadorBLL.validarCaracteresEmail(email)){
+            labelErro.setText("Email inválido!");
+            return;
+        }
         if (!UtilizadorBLL.validarUsername(username)){
             labelErro.setText("Este username já existe");
+            return;
+        }
+        if(!UtilizadorBLL.validarCaracteresUsername(username)){
+            labelErro.setText("Username inválido!");
             return;
         }
         if (!UtilizadorBLL.validarPasswords(password, password_repetida)){
@@ -67,8 +75,7 @@ public class RegistoController {
 
         labelErro.setText("Utilizador Criado Com Sucesso");
         AdministradorBLL.criarAdminstrador(username, email, password);
-
-}
+    }
 
     @FXML
     protected void btnBackClick() {

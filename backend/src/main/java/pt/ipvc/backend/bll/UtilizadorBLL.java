@@ -1,49 +1,69 @@
 package pt.ipvc.backend.bll;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import pt.ipvc.backend.entity.UtilizadoresEntity;
 
 import java.util.ArrayList;
 
 public class UtilizadorBLL {
 
-    //validar o tamanho dos dados, se o email contem o caracter '@' e termina em '.pt' ou '.com' ou '.org e se a password contem uma letra maiscula'
-    public static boolean validarDados(String username, String password, String email){
-        if (!validarUsername(username)) return false;
-        if (!validarEmail(email)) return false;
-
-        if(username.length() <= 15 && password.length() <= 30 && email.length() <= 30) return false;
-        if(!email.contains("@")) return false;
-        if(!email.contains(".com") || !email.contains(".pt") || !email.contains(".org")) return false;
-
-        return true;
-    }
-
-
+    /**
+     * Metódo para validar a repetição de emails.
+     * @param email Valida input do utilizador
+     * @return boolean Em caso de falso existem 2 emails iguais.
+     */
     public static boolean validarEmail(String email){
         ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
-        for (UtilizadoresEntity utilizador : utilizadores) {
+        for (UtilizadoresEntity utilizador : utilizadores)
             if (utilizador.getEmail().equals(email)) return false;
-        }
-        if (email.length() >= 50) return false;
         return true;
     }
 
+    /**
+     * Metódo para validar os caracteres do email
+     * @param email Valida input do utilizador
+     * @return boolean Em caso de falso, os caracteres do email não são válidos
+     */
+    public static boolean validarCaracteresEmail(@NotNull String email){
+        return email.length() >= 50 && email.contains("@") || email.contains(".com") || email.contains(".pt") || email.contains(".org");
+    }
+
+    /**
+     * Metódo para validar a repetição de usernames.
+     * @param username Valida input do utilizador
+     * @return boolean Em caso de falso existem 2 usernames iguais.
+     */
     public static boolean validarUsername(String username){
         ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
-        for (UtilizadoresEntity utilizador : utilizadores) {
+        for (UtilizadoresEntity utilizador : utilizadores)
             if (utilizador.getUsername().equals(username)) return false;
-        }
-        if (username.length()>= 25) return false;
         return true;
     }
 
-    public static boolean validarPasswords(String password, String password_repetida){
-        if(!password.equals(password_repetida)) return false;
-        if (password.length()>=25) return false;
-        return true;
+    /**
+     * Metódo para validar os caracteres do username
+     * @param username Valida input do utilizador
+     * @return boolean Em caso de falso, os caracteres do username não são válidos
+     */
+    public static boolean validarCaracteresUsername(@NotNull String username){
+        return username.length()>= 25;
+    }
+    /**
+     * Metódo para validar se as passwords coincidem.
+     * @param password Valida input do utilizador
+     * @return boolean Em caso de falso as passwords nao coincidem.
+     */
+    public static boolean validarPasswords(@NotNull String password, String password_repetida){
+        return password.equals(password_repetida);
     }
 
-    public static boolean validarCaracteresPassword(String password){
+    /**
+     * Metódo para validar os caracteres da password
+     * @param password Valida input do utilizador
+     * @return boolean Em caso de falso, os caracteres da password não são válidos
+     */
+    public static boolean validarCaracteresPassword(@NotNull String password){
         String letras = "QWERTYUIOPASDFGHJKLZXCVBNM";
         String numeros = "0123456789";
 
@@ -61,37 +81,47 @@ public class UtilizadorBLL {
                     }
                 }
             }
-        if(contador_caracteres >= 1 && contador_numeros >= 1) return true;
-        return false;
+        return contador_caracteres >= 1 && contador_numeros >= 1 && password.length()>=25;
     }
 
-    public static boolean validarLogin(String username , String password){
+    /**
+     * Metódo para validar o Login
+     * @param value Input do utilizador(Email ou Username)
+     * @param password Input do utilizador
+     * @return boolean Em caso de falso, as credenciais são invalidas
+     */
+    public static boolean validarLogin(String value , String password){
         ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
 
         for (UtilizadoresEntity utilizador : utilizadores) {
-            if (utilizador.getEmail().equals(username) && utilizador.getPassword().equals(password)) return true;
-            if (utilizador.getUsername().equals(username) && utilizador.getPassword().equals(password)) return true;
+            if (utilizador.getEmail().equals(value) && utilizador.getPassword().equals(password)) return true;
+            if (utilizador.getUsername().equals(value) && utilizador.getPassword().equals(password)) return true;
         }
         return false;
     }
 
-    public static UtilizadoresEntity utilizador (String username){
+    /**
+     * Metódo para obter o utilizador logado
+     * @param value Email ou Username do utilizador
+     * @return do utilizador ativo
+     */
+    @Nullable
+    public static UtilizadoresEntity utilizadorAtivo(String value){
         UtilizadoresEntity utilizador = null;
         ArrayList<UtilizadoresEntity> utilizadores = UtilizadoresEntity.readAll();
 
         for (UtilizadoresEntity  utilizador_ativo: utilizadores) {
-            if (utilizador.getEmail().equals(username)){
+            assert false;
+            if (utilizador.getEmail().equals(value)){
                 utilizador = utilizador_ativo;
                 return utilizador;
             }
-            if (utilizador.getUsername().equals(username)){
+            if (utilizador.getUsername().equals(value)){
                 utilizador = utilizador_ativo;
                 return utilizador;
             }
         }
 
-        return utilizador;
+        return null;
     }
-
-
 }
