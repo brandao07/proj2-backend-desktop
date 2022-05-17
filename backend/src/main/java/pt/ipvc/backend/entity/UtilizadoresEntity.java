@@ -5,10 +5,12 @@ import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 @Entity
 @NamedQuery(name = "Utilizadores.readById", query = "SELECT a FROM UtilizadoresEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Utilizadores.readAll", query = "SELECT a FROM UtilizadoresEntity a")
+@NamedQuery(name = "Utilizadores.dataUser", query = "SELECT count(a) FROM UtilizadoresEntity a group by a.data")
 @NamedQuery(name = "Utilizadores.readByUsername", query = "SELECT a FROM UtilizadoresEntity a WHERE a.username = ?1")
 
 
@@ -34,9 +36,35 @@ public class UtilizadoresEntity {
     @Column(name = "password")
     private String password;
 
+    @Basic
+    @Column(name = "data")
+    private Date data;
+
     /* *******************************************************
      *********************** QUERIES ***********************
      ******************************************************* */
+
+
+
+    public static HashMap<String, Integer> returnDataCriacaoUser(){
+        HashMap<String, Integer> info = new HashMap();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<UtilizadoresEntity> query = entityManager.createNamedQuery("Utilizadores.dataUser", UtilizadoresEntity.class);
+            for(UtilizadoresEntity utilizadores : query.getResultList()){
+            }
+            transaction.commit();
+        } finally{
+            if (transaction.isActive()) transaction.rollback();
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return info;
+    }
+
 
     public static void create(String username, String password, String email) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
@@ -218,8 +246,6 @@ public class UtilizadoresEntity {
         return result;
     }
 
-
-
     public Collection<AdministradoresEntity> getAdministradoresById() {
         return administradoresById;
     }
@@ -256,11 +282,4 @@ public class UtilizadoresEntity {
                 '}';
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -4,9 +4,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pt.ipvc.backend.entity.UtilizadoresEntity;
 
+import java.sql.SQLData;
 import java.util.ArrayList;
 
 public class UtilizadorBLL {
+
+
 
     /**
      * Metódo para validar a repetição de emails.

@@ -103,6 +103,27 @@ public class GestoresEntity {
         }
     }
 
+    public static int n_total_gestores() {
+        int n_gestores = 0;
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<GestoresEntity> query = entityManager.createNamedQuery("Gestores.readAll", GestoresEntity.class);
+            for(GestoresEntity gestores : query.getResultList()){
+                n_gestores += 1;
+            }
+            transaction.commit();
+        } finally{
+            if (transaction.isActive()) transaction.rollback();
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+
+        return n_gestores;
+    }
+
     public static void read(int id) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

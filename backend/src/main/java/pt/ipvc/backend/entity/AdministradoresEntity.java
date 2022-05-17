@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(name = "Administradores.readById", query = "SELECT a FROM AdministradoresEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Administradores.readAll", query = "SELECT a FROM AdministradoresEntity a")
+@NamedQuery(name = "Administradores.count", query = "select count(a) from AdministradoresEntity a")
 @NamedQuery(name="JOINQUERY", query="SELECT a FROM AdministradoresEntity a INNER JOIN UtilizadoresEntity u ON a.idUtilizador = ?1 and a.idUtilizador = u.id")
 
 
@@ -92,6 +93,26 @@ public class AdministradoresEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
+    }
+
+    public static int n_total_admistradores() {
+        int n_total = 0;
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<AdministradoresEntity> query = entityManager.createNamedQuery("Administradores.readAll", AdministradoresEntity.class);
+            for(AdministradoresEntity administradores : query.getResultList()){
+                n_total += 1;
+            }
+            transaction.commit();
+        } finally{
+            if (transaction.isActive()) transaction.rollback();
+            entityManager.close();
+            entityManagerFactory.close();
+        }
+        return n_total;
     }
 
     public static int read(int id) {

@@ -2,10 +2,16 @@ package pt.ipvc.fx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import pt.ipvc.backend.bll.AdministradorBLL;
 import pt.ipvc.backend.bll.UtilizadorBLL;
 import pt.ipvc.backend.entity.AdministradoresEntity;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LoginController {
 
@@ -26,6 +32,7 @@ public class LoginController {
 
     @FXML
     private Label labelErroLogin;
+
 
     @FXML
     protected void btnEntrarClick(ActionEvent event) {
@@ -49,4 +56,6 @@ public class LoginController {
     protected void setLinkRegistar(ActionEvent event) {
         ControladorGlobal.chamaScene("registo-view.fxml", event);
     }
+
+
 }
