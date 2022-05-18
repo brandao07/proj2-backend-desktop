@@ -1,11 +1,15 @@
 package pt.ipvc.fx.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import pt.ipvc.backend.bll.UtilizadorBLL;
 import pt.ipvc.backend.entity.AdministradoresEntity;
 import pt.ipvc.backend.entity.GestoresEntity;
 import pt.ipvc.backend.entity.UtilizadoresEntity;
@@ -20,14 +24,29 @@ public class AdminHomePageController implements Initializable {
     private BarChart<? , ?> barrasAdminsGestores;
 
     @FXML
+    private Button btnHome;
+
+    @FXML
+    private Button btnAdicionarDados;
+
+    @FXML
+    private Button btnConsultarDados;
+
+    @FXML
+    private Button btnEditarDados;
+
+    @FXML
+    private Button btnRemoverDados;
+
+    @FXML
+    private Label labelNome;
+
+    @FXML
     private LineChart<?, ?> lineChartClientes;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        HashMap<String, Integer> mapaUsersCriados = new HashMap<>();
-        ArrayList<UtilizadoresEntity> arrayUsers = UtilizadoresEntity.readAll();
-        for(UtilizadoresEntity utilizadores : arrayUsers){
-        }
+        labelNome.setText(UtilizadorBLL.getUserLog().getUsername());
         XYChart.Series series1 = new XYChart.Series();
         XYChart.Series series2 = new XYChart.Series();
         series1.setName("Administradores");
@@ -38,5 +57,9 @@ public class AdminHomePageController implements Initializable {
 
         XYChart.Series series3 = new XYChart.Series();
         series3.setName("Utilizadores");
+    }
+
+    public void setBtnAdicionarDados(ActionEvent event){
+        ControladorGlobal.chamaScene("admin-adicionar-dados.fxml", event);
     }
 }

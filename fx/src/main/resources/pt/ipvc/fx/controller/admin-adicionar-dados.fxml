@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.AdminHomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.AdminPageAdicionarController">
    <children>
       <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <BarChart fx:id="barrasAdminsGestores" layoutX="34.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0" title="Administradores e Gestores Registados">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-            <LineChart fx:id="lineChartClientes" layoutX="366.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0" title="Registo de Clientes">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
+            <ChoiceBox fx:id="choiceBoxItemAdiconar" layoutX="189.0" layoutY="57.0" prefWidth="150.0" />
+            <Label layoutX="36.0" layoutY="61.0" text="O que pretende adicionar:" />
+            <Label layoutX="89.0" layoutY="128.0" text="Nome:" />
+            <TextField layoutX="140.0" layoutY="123.0" prefHeight="26.0" prefWidth="378.0" />
+            <Label layoutX="20.0" layoutY="165.0" text="Data de Nascimento:" />
+            <DatePicker layoutX="140.0" layoutY="160.0" />
+            <ChoiceBox layoutX="140.0" layoutY="202.0" prefWidth="150.0" />
+            <Label layoutX="46.0" layoutY="206.0" text="Nacionalidade:" />
+            <Label layoutX="62.0" layoutY="247.0" text="Associação:" />
+            <ChoiceBox layoutX="140.0" layoutY="242.0" prefWidth="150.0" />
+            <Label layoutX="73.0" layoutY="291.0" text="Categoria:" />
+            <ChoiceBox layoutX="139.0" layoutY="287.0" prefWidth="150.0" />
+            <ChoiceBox layoutX="139.0" layoutY="330.0" prefWidth="150.0" />
+            <Label layoutX="80.0" layoutY="333.0" text="Genêro:" />
+            <Label layoutX="93.0" layoutY="375.0" text="Peso:" />
+            <TextField layoutX="137.0" layoutY="371.0" prefHeight="26.0" prefWidth="65.0" promptText="kg" />
+            <TextField layoutX="136.0" layoutY="414.0" prefHeight="26.0" prefWidth="65.0" promptText="m" />
+            <Label layoutX="93.0" layoutY="417.0" text="Altura:" />
+            <Button layoutX="606.0" layoutY="546.0" mnemonicParsing="false" text="Confirmar" />
+            <Label layoutX="81.0" layoutY="457.0" text="Posição:" />
+            <ChoiceBox layoutX="137.0" layoutY="453.0" prefWidth="150.0" />
+            <Label layoutX="81.0" layoutY="502.0" text="Equipas:" />
+            <ChoiceBox layoutX="137.0" layoutY="498.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
@@ -47,15 +53,6 @@
             </AnchorPane>
             <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" />
             <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" />
-            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/add-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
             <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
@@ -118,6 +115,15 @@
                   <Font size="21.0" />
                </font>
             </Button>
+            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/add-outline.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <effect>
             <DropShadow />

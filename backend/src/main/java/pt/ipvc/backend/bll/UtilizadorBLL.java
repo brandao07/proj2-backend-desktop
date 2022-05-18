@@ -8,7 +8,14 @@ import java.sql.SQLData;
 import java.util.ArrayList;
 
 public class UtilizadorBLL {
+    private static UtilizadoresEntity userLog;
+    public static UtilizadoresEntity getUserLog(){
+        return userLog;
+    }
 
+    public static void setUserLog(UtilizadoresEntity userLog){
+        UtilizadorBLL.userLog = userLog;
+    }
 
 
     /**
@@ -115,11 +122,11 @@ public class UtilizadorBLL {
 
         for (UtilizadoresEntity  utilizador_ativo: utilizadores) {
             assert false;
-            if (utilizador.getEmail().equals(value)){
+            if (utilizador_ativo.getEmail().equals(value)){
                 utilizador = utilizador_ativo;
                 return utilizador;
             }
-            if (utilizador.getUsername().equals(value)){
+            if (utilizador_ativo.getUsername().equals(value)){
                 utilizador = utilizador_ativo;
                 return utilizador;
             }

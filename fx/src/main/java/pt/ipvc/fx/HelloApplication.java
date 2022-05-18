@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pt.ipvc.backend.bll.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 
 import java.io.IOException;
@@ -20,6 +21,9 @@ public class HelloApplication extends Application {
             event.consume();
             ControladorGlobal.exit(stage);
         });
+
+
+
     }
 
     public static void main(String[] args) {

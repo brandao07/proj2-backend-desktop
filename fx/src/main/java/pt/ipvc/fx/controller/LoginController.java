@@ -2,7 +2,9 @@ package pt.ipvc.fx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -14,7 +16,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController {
-
     @FXML
     private Button btnEntrar;
 
@@ -38,6 +39,9 @@ public class LoginController {
     protected void btnEntrarClick(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
+
+        UtilizadorBLL.setUserLog(UtilizadorBLL.utilizadorAtivo(username));
+
         if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
         else{
             System.out.println("Não entrou!!");
@@ -48,7 +52,7 @@ public class LoginController {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
-        System.out.println("conaaaaa");
+
 
     }
 
