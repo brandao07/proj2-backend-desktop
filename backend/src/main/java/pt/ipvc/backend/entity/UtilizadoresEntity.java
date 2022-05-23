@@ -1,16 +1,18 @@
 package pt.ipvc.backend.entity;
 
+import pt.ipvc.backend.models.CountByDate;
+
 import javax.persistence.*;
 import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+
 
 @Entity
 @NamedQuery(name = "Utilizadores.readById", query = "SELECT a FROM UtilizadoresEntity a WHERE a.id = ?1")
 @NamedQuery(name = "Utilizadores.readAll", query = "SELECT a FROM UtilizadoresEntity a")
-@NamedQuery(name = "Utilizadores.dataUser", query = "SELECT count(a) FROM UtilizadoresEntity a group by a.data")
+@NamedQuery(name = "Utilizadores.dataUser", query = "SELECT new pt.ipvc.backend.models.CountByDate( a.data, count(a)) FROM UtilizadoresEntity a group by a.data")
 @NamedQuery(name = "Utilizadores.readByUsername", query = "SELECT a FROM UtilizadoresEntity a WHERE a.username = ?1")
 
 
@@ -46,15 +48,15 @@ public class UtilizadoresEntity {
 
 
 
-    public static HashMap<String, Integer> returnDataCriacaoUser(){
-        HashMap<String, Integer> info = new HashMap();
+    public static void returnDataCriacaoUser(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<UtilizadoresEntity> query = entityManager.createNamedQuery("Utilizadores.dataUser", UtilizadoresEntity.class);
-            for(UtilizadoresEntity utilizadores : query.getResultList()){
+            TypedQuery<CountByDate> query = entityManager.createNamedQuery("Utilizadores.dataUser", CountByDate.class);
+            for(CountByDate counts : query.getResultList()){
+                System.out.println(counts);
             }
             transaction.commit();
         } finally{
@@ -62,7 +64,6 @@ public class UtilizadoresEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
-        return info;
     }
 
 
@@ -222,6 +223,14 @@ public class UtilizadoresEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

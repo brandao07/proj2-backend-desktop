@@ -7,7 +7,6 @@ import pt.ipvc.backend.entity.UtilizadoresEntity;
 
 public class Main {
     public static void main(String[] args) {
-        AdministradoresEntity.join(10);
-
+        UtilizadoresEntity.returnDataCriacaoUser();
     }
 }

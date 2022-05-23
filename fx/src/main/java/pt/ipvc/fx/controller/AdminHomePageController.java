@@ -60,6 +60,6 @@ public class AdminHomePageController implements Initializable {
     }
 
     public void setBtnAdicionarDados(ActionEvent event){
-        ControladorGlobal.chamaScene("admin-adicionar-dados.fxml", event);
+        ControladorGlobal.chamaScene("adicionarDados/admin-adicionar-dados.fxml", event);
     }
 }

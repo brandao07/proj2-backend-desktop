@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.AdminPageAdicionarController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.adicionarDados.AdminPageAdicionarController">
    <children>
       <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
@@ -37,11 +37,12 @@
             <TextField layoutX="137.0" layoutY="371.0" prefHeight="26.0" prefWidth="65.0" promptText="kg" />
             <TextField layoutX="136.0" layoutY="414.0" prefHeight="26.0" prefWidth="65.0" promptText="m" />
             <Label layoutX="93.0" layoutY="417.0" text="Altura:" />
-            <Button layoutX="606.0" layoutY="546.0" mnemonicParsing="false" text="Confirmar" />
+            <Button layoutX="606.0" layoutY="546.0" mnemonicParsing="false" onAction="#seguinte" text="Seguinte" />
             <Label layoutX="81.0" layoutY="457.0" text="Posição:" />
             <ChoiceBox layoutX="137.0" layoutY="453.0" prefWidth="150.0" />
             <Label layoutX="81.0" layoutY="502.0" text="Equipas:" />
             <ChoiceBox layoutX="137.0" layoutY="498.0" prefWidth="150.0" />
+            <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">

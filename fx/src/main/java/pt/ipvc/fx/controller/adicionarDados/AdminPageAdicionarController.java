@@ -1,9 +1,12 @@
-package pt.ipvc.fx.controller;
+package pt.ipvc.fx.controller.adicionarDados;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,9 +15,6 @@ import java.util.ResourceBundle;
 public class AdminPageAdicionarController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBoxItemAdiconar;
-
-    @FXML
-    private Button btnAdicionarDados;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,11 +27,21 @@ public class AdminPageAdicionarController implements Initializable {
         choiceBoxItemAdiconar.getItems().add("Tipos de Divulgação");
         choiceBoxItemAdiconar.getItems().add("Tipos de Prémios");
         choiceBoxItemAdiconar.getItems().add("Tipos de Recintos");
+    }
 
-        if (choiceBoxItemAdiconar.getValue().equals("Árbitros")){
-
+    @FXML
+    public void seguinte(ActionEvent event){
+        if(!ValidarInput.validarString(choiceBoxItemAdiconar.getValue())) {
+            System.out.println("Campo inválido!");
+            return;
         }
+        //TODO: ACABAR OS FICHEIRO XML
+        ValidarInput.validarAdicionarDados(choiceBoxItemAdiconar.getValue(), event);
+    }
 
+    @FXML
+    public void anterior(ActionEvent event){
+        ControladorGlobal.chamaScene("admin-home-page.fxml", event);
     }
 
 
