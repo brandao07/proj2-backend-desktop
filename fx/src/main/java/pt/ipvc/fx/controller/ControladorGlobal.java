@@ -17,7 +17,7 @@ public class ControladorGlobal {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Zlovo");
+            stage.setTitle("SportEX");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
