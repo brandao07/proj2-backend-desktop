@@ -89,6 +89,10 @@ public class FavoritosEquipasEntity {
      ******************************************************* */
 
     public static void create(int idCliente, int idEquipa) {
+//        EquipasEntity equipa = FavoritosEquipasEntity.getById(5);
+//        equipa.addCliente(ClientesEntity.getById(10));
+
+
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -104,6 +108,11 @@ public class FavoritosEquipasEntity {
             entityManager.close();
             entityManagerFactory.close();
         }
+    }
+
+    public void addCliente(ClientesEntity cliente){
+        int idCliente = cliente.getId();
+        int idEquipa = this.getIdEquipa();
     }
 
     public static void read(int id) {

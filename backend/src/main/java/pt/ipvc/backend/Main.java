@@ -1,12 +1,9 @@
 package pt.ipvc.backend;
 
-import pt.ipvc.backend.bll.AdministradorBLL;
-import pt.ipvc.backend.entity.AdministradoresEntity;
-import pt.ipvc.backend.entity.RecintosEntity;
-import pt.ipvc.backend.entity.UtilizadoresEntity;
+import pt.ipvc.backend.bll.PasswordGenerator;
 
 public class Main {
     public static void main(String[] args) {
-        UtilizadoresEntity.returnDataCriacaoUser();
+        System.out.println(PasswordGenerator.generatePassword(8));
     }
 }
