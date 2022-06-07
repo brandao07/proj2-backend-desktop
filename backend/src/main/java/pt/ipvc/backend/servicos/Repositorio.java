@@ -12,21 +12,21 @@ public class Repositorio {
     private static Map<String, String> mapAssosiacoesPortuguesas = new HashMap<>();
 
     public static void paises_e_cidades() throws IOException {
-        String sample = ";";
+        String sample = ",";
         String mystring;
         try
         {
-            BufferedReader brdrd = new BufferedReader(new FileReader("./worldcities.csv"));
+            BufferedReader brdrd = new BufferedReader(new FileReader("./states.csv"));
             while ((mystring = brdrd.readLine()) != null)  //Reads a line of text
             {
                 String[] info = mystring.split(sample);//utilized to split the string
 
-                if (!mapCidadesPais.containsKey(info[7]) && !info[7].equals("Country name EN")){
+                if (!mapCidadesPais.containsKey(info[4])){
                     ArrayList<String> cidade = new ArrayList<>();
                     cidade.add(info[1]);
-                    mapCidadesPais.put(info[7], cidade);
-                }if (!info[7].equals("Country name EN")){
-                    mapCidadesPais.get(info[7]).add(info[1]);
+                    mapCidadesPais.put(info[4], cidade);
+                }if (!info[4].equals("Country name EN")){
+                    mapCidadesPais.get(info[4]).add(info[1]);
                 }
 
             }

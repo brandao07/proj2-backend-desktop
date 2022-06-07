@@ -24,7 +24,7 @@
             <Label layoutX="89.0" layoutY="128.0" text="Nome:" />
             <TextField fx:id="nome" layoutX="140.0" layoutY="123.0" prefHeight="26.0" prefWidth="378.0" />
             <Label layoutX="20.0" layoutY="165.0" text="Data de Nascimento:" />
-            <DatePicker fx:id="dataNascimento" layoutX="140.0" layoutY="160.0" />
+            <DatePicker fx:id="data" layoutX="140.0" layoutY="160.0" />
             <ChoiceBox fx:id="nacionalidade" layoutX="140.0" layoutY="202.0" prefWidth="150.0" />
             <Label layoutX="46.0" layoutY="206.0" text="Nacionalidade:" />
             <Label layoutX="62.0" layoutY="286.0" text="Associação:" />
