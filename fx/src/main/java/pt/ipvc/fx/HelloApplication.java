@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("controller/Administrador/admin-home-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("controller/Administrador/consultar_editarDados/admin-consultar-editar-dados.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
         stage.setTitle("Login!");
         stage.setScene(scene);
@@ -20,6 +20,9 @@ public class HelloApplication extends Application {
             event.consume();
             ControladorGlobal.exit(stage);
         });
+
+
+
     }
 
     public static void main(String[] args) {

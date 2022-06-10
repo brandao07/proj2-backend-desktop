@@ -13,9 +13,14 @@ module pt.ipvc.fx {
     opens pt.ipvc.fx.controller to javafx.fxml;
     exports pt.ipvc.fx.controller.Administrador.adicionarDados;
     opens pt.ipvc.fx.controller.Administrador.adicionarDados to javafx.fxml;
-    exports pt.ipvc.fx.controller.Administrador;
-    opens pt.ipvc.fx.controller.Administrador to javafx.fxml;
     exports pt.ipvc.fx.controller.Administrador.consultar_editarDados;
     opens pt.ipvc.fx.controller.Administrador.consultar_editarDados to javafx.fxml;
-
+    exports pt.ipvc.fx.controller.Administrador;
+    opens pt.ipvc.fx.controller.Administrador to javafx.fxml;
+    exports pt.ipvc.fx.controller.Gestor;
+    opens pt.ipvc.fx.controller.Gestor to javafx.fxml;
+    exports pt.ipvc.fx.controller.Gestor.criarCompeticao;
+    opens pt.ipvc.fx.controller.Gestor.criarCompeticao to javafx.fxml;
+    exports pt.ipvc.fx.controller.Gestor.consultarCompeticao;
+    opens pt.ipvc.fx.controller.Gestor.consultarCompeticao to javafx.fxml;
 }

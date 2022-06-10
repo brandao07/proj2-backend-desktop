@@ -5,31 +5,31 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.adicionarDetalhesController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.GestorHomePageController">
    <children>
-      <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+      <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Button layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#seguinte" text="Seguinte" />
-            <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
-            <TableView layoutX="182.0" layoutY="100.0" prefHeight="200.0" prefWidth="330.0">
+            <Label layoutX="46.0" layoutY="44.0" text="Modalidades:" />
+            <TableView layoutX="112.0" layoutY="117.0" prefHeight="200.0" prefWidth="461.0">
               <columns>
-                <TableColumn prefWidth="166.4000244140625" text="Posição" />
-                <TableColumn prefWidth="163.199951171875" text="Prémio Atribuido" />
+                <TableColumn prefWidth="216.0" text="Nome" />
+                <TableColumn minWidth="0.0" prefWidth="120.79998779296875" text="Data Inico" />
+                  <TableColumn prefWidth="124.79998779296875" text="Data Fim" />
               </columns>
             </TableView>
-            <TextField fx:id="premio" layoutX="362.0" layoutY="322.0" promptText="Prémio Atribuido" />
-            <Button fx:id="adicionar" layoutX="401.0" layoutY="366.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Adicionar" />
-            <Label layoutX="250.0" layoutY="326.0" text="Adiocionar Prémio:" />
+            <Label fx:id="labelNome" layoutX="136.0" layoutY="44.0" prefHeight="18.0" prefWidth="43.0" text="Futebol" />
+            <Label fx:id="labelNome1" layoutX="215.0" layoutY="44.0" prefHeight="18.0" prefWidth="43.0" text="Tenis" />
+            <Label fx:id="labelNome11" layoutX="280.0" layoutY="43.0" prefHeight="18.0" prefWidth="43.0" text="Tesstte" />
+            <Label fx:id="labelNome111" layoutX="343.0" layoutY="43.0" prefHeight="18.0" prefWidth="43.0" text="Tesstte" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
@@ -39,8 +39,8 @@
                   <DropShadow />
                </effect>
             </AnchorPane>
-            <Label layoutX="40.0" layoutY="137.0" prefHeight="18.0" prefWidth="102.0" text="Competições" />
-            <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Competições">
+            <Label layoutX="40.0" layoutY="137.0" prefHeight="18.0" prefWidth="81.0" text="Competições" />
+            <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Competição">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEditarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="243.0" prefHeight="37.0" prefWidth="201.0" text="Editar Competições">
+            <JFXButton fx:id="editarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="243.0" prefHeight="37.0" prefWidth="201.0" text="Editar Competição">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="280.0" prefHeight="37.0" prefWidth="201.0" text="Remover Competições">
+            <JFXButton fx:id="removerCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="280.0" prefHeight="37.0" prefWidth="201.0" text="Remover Competição">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -72,7 +72,6 @@
                   <Image url="@../icons/person-outline.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
             <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
             <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,7 +83,7 @@
                   <Font size="21.0" />
                </font>
             </Button>
-            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Competições">
+            <JFXButton fx:id="criarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Criar Competição">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>

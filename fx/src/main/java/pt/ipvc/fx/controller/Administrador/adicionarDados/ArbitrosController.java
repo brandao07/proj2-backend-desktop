@@ -40,6 +40,12 @@ public class ArbitrosController implements Initializable {
     protected ChoiceBox associacao;
 
     @FXML
+    protected ChoiceBox choiceBoxItemAdiconar;
+
+    @FXML
+    protected ChoiceBox genero;
+
+    @FXML
     protected DatePicker data;
 
     @FXML

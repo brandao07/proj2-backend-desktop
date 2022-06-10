@@ -18,7 +18,7 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView layoutX="134.0" layoutY="51.0" prefHeight="232.0" prefWidth="370.0">
+            <TableView fx:id="competicoes" layoutX="157.0" layoutY="106.0" prefHeight="313.0" prefWidth="370.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Nome" />
                 <TableColumn prefWidth="75.0" text="Modalidade" />
@@ -27,17 +27,11 @@
                   <TableColumn prefWidth="75.0" text="Genero" />
               </columns>
             </TableView>
-            <TableView layoutX="134.0" layoutY="336.0" prefHeight="232.0" prefWidth="370.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="Nome" />
-                  <TableColumn prefWidth="75.0" text="Modalidade" />
-                  <TableColumn prefWidth="75.0" text="Data Ínicio" />
-                  <TableColumn prefWidth="75.0" text="Data Fim" />
-                  <TableColumn prefWidth="75.0" text="Genero" />
-               </columns>
-            </TableView>
-            <Label layoutX="67.0" layoutY="23.0" prefHeight="18.0" prefWidth="81.0" text="A decorrer " />
-            <Label layoutX="67.0" layoutY="300.0" prefHeight="18.0" prefWidth="125.0" text="Próximas Competições" />
+            <Label layoutX="64.0" layoutY="69.0" prefHeight="22.0" prefWidth="94.0" text="Competições " textFill="#001dff">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Button layoutX="240.0" layoutY="444.0" mnemonicParsing="false" text="Visualizar Histórico de Competições" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">

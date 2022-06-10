@@ -1,8 +1,12 @@
 package pt.ipvc.fx.misc;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.fx.controller.ControladorGlobal;
+
+import java.time.LocalDate;
 
 public class ValidarInput {
 
@@ -18,6 +22,23 @@ public class ValidarInput {
 
     public static boolean validarInt(int value){
         return value > 0;
+    }
+
+    public static boolean validarDataPicker(LocalDate value){
+        if (value != null)
+            return !value.equals(null);
+        return false;
+    }
+
+    public static boolean validarChoiceBox(Object value){
+        if (value != null)
+            return !value.equals(null);
+        return false;
+    }
+
+    public static boolean validarDatas(@NotNull LocalDate dInicio, LocalDate dFim){
+        //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fim
+        return dInicio.compareTo(dFim) < 0 || (dInicio.compareTo(dFim) == 0);
     }
 
     public static void validarAdicionarDados(@NotNull String value, ActionEvent event){

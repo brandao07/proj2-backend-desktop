@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import pt.ipvc.fx.controller.ControladorGlobal;
 
 import java.net.URL;
@@ -14,16 +15,16 @@ import java.util.ResourceBundle;
 public class adicionarDetalhesController implements Initializable {
 
     @FXML
-    private ChoiceBox tipoPremio;
+    private Button adicionar;
 
     @FXML
-    private ChoiceBox podio;
-
-    @FXML
-    private TableView valores;
+    private TextField premio;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+    public void adiconar(ActionEvent event){
 
     }
 
