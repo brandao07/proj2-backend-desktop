@@ -16,5 +16,6 @@ module pt.ipvc.fx {
     exports pt.ipvc.fx.controller.Administrador;
     opens pt.ipvc.fx.controller.Administrador to javafx.fxml;
     exports pt.ipvc.fx.controller.Administrador.consultar_editarDados;
-    opens pt.ipvc.fx.controller.Administrador to javafx.fxml;
+    opens pt.ipvc.fx.controller.Administrador.consultar_editarDados to javafx.fxml;
+
 }
