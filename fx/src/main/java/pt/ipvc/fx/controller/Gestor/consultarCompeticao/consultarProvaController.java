@@ -26,6 +26,6 @@ public class consultarProvaController implements Initializable {
     }
 
     public void anterior (ActionEvent event){
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/consultar-competicao.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/admin-consultar-editar-dados-arbitros.fxml", event);
     }
 }

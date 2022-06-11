@@ -22,6 +22,6 @@ public class PremiosController {
 
     @FXML
     public void cancelar(ActionEvent event){
-        ControladorGlobal.chamaScene("adicionarDados/admin-adicionar-dados.fxml", event);
+        ControladorGlobal.chamaScene("adicionarDados/admin-consultar-editar-dados-arbitros.fxml", event);
     }
 }
