@@ -61,6 +61,7 @@ public class ValidarInput {
     }
 
     public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event){
+        System.out.println(value);
         switch (value) {
             case "Árbitros" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
             case "Atletas" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-atleta.fxml", event);

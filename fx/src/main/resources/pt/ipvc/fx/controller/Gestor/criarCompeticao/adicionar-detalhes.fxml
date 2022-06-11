@@ -55,25 +55,16 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/reader-outline.png" />
+                        <Image url="@../../../icons/folder.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEditarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="243.0" prefHeight="37.0" prefWidth="201.0" text="Editar Competições">
+            <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="244.0" prefHeight="37.0" prefWidth="201.0" text="Remover Competições">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/create-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="280.0" prefHeight="37.0" prefWidth="201.0" text="Remover Competições">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/remove-outline.png" />
+                        <Image url="@../../../icons/remove.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -99,7 +90,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/add-outline.png" />
+                        <Image url="@../../../icons/add.png" />
                      </image>
                   </ImageView>
                </graphic>
