@@ -36,8 +36,9 @@ public class ValidarInput {
         return false;
     }
     //tem covid esta merda
-    public static boolean validarDatas(@NotNull LocalDate dInicio, LocalDate dFim){
+    public static boolean validarDatas(LocalDate dInicio, LocalDate dFim){
         //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fim
+        if(dInicio == null && dFim == null) return true;
         return dInicio.compareTo(dFim) < 0 || (dInicio.compareTo(dFim) == 0);
     }
 

@@ -21,12 +21,13 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView fx:id="competicoes" layoutX="96.0" layoutY="197.0" prefHeight="239.0" prefWidth="542.0">
+            <TableView fx:id="competicoes" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0">
               <columns>
-                <TableColumn prefWidth="216.0" text="Nome" />
-                <TableColumn minWidth="0.0" prefWidth="120.79998779296875" text="Data Inico" />
-                  <TableColumn prefWidth="124.79998779296875" text="Data Fim" />
-                  <TableColumn prefWidth="80.00003662109373" text="Genero" />
+                <TableColumn fx:id="colunaNome" prefWidth="157.59999084472656" text="Nome" />
+                <TableColumn fx:id="colunaInicio" minWidth="0.0" prefWidth="95.20001220703125" text="Data Inico" />
+                  <TableColumn fx:id="colunaFim" prefWidth="133.60003662109375" text="Data Fim" />
+                  <TableColumn fx:id="colunaGenero" prefWidth="92.7999267578125" text="Genero" />
+                  <TableColumn fx:id="colunaModalidade" prefWidth="135.2000732421875" text="Modalidade" />
               </columns>
             </TableView>
             <ChoiceBox fx:id="modalidade" layoutX="214.0" layoutY="102.0" prefWidth="150.0" />

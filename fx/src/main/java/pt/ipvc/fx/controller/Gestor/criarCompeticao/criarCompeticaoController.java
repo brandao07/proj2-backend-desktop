@@ -7,10 +7,7 @@ import javafx.scene.control.*;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class criarCompeticaoController {
+public class criarCompeticaoController{
     @FXML
     private TextField nomeCompeticao;
 
@@ -29,6 +26,7 @@ public class criarCompeticaoController {
 
     @FXML
     private Label invalidDados;
+
 
     public void seguinte(ActionEvent event){
         if(ValidarInput.validarString(nomeCompeticao.getText())
@@ -54,4 +52,6 @@ public class criarCompeticaoController {
     public void anterior(ActionEvent event){
         ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
+
+
 }
