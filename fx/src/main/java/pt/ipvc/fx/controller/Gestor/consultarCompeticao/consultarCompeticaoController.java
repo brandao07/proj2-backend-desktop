@@ -1,10 +1,12 @@
 package pt.ipvc.fx.controller.Gestor.consultarCompeticao;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.controller.Temp.Person;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -47,11 +49,57 @@ public class consultarCompeticaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         competicoes.getColumns().clear();
+        competicoes.setEditable(true);
+
         colunaNome.setCellValueFactory(new PropertyValueFactory<Person, String>("nome"));
+        colunaNome.setCellFactory(TextFieldTableCell.forTableColumn());
+        colunaNome.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                Person person = event.getRowValue();
+                person.setNome(event.getNewValue());
+            }
+        });
+
         colunaInicio.setCellValueFactory(new PropertyValueFactory<Person, String>("inicio"));
+        colunaInicio.setCellFactory(TextFieldTableCell.forTableColumn());
+        colunaInicio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                Person person = event.getRowValue();
+                person.setInicio(event.getNewValue());
+            }
+        });
+
         colunaFim.setCellValueFactory(new PropertyValueFactory<Person, String>("fim"));
+        colunaFim.setCellFactory(TextFieldTableCell.forTableColumn());
+        colunaFim.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                Person person = event.getRowValue();
+                person.setFim(event.getNewValue());
+            }
+        });
+
         colunaGenero.setCellValueFactory(new PropertyValueFactory<Person, String>("genero"));
+        colunaGenero.setCellFactory(TextFieldTableCell.forTableColumn());
+        colunaGenero.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                Person person = event.getRowValue();
+                person.setGenero(event.getNewValue());
+            }
+        });
+
         colunaModalidade.setCellValueFactory(new PropertyValueFactory<Person, String>("modalidade"));
+        colunaModalidade.setCellFactory(TextFieldTableCell.forTableColumn());
+        colunaModalidade.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Person, String> event) {
+                Person person = event.getRowValue();
+                person.setModalidade(event.getNewValue());
+            }
+        });
 
         competicoes.getColumns().add(colunaNome);
         competicoes.getColumns().add(colunaInicio);
