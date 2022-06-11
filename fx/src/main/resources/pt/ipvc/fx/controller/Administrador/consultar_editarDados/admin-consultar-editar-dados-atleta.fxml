@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.ConsultarEditarDadosArbitroController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.ConsultarEditarDadosAtletaController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
          <children>
@@ -61,7 +61,6 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
             <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
             <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX">
                <font>
@@ -87,7 +86,7 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView fx:id="tableArbitros" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0">
+            <TableView fx:id="tableAtletas" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0">
                <columns>
                   <TableColumn fx:id="colunaNome" prefWidth="157.59999084472656" text="Nome" />
                   <TableColumn fx:id="colunaInicio" minWidth="0.0" prefWidth="95.20001220703125" text="Data Inico" />
@@ -101,8 +100,8 @@
             <Button fx:id="btnDetalhes" layoutX="526.0" layoutY="456.0" mnemonicParsing="false" text="Ver mais detalhes" />
             <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0531ff" />
             <Line endX="389.51422119140625" endY="396.992919921875" layoutX="284.0" layoutY="120.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0531ff" />
-            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-143.5" startY="-3.9071044921875" stroke="#0531ff" />
-            <Label layoutX="62.0" layoutY="56.0" text="Árbitros" textFill="#0531ff">
+            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-147.5" startY="-3.9071044921875" stroke="#0531ff" />
+            <Label layoutX="62.0" layoutY="56.0" text="Atletas" textFill="#0531ff">
                <font>
                   <Font size="15.0" />
                </font>
