@@ -62,19 +62,20 @@ public class ValidarInput {
 
     public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event){
         switch (value) {
-            case "Árbitros" -> ControladorGlobal.chamaScene("controller/Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
-            case "Atletas" -> ControladorGlobal.chamaScene("consultar_editarDados/admin-consultar-editar-dados-atleta.fxml", event);
-            case "Contratos" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-contrato.fxml", event);
-            case "Equipas" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-equipa.fxml", event);
-            case "Modalidades" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-modalidade.fxml", event);
-            case "Recintos" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-recinto.fxml", event);
-            case "Tipos de Divulgação" ->
-                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-divulgacao.fxml", event);
+            case "Árbitros" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+            case "Atletas" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-atleta.fxml", event);
+            case "Equipas" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-equipa.fxml", event);
+            case "Prémios" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-premio.fxml", event);
+            case "Modalidades" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-modalidade.fxml", event);
+            case "Recintos" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-recinto.fxml", event);
             case "Tipos de Prémios" ->
-                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-premios.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-tipos-premio.fxml", event);
             case "Tipos de Recintos" ->
-                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-tiporecinto.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-tipos-recinto.fxml", event);
             default -> System.out.println("ERRO");
         }
+    }
+
+    public static void mudarPagConsultarEditarAdmin(Object selectedItem) {
     }
 }

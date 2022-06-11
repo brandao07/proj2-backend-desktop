@@ -87,7 +87,7 @@
                   <TableColumn fx:id="colunaModalidade" prefWidth="135.2000732421875" text="Modalidade" />
                </columns>
             </TableView>
-            <ChoiceBox fx:id="itemPesquisar" layoutX="214.0" layoutY="102.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="itemPesquisar" layoutX="214.0" layoutY="102.0"  prefWidth="150.0" />
             <Label layoutX="61.0" layoutY="106.0" text="O que pretende consultar:" />
             <Button fx:id="btnDetalhes" layoutX="594.0" layoutY="456.0" mnemonicParsing="false" text="Remover" />
             <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0531ff" />

@@ -6,6 +6,7 @@ module pt.ipvc.fx {
     requires org.kordamp.bootstrapfx.core;
     requires pt.ipvc.backend;
     requires annotations;
+    requires javafx.graphics;
     exports pt.ipvc.fx;
 
     opens pt.ipvc.fx to javafx.fxml;

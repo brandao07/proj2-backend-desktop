@@ -36,21 +36,12 @@ public class ConsultarEditarDadosArbitroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipa",  "Modalidade", "Prêmio", "Recintos", "Tipos de Recinto", "Tipos de Prêmio");
-
-        itemPesquisar.valueProperty().addListener(new ChangeListener<String>() {
-            ActionEvent event = new ActionEvent();
-            @Override public void changed(ObservableValue ov, String t, String t1) {
-                //ValidarInput.mudarPagConsultarEditarAdmin(t1, event);
-
-            }
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas",  "Modalidades", "Prémios", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        itemPesquisar.setValue("Árbitros");
+        itemPesquisar.setOnAction(actionEvent -> {
+            ValidarInput.mudarPagConsultarEditarAdmin((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
-
-
     }
-
-
-
 
 
 }

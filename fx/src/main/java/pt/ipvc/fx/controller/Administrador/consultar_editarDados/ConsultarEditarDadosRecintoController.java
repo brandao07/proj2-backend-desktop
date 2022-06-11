@@ -1,11 +1,13 @@
 package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +31,11 @@ public class ConsultarEditarDadosRecintoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipa",  "Modalidade", "Prêmio", "Recintos", "Tipos de Recinto", "Tipos de Prêmio");
-
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas",  "Modalidade", "Prêmios", "Recintos", "Tipos de Recintos", "Tipos de Prêmios");
+        itemPesquisar.setValue("Recintos");
+        itemPesquisar.setOnAction(actionEvent -> {
+            ValidarInput.mudarPagConsultarEditarAdmin((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+        });
     }
+
 }
