@@ -59,4 +59,22 @@ public class ValidarInput {
             default -> System.out.println("ERRO");
         }
     }
+
+    public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event){
+        switch (value) {
+            case "Árbitros" -> ControladorGlobal.chamaScene("controller/Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+            case "Atletas" -> ControladorGlobal.chamaScene("consultar_editarDados/admin-consultar-editar-dados-atleta.fxml", event);
+            case "Contratos" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-contrato.fxml", event);
+            case "Equipas" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-equipa.fxml", event);
+            case "Modalidades" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-modalidade.fxml", event);
+            case "Recintos" -> ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-recinto.fxml", event);
+            case "Tipos de Divulgação" ->
+                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-divulgacao.fxml", event);
+            case "Tipos de Prémios" ->
+                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-premios.fxml", event);
+            case "Tipos de Recintos" ->
+                    ControladorGlobal.chamaScene("consultar_editarDados/adicionar-dados-tiporecinto.fxml", event);
+            default -> System.out.println("ERRO");
+        }
+    }
 }

@@ -21,8 +21,6 @@ public class HelloApplication extends Application {
             ControladorGlobal.exit(stage);
         });
 
-
-
     }
 
     public static void main(String[] args) {

@@ -1,11 +1,17 @@
 package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import pt.ipvc.backend.servicos.Repositorio;
+import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.misc.ValidarInput;
 
 
 import java.net.URL;
@@ -32,5 +38,19 @@ public class ConsultarEditarDadosArbitroController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipa",  "Modalidade", "Prêmio", "Recintos", "Tipos de Recinto", "Tipos de Prêmio");
 
+        itemPesquisar.valueProperty().addListener(new ChangeListener<String>() {
+            ActionEvent event = new ActionEvent();
+            @Override public void changed(ObservableValue ov, String t, String t1) {
+                //ValidarInput.mudarPagConsultarEditarAdmin(t1, event);
+
+            }
+        });
+
+
     }
+
+
+
+
+
 }
