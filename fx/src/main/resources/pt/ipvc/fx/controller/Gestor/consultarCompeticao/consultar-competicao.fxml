@@ -2,34 +2,51 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.GestorHomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.consultarCompeticao.consultarCompeticaoController">
    <children>
       <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Label layoutX="46.0" layoutY="44.0" text="Modalidades:" />
-            <TableView layoutX="112.0" layoutY="117.0" prefHeight="200.0" prefWidth="461.0">
+            <TableView fx:id="competicoes" layoutX="96.0" layoutY="197.0" prefHeight="239.0" prefWidth="542.0">
               <columns>
                 <TableColumn prefWidth="216.0" text="Nome" />
                 <TableColumn minWidth="0.0" prefWidth="120.79998779296875" text="Data Inico" />
                   <TableColumn prefWidth="124.79998779296875" text="Data Fim" />
+                  <TableColumn prefWidth="80.00003662109373" text="Genero" />
               </columns>
             </TableView>
-            <Label fx:id="labelNome" layoutX="136.0" layoutY="44.0" prefHeight="18.0" prefWidth="43.0" text="Futebol" />
-            <Label fx:id="labelNome1" layoutX="215.0" layoutY="44.0" prefHeight="18.0" prefWidth="43.0" text="Tenis" />
-            <Label fx:id="labelNome11" layoutX="280.0" layoutY="43.0" prefHeight="18.0" prefWidth="43.0" text="Tesstte" />
-            <Label fx:id="labelNome111" layoutX="343.0" layoutY="43.0" prefHeight="18.0" prefWidth="43.0" text="Tesstte" />
+            <ChoiceBox fx:id="modalidade" layoutX="214.0" layoutY="102.0" prefWidth="150.0" />
+            <Label layoutX="61.0" layoutY="106.0" text="Selecione uma Modalidade:" />
+            <Button layoutX="526.0" layoutY="456.0" mnemonicParsing="false" onAction="#verDetalhes" text="Ver mais detalhes" />
+            <Button layoutX="46.0" layoutY="549.0" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
+            <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0531ff" />
+            <Line endX="389.51422119140625" endY="396.992919921875" layoutX="284.0" layoutY="120.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0531ff" />
+            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-106.20001220703125" startY="-3.1142196655273438" stroke="#0531ff" />
+            <Label layoutX="62.0" layoutY="56.0" text="Competições" textFill="#0531ff">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="79.0" startX="-99.0" startY="-12.700004577636719" stroke="#0531ff" />
+            <Line endX="-0.7071075439453125" endY="514.992919921875" layoutX="36.0" layoutY="2.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0531ff" />
+            <TextField fx:id="pesquisa" layoutX="488.0" layoutY="132.0" promptText="Insira o Nome do Campo" />
+            <Button layoutX="415.0" layoutY="132.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
+            <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="505.0" layoutY="488.0" prefHeight="18.0" prefWidth="159.0" textFill="RED" />
+            <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">

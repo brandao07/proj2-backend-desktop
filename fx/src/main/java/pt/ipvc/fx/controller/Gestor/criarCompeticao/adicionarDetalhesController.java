@@ -24,6 +24,7 @@ public class adicionarDetalhesController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
     public void adiconar(ActionEvent event){
 
     }

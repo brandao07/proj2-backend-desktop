@@ -3,13 +3,13 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.adicionarProvaController">
@@ -19,20 +19,27 @@
             <DropShadow />
          </effect>
          <children>
-            <Label layoutX="198.0" layoutY="122.0" prefHeight="18.0" prefWidth="70.0" text="Equipa Casa:" />
-            <Label layoutX="198.0" layoutY="159.0" text="Equipa Fora:" />
-            <Label layoutX="221.0" layoutY="196.0" text="Recinto:" />
-            <Label layoutX="137.0" layoutY="95.0" text="Criar Prova:" />
-            <ChoiceBox layoutX="286.0" layoutY="119.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="286.0" layoutY="155.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="286.0" layoutY="192.0" prefWidth="150.0" />
-            <Label layoutX="137.0" layoutY="295.0" text="Venda Bilhetes:" />
-            <Label layoutX="211.0" layoutY="320.0" prefHeight="18.0" prefWidth="81.0" text="Preço Mínimo:" />
-            <Label layoutX="211.0" layoutY="363.0" prefHeight="18.0" prefWidth="81.0" text="Preço Máximo:" />
-            <TextField layoutX="300.0" layoutY="316.0" />
-            <TextField layoutX="300.0" layoutY="359.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="130.0" layoutX="103.0" layoutY="277.0" stroke="#034eff" strokeType="INSIDE" width="366.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="179.0" layoutX="103.0" layoutY="70.0" stroke="#034eff" strokeType="INSIDE" width="366.0" />
+            <Label layoutX="223.0" layoutY="157.0" prefHeight="18.0" prefWidth="70.0" text="Equipa Casa:" />
+            <Label layoutX="226.0" layoutY="198.0" text="Equipa Fora:" />
+            <Label layoutX="249.0" layoutY="240.0" text="Recinto:" />
+            <Label layoutX="159.0" layoutY="106.0" text="Criar Prova" textFill="#0531ff">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <ChoiceBox fx:id="equipaCasa" layoutX="302.0" layoutY="154.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="equipaFora" layoutX="302.0" layoutY="194.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="recinto" layoutX="302.0" layoutY="236.0" prefWidth="150.0" />
+            <Label layoutX="264.0" layoutY="279.0" text="Data:" />
+            <DatePicker fx:id="data" layoutX="302.0" layoutY="275.0" promptText="Inisira uma data" />
+            <Line endX="351.60003662109375" endY="-2.7000045776367188" layoutX="218.0" layoutY="119.0" startX="22.79998779296875" startY="-2.7000045776367188" stroke="#0531ff" />
+            <Line endX="330.20001220703125" endY="316.1999816894531" layoutX="241.0" layoutY="95.0" startX="-112.0" startY="316.1999816894531" stroke="#0531ff" />
+            <Line endX="-0.5" endY="228.69998168945312" layoutX="129.0" layoutY="182.0" startX="-0.5" startY="-65.20000457763672" stroke="#0531ff" />
+            <Line endX="390.90704345703125" endY="243.90707397460938" layoutX="181.0" layoutY="168.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0531ff" />
+            <Button layoutX="160.0" layoutY="359.0" mnemonicParsing="false" onAction="#confirmarContinuar" text="Confirmar e Inserir Nova Prova" />
+            <Button layoutX="25.0" layoutY="550.0" mnemonicParsing="false" onAction="#anterior" text="Anterior " />
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="228.0" layoutY="129.0" startX="-99.0" startY="-12.700004577636719" stroke="#0531ff" />
+            <Button layoutX="452.0" layoutY="359.0" mnemonicParsing="false" onAction="#confirmarSair" text="Confirmar e Sair" />
+            <Label fx:id="invalidDados" alignment="CENTER" layoutX="129.0" layoutY="323.0" prefHeight="18.0" prefWidth="443.0" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">

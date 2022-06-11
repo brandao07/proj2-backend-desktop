@@ -9,29 +9,40 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.GestorHomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.consultarCompeticao.consultarProvaController">
    <children>
       <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <TableView fx:id="competicoes" layoutX="130.0" layoutY="106.0" prefHeight="314.0" prefWidth="449.0">
-              <columns>
-                <TableColumn prefWidth="104.800048828125" text="Nome" />
-                <TableColumn prefWidth="84.79998779296875" text="Modalidade" />
-                  <TableColumn prefWidth="92.800048828125" text="Data Ínicio" />
-                  <TableColumn prefWidth="79.199951171875" text="Data Fim" />
-                  <TableColumn prefWidth="87.20001220703125" text="Genero" />
-              </columns>
-            </TableView>
-            <Label layoutX="64.0" layoutY="69.0" prefHeight="22.0" prefWidth="94.0" text="Competições " textFill="#001dff">
+            <Label fx:id="nomeCompeticao" layoutX="93.0" layoutY="110.0" prefHeight="18.0" prefWidth="202.0">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Button layoutX="46.0" layoutY="549.0" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
+            <Line endX="385.80706787109375" endY="247.49288940429688" layoutX="292.0" layoutY="209.0" startX="-269.0" startY="247.69998168945312" stroke="#0531ff" />
+            <Line endX="389.30706787109375" endY="317.9928894042969" layoutX="288.0" layoutY="138.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0531ff" />
+            <Line endX="425.22137451171875" endY="-4.114219665527344" layoutX="253.0" layoutY="89.0" startX="-151.79998779296875" startY="-3.9071121215820312" stroke="#0531ff" />
+            <Label layoutX="49.0" layoutY="74.0" text="Provas" textFill="#0531ff">
                <font>
                   <Font size="15.0" />
-               </font></Label>
-            <Button layoutX="240.0" layoutY="444.0" mnemonicParsing="false" onAction="#historico" text="Visualizar Histórico de Competições" />
+               </font>
+            </Label>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="122.0" layoutY="97.0" startX="-99.0" startY="-12.700004577636719" stroke="#0531ff" />
+            <Line endX="-0.5000152587890625" endY="436.1999816894531" layoutX="23.0" layoutY="20.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0531ff" />
+            <TableView fx:id="competicoes" layoutX="43.0" layoutY="172.0" prefHeight="239.0" prefWidth="613.0">
+              <columns>
+                <TableColumn prefWidth="140.0" text="Equipa Casa" />
+                <TableColumn minWidth="0.0" prefWidth="121.60003662109375" text="Equipa Fora" />
+                  <TableColumn prefWidth="123.20001220703125" text="Resultado" />
+                  <TableColumn prefWidth="98.4000244140625" text="Data" />
+                  <TableColumn prefWidth="132.0" text="Recinto" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
@@ -74,7 +85,6 @@
                   <Image url="@../icons/person-outline.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
             <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
             <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
                <image>

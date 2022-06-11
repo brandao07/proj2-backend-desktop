@@ -10,16 +10,16 @@ import pt.ipvc.fx.controller.ControladorGlobal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GestorHistoricoController implements Initializable {
+public class GestorHomePageController implements Initializable {
     @FXML
-    private TableView historico;
+    private TableView competicoes;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO listar as competiçoes criadas pelo gestor logado
+        //TODO listar as competiçoes que a data fim é superior a CurrentDate
     }
 
-    public void anterior(ActionEvent event){
-        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+    public void historico (ActionEvent event){
+        ControladorGlobal.chamaScene("Gestor/gestor-historico.fxml", event);
     }
 }

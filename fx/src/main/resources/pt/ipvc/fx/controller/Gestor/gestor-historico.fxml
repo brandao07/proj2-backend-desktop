@@ -18,13 +18,13 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView fx:id="historico" layoutX="157.0" layoutY="106.0" prefHeight="313.0" prefWidth="370.0">
+            <TableView fx:id="historico" layoutX="96.0" layoutY="106.0" prefHeight="314.0" prefWidth="510.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Nome" />
-                <TableColumn prefWidth="75.0" text="Modalidade" />
-                  <TableColumn prefWidth="75.0" text="Data Ínicio" />
-                  <TableColumn prefWidth="75.0" text="Data Fim" />
-                  <TableColumn prefWidth="75.0" text="Genero" />
+                <TableColumn prefWidth="130.4000244140625" text="Nome" />
+                <TableColumn prefWidth="105.60003662109375" text="Modalidade" />
+                  <TableColumn prefWidth="100.0" text="Data Ínicio" />
+                  <TableColumn prefWidth="94.39996337890625" text="Data Fim" />
+                  <TableColumn prefWidth="79.19998779296873" text="Genero" />
               </columns>
             </TableView>
             <Label layoutX="64.0" layoutY="69.0" prefHeight="22.0" prefWidth="175.0" text="Histórico de Competições" textFill="#001dff">
