@@ -4,35 +4,28 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
-        <class>pt.ipvc.backend.entity.ArbitrosEntity</class>
-        <class>pt.ipvc.backend.entity.AtletasEntity</class>
-        <class>pt.ipvc.backend.entity.CompeticoesEntity</class>
-        <class>pt.ipvc.backend.entity.ContratosEntity</class>
-        <class>pt.ipvc.backend.entity.DivulgacoesEntity</class>
-        <class>pt.ipvc.backend.entity.EquipasEntity</class>
-        <class>pt.ipvc.backend.entity.InscricoesEntity</class>
-        <class>pt.ipvc.backend.entity.ModalidadesEntity</class>
-        <class>pt.ipvc.backend.entity.PremiosEntity</class>
-        <class>pt.ipvc.backend.entity.ProvaArbitroEntity</class>
-        <class>pt.ipvc.backend.entity.ProvasEntity</class>
-        <class>pt.ipvc.backend.entity.RecintosEntity</class>
-        <class>pt.ipvc.backend.entity.RecintosTipoRecintoEntity</class>
-        <class>pt.ipvc.backend.entity.TipoDivulgacaoEntity</class>
-        <class>pt.ipvc.backend.entity.TipoPremioEntity</class>
-        <class>pt.ipvc.backend.entity.TipoRecintoEntity</class>
-        <class>pt.ipvc.backend.entity.VendaBilhetesEntity</class>
-        <class>pt.ipvc.backend.entity.AdministradoresEntity</class>
-        <class>pt.ipvc.backend.entity.ClientesEntity</class>
-        <class>pt.ipvc.backend.entity.FavoritosCompeticoesEntity</class>
-        <class>pt.ipvc.backend.entity.FavoritosEquipasEntity</class>
-        <class>pt.ipvc.backend.entity.GestoresEntity</class>
-        <class>pt.ipvc.backend.entity.UtilizadoresEntity</class>
+        <class>pt.ipvc.backend.data.db.entity.TipoRecinto</class>
+        <class>pt.ipvc.backend.data.db.entity.Recinto</class>
+        <class>pt.ipvc.backend.data.db.entity.Equipa</class>
+        <class>pt.ipvc.backend.data.db.entity.Atleta</class>
+        <class>pt.ipvc.backend.data.db.entity.Modalidade</class>
+        <class>pt.ipvc.backend.data.db.entity.Arbitro</class>
+        <class>pt.ipvc.backend.data.db.entity.Competicao</class>
+        <class>pt.ipvc.backend.data.db.entity.Prova</class>
+        <class>pt.ipvc.backend.data.db.entity.TipoPremio</class>
+        <class>pt.ipvc.backend.data.db.entity.Premio</class>
+        <class>pt.ipvc.backend.data.db.entity.users.Utilizador</class>
+        <class>pt.ipvc.backend.data.db.entity.users.Administrador</class>
+        <class>pt.ipvc.backend.data.db.entity.users.Cliente</class>
+        <class>pt.ipvc.backend.data.db.entity.users.Gestor</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://proj-ii.postgres.database.azure.com:5432/postgres"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/proj2"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.username" value="hugocarvalho@proj-ii"/>
-            <property name="hibernate.connection.password" value="Adminadmin1"/>
+            <property name="hibernate.connection.username" value="proj2"/>
+            <property name="hibernate.connection.password" value="proj2"/>
             <property name="hibernate.show_sql" value="true"/>
+            <property name="format_sql" value="true"/>
+            <!--      <property name="hibernate.hbm2ddl.auto" value="create"/>-->
         </properties>
     </persistence-unit>
 </persistence>
