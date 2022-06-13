@@ -26,6 +26,6 @@ public class DivulgacaoController {
 
     @FXML
     public void cancelar(ActionEvent event){
-        ControladorGlobal.chamaScene("adicionarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+        ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 }

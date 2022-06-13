@@ -26,4 +26,6 @@ module pt.ipvc.fx {
     opens pt.ipvc.fx.controller.Gestor.consultarCompeticao to javafx.fxml;
     exports pt.ipvc.fx.controller.Temp;
     opens pt.ipvc.fx.controller.Temp to javafx.fxml;
+    exports pt.ipvc.fx.controller.Administrador.sistema;
+    opens pt.ipvc.fx.controller.Administrador.sistema to javafx.fxml;
 }
