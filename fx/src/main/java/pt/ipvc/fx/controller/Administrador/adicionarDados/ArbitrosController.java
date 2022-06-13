@@ -58,10 +58,7 @@ public class ArbitrosController implements Initializable {
         System.out.println("Campos Inválidos");
     }
 
-    @FXML
-    public void cancelar(ActionEvent event){
-        ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

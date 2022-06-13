@@ -60,7 +60,6 @@ public class ValidarInput {
     }
 
     public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event) {
-        System.out.println(value);
         switch (value) {
             case "Árbitros" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-sistema-adicionar-user.fxml", event);
@@ -83,7 +82,6 @@ public class ValidarInput {
     }
 
     public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event){
-        System.out.println(value);
         switch (value) {
             case "Consultar Dados" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
             case "Adicicionar Dados" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
