@@ -21,7 +21,9 @@ public class consultarProvaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO: listar as provas da competicao selecionada na scene consultar-competicao
+        //TODO: CAMPOS ja tens as provas
+        //FIXED listar as provas da competicao selecionada na scene consultar-competicao
+        // CompeticaoBLL.getCompeticao("nome").getProvas();
 
         nomeCompeticao.setText("Competição: ");
     }

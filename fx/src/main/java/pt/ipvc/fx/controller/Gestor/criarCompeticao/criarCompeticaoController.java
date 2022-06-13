@@ -2,6 +2,7 @@ package pt.ipvc.fx.controller.Gestor.criarCompeticao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -9,7 +10,12 @@ import javafx.scene.control.TextField;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
-public class criarCompeticaoController {
+import java.net.URL;
+import java.util.HashSet;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+public class criarCompeticaoController implements Initializable {
     @FXML
     private TextField nomeCompeticao;
 
@@ -21,10 +27,13 @@ public class criarCompeticaoController {
 
     @FXML
     private ChoiceBox genero;
-    //TODO: carregar os generos para a choiceBox
+    //FIXED carregar os generos para a choiceBox
     @FXML
     private ChoiceBox modalidade;
-    //TODO carregar as modalidades para a choiceBox
+    //TODO: CAMPOS ja tens os dados
+
+    //FIXED carregar as modalidades para a choiceBox
+    //ModalidadeBLL.getModalidades()
 
     @FXML
     private Label invalidDados;
@@ -43,7 +52,9 @@ public class criarCompeticaoController {
             return;
         }
         invalidDados.setText("Data Inicio com inicio posteior a Data Fim");
-        //TODO verificar se o nome da competicao é único
+        //TODO: CAMPOS LÊ
+        //FIXED verificar se o nome da competicao é único
+        // O NOME DA COMPETICAO E SEMPRE UNICO NA BD
 
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
@@ -63,4 +74,12 @@ public class criarCompeticaoController {
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Set<String> generos = new HashSet<>();
+        generos.add("Masculino");
+        generos.add("Feminino");
+        generos.add("Misto");
+        //TODO: CAMPOS adicionar generos a choicebox
+    }
 }

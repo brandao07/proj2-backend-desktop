@@ -16,7 +16,9 @@ public class GestorHomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO: listar as competiçoes que a data fim é superior a CurrentDate
+        //TODO: CAMPOS JA TENS VALORES!!
+        //FIXED: listar as competiçoes que a data fim é superior a CurrentDate
+        //CompeticaoBLL.getCompeticoesActive()
     }
 
     public void historico(ActionEvent event) {
