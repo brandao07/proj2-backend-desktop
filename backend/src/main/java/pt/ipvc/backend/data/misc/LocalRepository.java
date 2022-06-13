@@ -3,12 +3,10 @@ package pt.ipvc.backend.data.misc;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class LocalRepository {
-    private static Map<String, ArrayList<String>> mapCidadesPais = new HashMap<>();
+    private static Map<String, Set<String>> mapCidadesPais = new HashMap<>();
     private static ArrayList<String> equipasNBA = new ArrayList<>();
     private static Map<String, String> mapAssosiacoesPortuguesas = new HashMap<>();
 
@@ -22,15 +20,19 @@ public class LocalRepository {
                 String[] info = mystring.split(sample);//utilized to split the string
 
                 if (!mapCidadesPais.containsKey(info[4])) {
-                    ArrayList<String> cidade = new ArrayList<>();
-                    cidade.add(info[1]);
-                    mapCidadesPais.put(info[4], cidade);
+                    Set<String> cidade = new HashSet<>();
+                    String string_cidade = info[1].replace("\"", "");
+                    String string_pais = info[4].replace("\"", "");
+                    cidade.add(string_cidade);
+                    mapCidadesPais.put(string_pais, cidade);
                 }
-                if (!info[4].equals("Country name EN")) {
-                    mapCidadesPais.get(info[4]).add(info[1]);
-                }
+                else {
+                    String string_cidade = info[1].replace("\"", "");
+                    String string_pais = info[4].replace("\"", "");
+                    mapCidadesPais.get(string_pais).add(string_cidade);
+                    }
 
-            }
+                }
         } catch (IOException e)//catches exception in the try block
         {
             e.printStackTrace();//Prints this throwable and its backtrace
@@ -54,11 +56,12 @@ public class LocalRepository {
         }
     }
 
-    public static Map<String, ArrayList<String>> getMapCidadesPais() {
+
+    public static Map<String, Set<String>> getMapCidadesPais() {
         return mapCidadesPais;
     }
 
-    public static void setMapCidadesPais(Map<String, ArrayList<String>> mapCidadesPais) {
+    public static void setMapCidadesPais(Map<String, Set<String>> mapCidadesPais) {
         LocalRepository.mapCidadesPais = mapCidadesPais;
     }
 

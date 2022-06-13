@@ -1,7 +1,8 @@
 package pt.ipvc.fx.controller.Administrador.adicionarDados;
 
-import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -11,11 +12,10 @@ import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
+
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ArbitrosController implements Initializable {
 
@@ -49,7 +49,7 @@ public class ArbitrosController implements Initializable {
     protected DatePicker data;
 
     @FXML
-    public void confirmar(ActionEvent event) {
+    public void confirmar(ActionEvent event){
         if (ValidarInput.validarString(nome.getText()) &&
                 ValidarInput.validarString(data.toString())) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
@@ -59,7 +59,7 @@ public class ArbitrosController implements Initializable {
     }
 
     @FXML
-    public void cancelar(ActionEvent event) {
+    public void cancelar(ActionEvent event){
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
@@ -73,8 +73,9 @@ public class ArbitrosController implements Initializable {
 
         //adicionar pais à choiceBox nacionalidade
         ArrayList paises = new ArrayList<>();
-        for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
-            if (!paises.contains(LocalRepository.getMapCidadesPais().get(pais))) {
+        for (String pais : LocalRepository.getMapCidadesPais().keySet())
+        {
+            if (!paises.contains(LocalRepository.getMapCidadesPais().get(pais))){
                 paises.add(pais);
             }
         }
@@ -83,15 +84,26 @@ public class ArbitrosController implements Initializable {
 
 
         //adicionar cidades à choiceBox naturalidade
-        nacionalidade.valueProperty().addListener((ChangeListener<String>) (ov, t, t1) -> {
-            naturalidade.getItems().clear();
-            for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
-                if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
-                    naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
-                    break;
+        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue ov, String t, String t1) {
+                naturalidade.getItems().clear();
+                for (String pais : LocalRepository.getMapCidadesPais().keySet())
+                {
+                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)){
+                        naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
+                        break;
+                    }
                 }
             }
         });
+
+
+
+
+
+
+
+
 
 
     }
