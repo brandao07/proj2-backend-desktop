@@ -24,7 +24,7 @@
             </AnchorPane>
             <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
             <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" textFill="WHITE" />
-            <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
+            <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,7 +33,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;" text="Criar Utilizador" textFill="#0f4c83">
+            <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;" text="Criar Utilizador" textFill="#0f4c83">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,7 +42,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+            <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Font size="21.0" />
                </font>
             </Button>
-            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados" textFill="WHITE">
+            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
