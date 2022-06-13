@@ -24,4 +24,11 @@ public class ModalidadeController {
     public void cancelar(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
+
+    public void setBtnNavMenu(ActionEvent event){
+        String nome_scene = String.valueOf(event.getTarget());
+        nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
+        nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
+        ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
 }
