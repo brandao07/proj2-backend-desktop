@@ -12,7 +12,6 @@ import pt.ipvc.fx.controller.Temp.Person;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class consultarCompeticaoController implements Initializable {
@@ -115,18 +114,18 @@ public class consultarCompeticaoController implements Initializable {
         //TODO listar competicoes por modalidade
     }
 
-    public void pesquisar (){
-        if(ValidarInput.validarString(pesquisa.getText())){
+    public void pesquisar() {
+        if (ValidarInput.validarString(pesquisa.getText())) {
             return;
         }
         pesquisaInvalida.setText("Insira um Campo para Pesquisar!");
     }
 
-    public void verDetalhes (){
+    public void verDetalhes() {
         verDetalhesInvalido.setText("Selecione uma Competição!");
     }
 
-    public void anterior (ActionEvent event){
+    public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 

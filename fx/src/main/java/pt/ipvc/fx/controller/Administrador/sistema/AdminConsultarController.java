@@ -6,7 +6,7 @@ import javafx.scene.chart.LineChart;
 
 public class AdminConsultarController {
     @FXML
-    private BarChart<? , ?> barrasAdminsGestores;
+    private BarChart<?, ?> barrasAdminsGestores;
 
     @FXML
     private LineChart<?, ?> lineChartClientes;

@@ -2,18 +2,7 @@ package pt.ipvc.fx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import pt.ipvc.backend.bll.AdministradorBLL;
-import pt.ipvc.backend.bll.UtilizadorBLL;
-import pt.ipvc.backend.entity.AdministradoresEntity;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class LoginController {
     @FXML
@@ -43,12 +32,12 @@ public class LoginController {
         UtilizadorBLL.setUserLog(UtilizadorBLL.utilizadorAtivo(username));
 
         if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
-        else{
+        else {
             System.out.println("Não entrou!!");
             labelErroLogin.setText("Credenciais Incorretas.");
             return;
         }
-        if (AdministradorBLL.existeAdministrador(username)){
+        if (AdministradorBLL.existeAdministrador(username)) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }

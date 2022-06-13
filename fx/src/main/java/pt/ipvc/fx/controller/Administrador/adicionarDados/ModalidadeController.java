@@ -12,7 +12,7 @@ public class ModalidadeController {
     protected TextField nome;
 
     @FXML
-    public void confirmar(ActionEvent event){
+    public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(nome.getText())) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
@@ -21,7 +21,7 @@ public class ModalidadeController {
     }
 
     @FXML
-    public void cancelar(ActionEvent event){
+    public void cancelar(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 }

@@ -2,9 +2,7 @@ package pt.ipvc.fx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pt.ipvc.backend.bll.AdministradorBLL;
-import pt.ipvc.backend.bll.UtilizadorBLL;
-import pt.ipvc.backend.entity.UtilizadoresEntity;
+
 
 public class RegistoController {
 
@@ -40,37 +38,37 @@ public class RegistoController {
         String password_repetida = passwordField2.getText();
 
 
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || password_repetida.isEmpty()){
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || password_repetida.isEmpty()) {
             labelErro.setText("Por favor preencha todos os campos.");
             return;
         }
-        if (!UtilizadorBLL.validarEmail(email)){
+        if (!UtilizadorBLL.validarEmail(email)) {
             labelErro.setText("Este email já existe");
             return;
         }
-        if(!UtilizadorBLL.validarCaracteresEmail(email)){
+        if (!UtilizadorBLL.validarCaracteresEmail(email)) {
             labelErro.setText("Email inválido!");
             return;
         }
-        if (!UtilizadorBLL.validarUsername(username)){
+        if (!UtilizadorBLL.validarUsername(username)) {
             labelErro.setText("Este username já existe");
             return;
         }
-        if(!UtilizadorBLL.validarCaracteresUsername(username)){
+        if (!UtilizadorBLL.validarCaracteresUsername(username)) {
             labelErro.setText("Username inválido!");
             return;
         }
-        if (!UtilizadorBLL.validarPasswords(password, password_repetida)){
+        if (!UtilizadorBLL.validarPasswords(password, password_repetida)) {
             labelErro.setText("Palavras passes não coincidem");
-           return;
+            return;
         }
-        if (!UtilizadorBLL.validarCaracteresPassword(password)){
+        if (!UtilizadorBLL.validarCaracteresPassword(password)) {
             labelErro.setText("A password deve conter uma letra maiscula e um numero.");
             return;
         }
-        if (!checkBoxTermos.isSelected()){
+        if (!checkBoxTermos.isSelected()) {
             labelErro.setText("Aceite os termos, para continuar.");
-           return;
+            return;
         }
 
         labelErro.setText("Utilizador Criado Com Sucesso");

@@ -31,9 +31,8 @@ public class ContratosController implements Initializable {
     }
 
     @FXML
-    public void confirmar(ActionEvent event){
-        //TODO: FALTA FAZER CHOICE BOX
-        if (ValidarInput.validarString(dataFim.toString()) && ValidarInput.validarString(dataInicio.toString()))  {
+    public void confirmar(ActionEvent event) {
+        if (ValidarInput.validarString(dataFim.toString()) && ValidarInput.validarString(dataInicio.toString())) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
@@ -41,7 +40,7 @@ public class ContratosController implements Initializable {
     }
 
     @FXML
-    public void cancelar(ActionEvent event){
+    public void cancelar(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 

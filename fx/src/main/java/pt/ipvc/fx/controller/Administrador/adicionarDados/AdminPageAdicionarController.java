@@ -3,7 +3,6 @@ package pt.ipvc.fx.controller.Administrador.adicionarDados;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -30,20 +29,18 @@ public class AdminPageAdicionarController implements Initializable {
     }
 
     @FXML
-    public void seguinte(ActionEvent event){
-        if(!ValidarInput.validarString(choiceBoxItemAdiconar.getValue())) {
+    public void seguinte(ActionEvent event) {
+        if (!ValidarInput.validarString(choiceBoxItemAdiconar.getValue())) {
             System.out.println("Campo inválido!");
             return;
         }
-        //TODO: ACABAR OS FICHEIRO XML
         ValidarInput.validarAdicionarDados(choiceBoxItemAdiconar.getValue(), event);
     }
 
     @FXML
-    public void anterior(ActionEvent event){
+    public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("admin-home-page.fxml", event);
     }
-
 
 
 }

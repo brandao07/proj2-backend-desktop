@@ -43,11 +43,11 @@ public class AtletasController {
     protected ChoiceBox associacao;
 
     @FXML
-    public void confirmar(ActionEvent event){
+    public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(nome.getText()) &&
                 ValidarInput.validarString(data.toString()) &&
                 ValidarInput.validarDouble(Double.parseDouble(peso.getText())) &&
-                ValidarInput.validarDouble(Double.parseDouble(altura.getText())))  {
+                ValidarInput.validarDouble(Double.parseDouble(altura.getText()))) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
@@ -55,7 +55,7 @@ public class AtletasController {
     }
 
     @FXML
-    public void cancelar(ActionEvent event){
+    public void cancelar(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 }

@@ -2,12 +2,14 @@ package pt.ipvc.fx.controller.Gestor.criarCompeticao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
-public class criarCompeticaoController{
+public class criarCompeticaoController {
     @FXML
     private TextField nomeCompeticao;
 
@@ -28,8 +30,8 @@ public class criarCompeticaoController{
     private Label invalidDados;
 
 
-    public void seguinte(ActionEvent event){
-        if(ValidarInput.validarString(nomeCompeticao.getText())
+    public void seguinte(ActionEvent event) {
+        if (ValidarInput.validarString(nomeCompeticao.getText())
                 && ValidarInput.validarDataPicker(dataInicio.getValue())
                 && ValidarInput.validarDataPicker(dataFim.getValue())
                 && ValidarInput.validarChoiceBox(genero.getValue())
@@ -37,7 +39,7 @@ public class criarCompeticaoController{
             return;
         }
         invalidDados.setText("Campos Inválidos");
-        if(ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())){
+        if (ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())) {
             return;
         }
         invalidDados.setText("Data Inicio com inicio posteior a Data Fim");
@@ -46,10 +48,11 @@ public class criarCompeticaoController{
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
 
-    public void adicionarDetalhes(ActionEvent event){
+    public void adicionarDetalhes(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
     }
-    public void anterior(ActionEvent event){
+
+    public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 

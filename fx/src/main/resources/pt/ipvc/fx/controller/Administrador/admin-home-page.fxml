@@ -1,127 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.AdminHomePageController">
-   <children>
-      <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
-         <effect>
-            <DropShadow />
-         </effect>
-         <children>
-            <BarChart layoutX="34.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0" title="Administradores e Gestores Registados">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-            <LineChart layoutX="366.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0" title="Registo de Clientes">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
-         <children>
-            <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </AnchorPane>
-            <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" />
-            <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" />
-            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/add-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/reader-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnEditarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="243.0" prefHeight="37.0" prefWidth="201.0" text="Editar Dados">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/create-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="280.0" prefHeight="37.0" prefWidth="201.0" text="Remover Dados">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/remove-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" prefHeight="37.0" prefWidth="201.0" text="Criar Utilizador">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/person-add-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/cog-outline.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/person-outline.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
-            <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
-            <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/ellipsis-vertical-outline.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </AnchorPane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="pt.ipvc.fx.controller.Administrador.AdminHomePageController">
+    <children>
+        <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow/>
+            </effect>
+            <children>
+                <BarChart layoutX="34.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0"
+                          title="Administradores e Gestores Registados">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT"/>
+                    </yAxis>
+                </BarChart>
+                <LineChart layoutX="366.0" layoutY="37.0" prefHeight="245.0" prefWidth="315.0"
+                           title="Registo de Clientes">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT"/>
+                    </yAxis>
+                </LineChart>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
+            <children>
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0"
+                            style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </AnchorPane>
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir"/>
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0"
+                       prefWidth="45.0" text="Sistema"/>
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0"
+                           onAction="#setBtnAdicionarDados" prefHeight="37.0" prefWidth="201.0"
+                           text="Adicicionar Dados">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/add-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Consultar Dados">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/reader-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnEditarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="243.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Editar Dados">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/create-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="280.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Remover Dados">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/remove-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Criar Utilizador">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/person-add-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/cog-outline.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="80.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/person-outline.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0"/>
+                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0"
+                        style="-fx-background-color: transparent;"/>
+                <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/ellipsis-vertical-outline.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false"
+                        style="-fx-background-color: transparent;" text="SportEX">
+                    <font>
+                        <Font size="21.0"/>
+                    </font>
+                </Button>
+            </children>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </AnchorPane>
+    </children>
 </AnchorPane>

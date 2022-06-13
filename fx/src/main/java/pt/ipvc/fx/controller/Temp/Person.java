@@ -1,7 +1,5 @@
 package pt.ipvc.fx.controller.Temp;
 
-import java.util.Date;
-
 public class Person {
     private String nome;
     private String inicio;
@@ -9,7 +7,7 @@ public class Person {
     private String genero;
     private String modalidade;
 
-    public Person(){
+    public Person() {
         this.nome = "";
         this.inicio = "";
         this.fim = "";
@@ -17,7 +15,7 @@ public class Person {
         this.modalidade = "";
     }
 
-    public Person (String nome, String inicio, String fim, String genero, String modalidade){
+    public Person(String nome, String inicio, String fim, String genero, String modalidade) {
         this.nome = nome;
         this.inicio = inicio;
         this.fim = fim;

@@ -31,7 +31,7 @@ public class ConsultarEditarDadosTipoRecintoController implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas",  "Modalidades", "Prémios", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Prémios", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         itemPesquisar.setValue("Tipos de Recintos");
         itemPesquisar.setOnAction(actionEvent -> {
             ValidarInput.mudarPagConsultarEditarAdmin((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);

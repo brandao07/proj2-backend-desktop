@@ -25,7 +25,7 @@ public class consultarProvaController implements Initializable {
         nomeCompeticao.setText("Competição: ");
     }
 
-    public void anterior (ActionEvent event){
+    public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/consultarCompeticao/admin-sistema-adicionar-user.fxml", event);
     }
 }

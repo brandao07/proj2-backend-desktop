@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -33,7 +32,7 @@ public class EquipasController {
     protected DatePicker data;
 
     @FXML
-    public void confirmar(ActionEvent event){
+    public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(nome.getText()) &&
                 ValidarInput.validarString(contacto.getText()) &&
                 ValidarInput.validarString(sigla.getText()) &&
@@ -45,7 +44,7 @@ public class EquipasController {
     }
 
     @FXML
-    public void cancelar(ActionEvent event){
+    public void cancelar(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 }

@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import pt.ipvc.fx.controller.ControladorGlobal;
 
@@ -25,14 +23,15 @@ public class adicionarDetalhesController implements Initializable {
 
     }
 
-    public void adiconar(ActionEvent event){
+    public void adiconar(ActionEvent event) {
 
     }
 
-    public void seguinte(ActionEvent event){
+    public void seguinte(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
     }
-    public void anterior(ActionEvent event){
+
+    public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
     }
 

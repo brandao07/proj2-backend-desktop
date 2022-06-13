@@ -3,7 +3,6 @@ package pt.ipvc.fx.controller.Gestor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import pt.ipvc.fx.controller.ControladorGlobal;
 
@@ -19,7 +18,7 @@ public class GestorHomePageController implements Initializable {
         //TODO listar as competiçoes que a data fim é superior a CurrentDate
     }
 
-    public void historico (ActionEvent event){
+    public void historico(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/gestor-historico.fxml", event);
     }
 }

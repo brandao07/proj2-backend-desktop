@@ -1,104 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.adicionarDetalhesController">
-   <children>
-      <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
-         <effect>
-            <DropShadow />
-         </effect>
-         <children>
-            <Button layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#seguinte" text="Seguinte" />
-            <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
-            <TableView layoutX="182.0" layoutY="100.0" prefHeight="200.0" prefWidth="330.0">
-              <columns>
-                <TableColumn prefWidth="166.4000244140625" text="Posição" />
-                <TableColumn prefWidth="163.199951171875" text="Prémio Atribuido" />
-              </columns>
-            </TableView>
-            <TextField fx:id="premio" layoutX="362.0" layoutY="322.0" promptText="Prémio Atribuido" />
-            <Button fx:id="adicionar" layoutX="401.0" layoutY="366.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Adicionar" />
-            <Label layoutX="250.0" layoutY="326.0" text="Adiocionar Prémio:" />
-            <Label layoutX="140.0" layoutY="44.0" text="Atribuir Prémio por Posição" textFill="#0531ff">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="391.10699462890625" endY="-3.7000045776367188" layoutX="199.0" layoutY="57.0" startX="130.4000244140625" startY="-2.7000045776367188" stroke="#0531ff" />
-            <Line endX="367.39996337890625" endY="296.8000183105469" layoutX="222.0" layoutY="141.0" startX="-117.39996337890625" startY="296.8000183105469" stroke="#0531ff" />
-            <Line endX="1.10003662109375" endY="317.3000183105469" layoutX="103.0" layoutY="121.0" startX="0.29998779296875" startY="-67.20000457763672" stroke="#0531ff" />
-            <Line endX="394.10699462890625" endY="319.5071105957031" layoutX="196.0" layoutY="119.0" startX="394.10699462890625" startY="-65.20000457763672" stroke="#0531ff" />
-            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="209.0" layoutY="67.0" startX="-105.20001220703125" startY="-12.700004577636719" stroke="#0531ff" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
-         <children>
-            <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </AnchorPane>
-            <Label layoutX="40.0" layoutY="137.0" prefHeight="18.0" prefWidth="102.0" text="Competições" />
-            <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Competições">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../icons/folder.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="244.0" prefHeight="37.0" prefWidth="201.0" text="Remover Competições">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../icons/remove.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/person-outline.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
-            <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
-            <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/ellipsis-vertical-outline.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
-            <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Competições">
-               <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../icons/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </AnchorPane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.adicionarDetalhesController">
+    <children>
+        <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow/>
+            </effect>
+            <children>
+                <Button layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#seguinte" text="Seguinte"/>
+                <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" text="Anterior"/>
+                <TableView layoutX="182.0" layoutY="100.0" prefHeight="200.0" prefWidth="330.0">
+                    <columns>
+                        <TableColumn prefWidth="166.4000244140625" text="Posição"/>
+                        <TableColumn prefWidth="163.199951171875" text="Prémio Atribuido"/>
+                    </columns>
+                </TableView>
+                <TextField fx:id="premio" layoutX="362.0" layoutY="322.0" promptText="Prémio Atribuido"/>
+                <Button fx:id="adicionar" layoutX="401.0" layoutY="366.0" mnemonicParsing="false" prefHeight="26.0"
+                        prefWidth="70.0" text="Adicionar"/>
+                <Label layoutX="250.0" layoutY="326.0" text="Adiocionar Prémio:"/>
+                <Label layoutX="140.0" layoutY="44.0" text="Atribuir Prémio por Posição" textFill="#0531ff">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+                <Line endX="391.10699462890625" endY="-3.7000045776367188" layoutX="199.0" layoutY="57.0"
+                      startX="130.4000244140625" startY="-2.7000045776367188" stroke="#0531ff"/>
+                <Line endX="367.39996337890625" endY="296.8000183105469" layoutX="222.0" layoutY="141.0"
+                      startX="-117.39996337890625" startY="296.8000183105469" stroke="#0531ff"/>
+                <Line endX="1.10003662109375" endY="317.3000183105469" layoutX="103.0" layoutY="121.0"
+                      startX="0.29998779296875" startY="-67.20000457763672" stroke="#0531ff"/>
+                <Line endX="394.10699462890625" endY="319.5071105957031" layoutX="196.0" layoutY="119.0"
+                      startX="394.10699462890625" startY="-65.20000457763672" stroke="#0531ff"/>
+                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="209.0" layoutY="67.0"
+                      startX="-105.20001220703125" startY="-12.700004577636719" stroke="#0531ff"/>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #f0f7ff;">
+            <children>
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0"
+                            style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </AnchorPane>
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="18.0" prefWidth="102.0" text="Competições"/>
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Consultar Competições">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/folder.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnRemoverDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="244.0"
+                           prefHeight="37.0" prefWidth="201.0" text="Remover Competições">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/remove.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="80.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/person-outline.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0"/>
+                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0"
+                        style="-fx-background-color: transparent;"/>
+                <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/ellipsis-vertical-outline.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false"
+                        style="-fx-background-color: transparent;" text="SportEX">
+                    <font>
+                        <Font size="21.0"/>
+                    </font>
+                </Button>
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0"
+                           prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;"
+                           text="Adicicionar Competições">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/add.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </AnchorPane>
+    </children>
 </AnchorPane>
