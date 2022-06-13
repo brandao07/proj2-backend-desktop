@@ -4,6 +4,7 @@ import pt.ipvc.backend.services.AdministradorBLL;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(AdministradorBLL.getAdministrador("admin"));
+        AdministradorBLL.criarAdministrador("teste", "teste");
+
     }
 }

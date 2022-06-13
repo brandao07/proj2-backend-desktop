@@ -2,6 +2,9 @@ package pt.ipvc.backend.data.db.repository;
 
 import pt.ipvc.backend.data.db.entity.Equipa;
 
+import javax.persistence.Query;
+import java.util.List;
+
 public class EquipaRepository extends Repository {
     @Override
     public Object find(Long id) {
@@ -14,5 +17,16 @@ public class EquipaRepository extends Repository {
         _entityManager.getTransaction().begin();
         _entityManager.getTransaction().commit();
         return objectToUpdate;
+    }
+
+    public List findAll() {
+        try {
+            _entityManager.getTransaction().begin();
+            Query query = _entityManager.createQuery("SELECT e FROM Equipa AS e");
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem equipas");
+            return null;
+        }
     }
 }

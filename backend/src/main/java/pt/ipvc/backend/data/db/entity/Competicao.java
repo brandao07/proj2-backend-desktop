@@ -1,5 +1,7 @@
 package pt.ipvc.backend.data.db.entity;
 
+import pt.ipvc.backend.data.db.entity.users.Gestor;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -41,6 +43,18 @@ public class Competicao {
 
     @OneToMany(mappedBy = "competicao", orphanRemoval = true)
     private Set<Premio> premios = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "gestor_id")
+    private Gestor gestor;
+
+    public Gestor getGestor() {
+        return gestor;
+    }
+
+    public void setGestor(Gestor gestor) {
+        this.gestor = gestor;
+    }
 
     public Set<Premio> getPremios() {
         return premios;

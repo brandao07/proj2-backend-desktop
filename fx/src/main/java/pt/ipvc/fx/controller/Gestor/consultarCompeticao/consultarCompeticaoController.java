@@ -110,8 +110,14 @@ public class consultarCompeticaoController implements Initializable {
         competicoes.getItems().add(new Person("Teste", "10-10-2020", "20-12-2021", "M", "Futebol"));
         competicoes.getItems().add(new Person("Hugo", "10-06-2020", "20-05-2021", "F", "Puta"));
 
-        //TODO: listar as modalidades
-        //TODO listar competicoes por modalidade
+
+        //TODO: CAMPOS implementar os metodos abaixo
+
+        // FIXED listar as modalidades
+        // ModalidadeBLL.getModalidades()
+        // FIXED listar competicoes por modalidade
+        // CompeticaoBLL.getCompeticoesModalidade(string);
+
     }
 
     public void pesquisar() {
