@@ -10,7 +10,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
-import pt.ipvc.backend.servicos.Repositorio;
 
 
 import java.io.IOException;
@@ -65,37 +64,37 @@ public class ArbitrosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            Repositorio.paises_e_cidades();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Repositorio.paises_e_cidades();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
         //adicionar pais à choiceBox nacionalidade
         ArrayList paises = new ArrayList<>();
-        for (String pais : Repositorio.getMapCidadesPais().keySet())
-        {
-            if (!paises.contains(Repositorio.getMapCidadesPais().get(pais))){
-                paises.add(pais);
-            }
-        }
+//        for (String pais : Repositorio.getMapCidadesPais().keySet())
+//        {
+//            if (!paises.contains(Repositorio.getMapCidadesPais().get(pais))){
+//                paises.add(pais);
+//            }
+//        }
         Collections.sort(paises);
         nacionalidade.getItems().addAll(paises);
 
 
         //adicionar cidades à choiceBox naturalidade
-        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
-            @Override public void changed(ObservableValue ov, String t, String t1) {
-                naturalidade.getItems().clear();
-                for (String pais : Repositorio.getMapCidadesPais().keySet())
-                {
-                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)){
-                        naturalidade.getItems().addAll(Repositorio.getMapCidadesPais().get(pais));
-                        break;
-                        }
-                    }
-                }
-        });
+//        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+//            @Override public void changed(ObservableValue ov, String t, String t1) {
+//                naturalidade.getItems().clear();
+//              //  for (String pais : Repositorio.getMapCidadesPais().keySet())
+//                {
+////                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)){
+////                      //  naturalidade.getItems().addAll(Repositorio.getMapCidadesPais().get(pais));
+////                      //  break;
+////                        }
+////                    }
+//                }
+//        });
 
 
 

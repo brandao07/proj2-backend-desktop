@@ -8,9 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import pt.ipvc.backend.bll.AdministradorBLL;
-import pt.ipvc.backend.bll.UtilizadorBLL;
-import pt.ipvc.backend.entity.AdministradoresEntity;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,18 +37,18 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        UtilizadorBLL.setUserLog(UtilizadorBLL.utilizadorAtivo(username));
-
-        if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
-        else{
-            System.out.println("Não entrou!!");
-            labelErroLogin.setText("Credenciais Incorretas.");
-            return;
-        }
-        if (AdministradorBLL.existeAdministrador(username)){
-            ControladorGlobal.chamaScene("admin-home-page.fxml", event);
-            return;
-        }
+//        UtilizadorBLL.setUserLog(UtilizadorBLL.utilizadorAtivo(username));
+//
+//        if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
+//        else{
+//            System.out.println("Não entrou!!");
+//            labelErroLogin.setText("Credenciais Incorretas.");
+//            return;
+//        }
+//        if (AdministradorBLL.existeAdministrador(username)){
+//            ControladorGlobal.chamaScene("admin-home-page.fxml", event);
+//            return;
+//        }
 
 
     }

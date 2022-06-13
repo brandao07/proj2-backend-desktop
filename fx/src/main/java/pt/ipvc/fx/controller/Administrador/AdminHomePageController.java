@@ -9,10 +9,6 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import pt.ipvc.backend.bll.UtilizadorBLL;
-import pt.ipvc.backend.entity.AdministradoresEntity;
-import pt.ipvc.backend.entity.GestoresEntity;
-import pt.ipvc.backend.entity.UtilizadoresEntity;
 import pt.ipvc.fx.controller.ControladorGlobal;
 
 import java.net.URL;
