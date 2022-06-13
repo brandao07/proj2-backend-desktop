@@ -1,6 +1,7 @@
 package pt.ipvc.backend.data.db.entity.users;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "utilizador")
@@ -20,6 +21,17 @@ public class Utilizador {
     @Column(name = "email", unique = true, length = 25)
     private String email;
 
+    @Column(name = "data_criacao")
+    private Date dataCriacao;
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
     public Utilizador() {
 
     }
@@ -28,6 +40,7 @@ public class Utilizador {
         this.username = username;
         this.password = password;
         this.email = email;
+        dataCriacao = new Date(System.currentTimeMillis());
     }
 
     public String getEmail() {

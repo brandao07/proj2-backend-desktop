@@ -2,6 +2,9 @@ package pt.ipvc.fx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pt.ipvc.backend.services.AdministradorBLL;
+import pt.ipvc.backend.services.UtilizadorBLL;
+import pt.ipvc.backend.services.validations.UtilizadorValidation;
 
 
 public class RegistoController {
@@ -14,9 +17,6 @@ public class RegistoController {
 
     @FXML
     private TextField usernameField;
-
-    @FXML
-    private TextField emailField;
 
     @FXML
     private PasswordField passwordField;
@@ -34,35 +34,22 @@ public class RegistoController {
     protected void btnRegistarClick() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String email = emailField.getText();
         String password_repetida = passwordField2.getText();
 
 
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || password_repetida.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || password_repetida.isEmpty()) {
             labelErro.setText("Por favor preencha todos os campos.");
             return;
         }
-        if (!UtilizadorBLL.validarEmail(email)) {
-            labelErro.setText("Este email já existe");
-            return;
-        }
-        if (!UtilizadorBLL.validarCaracteresEmail(email)) {
-            labelErro.setText("Email inválido!");
-            return;
-        }
-        if (!UtilizadorBLL.validarUsername(username)) {
+        if (UtilizadorBLL.getUtilizador(username) != null) {
             labelErro.setText("Este username já existe");
             return;
         }
-        if (!UtilizadorBLL.validarCaracteresUsername(username)) {
-            labelErro.setText("Username inválido!");
-            return;
-        }
-        if (!UtilizadorBLL.validarPasswords(password, password_repetida)) {
+        if (!UtilizadorValidation.passwordsMatch(password, password_repetida)) {
             labelErro.setText("Palavras passes não coincidem");
             return;
         }
-        if (!UtilizadorBLL.validarCaracteresPassword(password)) {
+        if (!UtilizadorValidation.caracteresPassword(password)) {
             labelErro.setText("A password deve conter uma letra maiscula e um numero.");
             return;
         }
@@ -70,15 +57,7 @@ public class RegistoController {
             labelErro.setText("Aceite os termos, para continuar.");
             return;
         }
-
         labelErro.setText("Utilizador Criado Com Sucesso");
-        AdministradorBLL.criarAdminstrador(username, email, password);
-    }
-
-    @FXML
-    protected void btnBackClick() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
+        AdministradorBLL.criarAdministrador(username, password);
     }
 }

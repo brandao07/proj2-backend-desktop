@@ -21,4 +21,8 @@ public class UtilizadorBLL {
         return userSession;
     }
 
+    public static Object getUtilizador(String username) {
+        return utilizadorRepository.find(username);
+    }
+
 }

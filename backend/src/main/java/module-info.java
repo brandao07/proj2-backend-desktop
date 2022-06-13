@@ -13,4 +13,5 @@ open module pt.ipvc.backend {
     exports pt.ipvc.backend.data.db.repository.users;
     exports pt.ipvc.backend.services.util;
     exports pt.ipvc.backend.data.misc;
+    exports pt.ipvc.backend.services.validations;
 }

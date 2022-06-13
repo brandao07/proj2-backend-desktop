@@ -21,7 +21,7 @@ public class criarCompeticaoController {
 
     @FXML
     private ChoiceBox genero;
-    //TODO carregar os generos para a choiceBox
+    //TODO: carregar os generos para a choiceBox
     @FXML
     private ChoiceBox modalidade;
     //TODO carregar as modalidades para a choiceBox

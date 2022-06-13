@@ -3,6 +3,8 @@ package pt.ipvc.fx.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pt.ipvc.backend.data.db.entity.users.Administrador;
+import pt.ipvc.backend.services.UtilizadorBLL;
 
 public class LoginController {
     @FXML
@@ -29,20 +31,16 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        UtilizadorBLL.setUserLog(UtilizadorBLL.utilizadorAtivo(username));
-
-        if (UtilizadorBLL.validarLogin(username, password)) System.out.println("Entrou!!!");
+        if (UtilizadorBLL.validarLogin(username, password) != null) System.out.println("Entrou!!!");
         else {
             System.out.println("Não entrou!!");
             labelErroLogin.setText("Credenciais Incorretas.");
             return;
         }
-        if (AdministradorBLL.existeAdministrador(username)) {
+        if (UtilizadorBLL.getUserSession() instanceof Administrador) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
-
-
     }
 
     @FXML

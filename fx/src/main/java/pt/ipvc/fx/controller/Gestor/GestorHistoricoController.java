@@ -15,7 +15,7 @@ public class GestorHistoricoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO listar as competiçoes criadas pelo gestor logado
+        //TODO: listar as competiçoes criadas pelo gestor logado
     }
 
     public void anterior(ActionEvent event) {

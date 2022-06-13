@@ -37,4 +37,15 @@ public class UtilizadorRepository extends Repository {
             return null;
         }
     }
+
+    public Object find(String username) {
+        try {
+            _entityManager.getTransaction().begin();
+            Query query = _entityManager.createQuery("SELECT u from Utilizador as u WHERE u.username '" + username + "' ");
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Utilizador nao encontrado!");
+            return null;
+        }
+    }
 }

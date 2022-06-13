@@ -20,7 +20,7 @@ public class consultarProvaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO listar as provas da competicao selecionada na scene consultar-competicao
+        //TODO: listar as provas da competicao selecionada na scene consultar-competicao
 
         nomeCompeticao.setText("Competição: ");
     }

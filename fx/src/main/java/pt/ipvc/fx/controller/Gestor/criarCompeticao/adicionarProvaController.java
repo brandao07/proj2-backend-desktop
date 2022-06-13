@@ -30,7 +30,7 @@ public class adicionarProvaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO listar as equipas
+        //TODO: listar as equipas
         //TODO listar os recintos
     }
 
