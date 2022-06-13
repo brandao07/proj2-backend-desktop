@@ -1,0 +1,56 @@
+package pt.ipvc.backend.data.db.entity;
+
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "modalidade")
+public class Modalidade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "nome", unique = true)
+    private String nome;
+
+    @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
+    private Set<Arbitro> arbitros = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
+    private Set<Competicao> competicoes = new LinkedHashSet<>();
+
+    public Set<Competicao> getCompeticoes() {
+        return competicoes;
+    }
+
+    public void setCompeticoes(Set<Competicao> competicoes) {
+        this.competicoes = competicoes;
+    }
+
+    public Set<Arbitro> getArbitros() {
+        return arbitros;
+    }
+
+    public void setArbitros(Set<Arbitro> arbitros) {
+        this.arbitros = arbitros;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+}

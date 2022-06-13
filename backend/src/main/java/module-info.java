@@ -6,7 +6,10 @@ open module pt.ipvc.backend {
     requires org.apache.commons.lang3;
     requires commons.csv;
 
-    exports pt.ipvc.backend.entity;
-    exports pt.ipvc.backend.bll;
-    exports pt.ipvc.backend.servicos;
+    exports pt.ipvc.backend.data.db.entity;
+    exports pt.ipvc.backend.services;
+    exports pt.ipvc.backend.data.db.repository;
+    exports pt.ipvc.backend.data.db.entity.users;
+    exports pt.ipvc.backend.data.db.repository.users;
+    exports pt.ipvc.backend.services.util;
 }
