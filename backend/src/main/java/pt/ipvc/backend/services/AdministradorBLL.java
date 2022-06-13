@@ -16,4 +16,11 @@ public class AdministradorBLL {
     public static Administrador getAdministrador(String username) {
         return (Administrador) administradorRepository.find(username);
     }
+
+    public static void criarAdminstrador(String username, String email, String password) {
+    }
+
+    public static boolean existeAdministrador(String username) {
+        return false;
+    }
 }

@@ -82,6 +82,18 @@ public class ValidarInput {
         }
     }
 
-    public static void mudarPagConsultarEditarAdmin(Object selectedItem) {
+    public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event){
+        System.out.println(value);
+        switch (value) {
+            case "Consultar Dados" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+            case "Adicicionar Dados" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+            case "Consultar Sistema" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
+            case "Criar Utilizador\n" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
+
+
+            default -> System.out.println("ERRO");
+        }
     }
+
+
 }
