@@ -4,6 +4,7 @@ import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.users.Gestor;
 import pt.ipvc.backend.data.db.repository.CompeticaoRepository;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 
 import java.sql.Date;
 import java.time.LocalDate;

@@ -24,14 +24,6 @@ public class Utilizador {
     @Column(name = "data_criacao")
     private Date dataCriacao;
 
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
     public Utilizador() {
 
     }
@@ -41,6 +33,14 @@ public class Utilizador {
         this.password = password;
         this.email = email;
         dataCriacao = new Date(System.currentTimeMillis());
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     public String getEmail() {

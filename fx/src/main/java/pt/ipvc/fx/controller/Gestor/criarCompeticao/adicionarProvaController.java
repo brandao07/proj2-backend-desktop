@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import org.jetbrains.annotations.NotNull;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -36,6 +37,8 @@ public class adicionarProvaController implements Initializable {
         // EquipasBLL.getEquipas()
         //FIXED listar os recintos
         // RecintoBLL.getRecintos()
+        //FIXED LISTAR TODOS ARBITROS
+        // ArbitroBLL.getArbitros()
     }
 
     public void confirmarContinuar(ActionEvent event) {
@@ -47,7 +50,7 @@ public class adicionarProvaController implements Initializable {
         }
         invalidDados.setText("Campos Inválidos");
         //TODO: CAMPOS JA TENS CRIAR PROVA FEITO
-//        ProvaBLL.criarProva(data,competicao,equipaCasa, equipaFora, recinto);
+//        ProvaBLL.criarProva(data,competicao,equipaCasa, equipaFora, recinto, arbitro);
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
 
@@ -59,7 +62,7 @@ public class adicionarProvaController implements Initializable {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(@NotNull ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

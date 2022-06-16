@@ -37,11 +37,23 @@ public class Prova {
     @Column(name = "resultado_equipa_fora")
     private String resultadoEquipaFora;
 
+    @ManyToOne
+    @JoinColumn(name = "arbitro_id")
+    private Arbitro arbitro;
+
     public Prova() {
     }
 
     public Prova(Date dataInicio) {
         this.dataInicio = dataInicio;
+    }
+
+    public Arbitro getArbitro() {
+        return arbitro;
+    }
+
+    public void setArbitro(Arbitro arbitro) {
+        this.arbitro = arbitro;
     }
 
     public String getResultadoEquipaFora() {
@@ -111,13 +123,14 @@ public class Prova {
     @Override
     public String toString() {
         return "Prova{" +
-                "id=" + id +
-                ", resultado='" + resultadoEquipaCasa + '\'' +
+                ", resultadoEquipaCasa='" + resultadoEquipaCasa + '\'' +
                 ", dataInicio=" + dataInicio +
                 ", recinto=" + recinto +
                 ", competicao=" + competicao +
                 ", equipaCasa=" + equipaCasa +
                 ", equipaFora=" + equipaFora +
+                ", resultadoEquipaFora='" + resultadoEquipaFora + '\'' +
+                ", arbitro=" + arbitro +
                 '}';
     }
 }

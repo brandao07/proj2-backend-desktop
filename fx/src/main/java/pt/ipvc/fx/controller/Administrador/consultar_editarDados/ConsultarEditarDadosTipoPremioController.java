@@ -38,11 +38,18 @@ public class ConsultarEditarDadosTipoPremioController implements Initializable {
         });
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+
     }
+    //TUDO: HUGO LISTAR
+//  TipoPremioBLL.getTiposPremio();
+    //TUDO: HUGO OBTER
+// TipoPremio tipoPremio = TipoPremioBLL.getTipoPremio(nome);
+    //TUDO: HUGO UPDATE
+// TipoPremioBLL.updateTipoPremio(tipoPremio);
 
 }

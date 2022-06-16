@@ -35,18 +35,28 @@ public class Equipa {
 
     @Column(name = "data_fundacao")
     private Date dataFundacao;
-
     @OneToMany(mappedBy = "equipa", orphanRemoval = true)
     private Set<Atleta> atletas = new LinkedHashSet<>();
-
     @OneToMany(mappedBy = "equipaCasa", orphanRemoval = true)
     private Set<Prova> provasCasa = new LinkedHashSet<>();
-
     @OneToMany(mappedBy = "equipaFora", orphanRemoval = true)
     private Set<Prova> provasFora = new LinkedHashSet<>();
-
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "equipas")
     private Set<Competicao> competicoes = new HashSet<>();
+
+    public Equipa() {
+    }
+
+    public Equipa(String nome, String cidade, String contacto, String associacao, String pais,
+                  String sigla, Date dataFundacao) {
+        this.nome = nome;
+        this.cidade = cidade;
+        this.contacto = contacto;
+        this.associacao = associacao;
+        this.pais = pais;
+        this.sigla = sigla;
+        this.dataFundacao = dataFundacao;
+    }
 
     public Set<Prova> getProvasFora() {
         return provasFora;

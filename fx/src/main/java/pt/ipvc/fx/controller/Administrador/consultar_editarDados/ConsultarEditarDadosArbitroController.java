@@ -36,14 +36,24 @@ public class ConsultarEditarDadosArbitroController implements Initializable {
         itemPesquisar.setOnAction(actionEvent -> {
             ValidarInput.mudarPagConsultarEditarAdmin((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
+
+
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+
     }
+
+    //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
+//        ArbitroBLL.getArbitros();
+    //TUDO: HUGO JA TENS PARA OBTER Arbitro
+//        Arbitro arbitro = ArbitroBLL.getArbitro(nome);
+    //TUDO: HUGO JA TENS UPDATE
+    //ArbitroBLL.updateArbitro(arbitro);
 
 
 }

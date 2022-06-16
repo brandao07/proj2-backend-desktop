@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pt.ipvc.backend.data.db.entity.users.Administrador;
-import pt.ipvc.backend.services.UtilizadorBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 
 public class LoginController {
     @FXML

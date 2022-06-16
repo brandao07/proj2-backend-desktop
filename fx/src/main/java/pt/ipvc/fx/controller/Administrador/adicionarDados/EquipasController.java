@@ -40,6 +40,8 @@ public class EquipasController {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
+        //TODO: HUGO JA TENS CRIAR EQUIPA
+        //EquipasBLL.criarEquipa( nome,  associacao,  pais,  cidade,  dataFundacao,  sigla,  contacto);
         System.out.println("Campos Inválidos");
     }
 
@@ -48,7 +50,7 @@ public class EquipasController {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

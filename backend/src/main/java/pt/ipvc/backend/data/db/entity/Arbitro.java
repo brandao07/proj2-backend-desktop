@@ -2,6 +2,8 @@ package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "arbitro")
@@ -32,6 +34,29 @@ public class Arbitro {
     @ManyToOne
     @JoinColumn(name = "modalidade_id")
     private Modalidade modalidade;
+
+    @OneToMany(mappedBy = "arbitro", orphanRemoval = true)
+    private Set<Prova> provas = new LinkedHashSet<>();
+
+    public Arbitro() {
+    }
+
+    public Arbitro(String nome, String genero, Date dataNascimento, String nacionalidade, String associacao, String categoria) {
+        this.nome = nome;
+        this.genero = genero;
+        this.dataNascimento = dataNascimento;
+        this.nacionalidade = nacionalidade;
+        this.associacao = associacao;
+        this.categoria = categoria;
+    }
+
+    public Set<Prova> getProvas() {
+        return provas;
+    }
+
+    public void setProvas(Set<Prova> provas) {
+        this.provas = provas;
+    }
 
     public Modalidade getModalidade() {
         return modalidade;

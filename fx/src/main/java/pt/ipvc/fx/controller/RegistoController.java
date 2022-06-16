@@ -2,8 +2,8 @@ package pt.ipvc.fx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pt.ipvc.backend.services.AdministradorBLL;
-import pt.ipvc.backend.services.UtilizadorBLL;
+import pt.ipvc.backend.services.users.AdministradorBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.backend.services.validations.UtilizadorValidation;
 
 

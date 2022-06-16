@@ -1,5 +1,6 @@
 package pt.ipvc.backend.services;
 
+import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.repository.ModalidadeRepository;
 
 import java.util.List;
@@ -9,10 +10,28 @@ public class ModalidadeBLL {
 
     private final static ModalidadeRepository modalidadeRepository = new ModalidadeRepository();
 
+    public static void criarModalidade(String nome) {
+        Modalidade modalidade = new Modalidade();
+        modalidade.setNome(nome);
+        if (modalidadeRepository.add(modalidade) != null) {
+            System.out.println("Erro ao criar modalidade");
+            return;
+        }
+        System.out.println("Modalidade criada com sucesso!");
+    }
+
     /**
      * @return de todas as modalidades
      */
     public static List getModalidades() {
         return modalidadeRepository.findAll();
+    }
+
+    public static Modalidade getModalidade(String nome) {
+        return (Modalidade) modalidadeRepository.find(nome);
+    }
+
+    public static Modalidade updateModalidade(Modalidade modalidade) {
+        return (Modalidade) modalidadeRepository.update(modalidade);
     }
 }

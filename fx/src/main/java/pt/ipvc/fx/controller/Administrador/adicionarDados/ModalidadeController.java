@@ -17,6 +17,8 @@ public class ModalidadeController {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
             return;
         }
+        //TODO: HUGO JA TENS CRIAR MODALIDADE
+        //ModalidadeBLL.criarModalidade(nome);
         System.out.println("Campos Inválidos");
     }
 
@@ -25,7 +27,7 @@ public class ModalidadeController {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

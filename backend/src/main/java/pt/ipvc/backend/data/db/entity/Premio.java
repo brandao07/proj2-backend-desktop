@@ -25,6 +25,14 @@ public class Premio {
     @JoinColumn(name = "competicao_id")
     private Competicao competicao;
 
+    public Premio() {
+    }
+
+    public Premio(Integer lugar, String valor) {
+        this.lugar = lugar;
+        this.valor = valor;
+    }
+
     public Competicao getCompeticao() {
         return competicao;
     }
@@ -63,14 +71,6 @@ public class Premio {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Premio() {
-    }
-
-    public Premio(Integer lugar, String valor) {
-        this.lugar = lugar;
-        this.valor = valor;
     }
 
     @Override

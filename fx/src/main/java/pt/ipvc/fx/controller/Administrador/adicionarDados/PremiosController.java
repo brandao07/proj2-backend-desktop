@@ -18,6 +18,8 @@ public class PremiosController {
             return;
         }
         System.out.println("Campos Inválidos");
+        //TODO: HUGO JA TENS CRIAR TIPOPREMIO
+        //TipoPremioBLL.criarTipoPremio(nome);
     }
 
     @FXML
@@ -25,7 +27,7 @@ public class PremiosController {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

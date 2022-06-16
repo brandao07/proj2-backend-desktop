@@ -30,4 +30,16 @@ public class ModalidadeRepository extends Repository {
             return null;
         }
     }
+
+    public Object find(String nome) {
+        try {
+            _entityManager.getTransaction().begin();
+            Query query = _entityManager.createQuery("SELECT m FROM Modalidade AS m " +
+                    "WHERE m.nome = '" + nome + "'");
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Sem modalidade");
+            return null;
+        }
+    }
 }

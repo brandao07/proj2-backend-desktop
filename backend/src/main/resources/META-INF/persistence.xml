@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
@@ -25,7 +25,7 @@
             <property name="hibernate.connection.password" value="proj2"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="format_sql" value="true"/>
-<!--            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
+            <!--            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
         </properties>
     </persistence-unit>
 </persistence>

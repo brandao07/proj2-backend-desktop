@@ -1,4 +1,4 @@
-package pt.ipvc.backend.services;
+package pt.ipvc.backend.services.users;
 
 import pt.ipvc.backend.data.db.entity.users.Administrador;
 import pt.ipvc.backend.data.db.repository.users.AdministradorRepository;

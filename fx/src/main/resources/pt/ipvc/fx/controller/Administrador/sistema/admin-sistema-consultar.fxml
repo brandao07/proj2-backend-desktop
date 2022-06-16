@@ -1,108 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.sistema.AdminConsultarController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="pt.ipvc.fx.controller.Administrador.sistema.AdminConsultarController">
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
             <children>
-                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0"
+                            style="-fx-background-color: #fff;">
                     <effect>
-                        <DropShadow />
+                        <DropShadow/>
                     </effect>
                 </AnchorPane>
-                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
-                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" textFill="WHITE" />
-                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;" text="Consultar Dados" textFill="#0f4c83">
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE"/>
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0"
+                       prefWidth="45.0" text="Sistema" textFill="WHITE"/>
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0"
+                           onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0"
+                           style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;"
+                           text="Consultar Dados" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/folder.png" />
+                                <Image url="@../../../icons/folder.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0"
+                           onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores"
+                           textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/user.png" />
+                                <Image url="@../../../icons/user.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0"
+                           onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema"
+                           textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/tools.png" />
+                                <Image url="@../../../icons/tools.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
-                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
-                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0"/>
+                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0"
+                        style="-fx-background-color: transparent;"/>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false"
+                        style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
-                        <Font size="21.0" />
+                        <Font size="21.0"/>
                     </font>
                 </Button>
-                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados" textFill="WHITE">
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0"
+                           onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados"
+                           textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/add.png" />
+                                <Image url="@../../../icons/add.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
             </children>
             <effect>
-                <DropShadow />
+                <DropShadow/>
             </effect>
         </AnchorPane>
         <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="712.0" style="-fx-background-color: #fff;">
             <effect>
-                <DropShadow />
+                <DropShadow/>
             </effect>
             <children>
-                <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0f4c83" />
-                <Line endX="389.51422119140625" endY="396.992919921875" layoutX="284.0" layoutY="120.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
-                <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-145.5" startY="-3.9071044921875" stroke="#0f4c83" />
+                <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0"
+                      startY="327.6000061035156" stroke="#0f4c83"/>
+                <Line endX="389.51422119140625" endY="396.992919921875" layoutX="284.0" layoutY="120.0"
+                      startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83"/>
+                <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0"
+                      startX="-145.5" startY="-3.9071044921875" stroke="#0f4c83"/>
                 <Label layoutX="62.0" layoutY="56.0" text="Sistema" textFill="#0f4c83">
                     <font>
-                        <Font size="15.0" />
+                        <Font size="15.0"/>
                     </font>
                 </Label>
-                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="79.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-                <Line endX="-0.7071075439453125" endY="514.992919921875" layoutX="36.0" layoutY="2.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
-                <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
-                <BarChart layoutX="54.0" layoutY="91.0" prefHeight="229.0" prefWidth="287.0" title="Administradores e Gestores Registados">
+                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="79.0" startX="-99.0"
+                      startY="-12.700004577636719" stroke="#0f4c83"/>
+                <Line endX="-0.7071075439453125" endY="514.992919921875" layoutX="36.0" layoutY="2.0"
+                      startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83"/>
+                <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0"
+                       prefWidth="226.0" textFill="RED"/>
+                <BarChart layoutX="54.0" layoutY="91.0" prefHeight="229.0" prefWidth="287.0"
+                          title="Administradores e Gestores Registados">
                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
+                        <CategoryAxis side="BOTTOM"/>
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis side="LEFT"/>
                     </yAxis>
                 </BarChart>
-                <LineChart layoutX="376.0" layoutY="91.0" prefHeight="229.0" prefWidth="287.0" title="Registo de Clientes">
+                <LineChart layoutX="376.0" layoutY="91.0" prefHeight="229.0" prefWidth="287.0"
+                           title="Registo de Clientes">
                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
+                        <CategoryAxis side="BOTTOM"/>
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis side="LEFT"/>
                     </yAxis>
                 </LineChart>
             </children>

@@ -36,6 +36,20 @@ public class Atleta {
     @JoinColumn(name = "equipa_id")
     private Equipa equipa;
 
+    public Atleta() {
+    }
+
+    public Atleta(String nome, String genero, Date dataNascimento, Double peso, Double altura,
+                  String nacionalidade, String posicao) {
+        this.nome = nome;
+        this.genero = genero;
+        this.dataNascimento = dataNascimento;
+        this.peso = peso;
+        this.altura = altura;
+        this.nacionalidade = nacionalidade;
+        this.posicao = posicao;
+    }
+
     public Equipa getEquipa() {
         return equipa;
     }

@@ -49,6 +49,9 @@ public class AtletasController {
                 ValidarInput.validarDouble(Double.parseDouble(peso.getText())) &&
                 ValidarInput.validarDouble(Double.parseDouble(altura.getText()))) {
             ControladorGlobal.chamaScene("admin-home-page.fxml", event);
+            //TODO: HUGO JA TENS ADICIONAR ATLETA
+            //AtletaBLL.criarAtleta( nome,  genero,  nacionalidade,  dataNascimento, peso,  altura,  equipa,  posicao);
+            //
             return;
         }
         System.out.println("Campos Inválidos");
@@ -59,7 +62,7 @@ public class AtletasController {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

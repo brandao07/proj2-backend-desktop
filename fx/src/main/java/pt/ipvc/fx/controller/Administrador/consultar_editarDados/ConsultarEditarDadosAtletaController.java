@@ -38,11 +38,17 @@ public class ConsultarEditarDadosAtletaController implements Initializable {
         });
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
+    //TUDO: HUGO JA TENS PARA LISTAR TODOS ATLETAS
+//        AtletaBLL.getAtletas();
+    //TUDO: HUGO JA TENS PARA OBTER Arbitro
+//        Atleta atleta = AtletaBLL.getAtleta(nome);
+    //TUDO: HUGO JA TENS UPDATE
+    // AtletaBLL.updateAtleta(atleta);
 }

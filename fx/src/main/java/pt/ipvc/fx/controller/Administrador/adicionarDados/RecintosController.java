@@ -29,6 +29,14 @@ public class RecintosController {
             return;
         }
         System.out.println("Campos Inválidos");
+        //TODO: HUGO JA TENS CRIAR RECINTO
+        // DUVIDA: ADICIONAS 1 OU VARIOS TIPOS?
+//        Recinto recinto = new Recinto();
+//        recinto.setCapacidade(capacidade);
+//        recinto.setNome(nome);
+//        recinto.addTipo(tipo);
+//        RecintoBLL.criarRecinto(recinto);
+
     }
 
     @FXML
@@ -36,7 +44,7 @@ public class RecintosController {
         ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
     }
 
-    public void setBtnNavMenu(ActionEvent event){
+    public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));

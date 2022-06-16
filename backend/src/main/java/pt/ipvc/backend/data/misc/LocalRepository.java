@@ -25,14 +25,13 @@ public class LocalRepository {
                     String string_pais = info[4].replace("\"", "");
                     cidade.add(string_cidade);
                     mapCidadesPais.put(string_pais, cidade);
-                }
-                else {
+                } else {
                     String string_cidade = info[1].replace("\"", "");
                     String string_pais = info[4].replace("\"", "");
                     mapCidadesPais.get(string_pais).add(string_cidade);
-                    }
-
                 }
+
+            }
         } catch (IOException e)//catches exception in the try block
         {
             e.printStackTrace();//Prints this throwable and its backtrace

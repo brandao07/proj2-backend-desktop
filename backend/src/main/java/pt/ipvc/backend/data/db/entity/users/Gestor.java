@@ -16,20 +16,20 @@ public class Gestor extends Utilizador {
     @OneToMany(mappedBy = "gestor", orphanRemoval = true)
     private Set<Competicao> competicoes = new LinkedHashSet<>();
 
-    public Set<Competicao> getCompeticoes() {
-        return competicoes;
-    }
-
-    public void setCompeticoes(Set<Competicao> competicoes) {
-        this.competicoes = competicoes;
-    }
-
     public Gestor(String username, String password, String email) {
         super(username, password, email);
     }
 
     public Gestor() {
         super();
+    }
+
+    public Set<Competicao> getCompeticoes() {
+        return competicoes;
+    }
+
+    public void setCompeticoes(Set<Competicao> competicoes) {
+        this.competicoes = competicoes;
     }
 
 
