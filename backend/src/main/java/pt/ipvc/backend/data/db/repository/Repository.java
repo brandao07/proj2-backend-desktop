@@ -19,9 +19,9 @@ public abstract class Repository {
             _entityManager.getTransaction().begin();
             _entityManager.persist(object);
             _entityManager.getTransaction().commit();
-            System.out.println("Administrador adicionado com sucesso!");
+
         } catch (Exception e) {
-            System.out.println("Username ou email já registado!");
+            return null;
         }
         return object;
     }

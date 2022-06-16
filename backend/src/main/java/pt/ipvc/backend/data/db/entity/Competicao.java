@@ -48,6 +48,17 @@ public class Competicao {
     @JoinColumn(name = "gestor_id")
     private Gestor gestor;
 
+    public Competicao() {
+    }
+
+    public Competicao(String nome, Date dataInicio, Date dataFim, String genero, Modalidade modalidade) {
+        this.nome = nome;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.genero = genero;
+        this.modalidade = modalidade;
+    }
+
     public Gestor getGestor() {
         return gestor;
     }

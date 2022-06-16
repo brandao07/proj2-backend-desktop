@@ -10,7 +10,11 @@ public class AdministradorBLL {
 
     public static void criarAdministrador(String username, String password) {
         Administrador administrador = new Administrador(username, Encrypt.encrypt(password), username.concat("@ipvc.pt"));
-        administradorRepository.add(administrador);
+        if (administradorRepository.add(administrador) != null) {
+            System.out.println("Administrador criado com sucesso!");
+            return;
+        }
+        System.out.println("Username ou email ja existentes!");
     }
 
     public static Administrador getAdministrador(String username) {

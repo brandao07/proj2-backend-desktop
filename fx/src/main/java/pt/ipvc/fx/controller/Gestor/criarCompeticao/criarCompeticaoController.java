@@ -55,7 +55,12 @@ public class criarCompeticaoController implements Initializable {
         //TODO: CAMPOS LÊ
         //FIXED verificar se o nome da competicao é único
         // O NOME DA COMPETICAO E SEMPRE UNICO NA BD
-
+        //TODO: CAMPOS JA TENS O CRIAR COMPETICAO
+        //FIXED CompeticaoBLL.criarCompeticao(nome, genero, dataInicio, dataFim, modalidade);
+//        if(condicao){
+//            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
+//            return;
+//        }
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
 

@@ -29,4 +29,16 @@ public class EquipaRepository extends Repository {
             return null;
         }
     }
+
+    public Object find(String nome) {
+        try {
+            _entityManager.getTransaction().begin();
+            Query query = _entityManager.createQuery("SELECT e FROM Equipa AS e " +
+                    "WHERE e.nome = '" + nome + "'");
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Sem Equipa");
+            return null;
+        }
+    }
 }

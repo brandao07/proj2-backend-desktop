@@ -14,7 +14,7 @@ public class Premio {
     private Integer lugar;
 
     @Column(name = "valor")
-    private Double valor;
+    private String valor;
 
 
     @ManyToOne
@@ -41,11 +41,11 @@ public class Premio {
         this.tipoPremio = tipoPremio;
     }
 
-    public Double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -63,6 +63,14 @@ public class Premio {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Premio() {
+    }
+
+    public Premio(Integer lugar, String valor) {
+        this.lugar = lugar;
+        this.valor = valor;
     }
 
     @Override

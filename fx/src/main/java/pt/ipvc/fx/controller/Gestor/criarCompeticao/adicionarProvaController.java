@@ -46,6 +46,8 @@ public class adicionarProvaController implements Initializable {
             return;
         }
         invalidDados.setText("Campos Inválidos");
+        //TODO: CAMPOS JA TENS CRIAR PROVA FEITO
+//        ProvaBLL.criarProva(data,competicao,equipaCasa, equipaFora, recinto);
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
 

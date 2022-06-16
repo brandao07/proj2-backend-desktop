@@ -37,6 +37,13 @@ public class Prova {
     @Column(name = "resultado_equipa_fora")
     private String resultadoEquipaFora;
 
+    public Prova() {
+    }
+
+    public Prova(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
     public String getResultadoEquipaFora() {
         return resultadoEquipaFora;
     }

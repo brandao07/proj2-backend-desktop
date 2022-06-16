@@ -25,6 +25,10 @@ public class adicionarDetalhesController implements Initializable {
     }
 
     public void adiconar(ActionEvent event) {
+        // Para cada linha da tabela
+//       Premio p = new Premio(lugar, valor);
+//       PremioBLL.criarPremio(p, "nomeCompeticao", "nomeTipoPremio");
+
 
     }
 
