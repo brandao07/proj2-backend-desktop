@@ -27,7 +27,11 @@ public class TipoPremioBLL {
         return (TipoPremio) tipoPremioRepository.find(nome);
     }
 
-    public static TipoPremio updateTipoPremio(TipoPremio tipoPremio) {
-        return (TipoPremio) tipoPremioRepository.update(tipoPremio);
+    public static void updateTipoPremio(TipoPremio tipoPremio) {
+        tipoPremioRepository.update(tipoPremio);
+    }
+
+    public static void removerTipoPremio(String nome) {
+        tipoPremioRepository.delete(TipoPremioBLL.getTipoPremio(nome));
     }
 }

@@ -13,11 +13,11 @@ public class ModalidadeRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
+    public void update(Object object) {
+        _entityManager = _emf.createEntityManager();
         Modalidade objectToUpdate = (Modalidade) find(((Modalidade) object).getId());
-        _entityManager.getTransaction().begin();
+        objectToUpdate.setNome(((Modalidade) object).getNome());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 
     public List findAll() {

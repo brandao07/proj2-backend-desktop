@@ -13,11 +13,11 @@ public class TipoRecintoRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
+    public void update(Object object) {
+        _entityManager = _emf.createEntityManager();
         TipoRecinto objectToUpdate = (TipoRecinto) find(((TipoRecinto) object).getId());
-        _entityManager.getTransaction().begin();
+        objectToUpdate.setNome(((TipoRecinto) object).getNome());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 
     public List findAll() {

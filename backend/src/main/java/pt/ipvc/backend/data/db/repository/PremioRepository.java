@@ -9,10 +9,13 @@ public class PremioRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
+    public void update(Object object) {
         Premio objectToUpdate = (Premio) find(((Premio) object).getId());
         _entityManager.getTransaction().begin();
+        objectToUpdate.setLugar(((Premio) object).getLugar());
+        objectToUpdate.setValor(((Premio) object).getValor());
+        objectToUpdate.setCompeticao(((Premio) object).getCompeticao());
+        objectToUpdate.setTipoPremio(((Premio) object).getTipoPremio());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 }

@@ -32,7 +32,11 @@ public class ArbitroBLL {
         return arbitroRepository.findAll();
     }
 
-    public static Arbitro updateArbitro(Arbitro arbitro) {
-        return (Arbitro) arbitroRepository.update(arbitro);
+    public static void updateArbitro(Arbitro arbitro) {
+        arbitroRepository.update(arbitro);
+    }
+
+    public static void removerArbitro(String nome) {
+        arbitroRepository.delete(ArbitroBLL.getArbitro(nome));
     }
 }

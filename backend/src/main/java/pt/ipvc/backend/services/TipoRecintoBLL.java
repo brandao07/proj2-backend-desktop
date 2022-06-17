@@ -29,8 +29,12 @@ public class TipoRecintoBLL {
         return (TipoRecinto) tipoRecintoRepository.find(nome);
     }
 
-    public static TipoRecinto updateTipoRecinto(TipoPremio tipoRecinto) {
-        return (TipoRecinto) tipoRecintoRepository.update(tipoRecinto);
+    public static void updateTipoRecinto(TipoPremio tipoRecinto) {
+        tipoRecintoRepository.update(tipoRecinto);
+    }
+
+    public static void removeTipoRecinto(String nome) {
+        tipoRecintoRepository.delete(getTipoRecinto(nome));
     }
 
 }

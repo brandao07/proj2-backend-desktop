@@ -13,8 +13,7 @@ public class UtilizadorRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
-        return null;
+    public void update(Object object) {
     }
 
     public List findAll() {
@@ -41,11 +40,14 @@ public class UtilizadorRepository extends Repository {
     public Object find(String username) {
         try {
             _entityManager.getTransaction().begin();
-            Query query = _entityManager.createQuery("SELECT u from Utilizador as u WHERE u.username '" + username + "' ");
+            Query query = _entityManager.createQuery("SELECT u from Utilizador as u " +
+                    "WHERE u.username '" + username + "' ");
             return query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Utilizador nao encontrado!");
             return null;
         }
     }
+
+
 }

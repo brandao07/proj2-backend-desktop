@@ -31,7 +31,11 @@ public class ModalidadeBLL {
         return (Modalidade) modalidadeRepository.find(nome);
     }
 
-    public static Modalidade updateModalidade(Modalidade modalidade) {
-        return (Modalidade) modalidadeRepository.update(modalidade);
+    public static void updateModalidade(Modalidade modalidade) {
+        modalidadeRepository.update(modalidade);
+    }
+
+    public static void removerModalidade(String nome) {
+        modalidadeRepository.delete(ModalidadeBLL.getModalidade(nome));
     }
 }

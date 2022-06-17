@@ -9,10 +9,17 @@ public class ProvaRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
+    public void update(Object object) {
         Prova objectToUpdate = (Prova) find(((Prova) object).getId());
         _entityManager.getTransaction().begin();
+        objectToUpdate.setArbitro(((Prova) object).getArbitro());
+        objectToUpdate.setRecinto(((Prova) object).getRecinto());
+        objectToUpdate.setEquipaFora(((Prova) object).getEquipaFora());
+        objectToUpdate.setEquipaCasa(((Prova) object).getEquipaCasa());
+        objectToUpdate.setCompeticao(((Prova) object).getCompeticao());
+        objectToUpdate.setDataInicio(((Prova) object).getDataInicio());
+        objectToUpdate.setResultadoEquipaCasa(((Prova) object).getResultadoEquipaCasa());
+        objectToUpdate.setResultadoEquipaFora(((Prova) object).getResultadoEquipaFora());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 }

@@ -1,6 +1,7 @@
 package pt.ipvc.backend.services;
 
 import pt.ipvc.backend.data.db.entity.Recinto;
+import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.db.repository.RecintoRepository;
 
 import java.util.List;
@@ -25,7 +26,20 @@ public class RecintoBLL {
         return (Recinto) recintoRepository.find(nome);
     }
 
-    public static Recinto updateRecinto(Recinto recinto) {
-        return (Recinto) recintoRepository.update(recinto);
+
+    public static void addTipo(Recinto recinto, TipoRecinto tipoRecinto) {
+        recintoRepository.addTipoRecinto(recinto, tipoRecinto);
+    }
+
+    public static void removeTipo(Recinto recinto, TipoRecinto tipoRecinto) {
+        recintoRepository.removeTipoRecinto(recinto, tipoRecinto);
+    }
+    
+    public static void updateRecinto(Recinto recinto) {
+        recintoRepository.update(recinto);
+    }
+
+    public static void removerRecinto(String nome) {
+        recintoRepository.delete(RecintoBLL.getRecinto(nome));
     }
 }

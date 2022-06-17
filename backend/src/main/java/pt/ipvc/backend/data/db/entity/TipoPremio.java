@@ -12,7 +12,7 @@ public class TipoPremio {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
     @OneToMany(mappedBy = "tipoPremio", orphanRemoval = true)

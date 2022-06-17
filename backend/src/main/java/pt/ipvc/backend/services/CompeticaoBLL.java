@@ -1,6 +1,7 @@
 package pt.ipvc.backend.services;
 
 import pt.ipvc.backend.data.db.entity.Competicao;
+import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.users.Gestor;
 import pt.ipvc.backend.data.db.repository.CompeticaoRepository;
@@ -40,5 +41,21 @@ public class CompeticaoBLL {
             return;
         }
         System.out.println("Competicao criada com sucesso!");
+    }
+
+    public static void addEquipa(Competicao competicao, Equipa equipa) {
+        competicaoRepository.addEquipa(competicao, equipa);
+    }
+
+    public static void removeEquipa(Competicao competicao, Equipa equipa) {
+        competicaoRepository.removeEquipa(competicao, equipa);
+    }
+
+    public static void updateCompeticao(Competicao competicao) {
+        competicaoRepository.update(competicao);
+    }
+
+    public static void removerCompeticao(String nome) {
+        competicaoRepository.delete(CompeticaoBLL.getCompeticao(nome));
     }
 }

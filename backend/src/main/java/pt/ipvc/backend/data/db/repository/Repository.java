@@ -15,11 +15,11 @@ public abstract class Repository {
     }
 
     public Object add(Object object) {
+        _entityManager = _emf.createEntityManager();
         try {
             _entityManager.getTransaction().begin();
             _entityManager.persist(object);
             _entityManager.getTransaction().commit();
-
         } catch (Exception e) {
             return null;
         }
@@ -27,6 +27,7 @@ public abstract class Repository {
     }
 
     public void delete(Object object) {
+        _entityManager = _emf.createEntityManager();
         _entityManager.getTransaction().begin();
         _entityManager.remove(object);
         _entityManager.getTransaction().commit();
@@ -34,10 +35,13 @@ public abstract class Repository {
 
     public void close() {
         _entityManager.close();
-        _emf.close();
+    }
+
+    public void start() {
+        _entityManager = _emf.createEntityManager();
     }
 
     public abstract Object find(Long id);
 
-    public abstract Object update(Object object);
+    public abstract void update(Object object);
 }

@@ -30,7 +30,11 @@ public class EquipasBLL {
         return (Equipa) equipasRepository.find(nome);
     }
 
-    public static Equipa updateEquipa(Equipa equipa) {
-        return (Equipa) equipasRepository.update(equipa);
+    public static void updateEquipa(Equipa equipa) {
+        equipasRepository.update(equipa);
+    }
+
+    public static void removerEquipa(String nome) {
+        equipasRepository.delete(EquipasBLL.getEquipa(nome));
     }
 }

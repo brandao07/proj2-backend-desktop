@@ -12,11 +12,11 @@ public class TipoPremioRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
+    public void update(Object object) {
+        _entityManager = _emf.createEntityManager();
         TipoPremio objectToUpdate = (TipoPremio) find(((TipoPremio) object).getId());
-        _entityManager.getTransaction().begin();
+        objectToUpdate.setNome(((TipoPremio) object).getNome());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 
     public Object find(String nome) {

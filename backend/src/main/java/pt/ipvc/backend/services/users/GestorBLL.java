@@ -24,4 +24,12 @@ public class GestorBLL {
         System.out.println("Username ou email ja existentes!");
         return null;
     }
+
+    public static Gestor getGestor(String username) {
+        return (Gestor) gestorRepository.find(username);
+    }
+
+    public static void updateGestor(Gestor gestor) {
+        gestorRepository.update(gestor);
+    }
 }

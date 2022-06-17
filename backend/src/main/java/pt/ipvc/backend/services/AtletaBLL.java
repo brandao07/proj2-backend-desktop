@@ -31,7 +31,11 @@ public class AtletaBLL {
 
     }
 
-    public static Atleta updateAtleta(Atleta atleta) {
-        return (Atleta) atletaRepository.update(atleta);
+    public static void updateAtleta(Object atleta) {
+        atletaRepository.update(atleta);
+    }
+
+    public static void removerAtleta(String nome) {
+        atletaRepository.delete(AtletaBLL.getAtleta(nome));
     }
 }

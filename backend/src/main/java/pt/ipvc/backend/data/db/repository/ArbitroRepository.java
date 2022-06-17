@@ -12,11 +12,18 @@ public class ArbitroRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
-        Arbitro objectToUpdate = (Arbitro) find(((Arbitro) object).getId());
+    public void update(Object object) {
+        start();
         _entityManager.getTransaction().begin();
+        Arbitro objectToUpdate = (Arbitro) find(((Arbitro) object).getId());
+        objectToUpdate.setNome(((Arbitro) object).getNome());
+        objectToUpdate.setCategoria(((Arbitro) object).getCategoria());
+        objectToUpdate.setGenero(((Arbitro) object).getGenero());
+        objectToUpdate.setDataNascimento(((Arbitro) object).getDataNascimento());
+        objectToUpdate.setModalidade(((Arbitro) object).getModalidade());
+        objectToUpdate.setAssociacao(((Arbitro) object).getAssociacao());
+        objectToUpdate.setNacionalidade(((Arbitro) object).getNacionalidade());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 
     public List findAll() {

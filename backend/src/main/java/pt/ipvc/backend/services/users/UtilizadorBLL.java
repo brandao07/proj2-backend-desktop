@@ -17,12 +17,15 @@ public class UtilizadorBLL {
     }
 
     public static Object validarLogin(String username, String password) {
-        userSession = (Utilizador) utilizadorRepository.find(username, password);
-        return userSession;
+        return userSession = (Utilizador) utilizadorRepository.find(username, password);
     }
 
     public static Object getUtilizador(String username) {
         return utilizadorRepository.find(username);
     }
 
+
+    public static void removerUtilizador(String username) {
+        utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
+    }
 }

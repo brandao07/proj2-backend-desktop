@@ -12,11 +12,19 @@ public class AtletaRepository extends Repository {
     }
 
     @Override
-    public Object update(Object object) {
-        Atleta objectToUpdate = (Atleta) find(((Atleta) object).getId());
+    public void update(Object object) {
+        start();
         _entityManager.getTransaction().begin();
+        Atleta objectToUpdate = (Atleta) find(((Atleta) object).getId());
+        objectToUpdate.setNome(((Atleta) object).getNome());
+        objectToUpdate.setEquipa(((Atleta) object).getEquipa());
+        objectToUpdate.setGenero(((Atleta) object).getGenero());
+        objectToUpdate.setAltura(((Atleta) object).getAltura());
+        objectToUpdate.setDataNascimento(((Atleta) object).getDataNascimento());
+        objectToUpdate.setPeso(((Atleta) object).getPeso());
+        objectToUpdate.setPosicao(((Atleta) object).getPosicao());
+        objectToUpdate.setNacionalidade(((Atleta) object).getNacionalidade());
         _entityManager.getTransaction().commit();
-        return objectToUpdate;
     }
 
     public List findAll() {
