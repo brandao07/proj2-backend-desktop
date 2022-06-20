@@ -51,12 +51,11 @@ public class Competicao {
     public Competicao() {
     }
 
-    public Competicao(String nome, Date dataInicio, Date dataFim, String genero, Modalidade modalidade) {
+    public Competicao(String nome, Date dataInicio, Date dataFim, String genero) {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.genero = genero;
-        this.modalidade = modalidade;
     }
 
     public Gestor getGestor() {

@@ -28,7 +28,6 @@ public class ArbitroRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT a FROM Arbitro AS a");
             return query.getResultList();
         } catch (Exception e) {
@@ -39,7 +38,6 @@ public class ArbitroRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT a FROM Arbitro AS a " +
                     "WHERE a.nome = '" + nome + "'");
             return query.getSingleResult();

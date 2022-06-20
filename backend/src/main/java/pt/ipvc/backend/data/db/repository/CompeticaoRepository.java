@@ -54,7 +54,6 @@ public class CompeticaoRepository extends Repository {
 
     public List findCompeticoesModalidade(String modalidade) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT c FROM Competicao AS c " +
                     "INNER JOIN Modalidade as m " +
                     "ON m.id = c.modalidade.id " +
@@ -68,7 +67,6 @@ public class CompeticaoRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT c FROM Competicao AS c " +
                     "WHERE c.nome = '" + nome + "'");
             return query.getSingleResult();
@@ -80,7 +78,6 @@ public class CompeticaoRepository extends Repository {
 
     public List findAllActive() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT c FROM Competicao AS c " +
                     "WHERE c.dataFim > current_date");
             return query.getResultList();

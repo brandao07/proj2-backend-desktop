@@ -28,7 +28,6 @@ public class EquipaRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT e FROM Equipa AS e");
             return query.getResultList();
         } catch (Exception e) {
@@ -39,7 +38,6 @@ public class EquipaRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT e FROM Equipa AS e " +
                     "WHERE e.nome = '" + nome + "'");
             return query.getSingleResult();

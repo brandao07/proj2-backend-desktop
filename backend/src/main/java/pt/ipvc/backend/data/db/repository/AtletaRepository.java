@@ -29,7 +29,6 @@ public class AtletaRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT a FROM Atleta AS a");
             return query.getResultList();
         } catch (Exception e) {
@@ -40,7 +39,6 @@ public class AtletaRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT a FROM Atleta AS a " +
                     "WHERE a.nome = '" + nome + "'");
             return query.getSingleResult();

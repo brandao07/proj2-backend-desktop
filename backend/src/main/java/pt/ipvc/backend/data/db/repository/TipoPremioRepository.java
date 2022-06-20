@@ -21,7 +21,6 @@ public class TipoPremioRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT tp FROM TipoPremio AS tp " +
                     "WHERE tp.nome = '" + nome + "'");
             return query.getSingleResult();
@@ -33,7 +32,6 @@ public class TipoPremioRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT tp FROM TipoPremio AS tp");
             return query.getResultList();
         } catch (Exception e) {
