@@ -33,16 +33,17 @@ public class CompeticaoBLL {
         return competicaoRepository.findAllActive();
     }
 
-    public static void criarCompeticao(String nome, String genero, LocalDate dataInicio, LocalDate dataFim, @NotNull Modalidade modalidade) {
+    public static Competicao criarCompeticao(String nome, String genero, LocalDate dataInicio, LocalDate dataFim, @NotNull Modalidade modalidade) {
 
         Competicao competicao = new Competicao(nome, Date.valueOf(dataInicio), Date.valueOf(dataFim), genero);
         competicao.setGestor((Gestor) UtilizadorBLL.getUserSession());
         competicao.setModalidade(ModalidadeBLL.getModalidade(modalidade.getNome()));
-        if (competicaoRepository.add(competicao) != null) {
+        if (competicaoRepository.add(competicao) == null) {
             System.out.println("Erro ao criar competicao");
-            return;
+            return null;
         }
         System.out.println("Competicao criada com sucesso!");
+        return competicao;
     }
 
     public static void addEquipa(Competicao competicao, Equipa equipa) {

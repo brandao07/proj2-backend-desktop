@@ -17,7 +17,7 @@ public class ProvaBLL {
         prova.setEquipaFora(EquipasBLL.getEquipa(equipaFora));
         prova.setRecinto(RecintoBLL.getRecinto(recinto));
         prova.setArbitro(ArbitroBLL.getArbitro(arbitro));
-        if (provaRepository.add(prova) != null) {
+        if (provaRepository.add(prova) == null) {
             System.out.println("Erro ao criar prova");
             return;
         }

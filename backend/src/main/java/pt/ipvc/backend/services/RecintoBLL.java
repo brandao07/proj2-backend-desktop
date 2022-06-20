@@ -11,7 +11,7 @@ public class RecintoBLL {
     private final static RecintoRepository recintoRepository = new RecintoRepository();
 
     public static void criarRecinto(Recinto recinto) {
-        if (recintoRepository.add(recinto) != null) {
+        if (recintoRepository.add(recinto) == null) {
             System.out.println("Erro ao criar recinto");
             return;
         }

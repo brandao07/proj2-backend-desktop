@@ -15,7 +15,7 @@ public class EquipasBLL {
                                    LocalDate dataFundacao, String sigla, String contacto) {
 
         Equipa equipa = new Equipa(nome, cidade, contacto, associacao, pais, sigla, Date.valueOf(dataFundacao));
-        if (equipasRepository.add(equipa) != null) {
+        if (equipasRepository.add(equipa) == null) {
             System.out.println("Erro ao criar equipa");
             return;
         }

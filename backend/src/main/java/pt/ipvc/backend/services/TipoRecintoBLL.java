@@ -14,7 +14,7 @@ public class TipoRecintoBLL {
         TipoRecinto tipoRecinto = new TipoRecinto();
         tipoRecinto.setNome(nome);
 
-        if (tipoRecintoRepository.add(tipoRecinto) != null) {
+        if (tipoRecintoRepository.add(tipoRecinto) == null) {
             System.out.println("Erro ao criar tipoRecinto");
             return;
         }

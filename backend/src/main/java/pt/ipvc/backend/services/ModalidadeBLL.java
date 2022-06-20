@@ -13,7 +13,7 @@ public class ModalidadeBLL {
     public static void criarModalidade(String nome) {
         Modalidade modalidade = new Modalidade();
         modalidade.setNome(nome);
-        if (modalidadeRepository.add(modalidade) != null) {
+        if (modalidadeRepository.add(modalidade) == null) {
             System.out.println("Erro ao criar modalidade");
             return;
         }

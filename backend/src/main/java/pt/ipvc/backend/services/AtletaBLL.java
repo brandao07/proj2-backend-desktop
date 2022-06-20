@@ -15,7 +15,7 @@ public class AtletaBLL {
                                    double peso, double altura, String equipa, String posicao) {
         Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, posicao);
         atleta.setEquipa(EquipasBLL.getEquipa(equipa));
-        if (atletaRepository.add(atleta) != null) {
+        if (atletaRepository.add(atleta) == null) {
             System.out.println("Erro ao criar atleta");
             return;
         }

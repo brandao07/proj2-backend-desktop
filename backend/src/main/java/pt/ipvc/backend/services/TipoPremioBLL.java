@@ -12,7 +12,7 @@ public class TipoPremioBLL {
     public static void criarTipoRecinto(String nome) {
         TipoPremio tipoPremio = new TipoPremio();
         tipoPremio.setNome(nome);
-        if (tipoPremioRepository.add(tipoPremio) != null) {
+        if (tipoPremioRepository.add(tipoPremio) == null) {
             System.out.println("Erro ao criar tipoPremio");
             return;
         }

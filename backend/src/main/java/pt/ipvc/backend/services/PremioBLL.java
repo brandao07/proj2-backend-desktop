@@ -15,7 +15,7 @@ public class PremioBLL {
         TipoPremio tp = TipoPremioBLL.getTipoPremio(tipoPremio);
         premio.setCompeticao(c);
         premio.setTipoPremio(tp);
-        if (premioRepository.add(premio) != null) {
+        if (premioRepository.add(premio) == null) {
             System.out.println("Erro ao criar premio");
             return;
         }

@@ -17,7 +17,7 @@ public class ArbitroBLL {
         Arbitro arbitro = new Arbitro(nome, genero, Date.valueOf(dataNascimento), nacionalidade,
                 associacao, categoria);
         arbitro.setModalidade(ModalidadeBLL.getModalidade(modalidade));
-        if (arbitroRepository.add(arbitro) != null) {
+        if (arbitroRepository.add(arbitro) == null) {
             System.out.println("Erro ao criar arbitro");
             return;
         }
