@@ -22,7 +22,6 @@ public class TipoRecintoRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT tr FROM TipoRecinto AS tr");
             return query.getResultList();
         } catch (Exception e) {
@@ -33,7 +32,6 @@ public class TipoRecintoRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT tr FROM TipoRecinto AS tr " +
                     "WHERE tr.nome = '" + nome + "'");
             return query.getSingleResult();

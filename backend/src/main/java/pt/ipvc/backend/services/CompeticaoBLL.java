@@ -1,5 +1,6 @@
 package pt.ipvc.backend.services;
 
+import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
@@ -32,10 +33,11 @@ public class CompeticaoBLL {
         return competicaoRepository.findAllActive();
     }
 
-    public static void criarCompeticao(String nome, String genero, LocalDate dataInicio, LocalDate dataFim, Modalidade modalidade) {
+    public static void criarCompeticao(String nome, String genero, LocalDate dataInicio, LocalDate dataFim, @NotNull Modalidade modalidade) {
 
-        Competicao competicao = new Competicao(nome, Date.valueOf(dataInicio), Date.valueOf(dataFim), genero, modalidade);
+        Competicao competicao = new Competicao(nome, Date.valueOf(dataInicio), Date.valueOf(dataFim), genero);
         competicao.setGestor((Gestor) UtilizadorBLL.getUserSession());
+        competicao.setModalidade(ModalidadeBLL.getModalidade(modalidade.getNome()));
         if (competicaoRepository.add(competicao) != null) {
             System.out.println("Erro ao criar competicao");
             return;

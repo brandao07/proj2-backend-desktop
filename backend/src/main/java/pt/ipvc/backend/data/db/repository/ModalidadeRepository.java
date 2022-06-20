@@ -22,7 +22,6 @@ public class ModalidadeRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT m FROM Modalidade AS m");
             return query.getResultList();
         } catch (Exception e) {
@@ -33,7 +32,6 @@ public class ModalidadeRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT m FROM Modalidade AS m " +
                     "WHERE m.nome = '" + nome + "'");
             return query.getSingleResult();

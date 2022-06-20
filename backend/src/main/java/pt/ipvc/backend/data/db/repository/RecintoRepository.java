@@ -50,7 +50,6 @@ public class RecintoRepository extends Repository {
 
     public List findAll() {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT r FROM Recinto AS r");
             return query.getResultList();
         } catch (Exception e) {
@@ -61,7 +60,6 @@ public class RecintoRepository extends Repository {
 
     public Object find(String nome) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT r FROM Recinto AS r " +
                     "WHERE r.nome = '" + nome + "'");
             return query.getSingleResult();
