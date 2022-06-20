@@ -82,7 +82,6 @@ public class ArbitrosController implements Initializable {
             return;
         }
         labelErro.setText("Preencha todos os campos");
-        System.out.println("piça");
     }
 
 
