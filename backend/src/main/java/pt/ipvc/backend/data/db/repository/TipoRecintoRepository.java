@@ -14,7 +14,8 @@ public class TipoRecintoRepository extends Repository {
 
     @Override
     public void update(Object object) {
-        _entityManager = _emf.createEntityManager();
+        start();
+        _entityManager.getTransaction().begin();
         TipoRecinto objectToUpdate = (TipoRecinto) find(((TipoRecinto) object).getId());
         objectToUpdate.setNome(((TipoRecinto) object).getNome());
         _entityManager.getTransaction().commit();

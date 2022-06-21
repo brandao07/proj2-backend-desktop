@@ -8,7 +8,7 @@ import java.util.List;
 public class PosicaoBLL {
     private static final PosicaoRepository posicaoRepository = new PosicaoRepository();
 
-    public static void criarTipoRecinto(String nome) {
+    public static void criarPosicao(String nome) {
         Posicao posicao = new Posicao();
         posicao.setNome(nome);
         if (posicaoRepository.add(posicao) == null) {

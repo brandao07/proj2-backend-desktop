@@ -16,6 +16,7 @@ public class RecintoRepository extends Repository {
 
     @Override
     public void update(Object object) {
+        start();
         Recinto objectToUpdate = (Recinto) find(((Recinto) object).getId());
         _entityManager.getTransaction().begin();
         objectToUpdate.setNome(((Recinto) object).getNome());

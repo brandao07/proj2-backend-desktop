@@ -10,6 +10,7 @@ public class ProvaRepository extends Repository {
 
     @Override
     public void update(Object object) {
+        start();
         Prova objectToUpdate = (Prova) find(((Prova) object).getId());
         _entityManager.getTransaction().begin();
         objectToUpdate.setArbitro(((Prova) object).getArbitro());

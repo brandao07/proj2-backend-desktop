@@ -10,6 +10,7 @@ public class PremioRepository extends Repository {
 
     @Override
     public void update(Object object) {
+        start();
         Premio objectToUpdate = (Premio) find(((Premio) object).getId());
         _entityManager.getTransaction().begin();
         objectToUpdate.setLugar(((Premio) object).getLugar());

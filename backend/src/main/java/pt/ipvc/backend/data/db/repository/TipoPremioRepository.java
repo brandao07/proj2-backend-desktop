@@ -13,7 +13,8 @@ public class TipoPremioRepository extends Repository {
 
     @Override
     public void update(Object object) {
-        _entityManager = _emf.createEntityManager();
+        start();
+        _entityManager.getTransaction().begin();
         TipoPremio objectToUpdate = (TipoPremio) find(((TipoPremio) object).getId());
         objectToUpdate.setNome(((TipoPremio) object).getNome());
         _entityManager.getTransaction().commit();

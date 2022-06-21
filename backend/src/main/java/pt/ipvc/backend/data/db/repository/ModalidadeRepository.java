@@ -14,7 +14,8 @@ public class ModalidadeRepository extends Repository {
 
     @Override
     public void update(Object object) {
-        _entityManager = _emf.createEntityManager();
+        start();
+        _entityManager.getTransaction().begin();
         Modalidade objectToUpdate = (Modalidade) find(((Modalidade) object).getId());
         objectToUpdate.setNome(((Modalidade) object).getNome());
         _entityManager.getTransaction().commit();

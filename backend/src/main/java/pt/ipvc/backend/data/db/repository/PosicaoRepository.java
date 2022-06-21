@@ -13,9 +13,11 @@ public class PosicaoRepository extends Repository {
 
     @Override
     public void update(Object object) {
-        _entityManager = _emf.createEntityManager();
+        start();
+        _entityManager.getTransaction().begin();
         Posicao objectToUpdate = (Posicao) find(((Posicao) object).getId());
         objectToUpdate.setNome(((Posicao) object).getNome());
+        objectToUpdate.setModalidade(((Posicao) object).getModalidade());
         _entityManager.getTransaction().commit();
     }
 
