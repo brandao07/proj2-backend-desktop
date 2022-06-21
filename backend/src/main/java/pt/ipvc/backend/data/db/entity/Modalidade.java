@@ -25,6 +25,16 @@ public class Modalidade {
     @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
     private Set<Posicao> posicoes = new LinkedHashSet<>();
 
+    @ManyToMany(mappedBy = "modalidades")
+    private Set<Equipa> equipas = new LinkedHashSet<>();
+
+    public Set<Equipa> getEquipas() {
+        return equipas;
+    }
+
+    public void setEquipas(Set<Equipa> equipas) {
+        this.equipas = equipas;
+    }
 
     public Set<Posicao> getPosicoes() {
         return posicoes;

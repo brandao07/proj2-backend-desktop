@@ -58,6 +58,7 @@ public class Equipa {
         this.modalidades = modalidades;
     }
 
+
     public Equipa() {
     }
 
