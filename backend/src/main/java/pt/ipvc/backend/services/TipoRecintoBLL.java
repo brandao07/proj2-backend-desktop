@@ -25,6 +25,7 @@ public class TipoRecintoBLL {
         return tipoRecintoRepository.findAll();
     }
 
+
     public static TipoRecinto getTipoRecinto(String nome) {
         return (TipoRecinto) tipoRecintoRepository.find(nome);
     }
