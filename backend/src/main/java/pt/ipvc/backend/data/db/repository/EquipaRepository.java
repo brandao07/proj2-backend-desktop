@@ -35,6 +35,7 @@ public class EquipaRepository extends Repository {
             _entityManager.getTransaction().begin();
             Equipa e = (Equipa) find(equipa.getId());
             e.getModalidades().removeIf(m -> Objects.equals(m.getId(), modalidade.getId()));
+            e.getModalidades().add(modalidade);
             _entityManager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Equipa ja tem modalidade!");

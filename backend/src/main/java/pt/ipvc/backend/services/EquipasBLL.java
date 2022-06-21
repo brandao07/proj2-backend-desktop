@@ -35,11 +35,11 @@ public class EquipasBLL {
         equipasRepository.update(equipa);
     }
 
-    public static void addTipo(Equipa equipa, Modalidade modalidade) {
+    public static void addModalidade(Equipa equipa, Modalidade modalidade) {
         equipasRepository.addModalidade(equipa, modalidade);
     }
 
-    public static void removeTipo(Equipa equipa, Modalidade modalidade) {
+    public static void removeModalidade(Equipa equipa, Modalidade modalidade) {
         equipasRepository.addModalidade(equipa, modalidade);
     }
 

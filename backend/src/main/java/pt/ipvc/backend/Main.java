@@ -10,10 +10,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Posicao posicao = PosicaoBLL.getPosicao("teste");
+        Posicao posicao1 = PosicaoBLL.getPosicao("teste");
         Posicao posicao2 = PosicaoBLL.getPosicao("teste2");
         Modalidade modalidade = ModalidadeBLL.getModalidade("modalidadeTeste");
-        modalidade.getPosicoes().add(posicao2);
-        modalidade.getPosicoes().add(posicao);
+        posicao1.setModalidade(modalidade);
+        posicao2.setModalidade(modalidade);
+
+        PosicaoBLL.updatePosicao(posicao1);
+        PosicaoBLL.updatePosicao(posicao2);
     }
 }

@@ -31,6 +31,7 @@ public class RecintoRepository extends Repository {
             _entityManager.getTransaction().begin();
             Recinto r = (Recinto) find(recinto.getId());
             r.getTipos().removeIf(tp -> Objects.equals(tp.getId(), tipoRecinto.getId()));
+            r.getTipos().add(tipoRecinto);
             _entityManager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Recinto ja tem tipo!");
