@@ -44,6 +44,20 @@ public class Equipa {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "equipas")
     private Set<Competicao> competicoes = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "equipa_modalidades",
+            joinColumns = @JoinColumn(name = "equipa_id"),
+            inverseJoinColumns = @JoinColumn(name = "modalidades_id"))
+    private Set<Modalidade> modalidades = new LinkedHashSet<>();
+
+    public Set<Modalidade> getModalidades() {
+        return modalidades;
+    }
+
+    public void setModalidades(Set<Modalidade> modalidades) {
+        this.modalidades = modalidades;
+    }
+
     public Equipa() {
     }
 

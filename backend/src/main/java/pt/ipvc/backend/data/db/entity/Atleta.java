@@ -32,9 +32,22 @@ public class Atleta {
     @Column(name = "posicao")
     private String posicao;
 
+
     @ManyToOne
     @JoinColumn(name = "equipa_id")
     private Equipa equipa;
+
+    @ManyToOne
+    @JoinColumn(name = "modalidade_id")
+    private Modalidade modalidade;
+
+    public Modalidade getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(Modalidade modalidade) {
+        this.modalidade = modalidade;
+    }
 
     public Atleta() {
     }

@@ -18,6 +18,7 @@
         <class>pt.ipvc.backend.data.db.entity.users.Administrador</class>
         <class>pt.ipvc.backend.data.db.entity.users.Cliente</class>
         <class>pt.ipvc.backend.data.db.entity.users.Gestor</class>
+        <class>pt.ipvc.backend.data.db.entity.Posicao</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/proj2"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>

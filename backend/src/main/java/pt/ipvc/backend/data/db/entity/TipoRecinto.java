@@ -2,7 +2,6 @@ package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 
@@ -50,21 +49,5 @@ public class TipoRecinto {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';
-    }
-
-    public void addRecinto(Recinto recinto) {
-        if (recintos.stream().anyMatch(r -> r.getId().equals(recinto.getId()))) return;
-        if (recintos.add(recinto)) recinto.getTipos().add(this);
-    }
-
-    public void removeRecinto(Recinto recinto) {
-        if (recintos.remove(recintos.stream().
-                filter(r -> Objects.equals(r.getId(), recinto.getId()))
-                .findAny()
-                .orElse(null)))
-            recinto.getTipos().remove(recinto.getTipos().stream().
-                    filter(t -> Objects.equals(t.getId(), this.getId())).
-                    findAny().
-                    orElse(null));
     }
 }

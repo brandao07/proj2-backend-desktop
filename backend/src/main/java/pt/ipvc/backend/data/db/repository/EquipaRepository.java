@@ -1,9 +1,12 @@
 package pt.ipvc.backend.data.db.repository;
 
+import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Equipa;
+import pt.ipvc.backend.data.db.entity.Modalidade;
 
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Objects;
 
 public class EquipaRepository extends Repository {
     @Override
@@ -24,6 +27,30 @@ public class EquipaRepository extends Repository {
         objectToUpdate.setDataFundacao(((Equipa) object).getDataFundacao());
         objectToUpdate.setContacto(((Equipa) object).getContacto());
         _entityManager.getTransaction().commit();
+    }
+
+    public void addModalidade(@NotNull Equipa equipa, Modalidade modalidade) {
+        try {
+            start();
+            _entityManager.getTransaction().begin();
+            Equipa e = (Equipa) find(equipa.getId());
+            e.getModalidades().removeIf(m -> Objects.equals(m.getId(), modalidade.getId()));
+            _entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Equipa ja tem modalidade!");
+        }
+    }
+
+    public void removeModalidade(@NotNull Equipa equipa, Modalidade modalidade) {
+        try {
+            start();
+            _entityManager.getTransaction().begin();
+            Equipa e = (Equipa) find(equipa.getId());
+            e.getModalidades().removeIf(m -> Objects.equals(m.getId(), modalidade.getId()));
+            _entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Equipa nao tem modalidade!");
+        }
     }
 
     public List findAll() {

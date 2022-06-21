@@ -1,6 +1,7 @@
 package pt.ipvc.backend.services;
 
 import pt.ipvc.backend.data.db.entity.Equipa;
+import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.repository.EquipaRepository;
 
 import java.sql.Date;
@@ -32,6 +33,14 @@ public class EquipasBLL {
 
     public static void updateEquipa(Equipa equipa) {
         equipasRepository.update(equipa);
+    }
+
+    public static void addTipo(Equipa equipa, Modalidade modalidade) {
+        equipasRepository.addModalidade(equipa, modalidade);
+    }
+
+    public static void removeTipo(Equipa equipa, Modalidade modalidade) {
+        equipasRepository.addModalidade(equipa, modalidade);
     }
 
     public static void removerEquipa(String nome) {
