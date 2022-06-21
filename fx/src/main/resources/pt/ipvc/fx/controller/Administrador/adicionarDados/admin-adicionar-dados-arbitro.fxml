@@ -10,6 +10,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.ArbitrosController">
@@ -19,26 +24,60 @@
                 <DropShadow />
             </effect>
             <children>
-                <ChoiceBox fx:id="choiceBoxOpcoes" layoutX="193.0" layoutY="57.0" prefWidth="150.0" />
-                <Label layoutX="36.0" layoutY="61.0" text="O que pretende adicionar:" />
-                <Label layoutX="89.0" layoutY="128.0" text="Nome:" />
-                <TextField fx:id="nome" layoutX="140.0" layoutY="123.0" prefHeight="26.0" prefWidth="378.0" />
-                <Label layoutX="20.0" layoutY="165.0" text="Data de Nascimento:" />
-                <DatePicker fx:id="data" layoutX="140.0" layoutY="160.0" />
-                <ChoiceBox fx:id="nacionalidade" layoutX="140.0" layoutY="202.0" prefWidth="150.0" />
-                <Label layoutX="46.0" layoutY="206.0" text="Nacionalidade:" />
-                <Label layoutX="62.0" layoutY="286.0" text="Associação:" />
-                <ChoiceBox fx:id="associacao" layoutX="140.0" layoutY="281.0" prefWidth="150.0" />
-                <Label layoutX="73.0" layoutY="330.0" text="Categoria:" />
-                <ChoiceBox fx:id="categoria" layoutX="139.0" layoutY="326.0" prefWidth="150.0" />
-                <ChoiceBox fx:id="genero" layoutX="139.0" layoutY="369.0" prefWidth="150.0" />
-                <Label layoutX="80.0" layoutY="372.0" text="Genêro:" />
-                <ChoiceBox fx:id="naturalidade" layoutX="140.0" layoutY="242.0" prefWidth="150.0" />
-                <Label layoutX="46.0" layoutY="246.0" text="Naturalidade:" />
-                <ChoiceBox fx:id="modalidades" layoutX="139.0" layoutY="413.0" prefWidth="150.0" />
-                <Label layoutX="55.0" layoutY="418.0" text="Modalidade:" />
-            <Button layoutX="528.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83#0f4c83;" text="Confirmar" textFill="WHITE" />
-            <Label fx:id="labelErro" layoutX="275.0" layoutY="547.0" textFill="RED" />
+            <Button layoutX="551.0" layoutY="484.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83#0f4c83;" text="Confirmar" textFill="WHITE" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="273.0" layoutY="489.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            <VBox alignment="CENTER" layoutX="122.0" layoutY="91.0" prefHeight="297.0" prefWidth="459.0">
+               <children>
+                  <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="267.0" prefWidth="400.0" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.26336669921875" minWidth="10.0" prefWidth="138.58380126953125" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.41619873046875" minWidth="10.0" prefWidth="254.41619873046875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                            <Label text="Nome:" GridPane.rowIndex="2" />
+                            <Label prefHeight="17.0" prefWidth="135.0" text="Data de Nascimento:" GridPane.rowIndex="3" />
+                            <Label text="Nacionalidade:" GridPane.rowIndex="4" />
+                            <Label text="Naturalidade:" GridPane.rowIndex="5" />
+                            <Label text="Associação:" GridPane.rowIndex="6" />
+                            <Label text="Categoria:" GridPane.rowIndex="7" />
+                            <Label text="Genêro:" GridPane.rowIndex="8" />
+                            <Label text="Modalidade:" GridPane.rowIndex="9" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <DatePicker fx:id="data" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <ChoiceBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <ChoiceBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <ChoiceBox fx:id="associacao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <ChoiceBox fx:id="categoria" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <ChoiceBox fx:id="modalidades" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <Label text="O que pretende adicionar:" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Line endX="389.30706787109375" endY="419.20001220703125" layoutX="283.0" layoutY="109.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="265.0" layoutY="60.0" startX="-143.5" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="61.0" layoutY="45.0" text="Árbitros" textFill="#0f4c83">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="134.0" layoutY="68.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
+            <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="35.0" layoutY="-9.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+            <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="189.0" layoutY="531.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83;">

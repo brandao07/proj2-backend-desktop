@@ -41,6 +41,7 @@ public class ValidarInput {
         return dInicio.compareTo(dFim) < 0 || (dInicio.compareTo(dFim) == 0);
     }
 
+
     public static void validarAdicionarDados(@NotNull String value, ActionEvent event) {
         switch (value) {
             case "Árbitros" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-arbitro.fxml", event);
@@ -87,6 +88,18 @@ public class ValidarInput {
             case "Adicicionar Dados" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
             case "Consultar Sistema" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
             case "Utilizadores\n" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
+            default -> System.out.println("ERRO");
+        }
+    }
+
+    public static void opcoesMenuAdicionarAdmin(@NotNull String value, ActionEvent event){
+        switch (value) {
+            case "Atleta" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
+            case "Equipa" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
+            case "Prêmio" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-premio.fxml", event);
+            case "Recintos\n" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
+            case "Árbitro" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+
             default -> System.out.println("ERRO");
         }
     }

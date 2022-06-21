@@ -1,5 +1,7 @@
 package pt.ipvc.fx.misc;
 
+import javafx.event.ActionEvent;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -15,6 +17,10 @@ public class AdminChoiceBoxOpcoes {
         opcoesAdmin.add("Recintos");
          Collections.sort(opcoesAdmin);
         return opcoesAdmin;
+    }
+
+    public static void mudarSceneAdmin(String scene, ActionEvent event) {
+        ValidarInput.opcoesMenuAdicionarAdmin(scene, event);
     }
 }
 

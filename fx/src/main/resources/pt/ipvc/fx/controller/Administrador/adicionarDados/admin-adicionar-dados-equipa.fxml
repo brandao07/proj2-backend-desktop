@@ -1,102 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.AdminPageAdicionarController">
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.AdminPageAdicionarController">
     <children>
         <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>
-                <DropShadow/>
+                <DropShadow />
             </effect>
             <children>
-                <ChoiceBox fx:id="choiceBoxItemAdiconar" layoutX="189.0" layoutY="57.0" prefWidth="150.0"/>
-                <Label layoutX="36.0" layoutY="61.0" text="O que pretende adicionar:"/>
-                <Label layoutX="89.0" layoutY="128.0" text="Nome:"/>
-                <TextField fx:id="nome" layoutX="140.0" layoutY="123.0" prefHeight="26.0" prefWidth="378.0"/>
-                <Label layoutX="20.0" layoutY="165.0" text="Data de Fundação:"/>
-                <DatePicker fx:id="data" layoutX="140.0" layoutY="160.0"/>
-                <ChoiceBox fx:id="pais" layoutX="140.0" layoutY="202.0" prefWidth="150.0"/>
-                <Label layoutX="95.0" layoutY="207.0" text="País:"/>
-                <Label layoutX="83.0" layoutY="247.0" text="Cidade:"/>
-                <ChoiceBox fx:id="cidade" layoutX="140.0" layoutY="242.0" prefWidth="150.0"/>
-                <Label layoutX="56.0" layoutY="292.0" text="Associação:"/>
-                <ChoiceBox fx:id="associacao" layoutX="139.0" layoutY="287.0" prefWidth="150.0"/>
-                <Label layoutX="89.0" layoutY="336.0" prefHeight="17.0" prefWidth="36.0" text="Sigla:"/>
-                <TextField fx:id="sigla" layoutX="139.0" layoutY="332.0" prefHeight="26.0" prefWidth="65.0"/>
-                <Button layoutX="606.0" layoutY="546.0" mnemonicParsing="false" onAction="#seguinte"
-                        style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE"/>
-                <Label layoutX="68.0" layoutY="380.0" text="Contacto:"/>
-                <TextField fx:id="contacto" layoutX="140.0" layoutY="375.0"/>
+                <Button layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#seguinte" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox layoutX="156.0" layoutY="135.0" prefHeight="330.0" prefWidth="391.0">
+               <children>
+                  <GridPane vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                            <Label text="O que pretende adicionar:" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                            <Label text="Nome:" GridPane.rowIndex="2" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label text="Data de Fundação:" GridPane.rowIndex="3" />
+                            <DatePicker fx:id="data" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label text="País:" GridPane.rowIndex="4" />
+                            <ChoiceBox fx:id="pais" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <Label text="Cidade:" GridPane.rowIndex="5" />
+                            <ChoiceBox fx:id="cidade" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <Label text="Associação:" GridPane.rowIndex="6" />
+                            <ChoiceBox fx:id="associacao" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <Label prefHeight="17.0" prefWidth="36.0" text="Sigla:" GridPane.rowIndex="7" />
+                            <TextField fx:id="sigla" prefHeight="26.0" prefWidth="65.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <Label text="Contacto:" GridPane.rowIndex="8" />
+                            <TextField fx:id="contacto" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Line endX="389.30706787109375" endY="419.20001220703125" layoutX="280.0" layoutY="122.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="262.0" layoutY="73.0" startX="-149.0" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="58.0" layoutY="58.0" text="Equipa" textFill="#0f4c83">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="131.0" layoutY="81.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
+            <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="32.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+            <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
             <children>
-                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0"
-                            style="-fx-background-color: #fff;">
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
                     <effect>
-                        <DropShadow/>
+                        <DropShadow />
                     </effect>
                 </AnchorPane>
-                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE"/>
-                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0"
-                       prefWidth="45.0" text="Sistema" textFill="WHITE"/>
-                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0"
-                           prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" textFill="WHITE" />
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/folder.png"/>
+                                <Image url="@../../../icons/folder.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0"
-                           prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/user.png"/>
+                                <Image url="@../../../icons/user.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0"
-                           prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/tools.png"/>
+                                <Image url="@../../../icons/tools.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0"
-                        style="-fx-background-color: transparent;"/>
-                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false"
-                        style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
-                        <Font size="21.0"/>
+                        <Font size="21.0" />
                     </font>
                 </Button>
-                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0"
-                           prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;"
-                           text="Adicicionar Dados" textFill="#0f4c83">
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../icons/add.png"/>
+                                <Image url="@../../../icons/add.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </JFXButton>
             </children>
             <effect>
-                <DropShadow/>
+                <DropShadow />
             </effect>
         </AnchorPane>
     </children>

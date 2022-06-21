@@ -97,6 +97,12 @@ public class ArbitrosController implements Initializable {
 
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
+        choiceBoxOpcoes.setOnAction(actionEvent -> {
+            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+        });
+
+
+
         ArrayList<String> lista_associacoes = new ArrayList<>();
         for (String t : LocalRepository.getMapAssosiacoesPortuguesas().values()){
                 lista_associacoes.add(t);
