@@ -1,10 +1,10 @@
 package pt.ipvc.backend.services;
 
 import org.jetbrains.annotations.NotNull;
-import pt.ipvc.backend.data.db.entity.Competicao;
-import pt.ipvc.backend.data.db.entity.Premio;
-import pt.ipvc.backend.data.db.entity.TipoPremio;
+import pt.ipvc.backend.data.db.entity.*;
 import pt.ipvc.backend.data.db.repository.PremioRepository;
+
+import java.util.List;
 
 public class PremioBLL {
 
@@ -20,5 +20,13 @@ public class PremioBLL {
             return;
         }
         System.out.println("Premio criado com sucesso!");
+    }
+
+    public static List getPremio(String nomeCompeticao) {
+        return premioRepository.findCompeticao(nomeCompeticao);
+    }
+
+    public static void updatePremio(Premio premio) {
+        premioRepository.update(premio);
     }
 }

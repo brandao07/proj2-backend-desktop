@@ -12,11 +12,13 @@ import pt.ipvc.fx.controller.Temp.Person;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class consultarCompeticaoController implements Initializable {
     @FXML
-    private ChoiceBox modalidade;
+    private ChoiceBox<String> modalidade;
 
     @FXML
     private TableView<Person> competicoes;
@@ -47,6 +49,10 @@ public class consultarCompeticaoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        modalidade.getItems().addAll("Misto", "Feminino", "teste");
+        modalidade.setDisable(false);
+
         competicoes.getColumns().clear();
         competicoes.setEditable(true);
 

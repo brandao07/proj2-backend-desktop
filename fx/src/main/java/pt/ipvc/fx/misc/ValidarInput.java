@@ -1,8 +1,13 @@
 package pt.ipvc.fx.misc;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
+import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.fx.controller.ControladorGlobal;
+import javafx.util.Callback;
 
 import java.time.LocalDate;
 
@@ -35,10 +40,9 @@ public class ValidarInput {
     }
 
     //tem covid esta merda
-    public static boolean validarDatas(LocalDate dInicio, LocalDate dFim) {
+    public static boolean validarDatas(@NotNull LocalDate dInicio, @NotNull LocalDate dFim) {
         //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fim
-        if (dInicio == null && dFim == null) return true;
-        return dInicio.compareTo(dFim) < 0 || (dInicio.compareTo(dFim) == 0);
+        return !(dInicio.compareTo(dFim) > 0);
     }
 
 
@@ -82,12 +86,16 @@ public class ValidarInput {
         }
     }
 
-    public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event){
+    public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event) {
         switch (value) {
-            case "Consultar Dados" -> ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
-            case "Adicicionar Dados" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
-            case "Consultar Sistema" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
-            case "Utilizadores\n" -> ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
+            case "Consultar Dados" ->
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+            case "Adicicionar Dados" ->
+                    ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+            case "Consultar Sistema" ->
+                    ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
+            case "Criar Utilizador\n" ->
+                    ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
             default -> System.out.println("ERRO");
         }
     }
@@ -103,6 +111,5 @@ public class ValidarInput {
             default -> System.out.println("ERRO");
         }
     }
-
 
 }

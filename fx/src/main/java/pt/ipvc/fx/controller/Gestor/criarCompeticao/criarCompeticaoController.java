@@ -3,19 +3,25 @@ package pt.ipvc.fx.controller.Gestor.criarCompeticao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import org.jetbrains.annotations.NotNull;
+import pt.ipvc.backend.data.db.entity.Competicao;
+import pt.ipvc.backend.data.db.entity.Modalidade;
+import pt.ipvc.backend.data.db.entity.Premio;
+import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.PremioBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class criarCompeticaoController implements Initializable {
+    public static Competicao compSelecionada;
+
     @FXML
     private TextField nomeCompeticao;
 
@@ -26,46 +32,87 @@ public class criarCompeticaoController implements Initializable {
     private DatePicker dataFim;
 
     @FXML
-    private ChoiceBox genero;
+    private ChoiceBox<String> genero;
     //FIXED carregar os generos para a choiceBox
     @FXML
-    private ChoiceBox modalidade;
-    //TODO: CAMPOS ja tens os dados
+    private ChoiceBox<String> modalidade;
 
-    //FIXED carregar as modalidades para a choiceBox
-    //ModalidadeBLL.getModalidades()
+    @FXML
+    private ChoiceBox<String> podio;
 
+    @FXML
+    private CheckBox checkBox;
     @FXML
     private Label invalidDados;
 
+    @FXML
+    private Label invalidDados1;
 
-    public void seguinte(ActionEvent event) {
-        if (ValidarInput.validarString(nomeCompeticao.getText())
-                && ValidarInput.validarDataPicker(dataInicio.getValue())
-                && ValidarInput.validarDataPicker(dataFim.getValue())
-                && ValidarInput.validarChoiceBox(genero.getValue())
-                && ValidarInput.validarChoiceBox(modalidade.getValue())) {
-            return;
-        }
-        invalidDados.setText("Campos Inválidos");
-        if (ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())) {
-            return;
-        }
-        invalidDados.setText("Data Inicio com inicio posteior a Data Fim");
-        //TODO: CAMPOS LÊ
-        //FIXED verificar se o nome da competicao é único
-        // O NOME DA COMPETICAO E SEMPRE UNICO NA BD
-        //TODO: CAMPOS JA TENS O CRIAR COMPETICAO
-        //FIXED CompeticaoBLL.criarCompeticao(nome, genero, dataInicio, dataFim, modalidade);
-//        if(condicao){
-//            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
-//            return;
-//        }
-        ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Set<String> generos = new HashSet<>();
+        generos.add("Masculino");
+        generos.add("Feminino");
+        generos.add("Misto");
+        Set<String> modalidades = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
+                map(Modalidade::getNome).collect(Collectors.toSet());
+        Set<String> podios = new HashSet<>();
+        podios.add("1");
+        podios.add("2");
+        podios.add("3");
+        podios.add("4");
+        podios.add("5");
+
+        modalidade.getItems().addAll(modalidades);
+        genero.getItems().addAll(generos);
+        podio.getItems().addAll(podios);
+        podio.setDisable(true);
     }
 
-    public void adicionarDetalhes(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
+    public void seguinte(ActionEvent event) {
+
+        if (!ValidarInput.validarString(nomeCompeticao.getText()))
+            invalidDados.setText("Preencha o campo Nome");
+
+        else if (!ValidarInput.validarDataPicker(dataInicio.getValue()))
+            invalidDados.setText("Preencha o campo Data Início");
+
+        else if (!ValidarInput.validarDataPicker(dataFim.getValue()))
+            invalidDados.setText("Preencha o campo Data Fim");
+
+        else if (!ValidarInput.validarChoiceBox(genero.getValue()))
+            invalidDados.setText("Selecione uma opção no campo Genero");
+
+        else if (!ValidarInput.validarChoiceBox(modalidade.getValue()))
+            invalidDados.setText("Selecione uma opção no campo Modalidade");
+
+        else if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue()))
+            invalidDados.setText("Data Início com início posteior a Data Fim");
+
+        else if (checkBox.isSelected()){
+            if(ValidarInput.validarChoiceBox(podio.getValue())){
+                CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                        dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem()));
+                for(int i = 0; i < Integer.parseInt(podio.getValue()); i++) {
+                    Premio p = new Premio(i+1,null);
+                    PremioBLL.criarPremio(p, nomeCompeticao.getText(), null);
+                }
+                compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
+                ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
+                return;
+            }
+            invalidDados1.setText("Selecione uma opção no Campo Pódio");
+
+        } else if ((!checkBox.isSelected()) && (CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) != null))
+            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+
+        else
+            invalidDados.setText("Nome da Competição já Utilizado!");
+    }
+
+    public void check(){
+        podio.setDisable(!checkBox.isSelected());
     }
 
     public void anterior(ActionEvent event) {
@@ -79,12 +126,5 @@ public class criarCompeticaoController implements Initializable {
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Set<String> generos = new HashSet<>();
-        generos.add("Masculino");
-        generos.add("Feminino");
-        generos.add("Misto");
-        //TODO: CAMPOS adicionar generos a choicebox
-    }
+
 }

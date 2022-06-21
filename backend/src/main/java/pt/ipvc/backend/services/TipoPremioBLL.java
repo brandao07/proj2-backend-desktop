@@ -23,7 +23,7 @@ public class TipoPremioBLL {
         return tipoPremioRepository.findAll();
     }
 
-    public static List getTiposRecintoNome() {
+    public static List getTiposPremioNome() {
         return tipoPremioRepository.findAllName();
     }
 

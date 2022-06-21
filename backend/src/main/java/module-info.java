@@ -15,4 +15,5 @@ open module pt.ipvc.backend {
     exports pt.ipvc.backend.data.misc;
     exports pt.ipvc.backend.services.validations;
     exports pt.ipvc.backend.services.users;
+    exports pt.ipvc.backend.models;
 }
