@@ -36,5 +36,6 @@ public class AdminHomePageController {
 
     public void setBtnAdicionarDados(ActionEvent event) {
         ControladorGlobal.chamaScene("adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+
     }
 }
