@@ -40,4 +40,14 @@ public class TipoPremioRepository extends Repository {
             return null;
         }
     }
+
+    public List findAllName() {
+        try {
+            Query query = _entityManager.createQuery("SELECT tp.nome FROM TipoPremio AS tp");
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem tipos premio");
+            return null;
+        }
+    }
 }

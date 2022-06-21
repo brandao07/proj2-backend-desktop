@@ -31,6 +31,7 @@ public class TipoRecintoRepository extends Repository {
         }
     }
 
+
     public Object find(String nome) {
         try {
             Query query = _entityManager.createQuery("SELECT tr FROM TipoRecinto AS tr " +
