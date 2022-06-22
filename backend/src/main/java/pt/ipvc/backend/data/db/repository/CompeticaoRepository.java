@@ -3,8 +3,10 @@ package pt.ipvc.backend.data.db.repository;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
+import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,6 +54,16 @@ public class CompeticaoRepository extends Repository {
         }
     }
 
+    public List findAll() {
+        try {
+            Query query = _entityManager.createQuery("SELECT a FROM Competicao AS a");
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem competições");
+            return null;
+        }
+    }
+
     public List findCompeticoesModalidade(String modalidade) {
         try {
             Query query = _entityManager.createQuery("SELECT c FROM Competicao AS c " +
@@ -89,7 +101,7 @@ public class CompeticaoRepository extends Repository {
 
     public List findAllCompeticoesModalidadeNome() {
         try {
-            Query query = _entityManager.createQuery("SELECT c.nome, c.dataInicio, c.dataFim, c.genero, m.nome as modalidade FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id");
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id", CompeticaoNomeModalidade.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem competicoes");

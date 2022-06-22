@@ -12,6 +12,8 @@ import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.PremioBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.misc.PodiosAux;
+import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
@@ -50,22 +52,12 @@ public class criarCompeticaoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Set<String> generos = new HashSet<>();
-        generos.add("Masculino");
-        generos.add("Feminino");
-        generos.add("Misto");
         Set<String> modalidades = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
-        Set<String> podios = new HashSet<>();
-        podios.add("1");
-        podios.add("2");
-        podios.add("3");
-        podios.add("4");
-        podios.add("5");
 
         modalidade.getItems().addAll(modalidades);
-        genero.getItems().addAll(generos);
-        podio.getItems().addAll(podios);
+        genero.getItems().addAll(StringGeneros.generos());
+        podio.getItems().addAll(PodiosAux.getPodios());
         podio.setDisable(true);
     }
 
@@ -104,8 +96,10 @@ public class criarCompeticaoController implements Initializable {
             invalidDados1.setText("Selecione uma opção no Campo Pódio");
 
         } else if ((!checkBox.isSelected()) && (CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
-                dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) != null))
+                dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) != null)){
+            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
             ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+        }
 
         else
             invalidDados.setText("Nome da Competição já Utilizado!");

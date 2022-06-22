@@ -2,28 +2,22 @@ package pt.ipvc.backend.models;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Date;
 
 public class CompeticaoNomeModalidade {
-
-    @Basic
-    @Column(name = "nome")
     private String nome;
 
-    @Basic
-    @Column(name = "data_inicio")
     private Date dataInicio;
 
-    @Basic
-    @Column(name = "data_fim")
+
     private Date dataFim;
 
-    @Basic
-    @Column(name = "genero")
+
     private String genero;
 
-    @Basic
-    @Column(name = "modalidade")
+
     private String modalidade;
 
     public CompeticaoNomeModalidade(String nome, Date dataInicio, Date dataFim, String genero, String modalidade) {
@@ -32,6 +26,10 @@ public class CompeticaoNomeModalidade {
         this.dataFim = dataFim;
         this.genero = genero;
         this.modalidade = modalidade;
+    }
+
+    public CompeticaoNomeModalidade() {
+
     }
 
     public String getNome() {
@@ -72,5 +70,16 @@ public class CompeticaoNomeModalidade {
 
     public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
+    }
+
+    @Override
+    public String toString() {
+        return "CompeticaoNomeModalidade{" +
+                "nome='" + nome + '\'' +
+                ", dataInicio=" + dataInicio +
+                ", dataFim=" + dataFim +
+                ", genero='" + genero + '\'' +
+                ", modalidade='" + modalidade + '\'' +
+                '}';
     }
 }

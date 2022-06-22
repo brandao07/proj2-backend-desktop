@@ -19,7 +19,7 @@
                 <DropShadow />
             </effect>
             <children>
-                <Button layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#seguinte" style="-fx-background-color: #0f4c83;" text="Seguinte" textFill="WHITE" />
+                <Button layoutX="608.0" layoutY="547.0" mnemonicParsing="false" onAction="#teste" style="-fx-background-color: #0f4c83;" text="Seguinte" textFill="WHITE" />
                 <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior" textFill="WHITE" />
                 <Label layoutX="142.0" layoutY="90.0" text="Atribuir Prémio por Posição" textFill="#0f4c83">
                     <font>
@@ -38,6 +38,7 @@
                   <TableColumn fx:id="colunaPremioAtribuido" prefWidth="152.800048828125" text="Prémio Atribuido" />
               </columns>
             </TableView>
+            <Label fx:id="checkDados" alignment="CENTER" layoutX="104.0" layoutY="357.0" prefHeight="18.0" prefWidth="516.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">

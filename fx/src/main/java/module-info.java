@@ -7,6 +7,7 @@ module pt.ipvc.fx {
     requires pt.ipvc.backend;
     requires annotations;
     requires javafx.graphics;
+    requires java.sql;
     exports pt.ipvc.fx;
 
     opens pt.ipvc.fx to javafx.fxml;

@@ -24,6 +24,5 @@ public class HelloApplication extends Application {
             event.consume();
             ControladorGlobal.exit(stage);
         });
-
     }
 }

@@ -97,8 +97,12 @@ public class ValidarInput {
                     ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
             case "Consultar Sistema" ->
                     ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
-            case "Criar Utilizador\n" ->
+            case "Criar Utilizador" ->
                     ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
+            case "Criar Competição" ->
+                    ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
+            case "Gerir Competição" ->
+                    ControladorGlobal.chamaScene("Gestor/consultarCompeticao/consultar-competicao.fxml", event);
             default -> System.out.println("ERRO");
         }
     }

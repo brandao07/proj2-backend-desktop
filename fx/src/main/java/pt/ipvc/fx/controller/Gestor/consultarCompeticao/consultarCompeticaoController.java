@@ -1,42 +1,58 @@
 package pt.ipvc.fx.controller.Gestor.consultarCompeticao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.skin.DatePickerSkin;
+import pt.ipvc.backend.data.db.entity.Competicao;
+import pt.ipvc.backend.data.db.entity.Modalidade;
+import pt.ipvc.backend.models.CompeticaoNomeModalidade;
+import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
-import pt.ipvc.fx.controller.Temp.Person;
+import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 public class consultarCompeticaoController implements Initializable {
     @FXML
     private ChoiceBox<String> modalidade;
 
     @FXML
-    private TableView<Person> competicoes;
+    private TableView<CompeticaoNomeModalidade> competicoes;
 
     @FXML
-    private TableColumn<Person, String> colunaNome;
+    private TableColumn<CompeticaoNomeModalidade, String> colNome;
 
     @FXML
-    private TableColumn<Person, String> colunaInicio;
+    private TableColumn<CompeticaoNomeModalidade, String> colDataInicio;
 
     @FXML
-    private TableColumn<Person, String> colunaFim;
+    private DatePicker teste;
 
     @FXML
-    private TableColumn<Person, String> colunaGenero;
+    private TableColumn<CompeticaoNomeModalidade, String> colDataFim;
 
     @FXML
-    private TableColumn<Person, String> colunaModalidade;
+    private TableColumn<CompeticaoNomeModalidade, String> colGenero;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade,String> colModalidade;
 
     @FXML
     private Label pesquisaInvalida;
@@ -50,72 +66,77 @@ public class consultarCompeticaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        modalidade.getItems().addAll("Misto", "Feminino", "teste");
-        modalidade.setDisable(false);
-
         competicoes.getColumns().clear();
         competicoes.setEditable(true);
 
-        colunaNome.setCellValueFactory(new PropertyValueFactory<Person, String>("nome"));
-        colunaNome.setCellFactory(TextFieldTableCell.forTableColumn());
-        colunaNome.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+        ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNome());
+
+        colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
+
+        colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("dataInicio"));
+//        colDataInicio.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        colDataInicio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
             @Override
-            public void handle(TableColumn.CellEditEvent<Person, String> event) {
-                Person person = event.getRowValue();
-                person.setNome(event.getNewValue());
+            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
+                CompeticaoNomeModalidade competicao = event.getRowValue();
+                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    competicao.setDataInicio(format.parse(event.getNewValue()));
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        colunaInicio.setCellValueFactory(new PropertyValueFactory<Person, String>("inicio"));
-        colunaInicio.setCellFactory(TextFieldTableCell.forTableColumn());
-        colunaInicio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+        colDataFim.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("dataFim"));
+//        colDataFim.setCellFactory(TextFieldTableCell.forTableColumn());
+//        colDataFim.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
+//            @Override
+//            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
+//                CompeticaoNomeModalidade competicao = event.getRowValue();
+//                competicao.setDataFim(Date.valueOf((event.getNewValue())));
+//            }
+//        });
+
+        ObservableList<String> list = FXCollections.observableArrayList(StringGeneros.generos());
+
+        colGenero.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("genero"));
+        colGenero.setCellFactory(ComboBoxTableCell.forTableColumn(list));
+        colGenero.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
             @Override
-            public void handle(TableColumn.CellEditEvent<Person, String> event) {
-                Person person = event.getRowValue();
-                person.setInicio(event.getNewValue());
+            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
+                CompeticaoNomeModalidade competicao = event.getRowValue();
+                competicao.setGenero(event.getNewValue());
             }
         });
 
-        colunaFim.setCellValueFactory(new PropertyValueFactory<Person, String>("fim"));
-        colunaFim.setCellFactory(TextFieldTableCell.forTableColumn());
-        colunaFim.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
+
+        List<String> ob = new ArrayList<>();
+        List<Modalidade> modalidades = ModalidadeBLL.getModalidades();
+        for(Modalidade m : modalidades){
+            ob.add(m.getNome());
+        }
+
+        ObservableList<String> teste = FXCollections.observableArrayList(ob);
+
+        colModalidade.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("modalidade"));
+        colModalidade.setCellFactory(ComboBoxTableCell.forTableColumn(teste));
+        colModalidade.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
             @Override
-            public void handle(TableColumn.CellEditEvent<Person, String> event) {
-                Person person = event.getRowValue();
-                person.setFim(event.getNewValue());
+            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
+                CompeticaoNomeModalidade competicao = event.getRowValue();
+                competicao.setModalidade(event.getNewValue());
             }
         });
 
-        colunaGenero.setCellValueFactory(new PropertyValueFactory<Person, String>("genero"));
-        colunaGenero.setCellFactory(TextFieldTableCell.forTableColumn());
-        colunaGenero.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Person, String> event) {
-                Person person = event.getRowValue();
-                person.setGenero(event.getNewValue());
-            }
-        });
+        competicoes.setItems(dados);
 
-        colunaModalidade.setCellValueFactory(new PropertyValueFactory<Person, String>("modalidade"));
-        colunaModalidade.setCellFactory(TextFieldTableCell.forTableColumn());
-        colunaModalidade.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Person, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Person, String> event) {
-                Person person = event.getRowValue();
-                person.setModalidade(event.getNewValue());
-            }
-        });
-
-        competicoes.getColumns().add(colunaNome);
-        competicoes.getColumns().add(colunaInicio);
-        competicoes.getColumns().add(colunaFim);
-        competicoes.getColumns().add(colunaGenero);
-        competicoes.getColumns().add(colunaModalidade);
-        competicoes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        competicoes.getItems().add(new Person("Teste", "10-10-2020", "20-12-2021", "M", "Futebol"));
-        competicoes.getItems().add(new Person("Hugo", "10-06-2020", "20-05-2021", "F", "Puta"));
-
+        competicoes.getColumns().add(colNome);
+        competicoes.getColumns().add(colDataInicio);
+        competicoes.getColumns().add(colDataFim);
+        competicoes.getColumns().add(colGenero);
+        competicoes.getColumns().add(colModalidade);
 
         //TODO: CAMPOS implementar os metodos abaixo
 
@@ -133,6 +154,15 @@ public class consultarCompeticaoController implements Initializable {
         pesquisaInvalida.setText("Insira um Campo para Pesquisar!");
     }
 
+    public void editar() throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date d = new Date();
+        d = competicoes.getSelectionModel().getSelectedItem().getDataInicio();
+        teste.setValue(Instant.ofEpochMilli(d.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+        Competicao p = CompeticaoBLL.getCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome());
+        p.setDataInicio(java.sql.Date.valueOf(teste.getValue()));
+    }
+
     public void verDetalhes() {
         verDetalhesInvalido.setText("Selecione uma Competição!");
     }
@@ -147,5 +177,4 @@ public class consultarCompeticaoController implements Initializable {
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
-
 }

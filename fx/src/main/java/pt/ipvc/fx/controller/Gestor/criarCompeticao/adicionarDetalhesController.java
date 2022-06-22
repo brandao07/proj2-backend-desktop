@@ -1,6 +1,7 @@
 package pt.ipvc.fx.controller.Gestor.criarCompeticao;
 
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,8 +40,8 @@ public class adicionarDetalhesController implements Initializable {
     @FXML
     private TableColumn<Premio, String> colunaTipoPremio;
 
-
-
+    @FXML
+    private Label checkDados;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,6 +49,7 @@ public class adicionarDetalhesController implements Initializable {
         tableView.getColumns().clear();
         tableView.setEditable(true);
         path = CompeticaoBLL.getCompeticao(criarCompeticaoController.compSelecionada.getNome()).getNome();
+
         ObservableList<Premio> dados = FXCollections.observableArrayList(PremioBLL.getPremio(path));
 
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<Premio, Integer>("lugar"));
@@ -72,7 +74,7 @@ public class adicionarDetalhesController implements Initializable {
 
         ObservableList<String> list = FXCollections.observableArrayList(nomes);
 
-        colunaTipoPremio.setCellValueFactory(new PropertyValueFactory<Premio, String>("tipo_premio_id"));
+        colunaTipoPremio.setCellValueFactory(new PropertyValueFactory<Premio, String>("tipoPremio"));
         colunaTipoPremio.setCellFactory(ComboBoxTableCell.forTableColumn(list));
         colunaTipoPremio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Premio, String>>() {
             @Override
@@ -90,9 +92,25 @@ public class adicionarDetalhesController implements Initializable {
         tableView.getColumns().add(colunaPremioAtribuido);
     }
 
-    public void seguinte(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+    public void teste (ActionEvent event) {
+        getTableViewValues(event, tableView);
     }
+
+    private void getTableViewValues(ActionEvent event, TableView tableView) {
+        ObservableList<TableColumn> columns = tableView.getColumns();
+
+            for (Object r : this.tableView.getItems()) {
+                for (Object c : this.tableView.getColumns()){
+                    javafx.scene.control.TableColumn column = (javafx.scene.control.TableColumn) c;
+                        if (column.getCellData(r) == null){
+                            checkDados.setText("Preencha todos os campos da tabela");
+                            return;
+                        }
+                }
+            }
+            ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+    }
+
 
     public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
