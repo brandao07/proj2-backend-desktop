@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -56,14 +57,14 @@
                             <Label text="Modalidade:" GridPane.rowIndex="9" />
                             <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <DatePicker fx:id="data" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <ChoiceBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                            <ChoiceBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             <ChoiceBox fx:id="associacao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                             <ChoiceBox fx:id="categoria" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                             <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                             <ChoiceBox fx:id="modalidades" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                             <Label text="O que pretende adicionar:" />
                             <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                </children>

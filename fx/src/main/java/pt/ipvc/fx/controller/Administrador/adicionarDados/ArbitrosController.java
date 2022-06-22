@@ -5,10 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.repository.ModalidadeRepository;
 import pt.ipvc.backend.data.db.repository.Repository;
@@ -33,10 +30,10 @@ public class ArbitrosController implements Initializable {
     protected TextField nome;
 
     @FXML
-    protected ChoiceBox<String> nacionalidade;
+    protected ComboBox<String> nacionalidade;
 
     @FXML
-    protected ChoiceBox<String> naturalidade;
+    protected ComboBox<String> naturalidade;
 
     @FXML
     protected ChoiceBox<String> categoria;
@@ -130,6 +127,8 @@ public class ArbitrosController implements Initializable {
         Collections.sort(paises);
         nacionalidade.getItems().addAll(paises);
 
+        nacionalidade.setVisibleRowCount(11);
+
 
         //adicionar cidades à choiceBox naturalidade
         nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
@@ -142,6 +141,8 @@ public class ArbitrosController implements Initializable {
                         break;
                     }
                 }
+                naturalidade.setVisibleRowCount(11);
+
             }
         });
     }

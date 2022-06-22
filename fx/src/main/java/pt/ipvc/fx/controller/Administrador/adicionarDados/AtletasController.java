@@ -5,10 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
@@ -46,10 +43,7 @@ public class AtletasController implements Initializable {
     protected TextField altura;
 
     @FXML
-    protected ChoiceBox naturalidade;
-
-    @FXML
-    protected ChoiceBox nacionalidade;
+    protected ComboBox nacionalidade;
 
     @FXML
     protected ChoiceBox posicao;
@@ -111,7 +105,6 @@ public class AtletasController implements Initializable {
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
-        //ControladorGlobal.chamaScene("admin-home-page.fxml", event);
 
 
 
@@ -129,6 +122,7 @@ public class AtletasController implements Initializable {
         }
         Collections.sort(paises);
         nacionalidade.getItems().addAll(paises);
+        nacionalidade.setVisibleRowCount(11);
 
         modalidades.valueProperty().addListener(new ChangeListener<String>() {
             @Override

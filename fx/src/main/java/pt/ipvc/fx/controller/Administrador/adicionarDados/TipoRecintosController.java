@@ -2,36 +2,45 @@ package pt.ipvc.fx.controller.Administrador.adicionarDados;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import pt.ipvc.backend.services.TipoRecintoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
-public class TipoRecintosController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TipoRecintosController implements Initializable {
 
     @FXML
     protected TextField tipo;
 
     @FXML
+    protected ChoiceBox choiceBoxOpcoes;
+
+    @FXML
     public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(tipo.getText())) {
-            ControladorGlobal.chamaScene("admin-home-page.fxml", event);
-            return;
+            TipoRecintoBLL.criarTipoRecinto(tipo.getText());
         }
         System.out.println("Campos Inválidos");
 
-        //TODO: HUGO JA TENS CRIAR RECINTO
-        //TipoRecintoBLL.criarTipoRecinto("teste");
     }
 
-    @FXML
-    public void cancelar(ActionEvent event) {
-        ControladorGlobal.chamaScene("adicionarDados/admin-sistema-adicionar-user.fxml", event);
-    }
 
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setOnAction(actionEvent -> {
+            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+        });
     }
 }

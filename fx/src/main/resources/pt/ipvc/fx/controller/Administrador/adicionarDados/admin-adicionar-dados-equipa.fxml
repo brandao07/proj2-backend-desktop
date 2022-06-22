@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -18,15 +19,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.AdminPageAdicionarController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.EquipasController">
     <children>
         <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-                <Button layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#seguinte" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox layoutX="156.0" layoutY="135.0" prefHeight="330.0" prefWidth="391.0">
+                <Button fx:id="confirmar" layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox layoutX="156.0" layoutY="135.0" prefHeight="330.0" prefWidth="376.0">
                <children>
                   <GridPane vgap="30.0">
                     <columnConstraints>
@@ -46,21 +47,21 @@
                     </rowConstraints>
                      <children>
                             <Label text="O que pretende adicionar:" />
-                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
                             <Label text="Nome:" GridPane.rowIndex="2" />
-                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <Label text="Data de Fundação:" GridPane.rowIndex="3" />
-                            <DatePicker fx:id="data" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <Label text="País:" GridPane.rowIndex="4" />
-                            <ChoiceBox fx:id="pais" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                             <Label text="Cidade:" GridPane.rowIndex="5" />
-                            <ChoiceBox fx:id="cidade" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             <Label text="Associação:" GridPane.rowIndex="6" />
-                            <ChoiceBox fx:id="associacao" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <ChoiceBox fx:id="associacao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                             <Label prefHeight="17.0" prefWidth="36.0" text="Sigla:" GridPane.rowIndex="7" />
-                            <TextField fx:id="sigla" prefHeight="26.0" prefWidth="65.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <TextField fx:id="sigla" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                             <Label text="Contacto:" GridPane.rowIndex="8" />
-                            <TextField fx:id="contacto" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <TextField fx:id="contacto" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <ComboBox fx:id="pais" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cidade" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -78,6 +79,7 @@
             <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="131.0" layoutY="81.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
             <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="32.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
+            <Label fx:id="labelErro" layoutX="327.0" layoutY="502.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">

@@ -1,13 +1,8 @@
 package pt.ipvc.fx.misc;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
-import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.fx.controller.ControladorGlobal;
-import javafx.util.Callback;
 
 import java.time.LocalDate;
 
@@ -33,15 +28,23 @@ public class ValidarInput {
         return false;
     }
 
+    public static boolean validarListView(boolean value) {
+        if (value){
+            System.out.println("true");
+            return true;
+        }
+        System.out.println("false");
+
+        return false;
+    }
+
     public static boolean validarChoiceBox(Object value) {
         if (value != null)
             return !value.equals(null);
         return false;
     }
-
-    //tem covid esta merda
     public static boolean validarDatas(@NotNull LocalDate dInicio, @NotNull LocalDate dFim) {
-        //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fim
+        //Data Inico ocorre         //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fimantes da Data Fim ou Data Inicio ocorre quando a Data Fim
         return !(dInicio.compareTo(dFim) > 0);
     }
 
