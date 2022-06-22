@@ -86,4 +86,14 @@ public class CompeticaoRepository extends Repository {
             return null;
         }
     }
+
+    public List findAllCompeticoesModalidadeNome() {
+        try {
+            Query query = _entityManager.createQuery("SELECT c.nome, c.dataInicio, c.dataFim, c.genero, m.nome as modalidade FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id");
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem competicoes");
+            return null;
+        }
+    }
 }

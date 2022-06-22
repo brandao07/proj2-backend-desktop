@@ -33,6 +33,10 @@ public class CompeticaoBLL {
         return competicaoRepository.findAllActive();
     }
 
+    public static List getCompeticoesModalidadeNome() {
+        return competicaoRepository.findAllCompeticoesModalidadeNome();
+    }
+
     public static Competicao criarCompeticao(String nome, String genero, LocalDate dataInicio, LocalDate dataFim, @NotNull Modalidade modalidade) {
 
         Competicao competicao = new Competicao(nome, Date.valueOf(dataInicio), Date.valueOf(dataFim), genero);
