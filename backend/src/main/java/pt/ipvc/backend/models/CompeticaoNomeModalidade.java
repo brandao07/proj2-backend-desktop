@@ -1,9 +1,6 @@
 package pt.ipvc.backend.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.util.Date;
 
 public class CompeticaoNomeModalidade {

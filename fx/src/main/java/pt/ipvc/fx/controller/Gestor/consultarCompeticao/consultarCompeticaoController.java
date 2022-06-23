@@ -30,9 +30,8 @@ import java.time.ZoneId;
 import java.util.*;
 
 public class consultarCompeticaoController implements Initializable {
-    @FXML
-    private ChoiceBox<String> modalidade;
 
+    public static String comp;
     @FXML
     private TableView<CompeticaoNomeModalidade> competicoes;
 
@@ -40,10 +39,7 @@ public class consultarCompeticaoController implements Initializable {
     private TableColumn<CompeticaoNomeModalidade, String> colNome;
 
     @FXML
-    private TableColumn<CompeticaoNomeModalidade, String> colDataInicio;
-
-    @FXML
-    private DatePicker teste;
+    private TableColumn<CompeticaoNomeModalidade, Date> colDataInicio;
 
     @FXML
     private TableColumn<CompeticaoNomeModalidade, String> colDataFim;
@@ -55,9 +51,6 @@ public class consultarCompeticaoController implements Initializable {
     private TableColumn<CompeticaoNomeModalidade,String> colModalidade;
 
     @FXML
-    private Label pesquisaInvalida;
-
-    @FXML
     private Label verDetalhesInvalido;
 
     @FXML
@@ -67,68 +60,18 @@ public class consultarCompeticaoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         competicoes.getColumns().clear();
-        competicoes.setEditable(true);
 
         ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNome());
 
         colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
 
-        colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("dataInicio"));
-//        colDataInicio.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        colDataInicio.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
-                CompeticaoNomeModalidade competicao = event.getRowValue();
-                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    competicao.setDataInicio(format.parse(event.getNewValue()));
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, Date>("dataInicio"));
 
         colDataFim.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("dataFim"));
-//        colDataFim.setCellFactory(TextFieldTableCell.forTableColumn());
-//        colDataFim.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
-//            @Override
-//            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
-//                CompeticaoNomeModalidade competicao = event.getRowValue();
-//                competicao.setDataFim(Date.valueOf((event.getNewValue())));
-//            }
-//        });
-
-        ObservableList<String> list = FXCollections.observableArrayList(StringGeneros.generos());
 
         colGenero.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("genero"));
-        colGenero.setCellFactory(ComboBoxTableCell.forTableColumn(list));
-        colGenero.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
-                CompeticaoNomeModalidade competicao = event.getRowValue();
-                competicao.setGenero(event.getNewValue());
-            }
-        });
-
-
-        List<String> ob = new ArrayList<>();
-        List<Modalidade> modalidades = ModalidadeBLL.getModalidades();
-        for(Modalidade m : modalidades){
-            ob.add(m.getNome());
-        }
-
-        ObservableList<String> teste = FXCollections.observableArrayList(ob);
 
         colModalidade.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("modalidade"));
-        colModalidade.setCellFactory(ComboBoxTableCell.forTableColumn(teste));
-        colModalidade.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<CompeticaoNomeModalidade, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<CompeticaoNomeModalidade, String> event) {
-                CompeticaoNomeModalidade competicao = event.getRowValue();
-                competicao.setModalidade(event.getNewValue());
-            }
-        });
 
         competicoes.setItems(dados);
 
@@ -137,38 +80,21 @@ public class consultarCompeticaoController implements Initializable {
         competicoes.getColumns().add(colDataFim);
         competicoes.getColumns().add(colGenero);
         competicoes.getColumns().add(colModalidade);
-
-        //TODO: CAMPOS implementar os metodos abaixo
-
-        // FIXED listar as modalidades
-        // ModalidadeBLL.getModalidades()
-        // FIXED listar competicoes por modalidade
-        // CompeticaoBLL.getCompeticoesModalidade(string);
-
     }
 
     public void pesquisar() {
         if (ValidarInput.validarString(pesquisa.getText())) {
             return;
         }
-        pesquisaInvalida.setText("Insira um Campo para Pesquisar!");
     }
 
-    public void editar() throws ParseException {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date d = new Date();
-        d = competicoes.getSelectionModel().getSelectedItem().getDataInicio();
-        teste.setValue(Instant.ofEpochMilli(d.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
-        Competicao p = CompeticaoBLL.getCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome());
-        p.setDataInicio(java.sql.Date.valueOf(teste.getValue()));
+    public void editar(ActionEvent event){
+        comp = competicoes.getSelectionModel().getSelectedItem().getNome();
+        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/editar-competicoes.fxml", event);
     }
 
     public void verDetalhes() {
         verDetalhesInvalido.setText("Selecione uma Competição!");
-    }
-
-    public void anterior(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 
     public void setBtnNavMenu(ActionEvent event) {

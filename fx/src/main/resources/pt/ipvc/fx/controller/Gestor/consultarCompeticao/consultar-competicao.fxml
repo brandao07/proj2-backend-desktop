@@ -2,8 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -22,7 +20,7 @@
                 <DropShadow />
             </effect>
             <children>
-                <TableView fx:id="competicoes" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0" style="-: #0f4c83;">
+                <TableView fx:id="competicoes" layoutX="48.0" layoutY="177.0" prefHeight="239.0" prefWidth="616.0" style="-: #0f4c83;">
                     <columns>
                         <TableColumn fx:id="colNome" prefWidth="180.8000030517578" text="Nome" />
                         <TableColumn fx:id="colDataInicio" minWidth="0.0" prefWidth="103.99993896484375" text="Data Inico" />
@@ -31,21 +29,18 @@
                         <TableColumn fx:id="colModalidade" prefWidth="135.2000732421875" text="Modalidade" />
                     </columns>
                 </TableView>
-                <ChoiceBox fx:id="modalidade" layoutX="214.0" layoutY="102.0" prefWidth="150.0" />
-                <Label layoutX="61.0" layoutY="106.0" text="Selecione uma Modalidade:" />
-                <Button layoutX="571.0" layoutY="456.0" mnemonicParsing="false" onAction="#verDetalhes" style="-fx-background-color: #0f4c83;" text="Ver Detalhes" textFill="WHITE" />
-                <Line endX="371.80706787109375" endY="327.9000244140625" layoutX="302.0" layoutY="216.0" startX="-266.0" startY="327.492919921875" stroke="#0f4c83" />
-                <Line endX="389.30706787109375" endY="423.4000244140625" layoutX="284.0" layoutY="120.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
-                <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-106.20001220703125" startY="-3.1142196655273438" stroke="#0f4c83" />
-                <Label layoutX="62.0" layoutY="56.0" text="Competições" textFill="#0f4c83">
+                <Button layoutX="572.0" layoutY="434.0" mnemonicParsing="false" onAction="#verDetalhes" style="-fx-background-color: #0f4c83;" text="Ver Detalhes" textFill="WHITE" />
+                <Line endX="392.92852783203125" endY="318.8999938964844" layoutX="284.0" layoutY="163.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+                <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="114.0" startX="-106.20001220703125" startY="-3.1142196655273438" stroke="#0f4c83" />
+                <Label layoutX="62.0" layoutY="99.0" text="Competições" textFill="#0f4c83">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="79.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-                <Line endX="-0.5000152587890625" endY="540.992919921875" layoutX="36.0" layoutY="2.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
-                <TextField fx:id="pesquisa" layoutX="463.0" layoutY="143.0" promptText="Insira o Nome do Campo" />
-                <Button layoutX="620.0" layoutY="142.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="26.0" prefWidth="32.0" style="-fx-background-color: transparent;">
+                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="122.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
+                <Line endX="-0.5000152587890625" endY="436.3999938964844" layoutX="36.0" layoutY="45.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+                <TextField fx:id="pesquisa" layoutX="452.0" layoutY="131.0" promptText="Insira o Nome do Campo" />
+                <Button layoutX="602.0" layoutY="130.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="26.0" prefWidth="32.0" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -54,11 +49,11 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="505.0" layoutY="488.0" prefHeight="18.0" prefWidth="159.0" textFill="RED" />
-                <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
-                <Button layoutX="505.0" layoutY="456.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-                <Button layoutX="424.0" layoutY="456.0" mnemonicParsing="false" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
-            <DatePicker fx:id="teste" layoutX="121.0" layoutY="456.0" />
+                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="127.0" layoutY="437.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
+                <Button layoutX="503.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+                <Button layoutX="409.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+            <Line endX="359.42852783203125" endY="287.3999938964844" layoutX="317.0" layoutY="194.0" startX="-281.0" startY="287.3999938964844" stroke="#0f4c83" />
+            <Label fx:id="editarInvalido" layoutX="311.0" layoutY="520.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
