@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.EditarDadosAtletaController">
+    <children>
+        <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow />
+            </effect>
+            <children>
+                <Button layoutX="572.0" layoutY="520.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox alignment="CENTER" layoutX="108.0" layoutY="95.0" prefHeight="310.0" prefWidth="487.0">
+               <children>
+                  <GridPane alignment="CENTER" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="131.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="281.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                            <Label text="Nome:" GridPane.rowIndex="2" />
+                            <Label text="Data de Nascimento:" GridPane.rowIndex="3" />
+                            <Label text="Modalidade:" GridPane.rowIndex="4" />
+                            <Label text="Nacionalidade:" GridPane.rowIndex="5" />
+                            <Label text="Genêro:" GridPane.rowIndex="6" />
+                            <Label text="Peso:" GridPane.rowIndex="7" />
+                            <Label text="Altura:" GridPane.rowIndex="8" />
+                            <Label text="Posição:" GridPane.rowIndex="9" />
+                            <Label text="Equipa:" GridPane.rowIndex="10" />
+                            <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <TextField fx:id="peso" prefHeight="26.0" prefWidth="167.0" promptText="kg" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            <TextField fx:id="altura" prefHeight="26.0" prefWidth="57.0" promptText="m" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <ChoiceBox fx:id="posicao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <ChoiceBox fx:id="equipa" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label prefHeight="17.0" prefWidth="162.0" text="O que pretende consultar:" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Line endX="389.30706787109375" endY="435.4158935546875" layoutX="284.0" layoutY="122.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="73.0" startX="-110.0" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="62.0" layoutY="58.0" text="Editar Atleta" textFill="#0f4c83">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="138.0" layoutY="81.0" startX="-102.00001525878906" startY="-12.700004577636719" stroke="#0f4c83" />
+            <Line endX="-0.5000152587890625" endY="553.2088012695312" layoutX="36.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+            <Line endX="486.30706787109375" endY="-3.0841064453125" layoutX="187.0" layoutY="561.0" startX="-151.50001525878906" startY="-3.29119873046875" stroke="#0f4c83" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="320.0" layoutY="506.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
+            <children>
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </AnchorPane>
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="53.0" text="Sistema" textFill="WHITE" />
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;" text="Consultar Dados" textFill="#0f4c83">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/folder.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/user.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/tools.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Button>
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/add.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+    </children>
+</AnchorPane>

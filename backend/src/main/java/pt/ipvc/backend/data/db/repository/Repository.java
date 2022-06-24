@@ -27,7 +27,6 @@ public abstract class Repository {
     }
 
     public void delete(Object object) {
-        _entityManager = _emf.createEntityManager();
         _entityManager.getTransaction().begin();
         _entityManager.remove(object);
         _entityManager.getTransaction().commit();

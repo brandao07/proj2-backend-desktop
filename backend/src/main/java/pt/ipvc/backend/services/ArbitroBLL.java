@@ -39,4 +39,13 @@ public class ArbitroBLL {
     public static void removerArbitro(String nome) {
         arbitroRepository.delete(ArbitroBLL.getArbitro(nome));
     }
+
+    public static List getArbitroNomeModalidade() {
+        return arbitroRepository.findAllArbitroNomeModalidade();
+    }
+
+    public static Arbitro getArbitroId(long id){
+        return (Arbitro) arbitroRepository.find(id);
+
+    }
 }

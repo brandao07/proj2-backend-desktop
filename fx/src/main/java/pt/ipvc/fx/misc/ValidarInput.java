@@ -70,9 +70,9 @@ public class ValidarInput {
     public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event) {
         switch (value) {
             case "Árbitros" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-sistema-adicionar-user.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
             case "Atletas" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-atleta.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
             case "Equipas" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-equipa.fxml", event);
             case "Prémios" ->
@@ -89,10 +89,12 @@ public class ValidarInput {
         }
     }
 
+
+
     public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event) {
         switch (value) {
             case "Consultar Dados" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-arbitros.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
             case "Adicicionar Dados" ->
                     ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
             case "Consultar Sistema" ->

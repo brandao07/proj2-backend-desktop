@@ -38,4 +38,8 @@ public class AtletaBLL {
     public static void removerAtleta(String nome) {
         atletaRepository.delete(AtletaBLL.getAtleta(nome));
     }
+
+    public static List getAtletaNomeEquipa_Modalidade() {
+        return atletaRepository.findAllAtletaNomeEquipaModalidade();
+    }
 }

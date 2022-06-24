@@ -50,6 +50,8 @@ public class Arbitro {
         this.categoria = categoria;
     }
 
+
+
     public Set<Prova> getProvas() {
         return provas;
     }
