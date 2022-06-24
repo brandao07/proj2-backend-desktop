@@ -13,14 +13,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.consultarCompeticao.consultarCompeticaoController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.gerirCompeticao.GerirCompeticaoController">
     <children>
         <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-                <TableView fx:id="competicoes" layoutX="48.0" layoutY="177.0" prefHeight="239.0" prefWidth="616.0" style="-: #0f4c83;">
+                <TableView fx:id="competicoes" layoutX="48.0" layoutY="177.0" prefHeight="239.0" prefWidth="616.0" style="-:#0f4c83;">
                     <columns>
                         <TableColumn fx:id="colNome" prefWidth="180.8000030517578" text="Nome" />
                         <TableColumn fx:id="colDataInicio" minWidth="0.0" prefWidth="103.99993896484375" text="Data Inico" />
@@ -29,8 +29,8 @@
                         <TableColumn fx:id="colModalidade" prefWidth="135.2000732421875" text="Modalidade" />
                     </columns>
                 </TableView>
-                <Button layoutX="572.0" layoutY="434.0" mnemonicParsing="false" onAction="#verDetalhes" style="-fx-background-color: #0f4c83;" text="Ver Detalhes" textFill="WHITE" />
-                <Line endX="392.92852783203125" endY="318.8999938964844" layoutX="284.0" layoutY="163.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+                <Button layoutX="572.0" layoutY="434.0" mnemonicParsing="false" onAction="#gerirProvas" style="-fx-background-color: #0f4c83;" text="Gerir Provas" textFill="WHITE" />
+                <Line endX="389.30706787109375" endY="355.9000244140625" layoutX="284.0" layoutY="163.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
                 <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="114.0" startX="-106.20001220703125" startY="-3.1142196655273438" stroke="#0f4c83" />
                 <Label layoutX="62.0" layoutY="99.0" text="Competições" textFill="#0f4c83">
                     <font>
@@ -38,7 +38,7 @@
                     </font>
                 </Label>
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="122.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-                <Line endX="-0.5000152587890625" endY="436.3999938964844" layoutX="36.0" layoutY="45.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+                <Line endX="-0.7071075439453125" endY="473.69293212890625" layoutX="36.0" layoutY="45.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
                 <TextField fx:id="pesquisa" layoutX="452.0" layoutY="131.0" promptText="Insira o Nome do Campo" />
                 <Button layoutX="602.0" layoutY="130.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="26.0" prefWidth="32.0" style="-fx-background-color: transparent;">
                     <graphic>
@@ -49,11 +49,12 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="127.0" layoutY="437.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
-                <Button layoutX="503.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-                <Button layoutX="409.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
-            <Line endX="359.42852783203125" endY="287.3999938964844" layoutX="317.0" layoutY="194.0" startX="-281.0" startY="287.3999938964844" stroke="#0f4c83" />
+                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="344.0" layoutY="482.0" prefHeight="18.0" prefWidth="312.0" textFill="RED" />
+                <Button layoutX="417.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+                <Button layoutX="340.0" layoutY="434.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+            <Line endX="355.80706787109375" endY="287.4000244140625" layoutX="317.0" layoutY="232.0" startX="-281.0" startY="287.3999938964844" stroke="#0f4c83" />
             <Label fx:id="editarInvalido" layoutX="311.0" layoutY="520.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
+            <Button layoutX="478.0" layoutY="434.0" mnemonicParsing="false" onAction="#gerirPremios" style="-fx-background-color: #0f4c83;" text="Gerir Prémios" textFill="WHITE" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">

@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="pt.ipvc.fx.controller.Gestor.consultarCompeticao.consultarProvaController">
+            fx:controller="pt.ipvc.fx.controller.Gestor.gerirCompeticao.GerirProvaController">
     <children>
         <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>

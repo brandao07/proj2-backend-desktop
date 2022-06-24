@@ -11,22 +11,19 @@ import javafx.scene.control.Label;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.data.db.entity.Equipa;
-import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Recinto;
-import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.*;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class adicionarProvaController implements Initializable {
+public class AdicionarProvaController implements Initializable {
     @FXML
     private ChoiceBox<String> equipaCasa;
 
@@ -93,7 +90,7 @@ public class adicionarProvaController implements Initializable {
         else if (!ValidarInput.validarChoiceBox(arbitro.getValue()))
             invalidDados.setText("Selecione uma opção no campo Árbitro");
         else
-        ProvaBLL.criarProva(data.getValue(), criarCompeticaoController.compSelecionada.getNome(), equipaCasa.getValue(),
+        ProvaBLL.criarProva(data.getValue(), CriarCompeticaoController.compSelecionada.getNome(), equipaCasa.getValue(),
                     equipaFora.getValue(), recinto.getValue(), arbitro.getValue());
     }
     public void confirmarContinuar(ActionEvent event) {

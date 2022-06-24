@@ -16,7 +16,6 @@ import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
-import pt.ipvc.fx.controller.Gestor.consultarCompeticao.consultarCompeticaoController;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 

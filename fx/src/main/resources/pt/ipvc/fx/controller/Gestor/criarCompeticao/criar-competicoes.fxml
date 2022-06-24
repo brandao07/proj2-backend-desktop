@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.criarCompeticaoController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.criarCompeticao.CriarCompeticaoController">
     <children>
         <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>
@@ -31,7 +31,6 @@
                 <DatePicker fx:id="dataFim" layoutX="313.0" layoutY="153.0" />
                 <ChoiceBox fx:id="genero" layoutX="313.0" layoutY="199.0" prefWidth="150.0" />
                 <ChoiceBox fx:id="modalidade" layoutX="313.0" layoutY="242.0" prefWidth="150.0" />
-                <Button layoutX="29.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior" textFill="WHITE" />
                 <Button layoutX="599.0" layoutY="547.0" mnemonicParsing="false" onAction="#seguinte" style="-fx-background-color: #0f4c83;" text="Seguinte" textFill="WHITE" />
                 <Label fx:id="invalidDados" alignment="CENTER" layoutX="190.0" layoutY="281.0" prefHeight="18.0" prefWidth="335.0" textFill="#ef0000" />
                 <Label layoutX="121.0" layoutY="26.0" prefHeight="22.0" prefWidth="128.0" text="Dados Competição" textFill="#0f4c83">

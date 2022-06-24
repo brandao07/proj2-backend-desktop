@@ -1,37 +1,25 @@
-package pt.ipvc.fx.controller.Gestor.consultarCompeticao;
+package pt.ipvc.fx.controller.Gestor.gerirCompeticao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.control.skin.DatePickerSkin;
-import pt.ipvc.backend.data.db.entity.Competicao;
-import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.services.CompeticaoBLL;
-import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
-import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
-public class consultarCompeticaoController implements Initializable {
+public class GerirCompeticaoController implements Initializable {
 
     public static String comp;
+
+    public static CompeticaoNomeModalidade aux;
     @FXML
     private TableView<CompeticaoNomeModalidade> competicoes;
 
@@ -89,12 +77,47 @@ public class consultarCompeticaoController implements Initializable {
     }
 
     public void editar(ActionEvent event){
+        aux = competicoes.getSelectionModel().getSelectedItem();
+
+        if(aux == null){
+            verDetalhesInvalido.setText("Selecione uma Competição");
+            return;
+        }
         comp = competicoes.getSelectionModel().getSelectedItem().getNome();
         ControladorGlobal.chamaScene("Gestor/consultarCompeticao/editar-competicoes.fxml", event);
     }
 
-    public void verDetalhes() {
-        verDetalhesInvalido.setText("Selecione uma Competição!");
+    public void gerirProvas (ActionEvent event) {
+        aux = competicoes.getSelectionModel().getSelectedItem();
+
+        if (aux == null){
+            verDetalhesInvalido.setText("Selecione uma Competição!");
+            return;
+        }
+        comp = competicoes.getSelectionModel().getSelectedItem().getNome();
+        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-prova.fxml", event);
+    }
+
+    public void gerirPremios(ActionEvent event) {
+        aux = competicoes.getSelectionModel().getSelectedItem();
+
+        if (aux == null){
+            verDetalhesInvalido.setText("Selecione uma Competição!");
+            return;
+        }
+        comp = competicoes.getSelectionModel().getSelectedItem().getNome();
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/.fxml", event);
+    }
+
+    public void remover(ActionEvent event){
+        aux = competicoes.getSelectionModel().getSelectedItem();
+
+        if (aux == null){
+            verDetalhesInvalido.setText("Selecione uma Competição!");
+            return;
+        }
+        CompeticaoBLL.removerCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome());
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
     }
 
     public void setBtnNavMenu(ActionEvent event) {

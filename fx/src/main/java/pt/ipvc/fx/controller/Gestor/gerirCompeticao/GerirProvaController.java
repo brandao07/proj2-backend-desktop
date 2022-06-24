@@ -1,4 +1,4 @@
-package pt.ipvc.fx.controller.Gestor.consultarCompeticao;
+package pt.ipvc.fx.controller.Gestor.gerirCompeticao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class consultarProvaController implements Initializable {
+public class GerirProvaController implements Initializable {
 
     @FXML
     private TableView competicoes;

@@ -44,7 +44,7 @@ public class ValidarInput {
         return false;
     }
     public static boolean validarDatas(@NotNull LocalDate dInicio, @NotNull LocalDate dFim) {
-        //Data Inico ocorre         //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fimantes da Data Fim ou Data Inicio ocorre quando a Data Fim
+        //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fimantes da Data Fim ou Data Inicio ocorre quando a Data Fim
         return !(dInicio.compareTo(dFim) > 0);
     }
 
@@ -104,7 +104,7 @@ public class ValidarInput {
             case "Criar Competição" ->
                     ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
             case "Gerir Competição" ->
-                    ControladorGlobal.chamaScene("Gestor/consultarCompeticao/consultar-competicao.fxml", event);
+                    ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-competicao.fxml", event);
             default -> System.out.println("ERRO");
         }
     }

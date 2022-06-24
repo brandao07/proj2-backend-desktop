@@ -1,7 +1,6 @@
 package pt.ipvc.fx.controller.Gestor.criarCompeticao;
 
 
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import pt.ipvc.backend.data.db.entity.Premio;
 import pt.ipvc.backend.data.db.entity.TipoPremio;
-import pt.ipvc.backend.models.NomeTipoPremio;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.PremioBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
@@ -26,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class adicionarDetalhesController implements Initializable {
+public class AdicionarDetalhesController implements Initializable {
     public static String path;
     @FXML
     private TableView<Premio> tableView;
@@ -48,7 +46,7 @@ public class adicionarDetalhesController implements Initializable {
 
         tableView.getColumns().clear();
         tableView.setEditable(true);
-        path = CompeticaoBLL.getCompeticao(criarCompeticaoController.compSelecionada.getNome()).getNome();
+        path = CompeticaoBLL.getCompeticao(CriarCompeticaoController.compSelecionada.getNome()).getNome();
 
         ObservableList<Premio> dados = FXCollections.observableArrayList(PremioBLL.getPremio(path));
 
