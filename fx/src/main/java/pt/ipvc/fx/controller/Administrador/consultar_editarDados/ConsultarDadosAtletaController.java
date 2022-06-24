@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import pt.ipvc.backend.data.db.entity.Posicao;
-import pt.ipvc.backend.models.ArbitroNomeModalidade;
 import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
-import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -72,7 +69,7 @@ public class ConsultarDadosAtletaController implements Initializable {
         colunaData.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("dataNascimento"));
         colunaModalidade.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("modalidade"));
         colunaNacionalidade.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("nacionalidade"));
-        colunaGenero.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("genero"));
+          colunaGenero.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("genero"));
         colunaPeso.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, Double>("peso"));
         colunaAltura.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, Double>("altura"));
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("posicao"));
@@ -108,8 +105,8 @@ public class ConsultarDadosAtletaController implements Initializable {
 
     public void setBtnEditar(ActionEvent event){
         System.out.println(tabela1.getSelectionModel().getSelectedItem().toString());
-        //atletaSceneConsultar = tabela.getSelectionModel().getSelectedItem().getNome();
-        //ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
+        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().toString();
+        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
     }
 
     //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS

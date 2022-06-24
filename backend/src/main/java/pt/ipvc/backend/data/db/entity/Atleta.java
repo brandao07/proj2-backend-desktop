@@ -63,60 +63,12 @@ public class Atleta {
         this.posicao = posicao;
     }
 
-    public Equipa getEquipa() {
-        return equipa;
+    public Long getId() {
+        return id;
     }
 
-    public void setEquipa(Equipa equipa) {
-        this.equipa = equipa;
-    }
-
-    public String getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(String posicao) {
-        this.posicao = posicao;
-    }
-
-    public String getNacionalidade() {
-        return nacionalidade;
-    }
-
-    public void setNacionalidade(String nacionalidade) {
-        this.nacionalidade = nacionalidade;
-    }
-
-    public Double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Double altura) {
-        this.altura = altura;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -127,12 +79,60 @@ public class Atleta {
         this.nome = nome;
     }
 
-    public Long getId() {
-        return id;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+
+    public Double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public String getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
+
+    public Equipa getEquipa() {
+        return equipa;
+    }
+
+    public void setEquipa(Equipa equipa) {
+        this.equipa = equipa;
     }
 
     @Override
