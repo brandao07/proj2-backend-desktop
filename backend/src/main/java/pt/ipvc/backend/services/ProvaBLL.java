@@ -1,10 +1,12 @@
 package pt.ipvc.backend.services;
 
+import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Prova;
 import pt.ipvc.backend.data.db.repository.ProvaRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ProvaBLL {
 
@@ -23,4 +25,21 @@ public class ProvaBLL {
         }
         System.out.println("Prova criada com sucesso!");
     }
+
+    public static Prova getProva(Long id) {
+        return (Prova) provaRepository.find(id);
+    }
+
+    public static void updateProva(Prova prova) {
+        provaRepository.update(prova);
+    }
+
+    public static void removerProva(Long id) {
+        provaRepository.delete(ProvaBLL.getProva(id));
+    }
+
+    public static List getProvaEquipasNome(Long id) {
+        return provaRepository.findAllProvaEquipasNome(id);
+    }
+
 }

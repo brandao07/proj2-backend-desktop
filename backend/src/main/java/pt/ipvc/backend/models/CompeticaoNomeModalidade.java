@@ -4,6 +4,9 @@ package pt.ipvc.backend.models;
 import java.util.Date;
 
 public class CompeticaoNomeModalidade {
+
+    private Long id;
+
     private String nome;
 
     private Date dataInicio;
@@ -17,12 +20,13 @@ public class CompeticaoNomeModalidade {
 
     private String modalidade;
 
-    public CompeticaoNomeModalidade(String nome, Date dataInicio, Date dataFim, String genero, String modalidade) {
+    public CompeticaoNomeModalidade(String nome, Date dataInicio, Date dataFim, String genero, String modalidade, Long id) {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.genero = genero;
         this.modalidade = modalidade;
+        this.id = id;
     }
 
     public CompeticaoNomeModalidade() {
@@ -69,6 +73,14 @@ public class CompeticaoNomeModalidade {
         this.modalidade = modalidade;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "CompeticaoNomeModalidade{" +
@@ -77,6 +89,7 @@ public class CompeticaoNomeModalidade {
                 ", dataFim=" + dataFim +
                 ", genero='" + genero + '\'' +
                 ", modalidade='" + modalidade + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

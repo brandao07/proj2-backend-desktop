@@ -101,7 +101,7 @@ public class CompeticaoRepository extends Repository {
 
     public List findAllCompeticoesModalidadeNome() {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id", CompeticaoNomeModalidade.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome, c.id) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id", CompeticaoNomeModalidade.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem competicoes");

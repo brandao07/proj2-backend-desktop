@@ -75,14 +75,6 @@ public class EditarCompeticaoController implements Initializable {
             competicao.setNome(nomeCompeticao.getText());
         }
 
-        competicao.setDataInicio(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataInicio());
-        if(dataInicio.getValue() != null)
-            competicao.setDataInicio(java.sql.Date.valueOf(dataInicio.getValue()));
-
-        competicao.setDataFim(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataFim());
-        if(dataFim.getValue() != null)
-            competicao.setDataFim(java.sql.Date.valueOf(dataFim.getValue()));
-
         if(dataInicio.getValue() != null || dataFim.getValue() != null) {
             if (dataInicio.getValue() != null && dataFim.getValue() != null) {
                 if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())) {
@@ -101,6 +93,14 @@ public class EditarCompeticaoController implements Initializable {
                 }
             }
         }
+
+        competicao.setDataInicio(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataInicio());
+        if(dataInicio.getValue() != null)
+            competicao.setDataInicio(java.sql.Date.valueOf(dataInicio.getValue()));
+
+        competicao.setDataFim(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataFim());
+        if(dataFim.getValue() != null)
+            competicao.setDataFim(java.sql.Date.valueOf(dataFim.getValue()));
 
         competicao.setGenero(genero.getValue());
         if (!ValidarInput.validarChoiceBox(genero.getValue()))

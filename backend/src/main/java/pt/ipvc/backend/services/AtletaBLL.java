@@ -28,7 +28,6 @@ public class AtletaBLL {
 
     public static List getAtletas() {
         return atletaRepository.findAll();
-
     }
 
     public static void updateAtleta(Object atleta) {

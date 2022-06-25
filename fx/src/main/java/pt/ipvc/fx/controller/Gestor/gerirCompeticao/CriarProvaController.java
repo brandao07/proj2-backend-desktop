@@ -1,4 +1,4 @@
-package pt.ipvc.fx.controller.Gestor.criarCompeticao;
+package pt.ipvc.fx.controller.Gestor.gerirCompeticao;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Arbitro;
+import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.services.*;
@@ -17,16 +18,13 @@ import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
-import java.util.Date;
-import java.time.Instant;
 import java.time.ZoneId;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class AdicionarProvaController implements Initializable {
+public class CriarProvaController implements Initializable {
+    public static Competicao competicao;
+
     @FXML
     private ChoiceBox<String> equipaCasa;
 
@@ -48,13 +46,15 @@ public class AdicionarProvaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Set<String> equipas = ((List<Equipa>)EquipasBLL.getEquipas()).stream().
+        competicao = CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp);
+
+        Set<String> equipas = ((List<Equipa>) EquipasBLL.getEquipas()).stream().
                 map(Equipa::getNome).collect(Collectors.toSet());
 
-        Set<String> recintos = ((List<Recinto>)RecintoBLL.getRecintos()).stream().
+        Set<String> recintos = ((List<Recinto>) RecintoBLL.getRecintos()).stream().
                 map(Recinto::getNome).collect(Collectors.toSet());
 
-        Set<String> arbitros = ((List<Arbitro>)ArbitroBLL.getArbitros()).stream().
+        Set<String> arbitros = ((List<Arbitro>) ArbitroBLL.getArbitros()).stream().
                 map(Arbitro::getNome).collect(Collectors.toSet());
 
         Set<String> equipasFora = new HashSet<>();
@@ -64,11 +64,12 @@ public class AdicionarProvaController implements Initializable {
             public void changed(ObservableValue ov, String t, String t1) {
                 equipaFora.getItems().clear();
                 equipasFora.clear();
-                    for (String e: equipas) {
-                        if (!e.equals(equipaCasa.getValue()))
-                            equipasFora.add(e);
+                for (String e: equipas) {
+                    if (!e.equals(equipaCasa.getValue())){
+                        equipasFora.add(e);
                     }
-                    equipaFora.getItems().addAll(equipasFora);
+                }
+                equipaFora.getItems().addAll(equipasFora);
             }
         });
 
@@ -77,8 +78,7 @@ public class AdicionarProvaController implements Initializable {
         arbitro.getItems().addAll(arbitros);
     }
 
-    public void criarProva() {
-
+    public void confirmar(ActionEvent event){
         if (!ValidarInput.validarChoiceBox(equipaCasa.getValue()))
             invalidDados.setText("Selecione uma opção no Campo Equipa Casa");
 
@@ -97,23 +97,16 @@ public class AdicionarProvaController implements Initializable {
 
         else if (data.getValue() != null){
             Date dt = Date.from((data.getValue()).atStartOfDay(ZoneId.systemDefault()).toInstant());
-            if(!((CriarCompeticaoController.compSelecionada.getDataInicio().compareTo(dt) <= 0)
-                    && (CriarCompeticaoController.compSelecionada.getDataFim().compareTo(dt) >= 0))){
-                invalidDados.setText("A data da Prova tem de estar entre as datas: " + CriarCompeticaoController.compSelecionada.getDataInicio() +
-                        " e a Data: " + CriarCompeticaoController.compSelecionada.getDataFim() + "!");
+            if(!((competicao.getDataInicio().compareTo(dt) <= 0)
+                    && (competicao.getDataFim().compareTo(dt) >= 0))){
+                invalidDados.setText("A data da Prova tem de estar entre as datas: " + competicao.getDataInicio() +
+                        " e a Data: " + competicao.getDataFim() + "!");
                 return;
             }
         }
-        ProvaBLL.criarProva(data.getValue(), CriarCompeticaoController.compSelecionada.getNome(), equipaCasa.getValue(),
+        ProvaBLL.criarProva(data.getValue(), competicao.getNome(), equipaCasa.getValue(),
                 equipaFora.getValue(), recinto.getValue(), arbitro.getValue());
-    }
-    public void confirmarContinuar(ActionEvent event) {
-        this.criarProva();
-        ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
-    }
-    public void confirmarSair(ActionEvent event) {
-        this.criarProva();
-        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
     }
 
     public void anterior(ActionEvent event) {
@@ -126,5 +119,4 @@ public class AdicionarProvaController implements Initializable {
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
-
 }

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.gerirCompeticao.CriarProvaController">
+    <children>
+        <AnchorPane layoutX="202.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow />
+            </effect>
+            <children>
+                <Label layoutX="223.0" layoutY="157.0" prefHeight="18.0" prefWidth="70.0" text="Equipa Casa:" />
+                <Label layoutX="226.0" layoutY="198.0" text="Equipa Fora:" />
+                <Label layoutX="249.0" layoutY="240.0" text="Recinto:" />
+                <Label layoutX="159.0" layoutY="106.0" text="Criar Prova" textFill="#0f4c83">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="equipaCasa" layoutX="302.0" layoutY="154.0" prefWidth="150.0" />
+                <ChoiceBox fx:id="equipaFora" layoutX="302.0" layoutY="194.0" prefWidth="150.0" />
+                <ChoiceBox fx:id="recinto" layoutX="302.0" layoutY="236.0" prefWidth="150.0" />
+                <Label layoutX="269.0" layoutY="323.0" text="Data:" />
+                <DatePicker fx:id="data" layoutX="302.0" layoutY="319.0" promptText="Inisira uma data" />
+                <Line endX="351.60003662109375" endY="-2.7000045776367188" layoutX="218.0" layoutY="119.0" startX="22.79998779296875" startY="-2.7000045776367188" stroke="#0f4c83" />
+                <Line endX="330.20001220703125" endY="316.1999816894531" layoutX="242.0" layoutY="119.0" startX="-112.0" startY="316.1999816894531" stroke="#0f4c83" />
+                <Line endX="0.5" endY="252.69998168945312" layoutX="129.0" layoutY="182.0" startX="-0.5" startY="-65.20000457763672" stroke="#0f4c83" />
+                <Line endX="391.70001220703125" endY="267.6999816894531" layoutX="181.0" layoutY="168.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
+                <Button layoutX="26.0" layoutY="544.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior " textFill="WHITE" />
+                <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="228.0" layoutY="129.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
+                <Button layoutX="343.0" layoutY="388.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83;" text="Confirmar" textFill="WHITE" />
+                <Label fx:id="invalidDados" alignment="CENTER" layoutX="129.0" layoutY="355.0" prefHeight="18.0" prefWidth="443.0" textFill="RED" />
+            <ChoiceBox fx:id="arbitro" layoutX="302.0" layoutY="276.0" prefWidth="150.0" />
+            <Label layoutX="249.0" layoutY="280.0" text="Arbitro:" />
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
+            <children>
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </AnchorPane>
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="26.0" prefWidth="102.0" text="Competições" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Gerir Competição" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/folder.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/person-outline.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
+                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
+                <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/ellipsis-vertical-outline.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Button>
+                <JFXButton fx:id="criarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Criar Competição" textFill="#0f4c83">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/add.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -19,6 +19,8 @@ public class GerirCompeticaoController implements Initializable {
 
     public static String comp;
 
+    public static Long id;
+
     public static CompeticaoNomeModalidade aux;
     @FXML
     private TableView<CompeticaoNomeModalidade> competicoes;
@@ -84,7 +86,7 @@ public class GerirCompeticaoController implements Initializable {
             return;
         }
         comp = competicoes.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/editar-competicoes.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/editar-competicoes.fxml", event);
     }
 
     public void gerirProvas (ActionEvent event) {
@@ -94,8 +96,9 @@ public class GerirCompeticaoController implements Initializable {
             verDetalhesInvalido.setText("Selecione uma Competição!");
             return;
         }
+        id = competicoes.getSelectionModel().getSelectedItem().getId();
         comp = competicoes.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-prova.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
     }
 
     public void gerirPremios(ActionEvent event) {
@@ -106,7 +109,7 @@ public class GerirCompeticaoController implements Initializable {
             return;
         }
         comp = competicoes.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
     }
 
     public void remover(ActionEvent event){

@@ -1,7 +1,5 @@
 package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +12,6 @@ import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
-import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -23,7 +20,6 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -138,8 +134,5 @@ public class EditarDadosArbitroController implements Initializable {
         }
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
-
-
-
     }
 }
