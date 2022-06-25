@@ -10,6 +10,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -20,33 +24,54 @@
                 <DropShadow />
             </effect>
             <children>
-                <Label layoutX="223.0" layoutY="157.0" prefHeight="18.0" prefWidth="70.0" text="Equipa Casa:" />
-                <Label layoutX="226.0" layoutY="198.0" text="Equipa Fora:" />
-                <Label layoutX="249.0" layoutY="240.0" text="Recinto:" />
                 <Label layoutX="159.0" layoutY="106.0" text="Editar Prova" textFill="#0f4c83">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <ChoiceBox fx:id="equipaCasa" layoutX="302.0" layoutY="154.0" prefWidth="150.0" />
-                <ChoiceBox fx:id="equipaFora" layoutX="302.0" layoutY="194.0" prefWidth="150.0" />
-                <ChoiceBox fx:id="recinto" layoutX="302.0" layoutY="236.0" prefWidth="150.0" />
-                <Label layoutX="267.0" layoutY="394.0" text="Data:" />
-                <DatePicker fx:id="data" layoutX="303.0" layoutY="390.0" promptText="Inisira uma data" />
                 <Line endX="351.60003662109375" endY="-2.7000045776367188" layoutX="218.0" layoutY="119.0" startX="30.60003662109375" startY="-2.7000045776367188" stroke="#0f4c83" />
                 <Line endX="330.20001220703125" endY="316.1999816894531" layoutX="241.0" layoutY="193.0" startX="-112.0" startY="316.1999816894531" stroke="#0f4c83" />
                 <Line endX="-0.5" endY="326.9999694824219" layoutX="129.0" layoutY="182.0" startX="-0.5" startY="-65.20000457763672" stroke="#0f4c83" />
                 <Line endX="390.70001220703125" endY="340.6999816894531" layoutX="181.0" layoutY="168.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
                 <Button layoutX="26.0" layoutY="544.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior " textFill="WHITE" />
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="228.0" layoutY="129.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-                <Button layoutX="343.0" layoutY="467.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83;" text="Confirmar" textFill="WHITE" />
-                <Label fx:id="invalidDados" alignment="CENTER" layoutX="128.0" layoutY="436.0" prefHeight="18.0" prefWidth="443.0" textFill="RED" />
-            <ChoiceBox fx:id="arbitro" layoutX="302.0" layoutY="276.0" prefWidth="150.0" />
-            <Label layoutX="249.0" layoutY="280.0" text="Arbitro:" />
-            <Label layoutX="175.0" layoutY="353.0" prefHeight="18.0" prefWidth="128.0" text="Resultado Equipa Fora:" />
-            <Label layoutX="175.0" layoutY="315.0" prefHeight="18.0" prefWidth="128.0" text="Resultado Equipa Casa:" />
-            <ComboBox fx:id="resultadoEC" layoutX="302.0" layoutY="311.0" prefWidth="150.0" />
-            <ComboBox fx:id="resultadoEF" layoutX="302.0" layoutY="349.0" prefWidth="150.0" />
+                <Button layoutX="317.0" layoutY="428.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83;" text="Confirmar" textFill="WHITE" />
+                <Label fx:id="invalidDados" alignment="CENTER" layoutX="129.0" layoutY="472.0" prefHeight="18.0" prefWidth="443.0" textFill="RED" />
+            <VBox layoutX="163.0" layoutY="151.0" prefHeight="200.0" prefWidth="308.0">
+               <children>
+                  <GridPane hgap="10.0" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="166.0" text="Equipa Casa:" />
+                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="166.0" text="Equipa Fora:" GridPane.rowIndex="1" />
+                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="166.0" text="Recinto:" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="162.0" text="Arbitro:" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="159.0" text="Resultado Equipa Casa:" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="165.0" text="Resultado Equipa Fora:" GridPane.rowIndex="5" />
+                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="156.0" text="Data:" GridPane.rowIndex="6" />
+                            <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" promptText="Inisira uma data" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="resultadoEF" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="resultadoEC" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ChoiceBox fx:id="arbitro" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <ChoiceBox fx:id="recinto" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <ChoiceBox fx:id="equipaFora" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <ChoiceBox fx:id="equipaCasa" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
@@ -61,7 +86,7 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Gerir Competição" textFill="WHITE">
+                <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Gerir Competição" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>

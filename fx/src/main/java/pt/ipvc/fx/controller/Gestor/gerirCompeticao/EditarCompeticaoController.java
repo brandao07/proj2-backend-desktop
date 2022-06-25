@@ -8,6 +8,8 @@ import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.users.GestorBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.PodiosAux;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -106,8 +108,7 @@ public class EditarCompeticaoController implements Initializable {
         if (!ValidarInput.validarChoiceBox(genero.getValue()))
             invalidDados.setText("Selecione uma opção no campo Genero");
 
-        competicao.setGestor(null);
-        //competicao.setGestor(GestorBLL.getGestor(UtilizadorBLL.getUserSession().getUsername()));
+        competicao.setGestor(GestorBLL.getGestor(UtilizadorBLL.getUserSession().getUsername()));
 
         competicao.setModalidade(ModalidadeBLL.getModalidade(modalidade.getValue()));
         if (!ValidarInput.validarChoiceBox(modalidade.getValue()))

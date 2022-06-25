@@ -1,24 +1,67 @@
 package pt.ipvc.fx.controller.Gestor;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import pt.ipvc.backend.models.CompeticaoNomeModalidade;
+import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class GestorHomePageController implements Initializable {
+
     @FXML
-    private TableView competicoes;
+    private TableView<CompeticaoNomeModalidade> competicoes;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade, String> colNome;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade, Date> colDataInicio;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade, String> colDataFim;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade, String> colGenero;
+
+    @FXML
+    private TableColumn<CompeticaoNomeModalidade,String> colModalidade;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO: CAMPOS JA TENS VALORES!!
-        //FIXED: listar as competiçoes que a data fim é superior a CurrentDate
-        //CompeticaoBLL.getCompeticoesActive()
+
+        competicoes.getColumns().clear();
+
+        ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesActive());
+
+        colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
+
+        colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, Date>("dataInicio"));
+
+        colDataFim.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("dataFim"));
+
+        colGenero.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("genero"));
+
+        colModalidade.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("modalidade"));
+
+        competicoes.setItems(dados);
+
+        competicoes.getColumns().add(colNome);
+        competicoes.getColumns().add(colDataInicio);
+        competicoes.getColumns().add(colDataFim);
+        competicoes.getColumns().add(colGenero);
+        competicoes.getColumns().add(colModalidade);
     }
 
     public void historico(ActionEvent event) {

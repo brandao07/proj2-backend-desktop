@@ -96,7 +96,7 @@ public class ValidarInput {
             case "Criar Competição" ->
                     ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
             case "Gerir Competição" ->
-                    ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-competicao.fxml", event);
+                    ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
             default -> System.out.println("ERRO");
         }
     }

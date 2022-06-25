@@ -14,10 +14,12 @@ public class PremioNomeTipoPremio {
 
     private Competicao competicao;
 
-    public PremioNomeTipoPremio(Integer lugar, String valor, String tipoPremio){
+    public PremioNomeTipoPremio(Long id, Integer lugar, String valor, String tipoPremio, Competicao competicao){
+        this.id = id;
         this.lugar = lugar;
         this.valor = valor;
         this.tipoPremio = tipoPremio;
+        this.competicao = competicao;
     }
 
     public PremioNomeTipoPremio(){}

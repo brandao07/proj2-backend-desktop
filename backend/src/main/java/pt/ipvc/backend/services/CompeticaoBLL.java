@@ -35,7 +35,11 @@ public class CompeticaoBLL {
     }
 
     public static List getCompeticoesActive() {
-        return competicaoRepository.findAllActive();
+        return competicaoRepository.findAllCompeticoesModalidadeNomeCurrentDate();
+    }
+
+    public static List getCompeticoesGestor(Long id) {
+        return competicaoRepository.findAllCompeticoesGestor(id);
     }
 
     public static List getCompeticoesModalidadeNome() {
