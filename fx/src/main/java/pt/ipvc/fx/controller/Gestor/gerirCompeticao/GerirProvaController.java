@@ -29,7 +29,7 @@ public class GerirProvaController implements Initializable {
     }
 
     public void anterior(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/admin-sistema-adicionar-user.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/admin-sistema-utilizadores.fxml", event);
     }
 
     public void setBtnNavMenu(ActionEvent event) {

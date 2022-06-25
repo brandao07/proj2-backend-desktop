@@ -30,7 +30,7 @@ public class TipoRecintoBLL {
         return (TipoRecinto) tipoRecintoRepository.find(nome);
     }
 
-    public static void updateTipoRecinto(TipoPremio tipoRecinto) {
+    public static void updateTipoRecinto(TipoRecinto tipoRecinto) {
         tipoRecintoRepository.update(tipoRecinto);
     }
 

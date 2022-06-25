@@ -1,6 +1,7 @@
 package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
+import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -17,10 +18,13 @@ public class UtilizadorRepository extends Repository {
     }
 
     public List findAll() {
-        _entityManager.getTransaction().begin();
-        Query query = _entityManager.createQuery(
-                "SELECT u FROM Utilizador as u ");
-        return query.getResultList();
+        try {
+            Query query = _entityManager.createQuery("SELECT u FROM Utilizador as u ");
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem utilizadores");
+            return null;
+        }
     }
 
     public Object find(String username, String password) {
@@ -37,17 +41,18 @@ public class UtilizadorRepository extends Repository {
         }
     }
 
-    public Object find(String username) {
+    public Object findUser(String username) {
         try {
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT u from Utilizador as u " +
-                    "WHERE u.username '" + username + "' ");
+                    "WHERE u.username = '" + username + "' ");
             return query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Utilizador nao encontrado!");
             return null;
         }
     }
+
+
 
 
 }

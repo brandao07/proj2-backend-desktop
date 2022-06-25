@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import pt.ipvc.backend.data.db.entity.Arbitro;
+import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
@@ -65,19 +66,14 @@ public class EditarDadosArbitroController implements Initializable {
         arbitro.setNome(nomeArbitro);
         arbitro.setDataNascimento(java.sql.Date.valueOf(data.getPromptText()));
 
-
         if (!nome.getText().isEmpty()){
-            System.out.println("entrou");
             arbitro.setNome(nome.getText());
             nomeArbitro = nome.getText();
         }
 
-
         if (data.getValue() != null){
-            System.out.println("Data1: " + data.getValue());
             arbitro.setDataNascimento(java.sql.Date.valueOf(data.getValue()));
         }
-
 
         arbitro.setId(ArbitroBLL.getArbitro(nome.getPromptText()).getId());
         arbitro.setNacionalidade((String) nacionalidade.getSelectionModel().getSelectedItem());
@@ -88,7 +84,6 @@ public class EditarDadosArbitroController implements Initializable {
 
     ArbitroBLL.updateArbitro(arbitro);
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
-
     }
 
     @Override

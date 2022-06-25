@@ -76,4 +76,8 @@ public class Utilizador {
         this.id = id;
     }
 
+    public String getClassName() {
+        return this.getClass().getSimpleName();
+    }
+
 }

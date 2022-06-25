@@ -3,6 +3,8 @@ package pt.ipvc.backend.services.users;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.data.db.repository.users.UtilizadorRepository;
 
+import java.util.List;
+
 public class UtilizadorBLL {
 
     private static final UtilizadorRepository utilizadorRepository = new UtilizadorRepository();
@@ -20,10 +22,13 @@ public class UtilizadorBLL {
         return userSession = (Utilizador) utilizadorRepository.find(username, password);
     }
 
-    public static Object getUtilizador(String username) {
-        return utilizadorRepository.find(username);
+    public static Utilizador getUtilizador(String username) {
+        return (Utilizador) utilizadorRepository.findUser(username);
     }
 
+    public static List getUtilizadores() {
+        return utilizadorRepository.findAll();
+    }
 
     public static void removerUtilizador(String username) {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));

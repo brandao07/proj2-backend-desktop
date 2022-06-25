@@ -22,6 +22,8 @@ public class PosicaoBLL {
         return posicaoRepository.findAll();
     }
 
+
+
     public static Posicao getPosicao(String nome) {
         return (Posicao) posicaoRepository.find(nome);
     }

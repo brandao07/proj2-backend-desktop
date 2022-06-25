@@ -101,7 +101,5 @@ public class ArbitroNomeModalidade {
                 ",categoria='" + categoria + '\'' +
                 ",modalidade='" + modalidade + '\'' +
     '}';
-
-
     }
 }

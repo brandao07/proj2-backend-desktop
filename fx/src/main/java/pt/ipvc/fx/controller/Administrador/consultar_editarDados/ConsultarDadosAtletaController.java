@@ -57,10 +57,10 @@ public class ConsultarDadosAtletaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Prémios", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         choiceBoxOpcoes.setValue("Atletas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.mudarPagConsultarEditarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
         tabela1.getColumns().clear();
         ObservableList<AtletaNomeEquipa_Modalidade> dados = FXCollections.observableArrayList(AtletaBLL.getAtletaNomeEquipa_Modalidade());
@@ -69,7 +69,7 @@ public class ConsultarDadosAtletaController implements Initializable {
         colunaData.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("dataNascimento"));
         colunaModalidade.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("modalidade"));
         colunaNacionalidade.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("nacionalidade"));
-          colunaGenero.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("genero"));
+        colunaGenero.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("genero"));
         colunaPeso.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, Double>("peso"));
         colunaAltura.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, Double>("altura"));
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<AtletaNomeEquipa_Modalidade, String>("posicao"));
@@ -98,15 +98,14 @@ public class ConsultarDadosAtletaController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        //AtletaBLL.removerAtleta(tabela.getSelectionModel().getSelectedItem());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
+        AtletaBLL.removerAtleta(tabela1.getSelectionModel().getSelectedItem().getNome());
+        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
 
     }
 
     public void setBtnEditar(ActionEvent event){
-        System.out.println(tabela1.getSelectionModel().getSelectedItem().toString());
-        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().toString();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
+        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().getNome();
+        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-atleta.fxml", event);
     }
 
     //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS

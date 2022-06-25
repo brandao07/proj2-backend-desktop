@@ -49,7 +49,7 @@ public class ValidarInput {
     }
 
 
-    public static void validarAdicionarDados(@NotNull String value, ActionEvent event) {
+    public static void choiceBoxAdminAdicionarDados(@NotNull String value, ActionEvent event) {
         switch (value) {
             case "Árbitros" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-arbitro.fxml", event);
             case "Atletas" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-atleta.fxml", event);
@@ -67,24 +67,22 @@ public class ValidarInput {
         }
     }
 
-    public static void mudarPagConsultarEditarAdmin(@NotNull String value, ActionEvent event) {
+    public static void choiceBoxAdminConsultarDados(@NotNull String value, ActionEvent event) {
         switch (value) {
             case "Árbitros" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
             case "Atletas" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
             case "Equipas" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-equipa.fxml", event);
-            case "Prémios" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-premio.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-equipa.fxml", event);
             case "Modalidades" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-modalidade.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-modalidade.fxml", event);
             case "Recintos" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-recinto.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-recinto.fxml", event);
             case "Tipos de Prémios" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-tipos-premio.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-premio.fxml", event);
             case "Tipos de Recintos" ->
-                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-editar-dados-tipos-recinto.fxml", event);
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-recinto.fxml", event);
             default -> System.out.println("ERRO");
         }
     }
@@ -93,14 +91,14 @@ public class ValidarInput {
 
     public static void sideMenuBarButtonLink(@NotNull String value, ActionEvent event) {
         switch (value) {
+            case "Utilizadores" ->
+                    ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-utilizadores.fxml", event);
             case "Consultar Dados" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
             case "Adicicionar Dados" ->
                     ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
             case "Consultar Sistema" ->
                     ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-consultar.fxml", event);
-            case "Criar Utilizador" ->
-                    ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-adicionar-user.fxml", event);
             case "Criar Competição" ->
                     ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);
             case "Gerir Competição" ->
@@ -114,7 +112,7 @@ public class ValidarInput {
             case "Atleta" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
             case "Equipa" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
             case "Prêmio" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-premio.fxml", event);
-            case "Recintos\n" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
+            case "Recintos" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
             case "Árbitro" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
 
             default -> System.out.println("ERRO");

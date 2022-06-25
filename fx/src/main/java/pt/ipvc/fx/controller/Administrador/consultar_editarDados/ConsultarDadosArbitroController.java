@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.models.ArbitroNomeModalidade;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
@@ -63,10 +62,10 @@ public class ConsultarDadosArbitroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Prémios", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         itemPesquisar.setValue("Árbitros");
         itemPesquisar.setOnAction(actionEvent -> {
-            ValidarInput.mudarPagConsultarEditarAdmin((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminConsultarDados((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
         tabela.getColumns().clear();
         ObservableList<ArbitroNomeModalidade> dados = FXCollections.observableArrayList(ArbitroBLL.getArbitroNomeModalidade());

@@ -34,7 +34,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Criar Utilizador" textFill="WHITE">
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
