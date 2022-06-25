@@ -102,6 +102,7 @@ public class UtilizadorRepository extends Repository {
         } catch (Exception e) {
             System.out.println("Sem clientes");
             return null;
+
         }
     }
 
