@@ -33,4 +33,9 @@ public class UtilizadorBLL {
     public static void removerUtilizador(String username) {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
     }
+
+    public static List getDataCount() {
+        return utilizadorRepository.findDataCount();
+    }
+
 }

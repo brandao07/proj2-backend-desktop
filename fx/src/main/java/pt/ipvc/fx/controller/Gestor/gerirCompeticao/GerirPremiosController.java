@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Competicao;
+import pt.ipvc.backend.data.db.entity.Premio;
 import pt.ipvc.backend.models.NomeTipoPremio;
 import pt.ipvc.backend.models.PremioNomeTipoPremio;
 import pt.ipvc.backend.models.ProvaNomeEquipas;
@@ -20,10 +21,14 @@ import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GerirPremiosController implements Initializable {
     public static Competicao path;
+
+    public static Integer nLugar;
 
     public static PremioNomeTipoPremio aux;
     @FXML
@@ -48,8 +53,6 @@ public class GerirPremiosController implements Initializable {
         tableView.getColumns().clear();
         path = CompeticaoBLL.getCompeticao(GerirCompeticaoController.aux.getNome());
 
-        System.out.println(path);
-
         ObservableList<PremioNomeTipoPremio> dados = FXCollections.observableArrayList(PremioBLL.getPremioNomeTipoPremio(path));
 
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<PremioNomeTipoPremio, Integer>("lugar"));
@@ -72,29 +75,47 @@ public class GerirPremiosController implements Initializable {
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
+    public void anterior (ActionEvent event){
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
+    }
+
     public void adicionar (ActionEvent event){
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/criar-prova.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/adicionar-premio.fxml", event);
     }
 
     public void editar (ActionEvent event){
         aux = tableView.getSelectionModel().getSelectedItem();
 
         if (aux == null){
-            checkDados.setText("Selecione uma Prova!");
+            checkDados.setText("Selecione um Prémio!");
             return;
         }
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/editar-prova.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/editar-premio.fxml", event);
     }
 
     public void remover (ActionEvent event){
         aux = tableView.getSelectionModel().getSelectedItem();
 
         if (aux == null){
-            checkDados.setText("Selecione uma Prova!");
+            checkDados.setText("Selecione um Prémio!");
             return;
         }
-        //PremioBLL.removerPremio(aux.getId());
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
+
+        List<Premio> premios = PremioBLL.getPremio(GerirPremiosController.path.getNome());
+
+        for (Premio p : premios) {
+            nLugar = 0;
+            if (p.getLugar() > nLugar) {
+                nLugar = p.getLugar();
+            }
+        }
+
+        if (!Objects.equals(nLugar, aux.getLugar())){
+            checkDados.setText("Remova primeiro o Prémio com Posição: " + nLugar);
+            return;
+        }
+        PremioBLL.removerPremio(aux.getId());
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
     }
 
 }

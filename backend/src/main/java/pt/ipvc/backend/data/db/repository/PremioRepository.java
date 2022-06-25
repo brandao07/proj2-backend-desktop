@@ -37,9 +37,20 @@ public class PremioRepository extends Repository {
             return null;
         }
     }
+
+    public Object findPremioIdTeste(Long id) {
+        try {
+            Query query = _entityManager.createQuery("select p from Premio As p Where p.id = :id");
+            query.setParameter("id", id);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem Premio");
+            return null;
+        }
+    }
     public List findPremioNomeTipoPremio(Competicao competicao) {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.PremioNomeTipoPremio(p.lugar, p.valor, tp.nome) FROM Premio AS p INNER JOIN TipoPremio as tp ON tp.id = p.tipoPremio.id where p.competicao.id = '" + competicao.getId() + "'", PremioNomeTipoPremio.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.PremioNomeTipoPremio(p.id, p.lugar, p.valor, tp.nome, p.competicao) FROM Premio AS p INNER JOIN TipoPremio as tp ON tp.id = p.tipoPremio.id where p.competicao.id = '" + competicao.getId() + "'", PremioNomeTipoPremio.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem premios!");
@@ -47,7 +58,7 @@ public class PremioRepository extends Repository {
         }
     }
 
-    public Object getPremioTeste(Long id) {
+    public Object findPremioId(Long id) {
         try {
             Query query = _entityManager.createQuery("SELECT p FROM Premio AS p " +
                     "WHERE p.id = '" + id + "'");

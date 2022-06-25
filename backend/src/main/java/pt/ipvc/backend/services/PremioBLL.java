@@ -26,17 +26,17 @@ public class PremioBLL {
         return premioRepository.findCompeticao(nomeCompeticao);
     }
 
+    public static Premio getPremioId(Long id) {
+        return (Premio) premioRepository.find(id);
+    }
+
     public static void updatePremio(Premio premio) {
         premioRepository.update(premio);
     }
 
-//    public static Premio getPremioId(Long id) {
-//        return (Premio) premioRepository.getPremioTeste(id);
-//    }
-//
-//    public static void removerPremio(Long id) {
-//       premioRepository.delete(PremioBLL.getPremioId(id));
-//    }
+    public static void removerPremio(Long id) {
+       premioRepository.delete(PremioBLL.getPremioId(id));
+    }
 
     public static List getPremioNomeTipoPremio(Competicao competicao) {
         return premioRepository.findPremioNomeTipoPremio(competicao);

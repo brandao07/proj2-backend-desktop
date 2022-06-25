@@ -29,7 +29,6 @@
                         <TableColumn fx:id="colModalidade" prefWidth="135.2000732421875" text="Modalidade" />
                     </columns>
                 </TableView>
-                <Button layoutX="572.0" layoutY="434.0" mnemonicParsing="false" onAction="#gerirProvas" style="-fx-background-color: #0f4c83;" text="Gerir Provas" textFill="WHITE" />
                 <Line endX="389.30706787109375" endY="355.9000244140625" layoutX="284.0" layoutY="163.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
                 <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="114.0" startX="-106.20001220703125" startY="-3.1142196655273438" stroke="#0f4c83" />
                 <Label layoutX="62.0" layoutY="99.0" text="Competições" textFill="#0f4c83">
@@ -49,12 +48,13 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="344.0" layoutY="482.0" prefHeight="18.0" prefWidth="312.0" textFill="RED" />
-                <Button layoutX="417.0" layoutY="434.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-                <Button layoutX="340.0" layoutY="434.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+                <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="289.0" layoutY="477.0" prefHeight="18.0" prefWidth="365.0" textFill="RED" />
             <Line endX="355.80706787109375" endY="287.4000244140625" layoutX="317.0" layoutY="232.0" startX="-281.0" startY="287.3999938964844" stroke="#0f4c83" />
             <Label fx:id="editarInvalido" layoutX="311.0" layoutY="520.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
-            <Button layoutX="478.0" layoutY="434.0" mnemonicParsing="false" onAction="#gerirPremios" style="-fx-background-color: #0f4c83;" text="Gerir Prémios" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="289.0" layoutY="438.0" mnemonicParsing="false" onAction="#remover" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="381.0" layoutY="438.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="49.0" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+            <Button alignment="CENTER" layoutX="453.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirPremios" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #0f4c83;" text="Gerir Prémios" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="571.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirProvas" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #0f4c83;" text="Gerir Provas" textFill="WHITE" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">

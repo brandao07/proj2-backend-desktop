@@ -6,15 +6,11 @@ import java.util.Date;
 
 public class CountByDate {
 
-    @Basic
-    @Column(name = "data")
     private Date data;
 
-    @Basic
-    @Column(name = "count")
-    private long count;
+    private Long count;
 
-    public CountByDate(Date data, long count) {
+    public CountByDate(Date data, Long count) {
         this.data = data;
         this.count = count;
     }
@@ -27,11 +23,11 @@ public class CountByDate {
         this.data = data;
     }
 
-    public long getCount() {
+    public Long getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Long count) {
         this.count = count;
     }
 

@@ -47,9 +47,9 @@
                     </columns>
                 </TableView>
                 <Button layoutX="587.0" layoutY="409.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
-                <Button layoutX="522.0" layoutY="409.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-            <Button layoutX="440.0" layoutY="409.0" mnemonicParsing="false" onAction="#adiconar" style="-fx-background-color: #0f4c83;" text="Adicionar" textFill="WHITE" />
-            <Label fx:id="invalidData" alignment="CENTER" layoutX="340.0" layoutY="450.0" prefHeight="18.0" prefWidth="322.0" textFill="RED" />
+                <Button layoutX="510.0" layoutY="409.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+            <Button layoutX="418.0" layoutY="409.0" mnemonicParsing="false" onAction="#adiconar" style="-fx-background-color: #0f4c83;" text="Adicionar" textFill="WHITE" />
+            <Label fx:id="invalidData" alignment="CENTER" layoutX="20.0" layoutY="450.0" prefHeight="18.0" prefWidth="656.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
@@ -64,7 +64,7 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Gerir Competições" textFill="#0f4c83">
+                <JFXButton fx:id="consultarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Gerir Competição" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>

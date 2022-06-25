@@ -89,13 +89,7 @@ public class AdicionarDetalhesController implements Initializable {
         tableView.getColumns().add(colunaTipoPremio);
         tableView.getColumns().add(colunaPremioAtribuido);
     }
-
-    public void teste (ActionEvent event) {
-        getTableViewValues(event, tableView);
-    }
-
-    private void getTableViewValues(ActionEvent event, TableView tableView) {
-        ObservableList<TableColumn> columns = tableView.getColumns();
+    public void getTableViewValues(ActionEvent event) {
 
             for (Object r : this.tableView.getItems()) {
                 for (Object c : this.tableView.getColumns()){
@@ -106,9 +100,8 @@ public class AdicionarDetalhesController implements Initializable {
                         }
                 }
             }
-            ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
     }
-
 
     public void anterior(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/criarCompeticao/criar-competicoes.fxml", event);

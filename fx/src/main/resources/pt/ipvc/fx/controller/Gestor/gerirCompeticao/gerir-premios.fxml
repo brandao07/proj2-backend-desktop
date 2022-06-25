@@ -19,7 +19,7 @@
                 <DropShadow />
             </effect>
             <children>
-                <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" style="-fx-background-color: #0f4c83;" text="Anterior" textFill="WHITE" />
+                <Button layoutX="46.0" layoutY="547.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior" textFill="WHITE" />
                 <Label layoutX="142.0" layoutY="90.0" text="Prémios" textFill="#0f4c83">
                     <font>
                         <Font size="15.0" />
@@ -37,10 +37,10 @@
                   <TableColumn fx:id="colunaPremioAtribuido" prefWidth="152.800048828125" text="Prémio Atribuido" />
               </columns>
             </TableView>
-            <Label fx:id="checkDados" alignment="CENTER" layoutX="103.0" layoutY="399.0" prefHeight="18.0" prefWidth="516.0" textFill="RED" />
-            <Button layoutX="361.0" layoutY="395.0" mnemonicParsing="false" onAction="#adicionar" style="-fx-background-color: #0f4c83;" text="Adicionar" textFill="WHITE" />
-            <Button layoutX="450.0" layoutY="395.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-            <Button layoutX="521.0" layoutY="395.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+            <Label fx:id="checkDados" alignment="CENTER" layoutX="103.0" layoutY="398.0" prefHeight="18.0" prefWidth="516.0" textFill="RED" />
+            <Button layoutX="361.0" layoutY="359.0" mnemonicParsing="false" onAction="#adicionar" style="-fx-background-color: #0f4c83;" text="Adicionar" textFill="WHITE" />
+            <Button layoutX="451.0" layoutY="359.0" mnemonicParsing="false" onAction="#editar" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+            <Button layoutX="521.0" layoutY="359.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
@@ -55,7 +55,7 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Gerir Competições" textFill="WHITE">
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Gerir Competição" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -81,7 +81,7 @@
                         <Font size="21.0" />
                     </font>
                 </Button>
-                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Competições" textFill="#0f4c83">
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Criar Competição" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>

@@ -2,6 +2,8 @@ package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
 import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
+import pt.ipvc.backend.models.CompeticaoNomeModalidade;
+import pt.ipvc.backend.models.CountByDate;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -52,7 +54,14 @@ public class UtilizadorRepository extends Repository {
         }
     }
 
-
-
+    public List findDataCount() {
+        try {
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CountByDate(u.dataCriacao, count(u.dataCriacao)) FROM Utilizador AS u GROUP BY u.dataCriacao", CountByDate.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Utilizador nao encontrado!");
+            return null;
+        }
+    }
 
 }
