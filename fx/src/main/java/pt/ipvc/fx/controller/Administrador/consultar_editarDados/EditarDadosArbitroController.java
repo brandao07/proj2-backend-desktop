@@ -95,13 +95,17 @@ public class EditarDadosArbitroController implements Initializable {
         Set<String> modalidade = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
+
         modalidades.getItems().addAll(modalidade);
 
         nome.setPromptText(ConsultarDadosArbitroController.arbitroSceneConsultar);
+
         modalidades.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getModalidade().getNome());
 
         Date data_nascimento = ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getDataNascimento();
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
+
+
 
         nacionalidade.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getNacionalidade());
 

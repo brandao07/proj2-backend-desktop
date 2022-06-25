@@ -75,6 +75,8 @@ public class EquipasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Equipas");
+
         try {
             LocalRepository.paises_e_cidades();
             LocalRepository.associacoes_portuguesas();
@@ -85,7 +87,7 @@ public class EquipasController implements Initializable {
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
         ArrayList < String > lista_associacoes = new ArrayList < > ();

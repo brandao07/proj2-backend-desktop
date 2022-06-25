@@ -33,4 +33,10 @@ public class UtilizadorBLL {
     public static void removerUtilizador(String username) {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
     }
+
+    public static List numeroUtilizadores(){
+        return (List) utilizadorRepository.numeroUtilizadores();
+    }
+
+
 }

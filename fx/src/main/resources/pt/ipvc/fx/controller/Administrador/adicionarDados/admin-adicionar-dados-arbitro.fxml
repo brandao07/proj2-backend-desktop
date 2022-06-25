@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.ArbitrosController">
@@ -25,8 +26,14 @@
                 <DropShadow />
             </effect>
             <children>
+            <ImageView fitHeight="600.0" fitWidth="702.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/adicioanarArbitro.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="507.0" layoutX="17.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
             <Button layoutX="551.0" layoutY="484.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83#0f4c83;" text="Confirmar" textFill="WHITE" />
-            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="273.0" layoutY="489.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="489.0" prefHeight="17.0" prefWidth="230.0" textFill="RED" />
             <VBox alignment="CENTER" layoutX="122.0" layoutY="91.0" prefHeight="297.0" prefWidth="459.0">
                <children>
                   <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="267.0" prefWidth="400.0" vgap="30.0">

@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.EquipasController">
@@ -26,6 +27,12 @@
                 <DropShadow />
             </effect>
             <children>
+            <ImageView fitHeight="600.0" fitWidth="702.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/adicionarEquipa.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="508.0" layoutX="12.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
                 <Button fx:id="confirmar" layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
             <VBox layoutX="156.0" layoutY="135.0" prefHeight="330.0" prefWidth="376.0">
                <children>
@@ -60,8 +67,8 @@
                             <TextField fx:id="sigla" prefHeight="26.0" prefWidth="86.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                             <Label text="Contacto:" GridPane.rowIndex="8" />
                             <TextField fx:id="contacto" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <ComboBox fx:id="pais" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="cidade" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="pais" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -90,8 +97,8 @@
                     </effect>
                 </AnchorPane>
                 <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
-                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="45.0" text="Sistema" textFill="WHITE" />
-                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="61.0" text="Sistema" textFill="WHITE" />
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -100,7 +107,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -109,7 +116,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -124,7 +131,7 @@
                         <Font size="21.0" />
                     </font>
                 </Button>
-                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados" textFill="#0f4c83">
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>

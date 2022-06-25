@@ -45,8 +45,6 @@ public class EditarDadosEquipaController implements Initializable {
     @FXML
     protected ComboBox<String> cidade;
 
-    @FXML
-    protected ChoiceBox equipa;
 
     @FXML
     protected Button button;

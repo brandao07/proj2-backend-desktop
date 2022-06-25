@@ -95,6 +95,8 @@ public class AtletasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Atletas");
+
         try {
             LocalRepository.paises_e_cidades();
         } catch (IOException e) {
@@ -103,7 +105,7 @@ public class AtletasController implements Initializable {
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
 

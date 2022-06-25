@@ -13,8 +13,15 @@ import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.Temporal;
+import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class AdminHomePageController implements Initializable {
     @FXML
@@ -29,6 +36,12 @@ public class AdminHomePageController implements Initializable {
     @FXML
     private Label gestores_ativos;
 
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label dias;
+
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
@@ -38,8 +51,26 @@ public class AdminHomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate date = LocalDate.now();
+        Date dateBefore = UtilizadorBLL.getUserSession().getDataCriacao();
+        Date dateAfter = Date.from(date.atStartOfDay(defaultZoneId).toInstant());
+
+        long dateBeforeInMs = dateBefore.getTime();
+        long dateAfterInMs = dateAfter.getTime();
+
+        long timeDiff = Math.abs(dateAfterInMs - dateBeforeInMs);
+
+        long daysDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
+
         Utilizador utilizador = UtilizadorBLL.getUserSession();
         labelBemVindo.setText("Bem-Vindo " + UtilizadorBLL.getUserSession().getUsername());
+        email.setText(UtilizadorBLL.getUserSession().getEmail());
+        dias.setText(String.valueOf(daysDiff) + " dias.");
+
+
+
+
         Random r = new Random();
         int low_admins = 10;
         int high_admins = 100;
@@ -53,5 +84,6 @@ public class AdminHomePageController implements Initializable {
         admins_ativos.setText(String.valueOf(result_admins));
         gestores_ativos.setText(String.valueOf(result_gestores));
         clientes_ativos.setText(String.valueOf(result_clientes));
+
     }
 }

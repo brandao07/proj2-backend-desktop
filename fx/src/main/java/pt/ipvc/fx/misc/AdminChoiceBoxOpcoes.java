@@ -10,10 +10,11 @@ import java.util.Set;
 public class AdminChoiceBoxOpcoes {
     public static ArrayList<String> opcoesAdmin(){
         ArrayList<String> opcoesAdmin = new ArrayList<>();
-        opcoesAdmin.add("Árbitro");
-        opcoesAdmin.add("Atleta");
-        opcoesAdmin.add("Equipa");
-        opcoesAdmin.add("Prêmio");
+        opcoesAdmin.add("Árbitros");
+        opcoesAdmin.add("Atletas");
+        opcoesAdmin.add("Equipas");
+        opcoesAdmin.add("Tipos de Prémio");
+        opcoesAdmin.add("Tipos de Recinto");
         opcoesAdmin.add("Recintos");
          Collections.sort(opcoesAdmin);
         return opcoesAdmin;

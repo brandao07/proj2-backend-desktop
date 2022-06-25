@@ -4,9 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import pt.ipvc.backend.services.TipoRecintoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
@@ -21,11 +23,15 @@ public class TipoRecintosController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
+    protected Label labelErro;
+
+    @FXML
     public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(tipo.getText())) {
             TipoRecintoBLL.criarTipoRecinto(tipo.getText());
+            return;
         }
-        System.out.println("Campos Inválidos");
+        labelErro.setText("Preencha todos os campos");
 
     }
 
@@ -39,8 +45,11 @@ public class TipoRecintosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Tipos de Recinto");
+        choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
+
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
     }
 }

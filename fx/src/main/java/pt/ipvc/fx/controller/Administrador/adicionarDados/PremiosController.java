@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import pt.ipvc.backend.services.TipoPremioBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
@@ -19,14 +20,18 @@ public class PremiosController implements Initializable {
     protected TextField nome;
 
     @FXML
+    protected Label labelErro;
+
+    @FXML
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
     public void confirmar(ActionEvent event) {
         if (ValidarInput.validarString(nome.getText())) {
             TipoPremioBLL.criarTipoRecinto(nome.getText());
+            return;
         }
-
+        labelErro.setText("Preencha todos os campos");
     }
 
 
@@ -40,11 +45,12 @@ public class PremiosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Tipos de Prémio");
 
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
     }
 }

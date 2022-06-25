@@ -84,6 +84,7 @@ public class ArbitrosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Árbitros");
         try {
             LocalRepository.paises_e_cidades();
             LocalRepository.associacoes_portuguesas();
@@ -95,7 +96,7 @@ public class ArbitrosController implements Initializable {
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
 

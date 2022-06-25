@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.AtletasController">
@@ -25,6 +26,12 @@
                 <DropShadow />
             </effect>
             <children>
+            <ImageView fitHeight="594.0" fitWidth="712.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/adicionarAtletas.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="523.0" layoutX="21.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="666.0" />
                 <Button layoutX="572.0" layoutY="520.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
             <VBox alignment="CENTER" layoutX="108.0" layoutY="95.0" prefHeight="310.0" prefWidth="487.0">
                <children>
@@ -81,7 +88,7 @@
             <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="138.0" layoutY="81.0" startX="-102.00001525878906" startY="-12.700004577636719" stroke="#0f4c83" />
             <Line endX="-0.5000152587890625" endY="553.2088012695312" layoutX="36.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
             <Line endX="486.30706787109375" endY="-3.0841064453125" layoutX="187.0" layoutY="561.0" startX="-151.50001525878906" startY="-3.29119873046875" stroke="#0f4c83" />
-            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="320.0" layoutY="506.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="214.0" layoutY="525.0" prefHeight="17.0" prefWidth="275.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
@@ -93,7 +100,7 @@
                 </AnchorPane>
                 <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
                 <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="53.0" text="Sistema" textFill="WHITE" />
-                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -102,7 +109,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -111,7 +118,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -125,7 +132,7 @@
                         <Font size="21.0" />
                     </font>
                 </Button>
-                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados" textFill="#0f4c83">
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Adicicionar Dados" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>

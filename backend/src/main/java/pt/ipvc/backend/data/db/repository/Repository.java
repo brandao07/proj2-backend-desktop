@@ -43,4 +43,5 @@ public abstract class Repository {
     public abstract Object find(Long id);
 
     public abstract void update(Object object);
+
 }

@@ -51,18 +51,12 @@ public class ValidarInput {
 
     public static void choiceBoxAdminAdicionarDados(@NotNull String value, ActionEvent event) {
         switch (value) {
-            case "Árbitros" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-arbitro.fxml", event);
-            case "Atletas" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-atleta.fxml", event);
-            case "Contratos" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-contrato.fxml", event);
-            case "Equipas" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-equipa.fxml", event);
-            case "Modalidades" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-modalidade.fxml", event);
-            case "Recintos" -> ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-recinto.fxml", event);
-            case "Tipos de Divulgação" ->
-                    ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-divulgacao.fxml", event);
-            case "Tipos de Prémios" ->
-                    ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-premios.fxml", event);
-            case "Tipos de Recintos" ->
-                    ControladorGlobal.chamaScene("adicionarDados/adicionar-dados-tiporecinto.fxml", event);
+            case "Árbitros" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+            case "Atletas" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
+            case "Equipas" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
+            case "Tipos de Prémio" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-premio.fxml", event);
+            case "Tipos de Recinto" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-tipoRecinto.fxml", event);
+            case "Recintos" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
             default -> System.out.println("ERRO");
         }
     }

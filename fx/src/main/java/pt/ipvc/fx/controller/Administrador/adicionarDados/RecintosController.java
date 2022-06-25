@@ -12,6 +12,7 @@ import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.RecintoBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class RecintosController implements Initializable {
     protected ListView<String> tipoFinal;
 
     @FXML
-    protected Label label1;
+    protected Label labelErro;
 
     @FXML
     protected Button remove;
@@ -59,25 +60,25 @@ public class RecintosController implements Initializable {
                 ValidarInput.validarChoiceBox(pais.getValue()) &&
                 ValidarInput.validarListView(tipoFinal.getSelectionModel().isEmpty())
         ) {
-            label1.setText("NICE");
+            Recinto recinto = new Recinto();
+            recinto.setCapacidade(Long.valueOf(capacidade.getText()));
+            recinto.setNome(nome.getText());
+            recinto.setPais((String) pais.getValue());
+            RecintoBLL.criarRecinto(recinto);
+            recinto = RecintoBLL.getRecinto(nome.getText());
+
+            for (String nome: tipoFinal.getItems()){
+                RecintoBLL.addTipo(recinto, TipoRecintoBLL.getTipoRecinto(nome));
+                RecintoBLL.updateRecinto(recinto);
+            }
             System.out.println("Campos válidos");
 
         }else{
-            label1.setText("NO NICE");
+            labelErro.setText("Preencha todos os campos");
             System.out.println("Campos Inválidos");
 
         }
-       Recinto recinto = new Recinto();
-       recinto.setCapacidade(Long.valueOf(capacidade.getText()));
-       recinto.setNome(nome.getText());
-       recinto.setPais((String) pais.getValue());
-       RecintoBLL.criarRecinto(recinto);
-       recinto = RecintoBLL.getRecinto(nome.getText());
 
-        for (String nome: tipoFinal.getItems()){
-           RecintoBLL.addTipo(recinto, TipoRecintoBLL.getTipoRecinto(nome));
-           RecintoBLL.updateRecinto(recinto);
-       }
     }
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -89,6 +90,10 @@ public class RecintosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxOpcoes.setValue("Recintos");
+        choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
+
+
         try {
             LocalRepository.paises_e_cidades();
 
@@ -97,7 +102,7 @@ public class RecintosController implements Initializable {
         }
 
         choiceBoxOpcoes.setOnAction(actionEvent -> {
-            ValidarInput.opcoesMenuAdicionarAdmin((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
         List<TipoRecinto> listaTiposRecinto = TipoRecintoBLL.getTiposRecinto();

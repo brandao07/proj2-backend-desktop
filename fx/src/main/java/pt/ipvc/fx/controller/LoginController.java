@@ -7,6 +7,10 @@ import pt.ipvc.backend.data.db.entity.users.Administrador;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.services.users.AdministradorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
+import pt.ipvc.backend.services.util.Encrypt;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
     @FXML
@@ -32,23 +36,25 @@ public class LoginController {
     protected void btnEntrarClick(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        String password_encriptada = Encrypt.encrypt(password);
+        System.out.println(username + " " + password);
 
-        if (UtilizadorBLL.validarLogin(username, password) != null){
-            System.out.println("teste");
-            UtilizadorBLL.setUserSession(UtilizadorBLL.getUtilizador(username));
-            if (UtilizadorBLL.getUtilizador(username) instanceof Administrador){
-                ControladorGlobal.chamaScene("Administrador/admin-home-page.fxml", event);
-            }else{
-                ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+        List<Utilizador> lista_utilizadores = new ArrayList<>();
+        lista_utilizadores = UtilizadorBLL.getUtilizadores();
+
+        for (Utilizador u : lista_utilizadores){
+            if (u.getUsername().equals(username) && u.getPassword().equals(password_encriptada)){
+                if (UtilizadorBLL.getUtilizador(username) instanceof Administrador){
+                    UtilizadorBLL.setUserSession(UtilizadorBLL.getUtilizador(username));
+                    ControladorGlobal.chamaScene("Administrador/admin-home-page.fxml", event);
+                }else{
+                    UtilizadorBLL.setUserSession(UtilizadorBLL.getUtilizador(username));
+                    ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+                }
             }
-
         }
-        else {
             System.out.println("Não entrou!!");
             labelErroLogin.setText("Credenciais Incorretas.");
-        }
-
-
     }
 
     @FXML

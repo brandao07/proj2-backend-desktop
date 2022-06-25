@@ -4,44 +4,21 @@ import javax.persistence.Column;
 import java.sql.Date;
 
 public class UtilizadorTipoUtilizador {
-        private String username;
-
-        private String email;
-
-        private Date dataCriacao;
+        private Long id;
 
         private String tipo;
 
-
-        public UtilizadorTipoUtilizador(String username, String email, Date dataCriacao, String tipo) {
-                this.username = username;
-                this.email = email;
-                this.dataCriacao = dataCriacao;
+        public UtilizadorTipoUtilizador(Long id, String tipo) {
+                this.id = id;
                 this.tipo = tipo;
         }
 
-        public String getUsername() {
-                return username;
+        public Long getId() {
+                return id;
         }
 
-        public void setUsername(String username) {
-                this.username = username;
-        }
-
-        public String getEmail() {
-                return email;
-        }
-
-        public void setEmail(String email) {
-                this.email = email;
-        }
-
-        public Date getDataCriacao() {
-                return dataCriacao;
-        }
-
-        public void setDataCriacao(Date dataCriacao) {
-                this.dataCriacao = dataCriacao;
+        public void setId(Long id) {
+                this.id = id;
         }
 
         public String getTipo() {
@@ -53,11 +30,10 @@ public class UtilizadorTipoUtilizador {
         }
 
         @Override
-        public String toString(){
-                return "UtilizadorTipoUtilizador{"+
-                        "username='" + username + '\'' +
-                        ",email='" + email + '\'' +
-                        ",tipo='" + tipo +
+        public String toString() {
+                return "UtilizadorTipoUtilizador{" +
+                        "id='" + id  +
+                        ",tipo='" + tipo + '\'' +
                         '}';
         }
 }
