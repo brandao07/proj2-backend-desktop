@@ -26,7 +26,7 @@
             <children>
             <ImageView fitHeight="600.0" fitWidth="702.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../../../Desktop/team%20vs%20team.png" />
+                  <Image url="@../../../icons/team%20vs%20team.png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffcc" height="362.0" layoutX="111.0" layoutY="101.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="479.0" />

@@ -46,8 +46,10 @@ public class GestorHistoricoController implements Initializable {
 
         competicoes.getColumns().clear();
 
+        //atribuir dados a tabela
         ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesGestor(UtilizadorBLL.getUserSession().getId()));
 
+        //atribuir os campos a cada coluna
         colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
 
         colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, Date>("dataInicio"));

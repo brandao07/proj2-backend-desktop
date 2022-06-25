@@ -26,7 +26,7 @@
             <children>
             <ImageView fitHeight="600.0" fitWidth="702.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../../../Desktop/premio.jpg" />
+                  <Image url="@../../../icons/pngwing.com%20(1).png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffcc" height="294.0" layoutX="110.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="481.0" />

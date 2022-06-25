@@ -43,7 +43,7 @@ public class AdicionarPremiosController implements Initializable {
         competicao = CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp);
 
         List<Premio> aux = PremioBLL.getPremio(competicao.getNome());
-
+        //verifica o lugar do premio mais elevado referente a esta competicao
         for (Premio p : aux) {
             nLugar = 0;
             if (p.getLugar() > nLugar) {
@@ -67,7 +67,7 @@ public class AdicionarPremiosController implements Initializable {
         Premio premio = new Premio();
 
         premio.setLugar(nLugar + 1);
-
+        // validacoes para o adicionar um premio
         if(!ValidarInput.validarChoiceBox(tipoPremio.getValue()))
             checkDados.setText("Selecione uma opção no Campo Tipo Prémio");
         premio.setTipoPremio(TipoPremioBLL.getTipoPremio(tipoPremio.getValue()));

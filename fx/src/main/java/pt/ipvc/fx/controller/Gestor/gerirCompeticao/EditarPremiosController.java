@@ -35,8 +35,9 @@ public class EditarPremiosController implements Initializable {
         premioAux = PremioBLL.getPremioId(GerirPremiosController.aux.getId());
 
         infoComp.setText("Competição: " + premioAux.getCompeticao().getNome()
-            + "Lugar Pódio: " + premioAux.getLugar());
+            + "   Lugar Pódio: " + premioAux.getLugar());
 
+        //atribuir aos campos os dados do premio que selecionou
         tipoPremio.setValue(GerirPremiosController.aux.getTipoPremio());
         descricao.setPromptText(GerirPremiosController.aux.getValor());
 
@@ -52,6 +53,8 @@ public class EditarPremiosController implements Initializable {
     public void confirmar(ActionEvent event){
             Premio premio = new Premio();
 
+            //update ao premio
+
             premio.setId(premioAux.getId());
 
             premio.setCompeticao(premio.getCompeticao());
@@ -65,6 +68,7 @@ public class EditarPremiosController implements Initializable {
             PremioBLL.updatePremio(premio);
             ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
         }
+
         public void anterior(ActionEvent event) {
             ControladorGlobal.chamaScene("Gestor/criarCompeticao/gerir-premios.fxml", event);
         }

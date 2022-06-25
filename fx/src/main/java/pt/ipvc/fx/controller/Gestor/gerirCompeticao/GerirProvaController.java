@@ -56,8 +56,10 @@ public class GerirProvaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         provas.getColumns().clear();
 
+        //atribuir dados a tabela
         ObservableList<ProvaNomeEquipas> dados = FXCollections.observableArrayList(ProvaBLL.getProvaEquipasNome(GerirCompeticaoController.id));
 
+        //atribuir o campo a cada coluna
         colResultadoEquipaCasa.setCellValueFactory(new PropertyValueFactory<ProvaNomeEquipas, String>("resultadoEquipaCasa"));
         colData.setCellValueFactory(new PropertyValueFactory<ProvaNomeEquipas, String>("dataInicio"));
         colRecinto.setCellValueFactory(new PropertyValueFactory<ProvaNomeEquipas, String>("recinto"));
@@ -80,6 +82,7 @@ public class GerirProvaController implements Initializable {
     }
 
     public void remover(ActionEvent event) {
+        //remover uma prova
         aux = provas.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -91,6 +94,7 @@ public class GerirProvaController implements Initializable {
     }
 
     public void editar(ActionEvent event) {
+        //chama a secen editar uma prova
         aux = provas.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -101,6 +105,7 @@ public class GerirProvaController implements Initializable {
     }
 
     public void adiconar(ActionEvent event) {
+        //chama a scene adicionar uma prova
         ControladorGlobal.chamaScene("Gestor/gerirCompeticao/criar-prova.fxml", event);
     }
 

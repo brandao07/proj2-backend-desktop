@@ -109,6 +109,17 @@ public class CompeticaoRepository extends Repository {
         }
     }
 
+    public List findAllCompeticoesModalidadeNomePesquisa(String pesquisa) {
+        try {
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome, c.id) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id WHERE c.nome LIKE CONCAT('%',?1,'%') ", CompeticaoNomeModalidade.class);
+            query.setParameter(1, pesquisa);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem competicoes");
+            return null;
+        }
+    }
+
     public List findAllCompeticoesModalidadeNomeCurrentDate() {
         try {
             Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome, c.id) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id WHERE c.dataFim > current_date", CompeticaoNomeModalidade.class);

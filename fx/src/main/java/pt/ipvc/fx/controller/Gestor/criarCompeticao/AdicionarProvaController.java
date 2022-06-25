@@ -47,7 +47,7 @@ public class AdicionarProvaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        //Conjuntos de dados necessarios para as choiceboxes
         Set<String> equipas = ((List<Equipa>)EquipasBLL.getEquipas()).stream().
                 map(Equipa::getNome).collect(Collectors.toSet());
 
@@ -59,6 +59,7 @@ public class AdicionarProvaController implements Initializable {
 
         Set<String> equipasFora = new HashSet<>();
 
+        //Se a choice box euqipa casa selecionar uma euqipa essa equipa ja nao pode ser escolhida como equipa  fora
         equipaCasa.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
@@ -78,7 +79,7 @@ public class AdicionarProvaController implements Initializable {
     }
 
     public void criarProva() {
-
+        //validacoes para criar prova
         if (!ValidarInput.validarChoiceBox(equipaCasa.getValue()))
             invalidDados.setText("Selecione uma opção no Campo Equipa Casa");
 
@@ -94,7 +95,7 @@ public class AdicionarProvaController implements Initializable {
         else if (!ValidarInput.validarChoiceBox(arbitro.getValue()))
             invalidDados.setText("Selecione uma opção no campo Árbitro");
 
-
+        //verificar se a data prova esta entre as datas da competicao
         else if (data.getValue() != null){
             Date dt = Date.from((data.getValue()).atStartOfDay(ZoneId.systemDefault()).toInstant());
             if(!((CriarCompeticaoController.compSelecionada.getDataInicio().compareTo(dt) <= 0)
