@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.gerirCompeticao.EditarCompeticaoController">
@@ -24,6 +25,12 @@
                 <DropShadow />
             </effect>
             <children>
+            <ImageView fitHeight="600.0" fitWidth="696.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../../Desktop/pngwing.com.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffcc" height="356.0" layoutX="66.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="526.0" />
                 <Button layoutX="328.0" layoutY="375.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83;" text="Confirmar" textFill="WHITE" />
                 <Label fx:id="invalidDados" alignment="CENTER" layoutX="195.0" layoutY="370.0" prefHeight="18.0" prefWidth="335.0" textFill="#ef0000" />
                 <Label layoutX="119.0" layoutY="115.0" prefHeight="22.0" prefWidth="175.0" text="Editar Dados Competição" textFill="#0f4c83">
