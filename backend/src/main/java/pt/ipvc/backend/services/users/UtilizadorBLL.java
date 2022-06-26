@@ -48,7 +48,10 @@ public class UtilizadorBLL {
         return (long) utilizadorRepository.numeroGestores();
     }
 
-
+    public static List getDataCount() {
+        return utilizadorRepository.findDataCount();
+    }
+    
 
 
 
