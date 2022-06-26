@@ -10,6 +10,7 @@ import pt.ipvc.backend.data.db.entity.Premio;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.PremioBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.PodiosAux;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -48,8 +49,15 @@ public class CriarCompeticaoController implements Initializable {
     @FXML
     private Label invalidDados1;
 
+    @FXML
+    private Label usernameLabel;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         Set<String> modalidades = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
@@ -119,6 +127,10 @@ public class CriarCompeticaoController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 
 

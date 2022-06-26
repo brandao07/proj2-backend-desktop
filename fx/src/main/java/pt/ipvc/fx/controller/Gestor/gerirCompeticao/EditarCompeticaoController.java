@@ -42,9 +42,14 @@ public class EditarCompeticaoController implements Initializable {
     @FXML
     private Label invalidDados;
 
+    @FXML
+    private Label usernameLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         Set<String> modalidades = ((List<Modalidade>) ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
@@ -130,5 +135,9 @@ public class EditarCompeticaoController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 }

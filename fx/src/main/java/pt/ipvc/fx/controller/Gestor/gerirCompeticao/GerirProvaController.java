@@ -13,6 +13,7 @@ import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.models.ProvaNomeEquipas;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.ProvaBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -52,8 +53,14 @@ public class GerirProvaController implements Initializable {
     @FXML
     private Label invalidData;
 
+    @FXML
+    private Label usernameLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         provas.getColumns().clear();
 
         //atribuir dados a tabela
@@ -118,5 +125,9 @@ public class GerirProvaController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 }

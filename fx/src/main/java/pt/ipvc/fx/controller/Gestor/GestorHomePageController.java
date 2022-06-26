@@ -11,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -38,8 +39,14 @@ public class GestorHomePageController implements Initializable {
     @FXML
     private TableColumn<CompeticaoNomeModalidade,String> colModalidade;
 
+    @FXML
+    private Label usernameLabel;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         competicoes.getColumns().clear();
         //atrinuir dados a tabela
@@ -69,6 +76,11 @@ public class GestorHomePageController implements Initializable {
     public void historico(ActionEvent event) {
         ControladorGlobal.chamaScene("Gestor/gestor-historico.fxml", event);
     }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+    }
+
 
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());

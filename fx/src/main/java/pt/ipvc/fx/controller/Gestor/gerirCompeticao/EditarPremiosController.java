@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.*;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -29,8 +30,14 @@ public class EditarPremiosController implements Initializable {
     @FXML
     private TextField descricao;
 
+    @FXML
+    private Label usernameLabel;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         premioAux = PremioBLL.getPremioId(GerirPremiosController.aux.getId());
 
@@ -51,23 +58,24 @@ public class EditarPremiosController implements Initializable {
     }
 
     public void confirmar(ActionEvent event){
-            Premio premio = new Premio();
+        Premio premio = new Premio();
 
-            //update ao premio
+        //update ao premio
 
-            premio.setId(premioAux.getId());
+        premio.setId(premioAux.getId());
 
-            premio.setCompeticao(premio.getCompeticao());
+        premio.setCompeticao(premio.getCompeticao());
 
-            premio.setTipoPremio(TipoPremioBLL.getTipoPremio(tipoPremio.getValue()));
+        premio.setTipoPremio(TipoPremioBLL.getTipoPremio(tipoPremio.getValue()));
 
-            premio.setValor(descricao.getPromptText());
-            if (!descricao.getText().isEmpty())
+        premio.setValor(descricao.getPromptText());
+
+        if (!descricao.getText().isEmpty())
                 premio.setValor(descricao.getText());
 
-            PremioBLL.updatePremio(premio);
-            ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
-        }
+        PremioBLL.updatePremio(premio);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
+    }
 
         public void anterior(ActionEvent event) {
             ControladorGlobal.chamaScene("Gestor/criarCompeticao/gerir-premios.fxml", event);
@@ -79,4 +87,8 @@ public class EditarPremiosController implements Initializable {
             nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
             ValidarInput.sideMenuBarButtonLink(nome_scene, event);
         }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+    }
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -46,8 +47,13 @@ public class GerirCompeticaoController implements Initializable {
     @FXML
     private TextField pesquisa;
 
+    @FXML
+    private Label usernameLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         System.out.println(pesquisa.getText());
 
@@ -84,7 +90,8 @@ public class GerirCompeticaoController implements Initializable {
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
         if (!ValidarInput.validarString(pesquisa.getText())) {
-            verDetalhesInvalido.setText("Insira o nome do alvo de pesquisa!");
+            verDetalhesInvalido.setText("Introduza uma palavra no campo de Pesquisa!");
+            competicoes.setItems(FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNome()));
             return;
         }
         competicoes.setItems(FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNomePesquisa(pesquisa.getText())));
@@ -144,5 +151,9 @@ public class GerirCompeticaoController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 }
