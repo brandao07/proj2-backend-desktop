@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.GestorHistoricoController">
@@ -19,13 +20,15 @@
                 <DropShadow />
             </effect>
             <children>
-                <TableView fx:id="competicoes" layoutX="96.0" layoutY="106.0" prefHeight="314.0" prefWidth="510.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfdbe6" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="415.0" layoutX="50.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="602.0" />
+                <TableView fx:id="competicoes" layoutX="96.0" layoutY="106.0" prefHeight="314.0" prefWidth="510.0" style="-fx-background-color: #cfdbe6;">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="130.4000244140625" text="Nome" />
-                        <TableColumn fx:id="colModalidade" prefWidth="105.60003662109375" text="Modalidade" />
-                        <TableColumn fx:id="colDataInicio" prefWidth="100.0" text="Data Início" />
-                        <TableColumn fx:id="colDataFim" prefWidth="88.00006103515625" text="Data Fim" />
-                        <TableColumn fx:id="colGenero" prefWidth="85.5999755859375" text="Genero" />
+                        <TableColumn fx:id="colNome" prefWidth="130.4000244140625" style="-fx-background-color: #b7c9da;" text="Nome" />
+                        <TableColumn fx:id="colModalidade" prefWidth="105.60003662109375" style="-fx-background-color: #b7c9da;" text="Modalidade" />
+                        <TableColumn fx:id="colDataInicio" prefWidth="100.0" style="-fx-background-color: #b7c9da;" text="Data Início" />
+                        <TableColumn fx:id="colDataFim" prefWidth="88.00006103515625" style="-fx-background-color: #b7c9da;" text="Data Fim" />
+                        <TableColumn fx:id="colGenero" prefWidth="85.5999755859375" style="-fx-background-color: #b7c9da;" text="Genero" />
                     </columns>
                 </TableView>
                 <Button layoutX="24.0" layoutY="553.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior" textFill="WHITE" />

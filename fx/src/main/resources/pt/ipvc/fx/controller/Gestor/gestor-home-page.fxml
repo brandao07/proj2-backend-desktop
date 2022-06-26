@@ -20,7 +20,7 @@
                 <DropShadow />
             </effect>
             <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfdbe6" height="600.0" layoutX="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfdbe6" height="600.0" layoutX="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="400.0" layoutX="52.0" layoutY="68.0" stroke="#ffffffbd" strokeType="INSIDE" strokeWidth="0.0" width="617.0" />
                 <TableView fx:id="competicoes" layoutX="95.0" layoutY="111.0" prefHeight="274.0" prefWidth="538.0" style="-fx-background-color: #cfdbe6;">
                     <columns>

@@ -51,6 +51,7 @@ public class EditarCompeticaoController implements Initializable {
         modalidade.getItems().addAll(modalidades);
         genero.getItems().addAll(StringGeneros.generos());
 
+        //atribuir as campos da scene os valores da competicao que o user selecionou
         nomeCompeticao.setPromptText(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getNome());
         dataInicio.setPromptText(String.valueOf(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataInicio()));
         dataFim.setPromptText(String.valueOf(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataFim()));
@@ -66,7 +67,7 @@ public class EditarCompeticaoController implements Initializable {
         competicao.setId(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getId());
 
         competicao.setNome(nomeCompeticao.getPromptText());
-
+        //verificar o nome da competicao
         if(!(nomeCompeticao.getText().isEmpty())){
             for (Competicao c : competicoesList) {
                 if (c.getNome().equals(nomeCompeticao.getText())){
@@ -76,7 +77,7 @@ public class EditarCompeticaoController implements Initializable {
             }
             competicao.setNome(nomeCompeticao.getText());
         }
-
+        //Verificar as datas
         if(dataInicio.getValue() != null || dataFim.getValue() != null) {
             if (dataInicio.getValue() != null && dataFim.getValue() != null) {
                 if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())) {
@@ -95,7 +96,7 @@ public class EditarCompeticaoController implements Initializable {
                 }
             }
         }
-
+        //verificacoes dos restantes campos
         competicao.setDataInicio(CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp).getDataInicio());
         if(dataInicio.getValue() != null)
             competicao.setDataInicio(java.sql.Date.valueOf(dataInicio.getValue()));
@@ -116,12 +117,12 @@ public class EditarCompeticaoController implements Initializable {
 
         CompeticaoBLL.updateCompeticao(competicao);
         System.out.println(competicao);
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-competicao.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
 
     }
 
     public void anterior(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/consultarCompeticao/gerir-competicao.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
     }
 
     public void setBtnNavMenu(ActionEvent event) {

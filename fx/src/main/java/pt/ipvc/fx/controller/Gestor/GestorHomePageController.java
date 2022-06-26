@@ -42,9 +42,11 @@ public class GestorHomePageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         competicoes.getColumns().clear();
-
+        //atrinuir dados a tabela
         ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesActive());
 
+
+        //atribuir o campo a cada coluna
         colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
 
         colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, Date>("dataInicio"));

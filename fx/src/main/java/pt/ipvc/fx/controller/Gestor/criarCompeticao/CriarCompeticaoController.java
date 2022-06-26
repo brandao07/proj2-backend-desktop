@@ -60,7 +60,7 @@ public class CriarCompeticaoController implements Initializable {
     }
 
     public void seguinte(ActionEvent event) {
-
+        //restricoes para criar prova
         if (!ValidarInput.validarString(nomeCompeticao.getText()))
             invalidDados.setText("Preencha o campo Nome");
 
@@ -78,15 +78,18 @@ public class CriarCompeticaoController implements Initializable {
 
         else if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue()))
             invalidDados.setText("Data Início com início posteior a Data Fim");
-
+        //se a choicebox estiver selecionada faz isto
         else if (checkBox.isSelected()){
             if(ValidarInput.validarChoiceBox(podio.getValue())){
                 CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
                         dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem()));
+
+                //atribuir os varios podios a base de dados
                 for(int i = 0; i < Integer.parseInt(podio.getValue()); i++) {
                     Premio p = new Premio(i+1,null);
                     PremioBLL.criarPremio(p, nomeCompeticao.getText(), null);
                 }
+
                 compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
                 ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
                 return;

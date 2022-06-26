@@ -53,8 +53,10 @@ public class GerirPremiosController implements Initializable {
         tableView.getColumns().clear();
         path = CompeticaoBLL.getCompeticao(GerirCompeticaoController.aux.getNome());
 
+        //atribuir dados a tabela
         ObservableList<PremioNomeTipoPremio> dados = FXCollections.observableArrayList(PremioBLL.getPremioNomeTipoPremio(path));
 
+        // atribuir o campo a acada coluna da tabela
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<PremioNomeTipoPremio, Integer>("lugar"));
 
         colunaPremioAtribuido.setCellValueFactory(new PropertyValueFactory<PremioNomeTipoPremio, String>("valor"));
@@ -80,10 +82,12 @@ public class GerirPremiosController implements Initializable {
     }
 
     public void adicionar (ActionEvent event){
+        // chama a scene adicionar um premio
         ControladorGlobal.chamaScene("Gestor/gerirCompeticao/adicionar-premio.fxml", event);
     }
 
     public void editar (ActionEvent event){
+        // chama a scene para editar um premio
         aux = tableView.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -94,6 +98,7 @@ public class GerirPremiosController implements Initializable {
     }
 
     public void remover (ActionEvent event){
+        // remover um premio da tabeça
         aux = tableView.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -103,6 +108,7 @@ public class GerirPremiosController implements Initializable {
 
         List<Premio> premios = PremioBLL.getPremio(GerirPremiosController.path.getNome());
 
+        //remover o premio com lugar mais alto primeiro
         for (Premio p : premios) {
             nLugar = 0;
             if (p.getLugar() > nLugar) {

@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Gestor.gerirCompeticao.EditarPremiosController">
@@ -23,6 +24,12 @@
                 <DropShadow />
             </effect>
             <children>
+            <ImageView fitHeight="600.0" fitWidth="702.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/premio.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffcc" height="300.0" layoutX="104.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="485.0" />
                 <Label fx:id="infoComp" alignment="CENTER" layoutX="130.0" layoutY="150.0" prefHeight="18.0" prefWidth="443.0" textFill="#104d82d1">
                <font>
                   <Font size="14.0" />

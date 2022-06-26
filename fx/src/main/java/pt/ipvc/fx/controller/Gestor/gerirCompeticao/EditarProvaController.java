@@ -50,6 +50,8 @@ public class EditarProvaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        //atrinuir aos cmapos os dados da prova que o user selecionou
+
         equipaCasa.setValue(GerirProvaController.aux.getEquipaCasa());
         equipaFora.setValue(GerirProvaController.aux.getEquipaFora());
         recinto.setValue(GerirProvaController.aux.getRecinto());
@@ -70,7 +72,7 @@ public class EditarProvaController implements Initializable {
 
         Set<String> equipasFora = new HashSet<>();
 
-
+        //verificap da equipa selecionada nao pode ser selecionada para equipa fora
         equipaCasa.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
@@ -95,6 +97,8 @@ public class EditarProvaController implements Initializable {
 
     public void confirmar(ActionEvent event){
         Prova prova = new Prova();
+
+        //update da prova
 
         prova.setId(ProvaBLL.getProva(GerirProvaController.aux.getId()).getId());
 

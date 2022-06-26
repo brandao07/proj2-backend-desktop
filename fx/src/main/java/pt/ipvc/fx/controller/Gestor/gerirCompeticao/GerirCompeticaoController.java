@@ -49,10 +49,19 @@ public class GerirCompeticaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        System.out.println(pesquisa.getText());
+
+        if (ValidarInput.validarString(pesquisa.getText())) {
+            pesquisar();
+        }
+
         competicoes.getColumns().clear();
+
+        //atribiur dados a tabela
 
         ObservableList<CompeticaoNomeModalidade> dados = FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNome());
 
+        //atribuir o campo dos dados a cada tabela
         colNome.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, String>("nome"));
 
         colDataInicio.setCellValueFactory(new PropertyValueFactory<CompeticaoNomeModalidade, Date>("dataInicio"));
@@ -73,12 +82,16 @@ public class GerirCompeticaoController implements Initializable {
     }
 
     public void pesquisar() {
-        if (ValidarInput.validarString(pesquisa.getText())) {
+        //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
+        if (!ValidarInput.validarString(pesquisa.getText())) {
+            verDetalhesInvalido.setText("Insira o nome do alvo de pesquisa!");
             return;
         }
+        competicoes.setItems(FXCollections.observableArrayList(CompeticaoBLL.getCompeticoesModalidadeNomePesquisa(pesquisa.getText())));
     }
 
     public void editar(ActionEvent event){
+        //chama a scene editar uma competicao
         aux = competicoes.getSelectionModel().getSelectedItem();
 
         if(aux == null){
@@ -90,6 +103,7 @@ public class GerirCompeticaoController implements Initializable {
     }
 
     public void gerirProvas (ActionEvent event) {
+        //chama a scene onde soa listadas as provas da competicao selecionada
         aux = competicoes.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -102,6 +116,7 @@ public class GerirCompeticaoController implements Initializable {
     }
 
     public void gerirPremios(ActionEvent event) {
+        //chama a scene onde soa listadas as premios da competicao selecionada
         aux = competicoes.getSelectionModel().getSelectedItem();
 
         if (aux == null){
@@ -113,6 +128,7 @@ public class GerirCompeticaoController implements Initializable {
     }
 
     public void remover(ActionEvent event){
+        // remover um competicao
         aux = competicoes.getSelectionModel().getSelectedItem();
 
         if (aux == null){

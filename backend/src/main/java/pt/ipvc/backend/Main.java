@@ -25,24 +25,7 @@ public class Main {
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
 
-        System.out.println(UtilizadorBLL.numeroUtilizadores());;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        System.out.println(Encrypt.decrypt(";uI;qh\\U"));;
 
     }
 }

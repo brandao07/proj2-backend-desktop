@@ -44,15 +44,20 @@ public class AdicionarDetalhesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
         tableView.getColumns().clear();
         tableView.setEditable(true);
         path = CompeticaoBLL.getCompeticao(CriarCompeticaoController.compSelecionada.getNome()).getNome();
 
+        //Enviar dados para a tabela
         ObservableList<Premio> dados = FXCollections.observableArrayList(PremioBLL.getPremio(path));
 
+        //Atribuir a cada coluna da tabela os valores que vai receber
         colunaPosicao.setCellValueFactory(new PropertyValueFactory<Premio, Integer>("lugar"));
 
+
         colunaPremioAtribuido.setCellValueFactory(new PropertyValueFactory<Premio, String>("valor"));
+        //Editar a celula da tabela
         colunaPremioAtribuido.setCellFactory(TextFieldTableCell.forTableColumn());
         colunaPremioAtribuido.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Premio, String>>() {
             @Override
@@ -63,6 +68,8 @@ public class AdicionarDetalhesController implements Initializable {
             }
         });
 
+
+        //Lista de nomes do tipos de premios
         List<TipoPremio> tiposPremio = TipoPremioBLL.getTiposPremio();
         List<String> nomes = new ArrayList<>();
 
@@ -90,7 +97,7 @@ public class AdicionarDetalhesController implements Initializable {
         tableView.getColumns().add(colunaPremioAtribuido);
     }
     public void getTableViewValues(ActionEvent event) {
-
+            //verificar se todas as celulas da tabela estao preenchidas
             for (Object r : this.tableView.getItems()) {
                 for (Object c : this.tableView.getColumns()){
                     javafx.scene.control.TableColumn column = (javafx.scene.control.TableColumn) c;
@@ -108,6 +115,7 @@ public class AdicionarDetalhesController implements Initializable {
     }
 
     public void setBtnNavMenu(ActionEvent event) {
+        //botoes da barra lateral
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
