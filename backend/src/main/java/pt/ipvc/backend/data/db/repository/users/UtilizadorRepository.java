@@ -98,13 +98,37 @@ public class UtilizadorRepository extends Repository {
     public Object numeroUtilizadores(){
         try {
             Query query = _entityManager.createQuery("SELECT count(u) FROM Utilizador as u");
-            return  query.getResultList();
+            return  query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Sem clientes");
             return null;
 
         }
     }
+
+    public Object numeroAdmins(){
+        try {
+            Query query = _entityManager.createQuery("SELECT count(a) FROM Administrador as a");
+            return  query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Sem administradores");
+            return null;
+
+        }
+    }
+
+    public Object numeroGestores(){
+        try {
+            Query query = _entityManager.createQuery("SELECT count(g) FROM Gestor as g");
+            return  query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Sem gestores");
+            return null;
+
+        }
+    }
+
+
 
 
 

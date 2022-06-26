@@ -110,7 +110,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#setBtnNavMenu" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
                         <Font size="21.0" />
                     </font>

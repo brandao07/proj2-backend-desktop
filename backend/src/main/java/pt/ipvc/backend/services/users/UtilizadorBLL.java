@@ -34,9 +34,22 @@ public class UtilizadorBLL {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
     }
 
-    public static List numeroUtilizadores(){
-        return (List) utilizadorRepository.numeroUtilizadores();
+
+
+    public static long numeroUtilizadores(){
+        return (long) utilizadorRepository.numeroUtilizadores();
     }
+
+    public static long numeroAdmins(){
+        return (long) utilizadorRepository.numeroAdmins();
+    }
+
+    public static long numeroGestores(){
+        return (long) utilizadorRepository.numeroGestores();
+    }
+
+
+
 
 
 }

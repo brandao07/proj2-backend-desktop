@@ -37,7 +37,6 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String password_encriptada = Encrypt.encrypt(password);
-        System.out.println(username + " " + password);
 
         List<Utilizador> lista_utilizadores = new ArrayList<>();
         lista_utilizadores = UtilizadorBLL.getUtilizadores();
@@ -47,9 +46,11 @@ public class LoginController {
                 if (UtilizadorBLL.getUtilizador(username) instanceof Administrador){
                     UtilizadorBLL.setUserSession(UtilizadorBLL.getUtilizador(username));
                     ControladorGlobal.chamaScene("Administrador/admin-home-page.fxml", event);
+                    return;
                 }else{
                     UtilizadorBLL.setUserSession(UtilizadorBLL.getUtilizador(username));
                     ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
+                    return;
                 }
             }
         }

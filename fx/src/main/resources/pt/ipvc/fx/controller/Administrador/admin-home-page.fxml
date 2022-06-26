@@ -51,7 +51,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#setBtnNavMenu" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
                         <Font size="21.0" />
                     </font>
@@ -138,7 +138,6 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Label text="Tam. da Base de Dados:">
@@ -146,17 +145,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Admins Registados no Último Mês:" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="admins_ativos1" text="Label" textFill="#0f4c83" GridPane.columnIndex="1">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="gestores_ativos1" text="Label" textFill="#0f4c83" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font>
