@@ -41,4 +41,8 @@ public class AtletaBLL {
     public static List getAtletaNomeEquipa_Modalidade() {
         return atletaRepository.findAllAtletaNomeEquipaModalidade();
     }
+
+    public static List getAtletaPesquisa(String pesquisa) {
+        return atletaRepository.findAllArbitrosNomePesquisa(pesquisa);
+    }
 }

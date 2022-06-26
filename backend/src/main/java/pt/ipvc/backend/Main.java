@@ -26,30 +26,6 @@ public class Main {
         //não eliminar
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
-
-        System.out.println(UtilizadorBLL.getDataCount());
-
-
-        List infoData = UtilizadorBLL.getDataCount();
-        Map<String, Integer> dataMap = new HashMap<>();
-        String data = "";
-        String count = "";
-
-        for (Object item : infoData){
-            data = item.toString();
-            data = data.substring((data.indexOf("=") + 1));
-            data = data.substring(0, data.indexOf(","));
-
-            count = item.toString();
-            count = count.substring((count.indexOf("count=") + 1));
-            count = count.substring(0, count.indexOf("}"));
-            count = count.replace("ount=", "");
-
-            dataMap.put(data, Integer.valueOf(count));
-
-        }
-
-        System.out.println(dataMap);
-
+        System.out.println(UtilizadorBLL.getUtilizadoresNomePesquisa("hugo").toString());
     }
 }

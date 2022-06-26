@@ -1,10 +1,7 @@
 package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
-import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
-import pt.ipvc.backend.models.CompeticaoNomeModalidade;
-import pt.ipvc.backend.models.CountByDate;
-import pt.ipvc.backend.models.UtilizadorTipoUtilizador;
+import pt.ipvc.backend.models.*;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -73,6 +70,17 @@ public class UtilizadorRepository extends Repository {
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Utilizador nao encontrado!");
+            return null;
+        }
+    }
+
+    public List findAllAtletasNomePesquisa(String pesquisa) {
+        try {
+            Query query = _entityManager.createQuery("SELECT u.email, u.username FROM Utilizador as u WHERE u.username LIKE CONCAT('%',?1,'%') ");
+            query.setParameter(1, pesquisa);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem utilizadores");
             return null;
         }
     }

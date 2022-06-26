@@ -3,6 +3,7 @@ package pt.ipvc.backend.data.db.repository;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
+import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -71,6 +72,17 @@ public class EquipaRepository extends Repository {
             return query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Sem Equipa");
+            return null;
+        }
+    }
+
+    public List findEquipa(String pesquisa) {
+        try {
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade  as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", AtletaNomeEquipa_Modalidade.class);
+            query.setParameter(1, pesquisa);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem Atletas");
             return null;
         }
     }

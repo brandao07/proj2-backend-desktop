@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.models.ArbitroNomeModalidade;
 import pt.ipvc.backend.services.ArbitroBLL;
+import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -26,7 +27,7 @@ public class ConsultarDadosArbitroController implements Initializable {
     private Button btnPesquisar;
 
     @FXML
-    private TextField textFieldpesquisa;
+    private TextField pesquisa;
 
     @FXML
     private TableView tableArbitros;
@@ -58,10 +59,24 @@ public class ConsultarDadosArbitroController implements Initializable {
     @FXML
     protected TableColumn<ArbitroNomeModalidade, String> colunaModalidade;
 
+    public void pesquisar() {
+        //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
+        if (!ValidarInput.validarString(pesquisa.getText())) {
+            tabela.setItems(FXCollections.observableArrayList(ArbitroBLL.getArbitroNomeModalidade()));
+
+            return;
+        }
+        tabela.setItems(FXCollections.observableArrayList(ArbitroBLL.getArbitrosNomePesquisa(pesquisa.getText())));
+    }
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (ValidarInput.validarString(pesquisa.getText())) {
+            pesquisar();
+        }
+
         itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         itemPesquisar.setValue("Árbitros");
         itemPesquisar.setOnAction(actionEvent -> {

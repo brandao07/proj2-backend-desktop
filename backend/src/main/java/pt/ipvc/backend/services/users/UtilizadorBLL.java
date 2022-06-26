@@ -52,4 +52,7 @@ public class UtilizadorBLL {
         return utilizadorRepository.findDataCount();
     }
 
+    public static List getUtilizadoresNomePesquisa(String pesquisa) {
+        return  utilizadorRepository.findAllAtletasNomePesquisa(pesquisa);
+    }
 }

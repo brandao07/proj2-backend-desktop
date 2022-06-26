@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.services.AtletaBLL;
@@ -47,10 +48,24 @@ public class ConsultarDadosEquipaController implements Initializable {
     @FXML
     protected TableColumn<Equipa, String> colunaContacto;
 
+    @FXML
+    protected TextField pesquisa;
 
+
+    public void pesquisar() {
+        //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
+        if (!ValidarInput.validarString(pesquisa.getText())) {
+            tabelaEquipas.setItems(FXCollections.observableArrayList(EquipasBLL.getEquipas()));
+            return;
+        }
+        tabelaEquipas.setItems(FXCollections.observableArrayList(EquipasBLL.getEquipa(pesquisa.getText())));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (ValidarInput.validarString(pesquisa.getText())) {
+            pesquisar();
+        }
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         choiceBoxOpcoes.setValue("Equipas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

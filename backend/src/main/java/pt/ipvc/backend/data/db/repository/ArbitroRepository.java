@@ -2,6 +2,7 @@ package pt.ipvc.backend.data.db.repository;
 
 import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.models.ArbitroNomeModalidade;
+import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -25,6 +26,17 @@ public class ArbitroRepository extends Repository {
         objectToUpdate.setAssociacao(((Arbitro) object).getAssociacao());
         objectToUpdate.setNacionalidade(((Arbitro) object).getNacionalidade());
         _entityManager.getTransaction().commit();
+    }
+
+    public List findAllArbitrosNomePesquisa(String pesquisa) {
+        try {
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.ArbitroNomeModalidade(a.nome, a.genero, a.dataNascimento, a.nacionalidade, a.associacao, a.categoria, m.nome) FROM Arbitro AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", ArbitroNomeModalidade.class);
+            query.setParameter(1, pesquisa);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem arbitros");
+            return null;
+        }
     }
 
     public List findAll() {

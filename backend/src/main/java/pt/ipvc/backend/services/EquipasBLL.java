@@ -46,4 +46,6 @@ public class EquipasBLL {
     public static void removerEquipa(String nome) {
         equipasRepository.delete(EquipasBLL.getEquipa(nome));
     }
+
+
 }

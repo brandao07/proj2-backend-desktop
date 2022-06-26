@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -96,8 +95,6 @@
                 </Label>
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="79.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
                 <Line endX="-0.7071075439453125" endY="514.992919921875" layoutX="36.0" layoutY="2.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
-                <TextField fx:id="textFieldpesquisa" layoutX="488.0" layoutY="132.0" promptText="Insira o Nome do Campo" />
-                <Button fx:id="btnPesquisar" layoutX="415.0" layoutY="132.0" mnemonicParsing="false" text="Pesquisar" />
                 <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="505.0" layoutY="488.0" prefHeight="18.0" prefWidth="159.0" textFill="RED" />
                 <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
             <Button fx:id="editar" layoutX="454.0" layoutY="457.0" mnemonicParsing="false" onAction="#setBtnEditar" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Editar" textFill="WHITE" />

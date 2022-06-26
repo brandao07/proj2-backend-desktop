@@ -5,13 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.TipoPremio;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
+import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
@@ -39,9 +37,25 @@ public class AdminUtilizadorController implements Initializable {
     @FXML
     protected TableColumn<Utilizador, String> colunaUsername;
 
+    @FXML
+    protected TextField pesquisa;
+
+    public void pesquisar() {
+        //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
+        if (!ValidarInput.validarString(pesquisa.getText())) {
+            tabelaUtilizadores.setItems(FXCollections.observableArrayList(UtilizadorBLL.getUtilizadores()));
+
+            return;
+        }
+        tabelaUtilizadores.setItems(FXCollections.observableArrayList(UtilizadorBLL.getUtilizador(pesquisa.getText())));
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (ValidarInput.validarString(pesquisa.getText())) {
+            pesquisar();
+        }
         tabelaUtilizadores.getColumns().clear();
         ObservableList<Utilizador> dados = FXCollections.observableArrayList(UtilizadorBLL.getUtilizadores());
 

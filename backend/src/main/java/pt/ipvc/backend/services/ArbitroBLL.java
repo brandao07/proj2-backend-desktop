@@ -10,6 +10,10 @@ import java.util.List;
 
 public class ArbitroBLL {
 
+    public static List getArbitrosNomePesquisa(String pesquisa) {
+        return arbitroRepository.findAllArbitrosNomePesquisa(pesquisa);
+    }
+
     private static final ArbitroRepository arbitroRepository = new ArbitroRepository();
 
     public static void criarArbitro(String nome, String associacao, LocalDate dataNascimento, String genero,
