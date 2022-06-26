@@ -18,13 +18,7 @@ public class InfoBaseDeDadosRepository {
         _entityManager = _emf.createEntityManager();
     }
 
-    public List tamanhoBaseDeDados() {
-        try {
-            Query query = _entityManager.createQuery("SELECT pg_size_pretty(pg_total_relation_size('proj2'))");
-            return query.getResultList();
-        } catch (Exception e) {
-            System.out.println("tamanho nulo");
-            return null;
-        }
+    public String tamanhoBD() {
+        return (String) _entityManager.createNativeQuery("SELECT pg_size_pretty(pg_database_size('proj2'))").getSingleResult();
     }
 }

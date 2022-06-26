@@ -97,7 +97,7 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <LineChart layoutX="386.0" layoutY="177.0" prefHeight="229.0" prefWidth="287.0" title="Registo de Clientes">
+                <LineChart fx:id="clientes" layoutX="386.0" layoutY="177.0" prefHeight="229.0" prefWidth="287.0" title="Registo de Clientes">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>

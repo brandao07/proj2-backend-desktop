@@ -145,7 +145,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="admins_ativos1" text="Label" textFill="#0f4c83" GridPane.columnIndex="1">
+                        <Label fx:id="tamanho" text="Label" textFill="#0f4c83" GridPane.columnIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font>

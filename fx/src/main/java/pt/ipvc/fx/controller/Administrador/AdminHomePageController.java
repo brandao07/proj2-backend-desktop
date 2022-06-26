@@ -8,6 +8,8 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
+import pt.ipvc.backend.data.db.repository.InfoBaseDeDadosRepository;
+import pt.ipvc.backend.services.InfoBaseDeDadosBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -42,6 +44,9 @@ public class AdminHomePageController implements Initializable {
     @FXML
     private Label dias;
 
+    @FXML
+    private Label tamanho;
+
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         System.out.println(nome_scene);
@@ -67,9 +72,8 @@ public class AdminHomePageController implements Initializable {
         Utilizador utilizador = UtilizadorBLL.getUserSession();
         labelBemVindo.setText("Bem-Vindo " + UtilizadorBLL.getUserSession().getUsername());
         email.setText(UtilizadorBLL.getUserSession().getEmail());
-        dias.setText(String.valueOf(daysDiff) + " dias.");
-
-
+        dias.setText(String.valueOf(daysDiff) + " dias");
+        tamanho.setText(InfoBaseDeDadosBLL.getTamanho());
 
 
         Random r = new Random();

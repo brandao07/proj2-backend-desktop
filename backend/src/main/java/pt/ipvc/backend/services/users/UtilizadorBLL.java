@@ -51,8 +51,5 @@ public class UtilizadorBLL {
     public static List getDataCount() {
         return utilizadorRepository.findDataCount();
     }
-    
-
-
 
 }
