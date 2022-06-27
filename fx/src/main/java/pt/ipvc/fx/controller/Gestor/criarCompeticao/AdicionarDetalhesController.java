@@ -16,6 +16,7 @@ import pt.ipvc.backend.data.db.entity.TipoPremio;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.PremioBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -41,9 +42,13 @@ public class AdicionarDetalhesController implements Initializable {
     @FXML
     private Label checkDados;
 
+    @FXML
+    private Label usernameLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         tableView.getColumns().clear();
         tableView.setEditable(true);
@@ -120,6 +125,10 @@ public class AdicionarDetalhesController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 
 }

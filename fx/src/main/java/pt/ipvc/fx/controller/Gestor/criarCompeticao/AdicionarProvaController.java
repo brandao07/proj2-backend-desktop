@@ -13,6 +13,7 @@ import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -45,8 +46,14 @@ public class AdicionarProvaController implements Initializable {
     @FXML
     private Label invalidDados;
 
+    @FXML
+    private Label usernameLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         //Conjuntos de dados necessarios para as choiceboxes
         Set<String> equipas = ((List<Equipa>)EquipasBLL.getEquipas()).stream().
                 map(Equipa::getNome).collect(Collectors.toSet());
@@ -126,6 +133,10 @@ public class AdicionarProvaController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 
 }

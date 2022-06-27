@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -43,8 +44,13 @@ public class CriarProvaController implements Initializable {
     @FXML
     private Label invalidDados;
 
+    @FXML
+    private Label usernameLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         competicao = CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp);
         //dados para as choiceboxes so os nomes
@@ -119,5 +125,9 @@ public class CriarProvaController implements Initializable {
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
         nome_scene = nome_scene.substring(0, nome_scene.indexOf("'"));
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 }

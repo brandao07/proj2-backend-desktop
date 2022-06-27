@@ -17,6 +17,7 @@ import pt.ipvc.backend.models.ProvaNomeEquipas;
 import pt.ipvc.backend.services.CompeticaoBLL;
 import pt.ipvc.backend.services.PremioBLL;
 import pt.ipvc.backend.services.ProvaBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -46,9 +47,15 @@ public class GerirPremiosController implements Initializable {
     @FXML
     private Label checkDados;
 
+    @FXML
+    private Label usernameLabel;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
 
         tableView.getColumns().clear();
         path = CompeticaoBLL.getCompeticao(GerirCompeticaoController.aux.getNome());
@@ -122,6 +129,10 @@ public class GerirPremiosController implements Initializable {
         }
         PremioBLL.removerPremio(aux.getId());
         ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-premios.fxml", event);
+    }
+
+    public void homePage(ActionEvent event) {
+        ControladorGlobal.chamaScene("Gestor/gestor-home-page.fxml", event);
     }
 
 }
