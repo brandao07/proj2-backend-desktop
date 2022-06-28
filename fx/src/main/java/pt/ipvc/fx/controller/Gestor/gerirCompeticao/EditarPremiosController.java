@@ -64,7 +64,9 @@ public class EditarPremiosController implements Initializable {
 
         premio.setId(premioAux.getId());
 
-        premio.setCompeticao(premio.getCompeticao());
+        premio.setLugar(premioAux.getLugar());
+
+        premio.setCompeticao(premioAux.getCompeticao());
 
         premio.setTipoPremio(TipoPremioBLL.getTipoPremio(tipoPremio.getValue()));
 

@@ -42,7 +42,7 @@
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="135.0" layoutY="122.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
                 <Line endX="-0.7071075439453125" endY="473.69293212890625" layoutX="36.0" layoutY="45.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
                 <TextField fx:id="pesquisa" layoutX="452.0" layoutY="131.0" promptText="Insira o Nome do Campo" />
-                <Button layoutX="602.0" layoutY="130.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="26.0" prefWidth="32.0" style="-fx-background-color: transparent;">
+                <Button layoutX="618.0" layoutY="131.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="26.0" prefWidth="32.0" style="-fx-background-color: transparent;">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -54,10 +54,10 @@
                 <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="289.0" layoutY="477.0" prefHeight="18.0" prefWidth="365.0" textFill="RED" />
             <Line endX="355.80706787109375" endY="287.4000244140625" layoutX="317.0" layoutY="232.0" startX="-281.0" startY="287.3999938964844" stroke="#0f4c83" />
             <Label fx:id="editarInvalido" layoutX="311.0" layoutY="520.0" prefHeight="18.0" prefWidth="239.0" textFill="RED" />
-                <Button alignment="CENTER" layoutX="289.0" layoutY="438.0" mnemonicParsing="false" onAction="#remover" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
-                <Button alignment="CENTER" layoutX="381.0" layoutY="438.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="49.0" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
-            <Button alignment="CENTER" layoutX="453.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirPremios" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #0f4c83;" text="Gerir Prémios" textFill="WHITE" />
-                <Button alignment="CENTER" layoutX="571.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirProvas" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #0f4c83;" text="Gerir Provas" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="289.0" layoutY="438.0" mnemonicParsing="false" onAction="#remover" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="381.0" layoutY="438.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #0f4c83;" text="Editar" textFill="WHITE" />
+            <Button alignment="CENTER" layoutX="453.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirPremios" prefHeight="26.0" prefWidth="109.0" style="-fx-background-color: #0f4c83;" text="Gerir Prémios" textFill="WHITE" />
+                <Button alignment="CENTER" layoutX="571.0" layoutY="437.0" mnemonicParsing="false" onAction="#gerirProvas" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #0f4c83;" text="Gerir Provas" textFill="WHITE" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
@@ -67,7 +67,7 @@
                         <DropShadow />
                     </effect>
                 </AnchorPane>
-                <Label layoutX="40.0" layoutY="137.0" prefHeight="26.0" prefWidth="95.0" text="Competições" textFill="WHITE">
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="26.0" prefWidth="109.0" text="Competições" textFill="WHITE">
                     <font>
                         <Font size="16.0" />
                     </font>

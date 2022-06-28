@@ -31,7 +31,7 @@
                         <TableColumn fx:id="colGenero" prefWidth="96.0" style="-fx-background-color: #b7c9da;" text="Genero" />
                     </columns>
                 </TableView>
-                <Button layoutX="427.0" layoutY="401.0" mnemonicParsing="false" onAction="#historico" style="-fx-background-color: #0f4c83;" text="Visualizar Histórico de Competições" textFill="WHITE" />
+                <Button layoutX="401.0" layoutY="401.0" mnemonicParsing="false" onAction="#historico" style="-fx-background-color: #0f4c83;" text="Visualizar Histórico de Competições" textFill="WHITE" />
                 <Label layoutX="104.0" layoutY="72.0" text="Competições" textFill="#0f4c83">
                     <font>
                         <Font size="15.0" />
@@ -51,7 +51,7 @@
                         <DropShadow />
                     </effect>
                 </AnchorPane>
-                <Label layoutX="40.0" layoutY="137.0" prefHeight="26.0" prefWidth="94.0" text="Competições" textFill="WHITE">
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="26.0" prefWidth="109.0" text="Competições" textFill="WHITE">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -75,6 +75,15 @@
                   <Font size="14.0" />
                </font></Label>
                 <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="logout" layoutX="48.0" layoutY="542.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="43.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
                 <ImageView fitHeight="34.0" fitWidth="24.0" layoutX="44.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../icons/ellipsis-vertical-outline.png" />

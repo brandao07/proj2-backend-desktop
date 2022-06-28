@@ -42,7 +42,7 @@
                 <Button layoutX="150.0" layoutY="403.0" mnemonicParsing="false" onAction="#confirmarContinuar" style="-fx-background-color: #0f4c83;" text="Confirmar e Continuar" textFill="WHITE" />
                 <Button layoutX="25.0" layoutY="550.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior " textFill="WHITE" />
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="228.0" layoutY="129.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-                <Button layoutX="450.0" layoutY="403.0" mnemonicParsing="false" onAction="#confirmarSair" style="-fx-background-color: #0f4c83;" text="Confirmar e Sair" textFill="WHITE" />
+                <Button layoutX="437.0" layoutY="403.0" mnemonicParsing="false" onAction="#confirmarSair" style="-fx-background-color: #0f4c83;" text="Confirmar e Sair" textFill="WHITE" />
                 <Label fx:id="invalidDados" alignment="CENTER" layoutX="129.0" layoutY="374.0" prefHeight="18.0" prefWidth="443.0" textFill="RED" />
             <VBox layoutX="195.0" layoutY="155.0" prefHeight="200.0" prefWidth="255.0">
                <children>

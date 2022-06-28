@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class AdicionarPremiosController implements Initializable {
     public static Competicao competicao;
 
-    public static Integer nLugar;
+    public static Integer nLugar = 0;
 
     @FXML
     private Label infoComp;
@@ -52,7 +52,6 @@ public class AdicionarPremiosController implements Initializable {
         List<Premio> aux = PremioBLL.getPremio(competicao.getNome());
         //verifica o lugar do premio mais elevado referente a esta competicao
         for (Premio p : aux) {
-            nLugar = 0;
             if (p.getLugar() > nLugar) {
                 nLugar = p.getLugar();
             }

@@ -47,6 +47,12 @@ public class AdminHomePageController implements Initializable {
     @FXML
     private Label tamanho;
 
+    public void logout(ActionEvent event){
+        UtilizadorBLL.setUserSession(null);
+        ControladorGlobal.chamaScene("login-view.fxml", event);
+
+    }
+
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         System.out.println(nome_scene);

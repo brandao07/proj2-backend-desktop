@@ -65,6 +65,15 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
+            <Button fx:id="logout" layoutX="49.0" layoutY="545.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="43.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
             <effect>
                 <DropShadow />

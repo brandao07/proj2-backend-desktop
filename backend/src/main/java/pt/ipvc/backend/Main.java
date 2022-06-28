@@ -11,6 +11,7 @@ import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 import pt.ipvc.backend.models.PremioNomeTipoPremio;
 import pt.ipvc.backend.models.ProvaNomeEquipas;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.AdministradorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.backend.services.util.Encrypt;
 
@@ -26,6 +27,7 @@ public class Main {
         //não eliminar
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
-        System.out.println(UtilizadorBLL.getUtilizadoresNomePesquisa("hugo").toString());
+        //AdministradorBLL.criarAdministrador("admin", "123");
+        System.out.println();
     }
 }

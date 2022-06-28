@@ -40,13 +40,13 @@
                 <Line endX="-0.7071075439453125" endY="463.4070739746094" layoutX="23.0" layoutY="20.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
                 <TableView fx:id="provas" layoutX="36.0" layoutY="142.0" prefHeight="239.0" prefWidth="632.0" style="-fx-background-color: #cfdbe6;">
                     <columns>
-                        <TableColumn fx:id="colEquipaCasa" prefWidth="112.80000305175781" style="-fx-background-color: #b7c9da;" text="Equipa Casa (EC))" />
-                        <TableColumn fx:id="colEquipaFora" minWidth="0.0" prefWidth="103.20001220703125" style="-fx-background-color: #b7c9da;" text="Equipa Fora (EF)" />
-                        <TableColumn fx:id="colResultadoEquipaCasa" prefWidth="89.59991455078125" style="-fx-background-color: #b7c9da;" text="Resultado EC" />
-                        <TableColumn fx:id="colResultadoEquipaFora" minWidth="8.0" prefWidth="78.4000244140625" style="-fx-background-color: #b7c9da;" text="Resultado EF" />
-                        <TableColumn fx:id="colRecinto" prefWidth="71.20001220703125" style="-fx-background-color: #b7c9da;" text="Recinto" />
-                  <TableColumn fx:id="colData" minWidth="0.0" prefWidth="91.2000732421875" style="-fx-background-color: #b7c9da;" text="Data" />
-                  <TableColumn fx:id="colArbitro" prefWidth="82.39990234375" style="-fx-background-color: #b7c9da;" text="Arbitro" />
+                        <TableColumn fx:id="colEquipaCasa" prefWidth="128.0" style="-fx-background-color: #b7c9da;" text="Equipa Casa (EC))" />
+                        <TableColumn fx:id="colEquipaFora" minWidth="0.0" prefWidth="115.5" style="-fx-background-color: #b7c9da;" text="Equipa Fora (EF)" />
+                        <TableColumn fx:id="colResultadoEquipaCasa" prefWidth="103.0" style="-fx-background-color: #b7c9da;" text="Resultado EC" />
+                        <TableColumn fx:id="colResultadoEquipaFora" minWidth="8.0" prefWidth="96.5" style="-fx-background-color: #b7c9da;" text="Resultado EF" />
+                        <TableColumn fx:id="colRecinto" prefWidth="76.5" style="-fx-background-color: #b7c9da;" text="Recinto" />
+                  <TableColumn fx:id="colData" minWidth="0.0" prefWidth="57.5" style="-fx-background-color: #b7c9da;" text="Data" />
+                  <TableColumn fx:id="colArbitro" prefWidth="54.0" style="-fx-background-color: #b7c9da;" text="Arbitro" />
                     </columns>
                 </TableView>
                 <Button layoutX="587.0" layoutY="409.0" mnemonicParsing="false" onAction="#remover" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />

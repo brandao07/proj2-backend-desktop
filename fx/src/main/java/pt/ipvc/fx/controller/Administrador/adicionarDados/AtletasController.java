@@ -80,7 +80,8 @@ public class AtletasController implements Initializable {
                     Double.parseDouble(peso.getText()) ,
                     Double.parseDouble(altura.getText()) ,
                     equipa.getSelectionModel().getSelectedItem().toString(),
-                    posicao.getSelectionModel().getSelectedItem().toString());
+                    posicao.getSelectionModel().getSelectedItem().toString(),
+                    modalidades.getSelectionModel().getSelectedItem().toString());
             return;
         }
         labelErro.setText("Preencha todos os campos");

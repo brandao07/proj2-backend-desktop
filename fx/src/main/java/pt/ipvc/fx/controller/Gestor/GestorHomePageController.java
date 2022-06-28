@@ -42,6 +42,12 @@ public class GestorHomePageController implements Initializable {
     @FXML
     private Label usernameLabel;
 
+    public void logout(ActionEvent event){
+        UtilizadorBLL.setUserSession(null);
+        ControladorGlobal.chamaScene("login-view.fxml", event);
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

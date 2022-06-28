@@ -123,7 +123,6 @@ public class EditarCompeticaoController implements Initializable {
         CompeticaoBLL.updateCompeticao(competicao);
         System.out.println(competicao);
         ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);
-
     }
 
     public void anterior(ActionEvent event) {
