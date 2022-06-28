@@ -33,7 +33,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="507.0" layoutX="17.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
-            <Button layoutX="551.0" layoutY="484.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83#0f4c83;" text="Confirmar" textFill="WHITE" />
+            <Button fx:id="confirma" layoutX="551.0" layoutY="484.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83#0f4c83;" text="Confirmar" textFill="WHITE" />
             <Label fx:id="labelErro" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="489.0" prefHeight="17.0" prefWidth="230.0" textFill="RED" />
             <VBox alignment="CENTER" layoutX="49.0" layoutY="91.0" prefHeight="370.0" prefWidth="584.0">
                <children>

@@ -3,6 +3,7 @@ package pt.ipvc.fx.controller.Administrador.adicionarDados;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -29,9 +30,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class ArbitrosController implements Initializable {
-
-    //trocar a função pelo genero e adicionar a modalidade
-
     @FXML
     protected TextField nome;
 
@@ -85,7 +83,8 @@ public class ArbitrosController implements Initializable {
     @FXML
     protected ImageView erroModalidade;
 
-
+    @FXML
+    protected Button confirma;
     public boolean testar(){
         boolean validarNome = true;
         boolean validarData = true;
@@ -166,16 +165,18 @@ public class ArbitrosController implements Initializable {
         else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
-
-        labelErro.setText("Sucesso.");
-
             return validarNome && validarData && validarNacionalidade && validarNaturalidade && validarCategoria && validarAssociacao
                     && validarModalidade && validarGenero;
     }
 
     @FXML
     public void confirmar(ActionEvent event) throws InterruptedException {
-        if (testar()){
+        boolean teste = testar();
+        if (teste){
+            labelErro.setTextFill(Color.web("#32CD32"));
+            labelErro.setText("Sucesso.");
+            TimeUnit.SECONDS.sleep(1);
+
             ArbitroBLL.criarArbitro(nome.getText(),
                     associacao.getSelectionModel().getSelectedItem(),
                     data.getValue(),
@@ -183,7 +184,13 @@ public class ArbitrosController implements Initializable {
                     categoria.getSelectionModel().getSelectedItem(),
                     nacionalidade.getSelectionModel().getSelectedItem(),
                     modalidades.getSelectionModel().getSelectedItem());
+
+
+                    ControladorGlobal.adicionarArbitro();
+
+
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
+
         }else{
             labelErro.setText("Preencha todos os campos.");
         }
@@ -192,6 +199,7 @@ public class ArbitrosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        naturalidade.setDisable(true);
         choiceBoxOpcoes.setValue("Árbitros");
         try {
             LocalRepository.paises_e_cidades();
@@ -243,6 +251,8 @@ public class ArbitrosController implements Initializable {
         nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
+                naturalidade.setDisable(false);
+
                 naturalidade.getItems().clear();
                 for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
                     if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
