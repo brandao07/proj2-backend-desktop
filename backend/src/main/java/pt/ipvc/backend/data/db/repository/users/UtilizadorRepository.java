@@ -1,10 +1,8 @@
 package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
-import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
-import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.models.CountByDate;
-import pt.ipvc.backend.models.UtilizadorTipoUtilizador;
+import pt.ipvc.backend.models.UserTypeModel;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -88,15 +86,47 @@ public class UtilizadorRepository extends Repository {
         }
     }
 
-    public Object numeroGestores(){
+    public Object numeroGestores() {
         try {
             Query query = _entityManager.createQuery("SELECT count(g) FROM Gestor as g");
-            return  query.getSingleResult();
+            return query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Sem gestores");
             return null;
 
         }
     }
-    
+
+    public List findUserTypes() {
+        try {
+            Query queryAdmin = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, " +
+                    "u.username, " +
+                    "u.email, " +
+                    "'Administrador') " +
+                    "FROM Utilizador u " +
+                    "INNER JOIN Administrador a " +
+                    "ON u.id = a.id");
+            Query queryGestor = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, " +
+                    "u.username, " +
+                    "u.email, " +
+                    "'Gestor') " +
+                    "FROM Utilizador u " +
+                    "INNER JOIN Gestor g " +
+                    "ON u.id = g.id");
+            Query queryCliente = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, " +
+                    "u.username, " +
+                    "u.email, " +
+                    "'Cliente') " +
+                    "FROM Utilizador u " +
+                    "INNER JOIN Cliente c " +
+                    "ON u.id = c.id");
+            List<UserTypeModel> users = queryAdmin.getResultList();
+            users.addAll(queryCliente.getResultList());
+            users.addAll(queryGestor.getResultList());
+            return users;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
