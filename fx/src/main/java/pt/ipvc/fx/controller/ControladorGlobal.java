@@ -41,9 +41,24 @@ public class ControladorGlobal {
     public static void adicionarArbitro() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
-
         alert.setHeaderText(null);
         alert.setContentText("Criação do árbitro realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void adicionarAtleta() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação do atleta realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void adicionarEquipa() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação da equipa realizada com sucesso!");
         alert.showAndWait();
     }
 
