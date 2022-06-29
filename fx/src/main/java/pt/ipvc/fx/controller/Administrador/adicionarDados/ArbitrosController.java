@@ -171,8 +171,7 @@ public class ArbitrosController implements Initializable {
 
     @FXML
     public void confirmar(ActionEvent event) throws InterruptedException {
-        boolean teste = testar();
-        if (teste){
+        if (testar()){
             labelErro.setTextFill(Color.web("#32CD32"));
             labelErro.setText("Sucesso.");
             TimeUnit.SECONDS.sleep(1);
@@ -185,9 +184,7 @@ public class ArbitrosController implements Initializable {
                     nacionalidade.getSelectionModel().getSelectedItem(),
                     modalidades.getSelectionModel().getSelectedItem());
 
-
                     ControladorGlobal.adicionarArbitro();
-
 
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
 

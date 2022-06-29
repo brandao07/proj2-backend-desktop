@@ -98,22 +98,22 @@ public class EditarDadosArbitroController implements Initializable {
 
         modalidades.getItems().addAll(modalidade);
 
-        nome.setPromptText(ConsultarDadosArbitroController.arbitroSceneConsultar);
+        nome.setPromptText(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getNome());
 
-        modalidades.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getModalidade().getNome());
+        modalidades.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getModalidade().getNome());
 
-        Date data_nascimento = ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getDataNascimento();
+        Date data_nascimento = ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getDataNascimento();
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
 
 
 
-        nacionalidade.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getNacionalidade());
+        nacionalidade.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getNacionalidade());
 
-        associacao.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getAssociacao());
+        associacao.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getAssociacao());
 
-        genero.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getGenero());
+        genero.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getGenero());
 
-        categoria.setValue(ArbitroBLL.getArbitro(ConsultarDadosArbitroController.arbitroSceneConsultar).getCategoria());
+        categoria.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getCategoria());
 
         categoria.getItems().addAll("Internacional", "Nacional");
 

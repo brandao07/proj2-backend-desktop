@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ConsultarDadosAtletaController implements Initializable {
 
-    public static String atletaSceneConsultar;
+    public static long atletaSceneConsultar;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
@@ -122,7 +122,7 @@ public class ConsultarDadosAtletaController implements Initializable {
     }
 
     public void setBtnEditar(ActionEvent event){
-        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().getNome();
+        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().getId();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-atleta.fxml", event);
     }
 

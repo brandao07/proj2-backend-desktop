@@ -27,7 +27,6 @@ public class Main {
         //não eliminar
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
-        //AdministradorBLL.criarAdministrador("admin", "123");
-        System.out.println();
+        AdministradorBLL.criarAdministrador("admin", "123");
     }
 }

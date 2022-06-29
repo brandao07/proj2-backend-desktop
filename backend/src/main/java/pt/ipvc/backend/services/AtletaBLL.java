@@ -27,6 +27,10 @@ public class AtletaBLL {
         return (Atleta) atletaRepository.find(nome);
     }
 
+    public static Atleta getAtletaById(long id) {
+        return (Atleta) atletaRepository.findById(id);
+    }
+
     public static List getAtletas() {
         return atletaRepository.findAll();
     }

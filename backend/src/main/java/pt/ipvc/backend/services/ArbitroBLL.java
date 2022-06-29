@@ -44,12 +44,15 @@ public class ArbitroBLL {
         arbitroRepository.delete(ArbitroBLL.getArbitro(nome));
     }
 
+    public static void removerArbitroById(long id) {
+        arbitroRepository.delete(ArbitroBLL.getArbitroId(id));
+    }
+
     public static List getArbitroNomeModalidade() {
         return arbitroRepository.findAllArbitroNomeModalidade();
     }
 
     public static Arbitro getArbitroId(long id){
-        return (Arbitro) arbitroRepository.find(id);
-
+        return (Arbitro) arbitroRepository.findById(id);
     }
 }

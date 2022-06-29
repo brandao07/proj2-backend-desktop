@@ -6,11 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,6 +53,97 @@ public class EquipasController implements Initializable {
 
     @FXML
     protected Button confirmar;
+
+    @FXML
+    protected ImageView erroNome;
+
+    @FXML
+    protected ImageView erroData;
+
+    @FXML
+    protected ImageView erroPais;
+
+    @FXML
+    protected ImageView erroCidade;
+
+    @FXML
+    protected ImageView erroAssociacao;
+
+    @FXML
+    protected ImageView erroSigla;
+
+    @FXML
+    protected ImageView erroContacto;
+
+    public boolean testar(){
+        boolean validarNome = true;
+        boolean validarData = true;
+        boolean validarPais = true;
+        boolean validarCidade = true;
+        boolean validarAssociacao = true;
+        boolean validarSigla = true;
+        boolean validarContacto = true;
+        boolean validarModalidade = true;
+
+
+        if (!ValidarInput.validarString(nome.getText())){
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            nome.setPromptText("Por favor introduza um nome.");
+            validarNome = false;
+        }
+        else {
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarString(sigla.getText())){
+            erroSigla.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarSigla = false;
+        }
+        else {
+            erroSigla.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(contacto.getText())){
+            erroContacto.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarContacto = false;
+        }
+        else {
+            erroContacto.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(pais.getValue())){
+            erroPais.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarPais = false;
+        }
+        else {
+            erroPais.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(cidade.getValue())){
+            erroCidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarCidade = false;
+        }
+        else {
+            erroCidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(associacao.getValue())){
+            erroAssociacao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarAssociacao = false;
+        }
+        else {
+            erroAssociacao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        return validarNome && validarData && validarPais && validarCidade && validarAssociacao && validarSigla
+                && validarContacto && validarModalidade;
+    }
 
     @FXML
     public void confirmar(ActionEvent event) {

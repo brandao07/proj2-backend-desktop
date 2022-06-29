@@ -5,6 +5,8 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import java.util.Date;
 
 public class AtletaNomeEquipa_Modalidade {
+
+    private long id;
     private String nome;
 
     private String genero;
@@ -23,7 +25,8 @@ public class AtletaNomeEquipa_Modalidade {
 
     private String modalidade;
 
-    public AtletaNomeEquipa_Modalidade(String nome, String genero, Date dataNascimento, Double peso, Double altura, String nacionalidade, String posicao, String equipa, String modalidade) {
+    public AtletaNomeEquipa_Modalidade(long id, String nome, String genero, Date dataNascimento, Double peso, Double altura, String nacionalidade, String posicao, String equipa, String modalidade) {
+        this.id = id;
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -39,6 +42,14 @@ public class AtletaNomeEquipa_Modalidade {
 
     public String getNome() {
         return nome;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {

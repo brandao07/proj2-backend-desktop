@@ -50,6 +50,17 @@ public class AtletaRepository extends Repository {
         }
     }
 
+    public Object findById(long id) {
+        try {
+            Query query = _entityManager.createQuery("SELECT a FROM Atleta AS a " +
+                    "WHERE a.nome = '" + id + "'");
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Sem Atleta");
+            return null;
+        }
+    }
+
     public List findAllAtletaNomeEquipaModalidade() {
         try {
             Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade as m ON m.id = a.modalidade.id", AtletaNomeEquipa_Modalidade.class);

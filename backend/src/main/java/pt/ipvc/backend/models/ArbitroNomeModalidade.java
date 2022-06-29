@@ -22,8 +22,10 @@ public class ArbitroNomeModalidade {
 
     private String modalidade;
 
+    private long id;
 
-    public ArbitroNomeModalidade(String nome, String genero, Date dataNascimento, String nacionalidade, String associacao, String categoria, String modalidade) {
+
+    public ArbitroNomeModalidade(String nome, String genero, Date dataNascimento, String nacionalidade, String associacao, String categoria, String modalidade, long id) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -31,7 +33,17 @@ public class ArbitroNomeModalidade {
         this.associacao = associacao;
         this.categoria = categoria;
         this.modalidade = modalidade;
+        this.id = id;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public ArbitroNomeModalidade(){}
 
     public String getNome() {
@@ -100,6 +112,7 @@ public class ArbitroNomeModalidade {
                 ",associacao='" + associacao + '\'' +
                 ",categoria='" + categoria + '\'' +
                 ",modalidade='" + modalidade + '\'' +
+                ",id='" + id +
     '}';
     }
 }

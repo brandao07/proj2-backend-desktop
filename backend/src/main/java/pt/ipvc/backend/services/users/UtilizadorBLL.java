@@ -26,6 +26,10 @@ public class UtilizadorBLL {
         return (Utilizador) utilizadorRepository.findUser(username);
     }
 
+    public static Utilizador getUtilizadoByIdr(String username) {
+        return (Utilizador) utilizadorRepository.findUserById(username);
+    }
+
     public static List getUtilizadores() {
         return utilizadorRepository.findAll();
     }
@@ -33,6 +37,12 @@ public class UtilizadorBLL {
     public static void removerUtilizador(String username) {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
     }
+
+    public static void removerUtilizadorById(String username) {
+        utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
+    }
+
+
 
 
 

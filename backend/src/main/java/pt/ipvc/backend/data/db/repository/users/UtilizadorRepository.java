@@ -52,6 +52,19 @@ public class UtilizadorRepository extends Repository {
         }
     }
 
+    public Object findUserById(String username) {
+        try {
+            Query query = _entityManager.createQuery("SELECT u from Utilizador as u " +
+                    "WHERE u.username = '" + username + "' ");
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Utilizador nao encontrado!");
+            return null;
+        }
+    }
+
+
+
 
     public Object numeroUtilizadores(){
         try {

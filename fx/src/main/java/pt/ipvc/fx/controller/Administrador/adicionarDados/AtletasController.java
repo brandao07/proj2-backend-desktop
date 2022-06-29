@@ -6,6 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
@@ -18,9 +22,11 @@ import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class AtletasController implements Initializable {
@@ -60,19 +66,145 @@ public class AtletasController implements Initializable {
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
 
+    @FXML
+    protected ImageView erroNome;
 
     @FXML
-    public void confirmar(ActionEvent event) {
-        if (ValidarInput.validarString(nome.getText()) &&
-                ValidarInput.validarString(altura.getText()) &&
-                ValidarInput.validarString(peso.getText()) &&
-                ValidarInput.validarDataPicker(data.getValue()) &&
-                ValidarInput.validarChoiceBox(nacionalidade) &&
-                ValidarInput.validarChoiceBox(modalidades) &&
-                ValidarInput.validarChoiceBox(posicao) &&
-                ValidarInput.validarChoiceBox(genero) &&
-                ValidarInput.validarChoiceBox(modalidades)) {
-            labelErro.setText("");
+    protected ImageView erroData;
+
+    @FXML
+    protected ImageView erroModalidade;
+
+    @FXML
+    protected ImageView erroNacionalidade;
+
+    @FXML
+    protected ImageView erroPeso;
+
+    @FXML
+    protected ImageView erroAltura;
+
+    @FXML
+    protected ImageView erroGenero;
+
+    @FXML
+    protected ImageView erroPosicao;
+
+    @FXML
+    protected ImageView erroEquipa;
+
+
+
+    public boolean testar(){
+        boolean validarNome = true;
+        boolean validarData = true;
+        boolean validarModalidade = true;
+        boolean validarNacionalidade = true;
+        boolean validarGenero = true;
+        boolean validarPeso = true;
+        boolean validarAltura = true;
+        boolean validarPosicao = true;
+        boolean validarEquipa = true;
+
+
+        if (!ValidarInput.validarString(nome.getText())){
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            nome.setPromptText("Por favor introduza um nome.");
+            validarNome = false;
+        }
+        else {
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarDataPicker(data.getValue())){
+            erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarData = false;
+        }
+        else {
+            erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(nacionalidade.getValue())){
+            erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarNacionalidade = false;
+        }
+        else {
+            erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarModalidade = false;
+        }
+        else {
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarString(peso.getText()) || Float.parseFloat(peso.getText()) > 200){
+            erroPeso.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarPeso = false;
+        }
+        else {
+            erroPeso.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarString(altura.getText()) || Float.parseFloat(altura.getText()) > 3.00){
+            erroAltura.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarAltura = false;
+            labelErro.setText("Altura Inválida.");
+        }
+        else {
+            erroAltura.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(genero.getValue())){
+            erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarGenero = false;
+        }
+        else {
+            erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarModalidade = false;
+        }
+        else {
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(equipa.getValue())){
+            erroEquipa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarEquipa = false;
+        }
+        else {
+            erroEquipa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(posicao.getValue())){
+            erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarPosicao = false;
+        }
+        else {
+            erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+        return validarNome && validarData && validarNacionalidade && validarAltura && validarPeso && validarPosicao
+                && validarModalidade && validarGenero && validarEquipa;
+    }
+
+
+    @FXML
+    public void confirmar(ActionEvent event) throws InterruptedException {
+        if (testar()) {
+            labelErro.setTextFill(Color.web("#32CD32"));
+            labelErro.setText("Sucesso.");
+            TimeUnit.SECONDS.sleep(1);
             AtletaBLL.criarAtleta(nome.getText(),
                     genero.getSelectionModel().getSelectedItem().toString(),
                     nacionalidade.getSelectionModel().getSelectedItem().toString(),
@@ -82,9 +214,11 @@ public class AtletasController implements Initializable {
                     equipa.getSelectionModel().getSelectedItem().toString(),
                     posicao.getSelectionModel().getSelectedItem().toString(),
                     modalidades.getSelectionModel().getSelectedItem().toString());
-            return;
+            ControladorGlobal.adicionarAtleta();
+
+            ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
         }
-        labelErro.setText("Preencha todos os campos");
+        labelErro.setText("Preencha todos os campos.");
     }
 
     public void setBtnNavMenu(ActionEvent event) {

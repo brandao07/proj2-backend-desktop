@@ -131,23 +131,23 @@ public class EditarDadosAtletaController implements Initializable {
 
         equipa.getItems().addAll(nomeEquipa);
 
-        nome.setPromptText(ConsultarDadosAtletaController.atletaSceneConsultar);
-        modalidades.setValue(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getModalidade().getNome());
+        nome.setPromptText(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNome());
+        modalidades.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getModalidade().getNome());
 
-        Date data_nascimento = AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getDataNascimento();
+        Date data_nascimento = AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getDataNascimento();
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
 
-        nacionalidade.setValue(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getNacionalidade());
+        nacionalidade.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNacionalidade());
 
-        genero.setValue(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getGenero());
+        genero.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getGenero());
 
-        posicao.setValue(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getPosicao());
+        posicao.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getPosicao());
 
-        equipa.setValue(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getEquipa().getNome());
+        equipa.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getEquipa().getNome());
 
-        altura.setPromptText(String.valueOf(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getAltura()));
+        altura.setPromptText(String.valueOf(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getAltura()));
 
-        peso.setPromptText(String.valueOf(AtletaBLL.getAtleta(ConsultarDadosAtletaController.atletaSceneConsultar).getPeso()));
+        peso.setPromptText(String.valueOf(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getPeso()));
 
 
         //adicionar pais à choiceBox nacionalidade

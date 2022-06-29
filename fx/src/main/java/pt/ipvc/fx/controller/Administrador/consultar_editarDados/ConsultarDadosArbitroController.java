@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ConsultarDadosArbitroController implements Initializable {
 
-    public static String arbitroSceneConsultar;
+    public static long arbitroSceneConsultar;
     @FXML
     private ChoiceBox itemPesquisar;
 
@@ -102,6 +102,7 @@ public class ConsultarDadosArbitroController implements Initializable {
         tabela.getColumns().add(colunaModalidade);
 
         tabela.setItems(dados);
+
     }
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -113,22 +114,15 @@ public class ConsultarDadosArbitroController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        ArbitroBLL.removerArbitro(tabela.getSelectionModel().getSelectedItem().getNome());
+        ArbitroBLL.removerArbitroById(tabela.getSelectionModel().getSelectedItem().getId());
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
 
     }
 
     public void setBtnEditar(ActionEvent event){
-        arbitroSceneConsultar = tabela.getSelectionModel().getSelectedItem().getNome();
+        System.out.printf("id:" + tabela.getSelectionModel().getSelectedItem().getId());
+        arbitroSceneConsultar = tabela.getSelectionModel().getSelectedItem().getId();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
     }
-
-    //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
-//        ArbitroBLL.getArbitros();
-    //TUDO: HUGO JA TENS PARA OBTER Arbitro
-//        Arbitro arbitro = ArbitroBLL.getArbitro(nome);
-    //TUDO: HUGO JA TENS UPDATE
-    //ArbitroBLL.updateArbitro(arbitro);
-
 
 }
