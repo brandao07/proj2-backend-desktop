@@ -15,6 +15,8 @@ import pt.ipvc.backend.services.users.AdministradorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.backend.services.util.Encrypt;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
@@ -27,6 +29,6 @@ public class Main {
         //não eliminar
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
-        AdministradorBLL.criarAdministrador("admin", "123");
+
     }
 }

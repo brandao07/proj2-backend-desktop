@@ -7,20 +7,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.RecintoBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class RecintosController implements Initializable {
 
@@ -49,17 +56,72 @@ public class RecintosController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
+    protected ImageView erroNome;
+
+    @FXML
+    protected ImageView erroPais;
+
+    @FXML
+    protected ImageView erroCapacidade;
+
+    public boolean testar(){
+        boolean validarNome = true;
+        boolean validarPais = true;
+        boolean validarCapacidade = true;
+        boolean validarTipoFinal = true;
+
+
+        if (!ValidarInput.validarString(nome.getText())){
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            nome.setPromptText("Por favor introduza um nome.");
+            validarNome = false;
+        }
+        else {
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(pais.getValue())){
+            erroPais.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarPais = false;
+        }
+        else {
+            erroPais.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarString(capacidade.getText())){
+            erroCapacidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarCapacidade = false;
+        }
+        else {
+            erroCapacidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (tipoFinal.getItems().isEmpty()){
+            labelErro.setText("Selecione pelo menos um tipo de recinto.");
+            validarTipoFinal = false;
+        }
+
+
+
+        return validarNome && validarCapacidade && validarPais && validarTipoFinal;
+    }
+    @FXML
     public void remove(ActionEvent event){
         tipoFinal.getItems().remove(tipoFinal.getSelectionModel().getSelectedItem());
     }
 
     @FXML
-    public void confirmar(ActionEvent event) {
-        if (ValidarInput.validarString(nome.getText()) &&
-                ValidarInput.validarInt(Integer.parseInt(capacidade.getText())) &&
-                ValidarInput.validarChoiceBox(pais.getValue()) &&
-                ValidarInput.validarListView(tipoFinal.getSelectionModel().isEmpty())
-        ) {
+    public void confirmar(ActionEvent event) throws InterruptedException {
+        if (testar()) {
+            labelErro.setTextFill(Color.web("#32CD32"));
+            labelErro.setText("Sucesso.");
+            TimeUnit.SECONDS.sleep(1);
             Recinto recinto = new Recinto();
             recinto.setCapacidade(Long.valueOf(capacidade.getText()));
             recinto.setNome(nome.getText());
@@ -71,12 +133,12 @@ public class RecintosController implements Initializable {
                 RecintoBLL.addTipo(recinto, TipoRecintoBLL.getTipoRecinto(nome));
                 RecintoBLL.updateRecinto(recinto);
             }
-            System.out.println("Campos válidos");
 
+            ControladorGlobal.adicionarRecinto();
+
+            ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
         }else{
-            labelErro.setText("Preencha todos os campos");
-            System.out.println("Campos Inválidos");
-
+            labelErro.setText("Preencha todos os campos.");
         }
 
     }

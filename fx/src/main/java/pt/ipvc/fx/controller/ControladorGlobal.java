@@ -62,5 +62,29 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
+    public static void adicionarRecinto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação do recinto realizado com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void adicionarTipoRecinto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação do tipo de recinto realizado com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void adicionarPremio() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação do tipo de prémio realizado com sucesso!");
+        alert.showAndWait();
+    }
+
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -33,10 +34,11 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="512.0" layoutX="14.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
                 <Button layoutX="579.0" layoutY="505.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox layoutX="155.0" layoutY="80.0" prefHeight="183.0" prefWidth="395.0">
+            <VBox layoutX="-6.0" layoutY="95.0" prefHeight="210.0" prefWidth="520.0">
                <children>
-                  <GridPane>
+                  <GridPane vgap="30.0">
                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -49,15 +51,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                            <Label text="O que pretende adicionar:" />
-                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" GridPane.columnIndex="1" />
-                            <Label text="Nome:" GridPane.rowIndex="2" />
-                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <Label text="País:" GridPane.rowIndex="3" />
-                            <Label text="Capacidade:" GridPane.rowIndex="4" />
-                            <TextField fx:id="capacidade" prefHeight="26.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="pais" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Selecione os tipos de recinto/s:" GridPane.rowIndex="5" />
+                            <Label text="O que pretende adicionar:" GridPane.columnIndex="1" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" />
+                            <Label text="Nome:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <Label text="País:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <Label text="Capacidade:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <TextField fx:id="capacidade" prefHeight="26.0" prefWidth="140.0" promptText="Capacidade em milhares" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="pais" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label text="Selecione os tipos de recinto/s:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fx:id="erroPais" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fx:id="erroCapacidade" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
@@ -72,19 +89,16 @@
             <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="33.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="187.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="72.0" startX="-54.0" startY="-3.29998779296875" stroke="#0f4c83" />
-            <ListView fx:id="tipo" layoutX="149.0" layoutY="293.0" prefHeight="180.0" prefWidth="170.0" />
-            <Button fx:id="remove" layoutX="492.0" layoutY="459.0" mnemonicParsing="false" onAction="#remove" prefHeight="54.0" prefWidth="77.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../icons/remove1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <ListView fx:id="tipoFinal" layoutX="381.0" layoutY="293.0" prefHeight="180.0" prefWidth="170.0" />
+            <ListView fx:id="tipo" layoutX="150.0" layoutY="325.0" prefHeight="180.0" prefWidth="170.0" />
+            <Button fx:id="remove" layoutX="492.0" layoutY="459.0" mnemonicParsing="false" onAction="#remove" prefHeight="54.0" prefWidth="77.0" style="-fx-background-color: transparent;" />
+            <ListView fx:id="tipoFinal" layoutX="380.0" layoutY="325.0" prefHeight="180.0" prefWidth="170.0" />
             <Label fx:id="label1" layoutX="263.0" layoutY="505.0" />
             <Label fx:id="labelErro" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="514.0" prefHeight="17.0" prefWidth="230.0" textFill="RED" />
+            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="514.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/remove1.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">

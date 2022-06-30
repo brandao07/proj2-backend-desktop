@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
@@ -92,6 +93,20 @@ public class AtletasController implements Initializable {
 
     @FXML
     protected ImageView erroEquipa;
+
+    @FXML
+    public void escolherFoto(ActionEvent event){
+
+        final DirectoryChooser dirchooser = new DirectoryChooser();
+        dirchooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/jogadores"));
+
+        File file = dirchooser.showDialog(null);
+
+
+
+        System.out.println(file.getAbsolutePath());
+
+    }
 
 
 

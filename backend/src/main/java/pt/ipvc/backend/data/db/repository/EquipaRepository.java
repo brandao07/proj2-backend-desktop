@@ -5,6 +5,7 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 
+
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Objects;
