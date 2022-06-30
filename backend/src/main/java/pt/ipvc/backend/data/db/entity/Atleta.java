@@ -41,7 +41,7 @@ public class Atleta {
     private Modalidade modalidade;
     @Basic
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     public Atleta() {
     }
@@ -152,11 +152,11 @@ public class Atleta {
                 '}';
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

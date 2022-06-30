@@ -51,7 +51,7 @@ public class Equipa {
     private Set<Modalidade> modalidades = new LinkedHashSet<>();
     @Basic
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     public Equipa() {
     }
@@ -201,11 +201,11 @@ public class Equipa {
                     orElse(null));
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
