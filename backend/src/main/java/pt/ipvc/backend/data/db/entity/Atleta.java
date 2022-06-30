@@ -32,7 +32,6 @@ public class Atleta {
     @Column(name = "posicao")
     private String posicao;
 
-
     @ManyToOne
     @JoinColumn(name = "equipa_id")
     private Equipa equipa;
@@ -40,14 +39,9 @@ public class Atleta {
     @ManyToOne
     @JoinColumn(name = "modalidade_id")
     private Modalidade modalidade;
-
-    public Modalidade getModalidade() {
-        return modalidade;
-    }
-
-    public void setModalidade(Modalidade modalidade) {
-        this.modalidade = modalidade;
-    }
+    @Basic
+    @Column(name = "image")
+    private byte[] image;
 
     public Atleta() {
     }
@@ -61,6 +55,14 @@ public class Atleta {
         this.altura = altura;
         this.nacionalidade = nacionalidade;
         this.posicao = posicao;
+    }
+
+    public Modalidade getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(Modalidade modalidade) {
+        this.modalidade = modalidade;
     }
 
     public Long getId() {
@@ -148,5 +150,13 @@ public class Atleta {
                 ", posicao='" + posicao + '\'' +
                 ", equipa=" + equipa +
                 '}';
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

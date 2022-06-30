@@ -49,18 +49,13 @@ public class Equipa {
             joinColumns = @JoinColumn(name = "equipa_id"),
             inverseJoinColumns = @JoinColumn(name = "modalidades_id"))
     private Set<Modalidade> modalidades = new LinkedHashSet<>();
-
-    public Set<Modalidade> getModalidades() {
-        return modalidades;
-    }
-
-    public void setModalidades(Set<Modalidade> modalidades) {
-        this.modalidades = modalidades;
-    }
-
+    @Basic
+    @Column(name = "image")
+    private byte[] image;
 
     public Equipa() {
     }
+
 
     public Equipa(String nome, String cidade, String contacto, String associacao, String pais,
                   String sigla, Date dataFundacao) {
@@ -71,6 +66,14 @@ public class Equipa {
         this.pais = pais;
         this.sigla = sigla;
         this.dataFundacao = dataFundacao;
+    }
+
+    public Set<Modalidade> getModalidades() {
+        return modalidades;
+    }
+
+    public void setModalidades(Set<Modalidade> modalidades) {
+        this.modalidades = modalidades;
     }
 
     public Set<Prova> getProvasFora() {
@@ -196,5 +199,13 @@ public class Equipa {
                     filter(r -> Objects.equals(r.getId(), this.getId())).
                     findAny().
                     orElse(null));
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
