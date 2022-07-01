@@ -12,13 +12,13 @@ public class Utilizador {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username", unique = true, length = 25)
     private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "email", unique = true, length = 25)
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "data_criacao")
