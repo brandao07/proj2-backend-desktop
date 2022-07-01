@@ -17,7 +17,7 @@ public class PosicaoRepository extends Repository {
         _entityManager.getTransaction().begin();
         Posicao objectToUpdate = (Posicao) find(((Posicao) object).getId());
         objectToUpdate.setNome(((Posicao) object).getNome());
-        objectToUpdate.setModalidade(((Posicao) object).getModalidade());
+        objectToUpdate.setModalidades(((Posicao) object).getModalidades());
         _entityManager.getTransaction().commit();
     }
 
