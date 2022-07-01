@@ -32,16 +32,15 @@
                   <Image url="@../../../icons/adicionarAtletas.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="523.0" layoutX="21.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="666.0" />
-                <Button layoutX="572.0" layoutY="520.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox alignment="CENTER" layoutX="-73.0" layoutY="97.0" prefHeight="450.0" prefWidth="903.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="560.0" layoutX="23.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="666.0" />
+                <Button layoutX="571.0" layoutY="533.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox alignment="CENTER" layoutX="28.0" layoutY="55.0" prefHeight="431.0" prefWidth="553.0">
                <children>
-                  <GridPane alignment="CENTER" vgap="30.0">
+                  <GridPane alignment="CENTER" prefHeight="393.0" prefWidth="553.0" vgap="30.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="131.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="10.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="131.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="281.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="281.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -49,7 +48,6 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -70,8 +68,8 @@
                             <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                             <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                             <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                            <TextField fx:id="peso" prefHeight="26.0" prefWidth="167.0" promptText="Peso em kg (ex: 79.3)" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                            <TextField fx:id="altura" prefHeight="26.0" prefWidth="57.0" promptText="Altura em m (ex: 1.81)" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                            <TextField fx:id="peso" maxWidth="90.0" prefHeight="26.0" prefWidth="36.0" promptText="Peso em kg" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                            <TextField fx:id="altura" maxWidth="90.0" prefHeight="26.0" prefWidth="75.0" promptText="Altura em cm" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                             <ChoiceBox fx:id="posicao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                             <ChoiceBox fx:id="equipa" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="10" />
                             <TextField fx:id="nome" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -118,26 +116,31 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Button fx:id="btnFoto" mnemonicParsing="false" onAction="#escolherFoto" prefHeight="95.0" prefWidth="96.0" style="-fx-background-color: #fff;" text="Adicionar Foto" textFill="#0f4c83" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <ImageView fx:id="erroPosicao" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                            <GridPane.margin>
-                              <Insets left="20.0" />
+                              <Insets right="5.0" />
                            </GridPane.margin>
-                        </Button>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
             </VBox>
-            <Line endX="389.30706787109375" endY="435.4158935546875" layoutX="284.0" layoutY="122.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
-            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="73.0" startX="-144.0" startY="-3.9071044921875" stroke="#0f4c83" />
-            <Label layoutX="62.0" layoutY="58.0" text="Atletas" textFill="#0f4c83">
+            <Line endX="389.30706787109375" endY="451.32623291015625" layoutX="284.0" layoutY="122.0" startX="389.30706787109375" startY="-78.53715515136719" stroke="#0f4c83" />
+            <Line endX="409.80706787109375" endY="-4.037158966064453" layoutX="263.0" layoutY="47.0" startX="-144.0" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="66.0" layoutY="34.0" text="Atletas" textFill="#0f4c83">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="138.0" layoutY="81.0" startX="-102.00001525878906" startY="-12.700004577636719" stroke="#0f4c83" />
-            <Line endX="-0.5000152587890625" endY="553.2088012695312" layoutX="36.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
-            <Line endX="486.30706787109375" endY="-3.0841064453125" layoutX="187.0" layoutY="561.0" startX="-151.50001525878906" startY="-3.29119873046875" stroke="#0f4c83" />
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="138.0" layoutY="56.0" startX="-102.00001525878906" startY="-12.700004577636719" stroke="#0f4c83" />
+            <Line endX="-0.5000457763671875" endY="597.1778564453125" layoutX="36.0" layoutY="-23.0" startX="-0.500030517578125" startY="66.80000305175781" stroke="#0f4c83" />
+            <Line endX="486.30706787109375" endY="-3.0841064453125" layoutX="185.0" layoutY="578.0" startX="-151.50001525878906" startY="-3.29119873046875" stroke="#0f4c83" />
             <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="214.0" layoutY="525.0" prefHeight="17.0" prefWidth="275.0" textFill="RED" />
+            <Button fx:id="btnFoto" contentDisplay="CENTER" layoutX="466.0" layoutY="184.0" mnemonicParsing="false" onAction="#escolherFoto" prefHeight="133.0" prefWidth="120.0" style="-fx-background-color: #fff;" text="Adicionar Foto" textFill="#0f4c83">
+               <graphic>
+                  <ImageView fx:id="imagem" fitHeight="118.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
