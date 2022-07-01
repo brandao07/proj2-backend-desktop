@@ -1,10 +1,5 @@
 package pt.ipvc.backend.models;
 
-import pt.ipvc.backend.data.db.entity.Modalidade;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 public class ArbitroNomeModalidade {
@@ -16,22 +11,19 @@ public class ArbitroNomeModalidade {
 
     private String nacionalidade;
 
-    private String associacao;
-
-    private String categoria;
+    private String naturalidade;
 
     private String modalidade;
 
     private long id;
 
 
-    public ArbitroNomeModalidade(String nome, String genero, Date dataNascimento, String nacionalidade, String associacao, String categoria, String modalidade, long id) {
+    public ArbitroNomeModalidade(String nome, String genero, Date dataNascimento, String nacionalidade, String naturalidade, String modalidade, long id) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
-        this.associacao = associacao;
-        this.categoria = categoria;
+        this.naturalidade = naturalidade;
         this.modalidade = modalidade;
         this.id = id;
     }
@@ -78,20 +70,12 @@ public class ArbitroNomeModalidade {
         this.nacionalidade = nacionalidade;
     }
 
-    public String getAssociacao() {
-        return associacao;
+    public String getNaturalidade() {
+        return naturalidade;
     }
 
-    public void setAssociacao(String associacao) {
-        this.associacao = associacao;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setNaturalidade(String naturalidade) {
+        this.naturalidade = naturalidade;
     }
 
     public String getModalidade() {
@@ -103,16 +87,14 @@ public class ArbitroNomeModalidade {
     }
 
     @Override
-    public String toString(){
-        return "ArbitroNomeModalidade{"+
+    public String toString() {
+        return "ArbitroNomeModalidade{" +
                 "nome='" + nome + '\'' +
-                ",genero='" + genero + '\'' +
-                ",dataNascimento='" + dataNascimento +
-                ",nacionalidade='" + nacionalidade + '\'' +
-                ",associacao='" + associacao + '\'' +
-                ",categoria='" + categoria + '\'' +
-                ",modalidade='" + modalidade + '\'' +
-                ",id='" + id +
-    '}';
+                ", genero='" + genero + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", nacionalidade='" + nacionalidade + '\'' +
+                ", naturalidade='" + naturalidade + '\'' +
+                ", modalidade='" + modalidade + '\'' +
+                '}';
     }
 }

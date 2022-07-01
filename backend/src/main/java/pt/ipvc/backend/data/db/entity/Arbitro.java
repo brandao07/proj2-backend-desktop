@@ -25,11 +25,6 @@ public class Arbitro {
     @Column(name = "nacionalidade")
     private String nacionalidade;
 
-    @Column(name = "associacao")
-    private String associacao;
-
-    @Column(name = "categoria")
-    private String categoria;
 
     @ManyToOne
     @JoinColumn(name = "modalidade_id")
@@ -38,16 +33,25 @@ public class Arbitro {
     @OneToMany(mappedBy = "arbitro", orphanRemoval = true)
     private Set<Prova> provas = new LinkedHashSet<>();
 
+    @Column(name = "naturalidade")
+    private String naturalidade;
+
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public void setNaturalidade(String naturalidade) {
+        this.naturalidade = naturalidade;
+    }
+
     public Arbitro() {
     }
 
-    public Arbitro(String nome, String genero, Date dataNascimento, String nacionalidade, String associacao, String categoria) {
+    public Arbitro(String nome, String genero, Date dataNascimento, String nacionalidade) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
-        this.associacao = associacao;
-        this.categoria = categoria;
     }
 
 
@@ -66,22 +70,6 @@ public class Arbitro {
 
     public void setModalidade(Modalidade modalidade) {
         this.modalidade = modalidade;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getAssociacao() {
-        return associacao;
-    }
-
-    public void setAssociacao(String associacao) {
-        this.associacao = associacao;
     }
 
     public String getNacionalidade() {
@@ -132,8 +120,6 @@ public class Arbitro {
                 ", genero='" + genero + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", nacionalidade='" + nacionalidade + '\'' +
-                ", associacao='" + associacao + '\'' +
-                ", categoria='" + categoria + '\'' +
                 ", modalidade=" + modalidade +
                 '}';
     }

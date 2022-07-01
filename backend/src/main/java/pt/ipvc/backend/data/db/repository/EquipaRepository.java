@@ -21,12 +21,6 @@ public class EquipaRepository extends Repository {
         _entityManager.getTransaction().begin();
         Equipa objectToUpdate = (Equipa) find(((Equipa) object).getId());
         objectToUpdate.setNome(((Equipa) object).getNome());
-        objectToUpdate.setCidade(((Equipa) object).getCidade());
-        objectToUpdate.setPais(((Equipa) object).getPais());
-        objectToUpdate.setAssociacao(((Equipa) object).getAssociacao());
-        objectToUpdate.setSigla(((Equipa) object).getSigla());
-        objectToUpdate.setDataFundacao(((Equipa) object).getDataFundacao());
-        objectToUpdate.setContacto(((Equipa) object).getContacto());
         _entityManager.getTransaction().commit();
     }
 

@@ -19,6 +19,7 @@
         <class>pt.ipvc.backend.data.db.entity.users.Cliente</class>
         <class>pt.ipvc.backend.data.db.entity.users.Gestor</class>
         <class>pt.ipvc.backend.data.db.entity.Posicao</class>
+        <class>pt.ipvc.backend.data.db.entity.Clube</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/proj2"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
@@ -26,7 +27,7 @@
             <property name="hibernate.connection.password" value="proj2"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="format_sql" value="true"/>
-<!--          <property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         </properties>
     </persistence-unit>
 </persistence>

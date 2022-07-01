@@ -1,7 +1,6 @@
 package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -18,23 +17,6 @@ public class Equipa {
     @Column(name = "nome", unique = true)
     private String nome;
 
-    @Column(name = "cidade")
-    private String cidade;
-
-    @Column(name = "contacto")
-    private String contacto;
-
-    @Column(name = "associacao")
-    private String associacao;
-
-    @Column(name = "pais")
-    private String pais;
-
-    @Column(name = "sigla")
-    private String sigla;
-
-    @Column(name = "data_fundacao")
-    private Date dataFundacao;
     @OneToMany(mappedBy = "equipa", orphanRemoval = true)
     private Set<Atleta> atletas = new LinkedHashSet<>();
     @OneToMany(mappedBy = "equipaCasa", orphanRemoval = true)
@@ -57,15 +39,8 @@ public class Equipa {
     }
 
 
-    public Equipa(String nome, String cidade, String contacto, String associacao, String pais,
-                  String sigla, Date dataFundacao) {
+    public Equipa(String nome) {
         this.nome = nome;
-        this.cidade = cidade;
-        this.contacto = contacto;
-        this.associacao = associacao;
-        this.pais = pais;
-        this.sigla = sigla;
-        this.dataFundacao = dataFundacao;
     }
 
     public Set<Modalidade> getModalidades() {
@@ -100,54 +75,6 @@ public class Equipa {
         this.atletas = atletas;
     }
 
-    public Date getDataFundacao() {
-        return dataFundacao;
-    }
-
-    public void setDataFundacao(Date dataFundacao) {
-        this.dataFundacao = dataFundacao;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getAssociacao() {
-        return associacao;
-    }
-
-    public void setAssociacao(String associacao) {
-        this.associacao = associacao;
-    }
-
-    public String getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -172,18 +99,6 @@ public class Equipa {
         this.competicoes = competicoes;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "nome = " + nome + ", " +
-                "cidade = " + cidade + ", " +
-                "contacto = " + contacto + ", " +
-                "associacao = " + associacao + ", " +
-                "pais = " + pais + ", " +
-                "sigla = " + sigla + ", " +
-                "dataFundacao = " + dataFundacao + ")";
-    }
 
     public void addCompeticao(Competicao competicao) {
         if (competicoes.stream().anyMatch(t -> t.getId().equals(competicao.getId()))) return;

@@ -2,7 +2,6 @@ package pt.ipvc.backend.data.db.repository;
 
 import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.models.ArbitroNomeModalidade;
-import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -19,18 +18,17 @@ public class ArbitroRepository extends Repository {
         _entityManager.getTransaction().begin();
         Arbitro objectToUpdate = (Arbitro) find(((Arbitro) object).getId());
         objectToUpdate.setNome(((Arbitro) object).getNome());
-        objectToUpdate.setCategoria(((Arbitro) object).getCategoria());
         objectToUpdate.setGenero(((Arbitro) object).getGenero());
         objectToUpdate.setDataNascimento(((Arbitro) object).getDataNascimento());
         objectToUpdate.setModalidade(((Arbitro) object).getModalidade());
-        objectToUpdate.setAssociacao(((Arbitro) object).getAssociacao());
+        objectToUpdate.setNaturalidade(((Arbitro) object).getNaturalidade());
         objectToUpdate.setNacionalidade(((Arbitro) object).getNacionalidade());
         _entityManager.getTransaction().commit();
     }
 
     public List findAllArbitrosNomePesquisa(String pesquisa) {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.ArbitroNomeModalidade(a.nome, a.genero, a.dataNascimento, a.nacionalidade, a.associacao, a.categoria, m.nome) FROM Arbitro AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", ArbitroNomeModalidade.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.ArbitroNomeModalidade(a.nome, a.genero, a.dataNascimento, a.nacionalidade, a.naturalidade, m.nome, a.id) FROM Arbitro AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", ArbitroNomeModalidade.class);
             query.setParameter(1, pesquisa);
             return query.getResultList();
         } catch (Exception e) {

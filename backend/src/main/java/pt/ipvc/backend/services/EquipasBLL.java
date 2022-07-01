@@ -4,18 +4,15 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.repository.EquipaRepository;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 public class EquipasBLL {
 
     private final static EquipaRepository equipasRepository = new EquipaRepository();
 
-    public static void criarEquipa(String nome, String associacao, String pais, String cidade,
-                                   LocalDate dataFundacao, String sigla, String contacto) {
+    public static void criarEquipa(String nome) {
 
-        Equipa equipa = new Equipa(nome, cidade, contacto, associacao, pais, sigla, Date.valueOf(dataFundacao));
+        Equipa equipa = new Equipa(nome);
         if (equipasRepository.add(equipa) == null) {
             System.out.println("Erro ao criar equipa");
             return;

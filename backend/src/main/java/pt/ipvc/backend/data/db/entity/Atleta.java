@@ -20,6 +20,7 @@ public class Atleta {
     @Column(name = "data_nascimento")
     private Date dataNascimento;
 
+
     @Column(name = "peso")
     private Double peso;
 
@@ -28,6 +29,7 @@ public class Atleta {
 
     @Column(name = "nacionalidade")
     private String nacionalidade;
+
 
     @Column(name = "posicao")
     private String posicao;
@@ -42,6 +44,17 @@ public class Atleta {
     @Basic
     @Column(name = "image")
     private String image;
+
+    @Column(name = "naturalidade")
+    private String naturalidade;
+
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public void setNaturalidade(String naturalidade) {
+        this.naturalidade = naturalidade;
+    }
 
     public Atleta() {
     }
