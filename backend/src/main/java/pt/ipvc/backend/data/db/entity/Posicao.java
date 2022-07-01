@@ -1,6 +1,8 @@
 package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "posicao")
@@ -13,16 +15,15 @@ public class Posicao {
     @Column(name = "nome", nullable = false, unique = true)
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "modalidade_id")
-    private Modalidade modalidade;
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "posicoes")
+    private Set<Modalidade> modalidades = new HashSet<>();
 
-    public Modalidade getModalidade() {
-        return modalidade;
+    public Set<Modalidade> getModalidades() {
+        return modalidades;
     }
 
-    public void setModalidade(Modalidade modalidade) {
-        this.modalidade = modalidade;
+    public void setModalidades(Set<Modalidade> modalidades) {
+        this.modalidades = modalidades;
     }
 
     public String getNome() {

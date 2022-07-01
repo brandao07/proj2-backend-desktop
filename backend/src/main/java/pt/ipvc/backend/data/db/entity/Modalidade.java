@@ -1,6 +1,7 @@
 package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -22,11 +23,20 @@ public class Modalidade {
     @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
     private Set<Competicao> competicoes = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
-    private Set<Posicao> posicoes = new LinkedHashSet<>();
 
     @ManyToMany(mappedBy = "modalidades")
     private Set<Equipa> equipas = new LinkedHashSet<>();
+
+    @ManyToMany
+    private Set<Posicao> posicoes = new HashSet<>();
+
+    public Set<Posicao> getPosicoes() {
+        return posicoes;
+    }
+
+    public void setPosicoes(Set<Posicao> posicoes) {
+        this.posicoes = posicoes;
+    }
 
     public Set<Equipa> getEquipas() {
         return equipas;
@@ -36,13 +46,7 @@ public class Modalidade {
         this.equipas = equipas;
     }
 
-    public Set<Posicao> getPosicoes() {
-        return posicoes;
-    }
 
-    public void setPosicoes(Set<Posicao> posicoes) {
-        this.posicoes = posicoes;
-    }
 
     public Set<Competicao> getCompeticoes() {
         return competicoes;
