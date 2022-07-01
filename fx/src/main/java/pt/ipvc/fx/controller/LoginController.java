@@ -2,17 +2,31 @@ package pt.ipvc.fx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.users.Administrador;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
+import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.backend.services.users.AdministradorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.backend.services.util.Encrypt;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class LoginController {
+import java.io.*;
+import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class LoginController  {
     @FXML
     private Button btnEntrar;
 
@@ -30,6 +44,9 @@ public class LoginController {
 
     @FXML
     private Label labelErroLogin;
+
+    @FXML
+    private ImageView fundo;
 
 
     @FXML
@@ -62,6 +79,5 @@ public class LoginController {
     protected void setLinkRegistar(ActionEvent event) {
         ControladorGlobal.chamaScene("registo-view.fxml", event);
     }
-
 
 }

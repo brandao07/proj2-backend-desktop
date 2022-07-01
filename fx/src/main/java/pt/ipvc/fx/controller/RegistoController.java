@@ -59,5 +59,7 @@ public class RegistoController {
         }
         labelErro.setText("Utilizador Criado Com Sucesso");
         AdministradorBLL.criarAdministrador(username, password);
+
+
     }
 }

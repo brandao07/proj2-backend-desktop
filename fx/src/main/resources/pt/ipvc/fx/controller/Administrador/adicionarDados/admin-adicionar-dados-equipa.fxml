@@ -34,11 +34,11 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="508.0" layoutX="12.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
                 <Button fx:id="confirmar" layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox layoutX="73.0" layoutY="135.0" prefHeight="330.0" prefWidth="459.0">
+            <VBox layoutX="40.0" layoutY="135.0" prefHeight="330.0" prefWidth="459.0">
                <children>
                   <GridPane vgap="30.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="10.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -57,7 +57,7 @@
                             <Label text="O que pretende adicionar:" GridPane.columnIndex="1" />
                             <ChoiceBox fx:id="choiceBoxOpcoes" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" />
                             <Label text="Nome:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="167.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                             <Label text="Data de Fundação:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                             <Label text="País:" GridPane.columnIndex="1" GridPane.rowIndex="4" />

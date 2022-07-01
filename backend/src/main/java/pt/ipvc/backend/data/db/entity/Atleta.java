@@ -60,7 +60,7 @@ public class Atleta {
     }
 
     public Atleta(String nome, String genero, Date dataNascimento, Double peso, Double altura,
-                  String nacionalidade, String posicao) {
+                  String nacionalidade, String posicao, String image) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -68,6 +68,7 @@ public class Atleta {
         this.altura = altura;
         this.nacionalidade = nacionalidade;
         this.posicao = posicao;
+        this.image = image;
     }
 
     public Modalidade getModalidade() {
@@ -150,6 +151,14 @@ public class Atleta {
         this.equipa = equipa;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Atleta{" +
@@ -161,15 +170,10 @@ public class Atleta {
                 ", altura=" + altura +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 ", posicao='" + posicao + '\'' +
-                ", equipa=" + equipa +
+                ", equipa=" + equipa + '\'' +
+                ", image=" + image +
                 '}';
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

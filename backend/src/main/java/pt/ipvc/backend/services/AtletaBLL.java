@@ -12,8 +12,8 @@ public class AtletaBLL {
     private static final AtletaRepository atletaRepository = new AtletaRepository();
 
     public static void criarAtleta(String nome, String genero, String nacionalidade, LocalDate dataNascimento,
-                                   double peso, double altura, String equipa, String posicao, String modalidade) {
-        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, posicao);
+                                   double peso, double altura, String equipa, String posicao, String modalidade, String image) {
+        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, posicao, image);
         atleta.setModalidade(ModalidadeBLL.getModalidade(modalidade));
         atleta.setEquipa(EquipasBLL.getEquipa(equipa));
         if (atletaRepository.add(atleta) == null) {

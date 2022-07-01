@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
@@ -93,6 +95,39 @@ public class AtletasController implements Initializable {
     @FXML
     protected ImageView erroEquipa;
 
+    @FXML
+    protected ImageView imagem;
+
+    @FXML
+    protected Button btnFoto;
+
+    private static String path;
+
+
+
+    @FXML
+    public void escolherFoto(ActionEvent event){
+
+        final FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
+
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
+
+        File file = fileChooser.showOpenDialog(null);
+
+        path = file.getAbsolutePath();
+        path = path.substring(path.indexOf("proj2/") + 1);
+        path = path.substring(path.indexOf("/") + 1);
+
+        System.out.println(path);
+
+        imagem.setImage(new Image(new File(path).toURI().toString()));
+
+        btnFoto.setText("");
+
+    }
+
 
 
     public boolean testar(){
@@ -105,6 +140,7 @@ public class AtletasController implements Initializable {
         boolean validarAltura = true;
         boolean validarPosicao = true;
         boolean validarEquipa = true;
+        boolean validarImagem = true;
 
 
         if (!ValidarInput.validarString(nome.getText())){
@@ -194,8 +230,15 @@ public class AtletasController implements Initializable {
         else {
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
+
+
+        if (imagem.getImage() == null){
+          btnFoto.setTextFill(Color.web("#ff0000"));
+            validarImagem = false;
+        }
+
         return validarNome && validarData && validarNacionalidade && validarAltura && validarPeso && validarPosicao
-                && validarModalidade && validarGenero && validarEquipa;
+                && validarModalidade && validarGenero && validarEquipa && validarImagem;
     }
 
 
@@ -213,7 +256,8 @@ public class AtletasController implements Initializable {
                     Double.parseDouble(altura.getText()) ,
                     equipa.getSelectionModel().getSelectedItem().toString(),
                     posicao.getSelectionModel().getSelectedItem().toString(),
-                    modalidades.getSelectionModel().getSelectedItem().toString());
+                    modalidades.getSelectionModel().getSelectedItem().toString(),
+                    path);
             ControladorGlobal.adicionarAtleta();
 
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
