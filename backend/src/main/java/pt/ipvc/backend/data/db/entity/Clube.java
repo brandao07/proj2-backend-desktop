@@ -1,6 +1,7 @@
 package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "clube")
@@ -23,10 +24,27 @@ public class Clube {
     private String cidade;
 
     @Column(name = "data_fundacao")
-    private String dataFundacao;
+    private Date dataFundacao;
 
     @Column(name = "contacto")
     private String contacto;
+
+    public Clube(String nome) {
+        this.nome = nome;
+    }
+
+    public Clube(String nome, String sigla, String pais, String cidade, Date dataFundacao, String contacto) {
+        this.nome = nome;
+        this.sigla = sigla;
+        this.pais = pais;
+        this.cidade = cidade;
+        this.dataFundacao = dataFundacao;
+        this.contacto = contacto;
+    }
+
+    public Clube() {
+
+    }
 
     public String getContacto() {
         return contacto;
@@ -36,11 +54,11 @@ public class Clube {
         this.contacto = contacto;
     }
 
-    public String getDataFundacao() {
+    public Date getDataFundacao() {
         return dataFundacao;
     }
 
-    public void setDataFundacao(String dataFundacao) {
+    public void setDataFundacao(Date dataFundacao) {
         this.dataFundacao = dataFundacao;
     }
 

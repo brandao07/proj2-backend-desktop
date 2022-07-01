@@ -40,13 +40,8 @@ public class ArbitrosController implements Initializable {
     protected ComboBox<String> naturalidade;
 
     @FXML
-    protected ChoiceBox<String> categoria;
-
-    @FXML
     protected ChoiceBox<String> modalidades;
 
-    @FXML
-    protected ChoiceBox<String> associacao;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
@@ -71,11 +66,6 @@ public class ArbitrosController implements Initializable {
     @FXML
     protected ImageView erroNacionalidade;
 
-    @FXML
-    protected ImageView erroAssociacao;
-
-    @FXML
-    protected ImageView erroCategoria;
 
     @FXML
     protected ImageView erroGenero;
@@ -90,8 +80,6 @@ public class ArbitrosController implements Initializable {
         boolean validarData = true;
         boolean validarNacionalidade = true;
         boolean validarNaturalidade = true;
-        boolean validarAssociacao = true;
-        boolean validarCategoria = true;
         boolean validarGenero = true;
         boolean validarModalidade = true;
 
@@ -134,20 +122,12 @@ public class ArbitrosController implements Initializable {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(associacao.getValue())){
-            erroAssociacao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
-            validarAssociacao = false;
+        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())){
+            erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarNaturalidade = false;
         }
         else {
-            erroAssociacao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
-        }
-
-        if (!ValidarInput.validarChoiceBox(categoria.getValue())){
-            erroCategoria.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
-            validarCategoria = false;
-        }
-        else {
-            erroCategoria.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+            erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
         if (!ValidarInput.validarChoiceBox(genero.getValue())){
@@ -165,7 +145,7 @@ public class ArbitrosController implements Initializable {
         else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
-            return validarNome && validarData && validarNacionalidade && validarNaturalidade && validarCategoria && validarAssociacao
+            return validarNome && validarData && validarNacionalidade && validarNaturalidade
                     && validarModalidade && validarGenero;
     }
 
@@ -177,11 +157,10 @@ public class ArbitrosController implements Initializable {
             TimeUnit.SECONDS.sleep(1);
 
             ArbitroBLL.criarArbitro(nome.getText(),
-                    associacao.getSelectionModel().getSelectedItem(),
                     data.getValue(),
                     genero.getValue(),
-                    categoria.getSelectionModel().getSelectedItem(),
                     nacionalidade.getSelectionModel().getSelectedItem(),
+                    naturalidade.getSelectionModel().getSelectedItem(),
                     modalidades.getSelectionModel().getSelectedItem());
 
                     ControladorGlobal.adicionarArbitro();
@@ -220,9 +199,7 @@ public class ArbitrosController implements Initializable {
         }
         Collections.sort(lista_associacoes);
         lista_associacoes.remove(0);
-        associacao.getItems().addAll(lista_associacoes);
 
-        categoria.getItems().addAll("Internacional", "Nacional");
 
         Set<String> modalidade = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
@@ -240,7 +217,6 @@ public class ArbitrosController implements Initializable {
         }
         Collections.sort(paises);
         nacionalidade.getItems().addAll(paises);
-
         nacionalidade.setVisibleRowCount(11);
 
 

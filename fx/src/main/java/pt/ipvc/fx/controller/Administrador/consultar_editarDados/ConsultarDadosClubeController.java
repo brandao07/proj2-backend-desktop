@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Equipa;
-import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -20,9 +19,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ConsultarDadosEquipaController implements Initializable {
+public class ConsultarDadosClubeController implements Initializable {
 
-    public static String equipaSceneConsultar;
+    public static String clubeSceneConsultar;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
@@ -107,7 +106,7 @@ public class ConsultarDadosEquipaController implements Initializable {
     }
 
     public void setBtnEditar(ActionEvent event){
-        equipaSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
+        clubeSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-equipa.fxml", event);
     }
 

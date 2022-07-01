@@ -155,7 +155,6 @@ public class RecintosController implements Initializable {
         choiceBoxOpcoes.setValue("Recintos");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 
-
         try {
             LocalRepository.paises_e_cidades();
 

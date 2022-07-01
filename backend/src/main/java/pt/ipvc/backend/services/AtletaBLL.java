@@ -11,11 +11,13 @@ public class AtletaBLL {
 
     private static final AtletaRepository atletaRepository = new AtletaRepository();
 
-    public static void criarAtleta(String nome, String genero, String nacionalidade, LocalDate dataNascimento,
-                                   double peso, double altura, String equipa, String posicao, String modalidade, String image) {
-        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, posicao, image);
+
+
+    public static void criarAtleta(String nome, String genero, String nacionalidade, String naturalidade,  LocalDate dataNascimento,
+                                   double peso, double altura, String posicao, String modalidade, String image) {
+
+        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, naturalidade, posicao, image);
         atleta.setModalidade(ModalidadeBLL.getModalidade(modalidade));
-        atleta.setEquipa(EquipasBLL.getEquipa(equipa));
         if (atletaRepository.add(atleta) == null) {
             System.out.println("Erro ao criar atleta");
             return;
@@ -50,4 +52,10 @@ public class AtletaBLL {
     public static List getAtletaPesquisa(String pesquisa) {
         return atletaRepository.findAllArbitrosNomePesquisa(pesquisa);
     }
+
+    public static List atletasSemEquipa(String modalidade) {
+        return atletaRepository.findAllAtletasSemEquipa(modalidade);
+    }
+
+
 }

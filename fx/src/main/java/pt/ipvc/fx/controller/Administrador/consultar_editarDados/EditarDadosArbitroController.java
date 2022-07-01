@@ -73,8 +73,6 @@ public class EditarDadosArbitroController implements Initializable {
 
         arbitro.setId(ArbitroBLL.getArbitro(nome.getPromptText()).getId());
         arbitro.setNacionalidade((String) nacionalidade.getSelectionModel().getSelectedItem());
-        arbitro.setAssociacao((String) associacao.getValue());
-        arbitro.setCategoria((String) categoria.getValue());
         arbitro.setGenero((String) genero.getValue());
         arbitro.setModalidade(ModalidadeBLL.getModalidade(modalidades.getSelectionModel().getSelectedItem()));
 
@@ -109,11 +107,9 @@ public class EditarDadosArbitroController implements Initializable {
 
         nacionalidade.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getNacionalidade());
 
-        associacao.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getAssociacao());
 
         genero.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getGenero());
 
-        categoria.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getCategoria());
 
         categoria.getItems().addAll("Internacional", "Nacional");
 

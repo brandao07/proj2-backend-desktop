@@ -81,4 +81,18 @@ public class AtletaRepository extends Repository {
             return null;
         }
     }
+
+    public List findAllAtletasSemEquipa(String modalidade) {
+        try {
+            Query query = _entityManager.createQuery("SELECT a.nome FROM Atleta AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id  WHERE a.equipa is null and m.nome LIKE CONCAT('%',?1,'%') ");
+            query.setParameter(1, modalidade);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem Atletas");
+            return null;
+        }
+    }
+
+
+
 }

@@ -60,13 +60,14 @@ public class Atleta {
     }
 
     public Atleta(String nome, String genero, Date dataNascimento, Double peso, Double altura,
-                  String nacionalidade, String posicao, String image) {
+                  String nacionalidade, String naturalidade,String posicao, String image) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.peso = peso;
         this.altura = altura;
         this.nacionalidade = nacionalidade;
+        this.naturalidade = naturalidade;
         this.posicao = posicao;
         this.image = image;
     }

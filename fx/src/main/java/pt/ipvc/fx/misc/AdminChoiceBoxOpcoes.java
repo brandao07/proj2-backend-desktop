@@ -13,6 +13,7 @@ public class AdminChoiceBoxOpcoes {
         opcoesAdmin.add("Árbitros");
         opcoesAdmin.add("Atletas");
         opcoesAdmin.add("Equipas");
+        opcoesAdmin.add("Clubes");
         opcoesAdmin.add("Tipos de Prémio");
         opcoesAdmin.add("Tipos de Recinto");
         opcoesAdmin.add("Recintos");

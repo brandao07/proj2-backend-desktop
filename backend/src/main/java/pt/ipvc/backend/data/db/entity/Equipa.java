@@ -43,6 +43,7 @@ public class Equipa {
         this.nome = nome;
     }
 
+
     public Set<Modalidade> getModalidades() {
         return modalidades;
     }

@@ -17,8 +17,8 @@ public class ArbitroBLL {
     private static final ArbitroRepository arbitroRepository = new ArbitroRepository();
 
     public static void criarArbitro(String nome, LocalDate dataNascimento, String genero,
-                                    String nacionalidade, String modalidade) {
-        Arbitro arbitro = new Arbitro(nome, genero, Date.valueOf(dataNascimento), nacionalidade);
+                                    String nacionalidade, String naturalidade, String modalidade) {
+        Arbitro arbitro = new Arbitro(nome, genero, Date.valueOf(dataNascimento), nacionalidade, naturalidade);
         arbitro.setModalidade(ModalidadeBLL.getModalidade(modalidade));
         if (arbitroRepository.add(arbitro) == null) {
             System.out.println("Erro ao criar arbitro");

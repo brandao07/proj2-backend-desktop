@@ -25,6 +25,9 @@ public class Arbitro {
     @Column(name = "nacionalidade")
     private String nacionalidade;
 
+    @Column(name = "naturalidade")
+    private String naturalidade;
+
 
     @ManyToOne
     @JoinColumn(name = "modalidade_id")
@@ -32,9 +35,6 @@ public class Arbitro {
 
     @OneToMany(mappedBy = "arbitro", orphanRemoval = true)
     private Set<Prova> provas = new LinkedHashSet<>();
-
-    @Column(name = "naturalidade")
-    private String naturalidade;
 
     public String getNaturalidade() {
         return naturalidade;
@@ -47,11 +47,12 @@ public class Arbitro {
     public Arbitro() {
     }
 
-    public Arbitro(String nome, String genero, Date dataNascimento, String nacionalidade) {
+    public Arbitro(String nome, String genero, Date dataNascimento, String nacionalidade, String naturalidade) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
+        this.naturalidade = naturalidade;
     }
 
 

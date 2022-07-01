@@ -27,6 +27,7 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -54,13 +55,14 @@ public class AtletasController implements Initializable {
     protected ComboBox nacionalidade;
 
     @FXML
+    protected ComboBox naturalidade;
+
+    @FXML
     protected ChoiceBox posicao;
 
     @FXML
     protected ChoiceBox modalidades;
 
-    @FXML
-    protected ChoiceBox equipa;
 
     @FXML
     protected Label labelErro;
@@ -81,6 +83,9 @@ public class AtletasController implements Initializable {
     protected ImageView erroNacionalidade;
 
     @FXML
+    protected ImageView erroNaturalidade;
+
+    @FXML
     protected ImageView erroPeso;
 
     @FXML
@@ -92,8 +97,6 @@ public class AtletasController implements Initializable {
     @FXML
     protected ImageView erroPosicao;
 
-    @FXML
-    protected ImageView erroEquipa;
 
     @FXML
     protected ImageView imagem;
@@ -135,11 +138,11 @@ public class AtletasController implements Initializable {
         boolean validarData = true;
         boolean validarModalidade = true;
         boolean validarNacionalidade = true;
+        boolean validarNaturalidade = true;
         boolean validarGenero = true;
         boolean validarPeso = true;
         boolean validarAltura = true;
         boolean validarPosicao = true;
-        boolean validarEquipa = true;
         boolean validarImagem = true;
 
 
@@ -172,6 +175,14 @@ public class AtletasController implements Initializable {
         }
         else {
             erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())){
+            erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarNaturalidade = false;
+        }
+        else {
+            erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
         if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
@@ -215,13 +226,7 @@ public class AtletasController implements Initializable {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(equipa.getValue())){
-            erroEquipa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
-            validarEquipa = false;
-        }
-        else {
-            erroEquipa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
-        }
+
 
         if (!ValidarInput.validarChoiceBox(posicao.getValue())){
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
@@ -237,8 +242,8 @@ public class AtletasController implements Initializable {
             validarImagem = false;
         }
 
-        return validarNome && validarData && validarNacionalidade && validarAltura && validarPeso && validarPosicao
-                && validarModalidade && validarGenero && validarEquipa && validarImagem;
+        return validarNome && validarData && validarNacionalidade && validarNaturalidade && validarAltura && validarPeso && validarPosicao
+                && validarModalidade && validarGenero && validarImagem;
     }
 
 
@@ -248,16 +253,19 @@ public class AtletasController implements Initializable {
             labelErro.setTextFill(Color.web("#32CD32"));
             labelErro.setText("Sucesso.");
             TimeUnit.SECONDS.sleep(1);
-            AtletaBLL.criarAtleta(nome.getText(),
+
+            AtletaBLL.criarAtleta(
+                    nome.getText(),
                     genero.getSelectionModel().getSelectedItem().toString(),
                     nacionalidade.getSelectionModel().getSelectedItem().toString(),
+                    naturalidade.getSelectionModel().getSelectedItem().toString(),
                     data.getValue(),
                     Double.parseDouble(peso.getText()) ,
                     Double.parseDouble(altura.getText()) ,
-                    equipa.getSelectionModel().getSelectedItem().toString(),
                     posicao.getSelectionModel().getSelectedItem().toString(),
                     modalidades.getSelectionModel().getSelectedItem().toString(),
                     path);
+
             ControladorGlobal.adicionarAtleta();
 
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
@@ -274,6 +282,8 @@ public class AtletasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        naturalidade.setDisable(true);
+
         choiceBoxOpcoes.setValue("Atletas");
 
         try {
@@ -305,25 +315,24 @@ public class AtletasController implements Initializable {
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
 
-        modalidades.valueProperty().addListener(new ChangeListener<String>() {
+        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
-                posicao.getItems().clear();
-                equipa.getItems().clear();
+                naturalidade.setDisable(false);
 
-                Modalidade modalidade = ModalidadeBLL.getModalidade((String) modalidades.getSelectionModel().getSelectedItem());
-
-                for (Posicao p: modalidade.getPosicoes()
-                ) {
-                    posicao.getItems().add(p.getNome());
+                naturalidade.getItems().clear();
+                for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
+                        naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
+                        break;
+                    }
                 }
+                naturalidade.setVisibleRowCount(11);
 
-                for (Equipa e: modalidade.getEquipas()
-                ) {
-                    equipa.getItems().add(e.getNome());
-                }
             }
         });
+
+
 
 
     }
