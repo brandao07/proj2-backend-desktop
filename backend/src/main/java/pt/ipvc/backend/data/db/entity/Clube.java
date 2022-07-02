@@ -1,6 +1,8 @@
 package pt.ipvc.backend.data.db.entity;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "clube")
@@ -32,6 +34,16 @@ public class Clube {
     @Column(name = "image")
     private String image;
 
+    @OneToMany(mappedBy = "clube", orphanRemoval = true)
+    private Set<Equipa> equipas = new LinkedHashSet<>();
+
+    public Set<Equipa> getEquipas() {
+        return equipas;
+    }
+
+    public void setEquipas(Set<Equipa> equipas) {
+        this.equipas = equipas;
+    }
 
     public String getContacto() {
         return contacto;

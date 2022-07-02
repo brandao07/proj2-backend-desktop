@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.data.db.entity.TipoPremio;
 import pt.ipvc.backend.data.db.entity.users.Gestor;
 import pt.ipvc.backend.data.db.repository.CompeticaoRepository;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
@@ -32,6 +31,10 @@ public class CompeticaoBLL {
 
     public static Competicao getCompeticao(String nome) {
         return (Competicao) competicaoRepository.find(nome);
+    }
+
+    public static List getCompeticoesActive(String modalidade) {
+        return competicaoRepository.findCompeticoesModalidadeActive(modalidade);
     }
 
     public static List getCompeticoesActive() {

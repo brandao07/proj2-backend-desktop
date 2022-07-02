@@ -26,11 +26,24 @@ public class Equipa {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "equipas")
     private Set<Competicao> competicoes = new HashSet<>();
 
+
     @ManyToMany
     @JoinTable(name = "equipa_modalidades",
             joinColumns = @JoinColumn(name = "equipa_id"),
             inverseJoinColumns = @JoinColumn(name = "modalidades_id"))
     private Set<Modalidade> modalidades = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "clube_id")
+    private Clube clube;
+
+    public Clube getClube() {
+        return clube;
+    }
+
+    public void setClube(Clube clube) {
+        this.clube = clube;
+    }
 
     public Equipa() {
     }
@@ -113,5 +126,5 @@ public class Equipa {
                     orElse(null));
     }
 
-   
+
 }

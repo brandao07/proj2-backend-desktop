@@ -71,7 +71,7 @@ public class ArbitroRepository extends Repository {
 
     public List findAllArbitroNomeModalidade() {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.ArbitroNomeModalidade(a.nome, a.genero, a.dataNascimento, a.associacao, a.categoria, a.nacionalidade, m.nome, a.id) FROM Arbitro AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id", ArbitroNomeModalidade.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.ArbitroNomeModalidade(a.nome, a.genero, a.dataNascimento, a.nacionalidade, m.nome, a.id) FROM Arbitro AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id", ArbitroNomeModalidade.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem Árbitros!!!!!");
