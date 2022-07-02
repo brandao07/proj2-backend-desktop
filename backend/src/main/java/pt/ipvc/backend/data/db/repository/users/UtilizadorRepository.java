@@ -1,7 +1,7 @@
 package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
-import pt.ipvc.backend.models.*;
+import pt.ipvc.backend.models.CountByDate;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -30,7 +30,6 @@ public class UtilizadorRepository extends Repository {
     public Object find(String username, String password) {
         try {
             String aux = Encrypt.encrypt(password);
-            _entityManager.getTransaction().begin();
             Query query = _entityManager.createQuery("SELECT u from Utilizador as u " +
                     "WHERE u.username = '" + username + "' " +
                     "AND u.password = '" + aux + "'");
