@@ -130,15 +130,40 @@ public class EquipasController implements Initializable {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
                 List<Atleta> listaAtletas = AtletaBLL.atletasSemEquipa(modalidades.getValue());
-
-                List<String> items = new ArrayList<>();
-
+                ObservableList<String> items = FXCollections.observableArrayList();
                 for (Atleta a:
                      listaAtletas) {
-                    System.out.println(a.getNome());
+                    items.add(a.getNome());
                 }
+                jogadores.setItems(items);
             }
         });
+
+        jogadores.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+//        jogadores.getSelectionModel().selectedItemProperty()
+//                    .addListener((ObservableValue<? extends ObservableList<Atleta>> ov, ObservableList<Atleta> old_val, ObservableList<Atleta> new_val) -> {
+//                    ObservableList<String> selectedItems = jogadores.getSelectionModel().getSelectedItems();
+//                    ObservableList<Atleta> atletasObjeto = FXCollections.observableArrayList();
+//
+//                    for (String s : selectedItems){
+//                        atletasObjeto.add(AtletaBLL.getAtleta(s));
+//                    }
+//
+//
+//                    for (Atleta a: atletasObjeto){
+//                        if (!jogadorEscolhidos.getItems().contains(a.getNome())){
+//                            jogadorEscolhidos.getItems().add(a.getNome());
+//                        }
+//                    }
+//                });
+
+
+
+
+
+
 
 
     }

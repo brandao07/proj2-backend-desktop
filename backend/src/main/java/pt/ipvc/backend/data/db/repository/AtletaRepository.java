@@ -84,7 +84,7 @@ public class AtletaRepository extends Repository {
 
     public List findAllAtletasSemEquipa(String modalidade) {
         try {
-            Query query = _entityManager.createQuery("SELECT a.nome FROM Atleta AS a WHERE a.modalidade.nome = '" + modalidade + "' and a.equipa.id is null");
+            Query query = _entityManager.createQuery("SELECT a FROM Atleta AS a WHERE a.modalidade.nome = '" + modalidade + "' and a.equipa.id is null");
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem Atletas");
