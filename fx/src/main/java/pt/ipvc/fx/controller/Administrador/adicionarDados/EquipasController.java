@@ -20,6 +20,7 @@ import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -141,31 +142,47 @@ public class EquipasController implements Initializable {
 
         jogadores.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        modalidades.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                List<Atleta> listaAtletas = AtletaBLL.atletasSemEquipa(modalidades.getValue());
+                ObservableList<String> items = FXCollections.observableArrayList();
+                for (Atleta a:
+                        listaAtletas) {
+                    items.add(a.getNome());
+                }
+                jogadores.setItems(items);
+            }
+        });
 
-//        jogadores.getSelectionModel().selectedItemProperty()
-//                    .addListener((ObservableValue<? extends ObservableList<Atleta>> ov, ObservableList<Atleta> old_val, ObservableList<Atleta> new_val) -> {
-//                    ObservableList<String> selectedItems = jogadores.getSelectionModel().getSelectedItems();
-//                    ObservableList<Atleta> atletasObjeto = FXCollections.observableArrayList();
-//
-//                    for (String s : selectedItems){
-//                        atletasObjeto.add(AtletaBLL.getAtleta(s));
-//                    }
-//
-//
-//                    for (Atleta a: atletasObjeto){
-//                        if (!jogadorEscolhidos.getItems().contains(a.getNome())){
-//                            jogadorEscolhidos.getItems().add(a.getNome());
-//                        }
-//                    }
-//                });
+        jogadores.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                ObservableList<String> selectedItems = jogadores.getSelectionModel().getSelectedItems();
+                ObservableList<Atleta> selectedItemsObjetos = FXCollections.observableArrayList();
+                ObservableList<String> selectedItemsObjetosString = FXCollections.observableArrayList();
+
+                for (String a : selectedItems){
+                   selectedItemsObjetos.add(AtletaBLL.getAtleta(a));
+                }
 
 
+                for (Atleta a:
+                        selectedItemsObjetos) {
+                    selectedItemsObjetosString.add(a.getNome());
+                }
+
+                jogadorEscolhidos.setItems(selectedItemsObjetosString);
+
+            }
+        });
+
+    }
 
 
-
-
-
-
+    @FXML
+    public void remove(ActionEvent event){
+        jogadorEscolhidos.getItems().remove(jogadorEscolhidos.getSelectionModel().getSelectedItem());
     }
 
 }
