@@ -31,9 +31,6 @@ public class Equipa {
             joinColumns = @JoinColumn(name = "equipa_id"),
             inverseJoinColumns = @JoinColumn(name = "modalidades_id"))
     private Set<Modalidade> modalidades = new LinkedHashSet<>();
-    @Basic
-    @Column(name = "image")
-    private String image;
 
     public Equipa() {
     }
@@ -117,11 +114,5 @@ public class Equipa {
                     orElse(null));
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+   
 }
