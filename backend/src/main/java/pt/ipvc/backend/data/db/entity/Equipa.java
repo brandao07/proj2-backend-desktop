@@ -48,7 +48,6 @@ public class Equipa {
     public Equipa() {
     }
 
-
     public Equipa(String nome) {
         this.nome = nome;
     }

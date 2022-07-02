@@ -63,7 +63,7 @@ public class AtletaRepository extends Repository {
 
     public List findAllAtletaNomeEquipaModalidade() {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade as m ON m.id = a.modalidade.id", AtletaNomeEquipa_Modalidade.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade(a.id, a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade as m ON m.id = a.modalidade.id", AtletaNomeEquipa_Modalidade.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem Atletas!!!!!");
@@ -71,7 +71,7 @@ public class AtletaRepository extends Repository {
         }
     }
 
-    public List findAllArbitrosNomePesquisa(String pesquisa) {
+    public List findAllAtletasNomePesquisa(String pesquisa) {
         try {
             Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade  as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", AtletaNomeEquipa_Modalidade.class);
             query.setParameter(1, pesquisa);
@@ -84,8 +84,7 @@ public class AtletaRepository extends Repository {
 
     public List findAllAtletasSemEquipa(String modalidade) {
         try {
-            Query query = _entityManager.createQuery("SELECT a.nome FROM Atleta AS a INNER JOIN Modalidade as m ON m.id = a.modalidade.id  WHERE a.equipa is null and m.nome LIKE CONCAT('%',?1,'%') ");
-            query.setParameter(1, modalidade);
+            Query query = _entityManager.createQuery("SELECT a.nome FROM Atleta AS a WHERE a.modalidade.nome = '" + modalidade + "' and a.equipa.id is null");
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem Atletas");

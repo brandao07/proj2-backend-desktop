@@ -10,8 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ClubeBLL;
+import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -71,6 +73,15 @@ public class ClubesController implements Initializable {
     @FXML
     protected ImageView erroContacto;
 
+    private static String path;
+
+    @FXML
+    protected ImageView imagem;
+
+    @FXML
+    protected Button btnFoto;
+
+
     public boolean testar(){
         boolean validarNome = true;
         boolean validarData = true;
@@ -78,6 +89,7 @@ public class ClubesController implements Initializable {
         boolean validarCidade = true;
         boolean validarSigla = true;
         boolean validarContacto = true;
+        boolean validarImagem = true;
 
 
         if (!ValidarInput.validarString(nome.getText())){
@@ -135,19 +147,51 @@ public class ClubesController implements Initializable {
             erroCidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
+        if (imagem.getImage() == null){
+            btnFoto.setTextFill(Color.web("#ff0000"));
+            validarImagem = false;
+        }
+
 
         return validarNome && validarData && validarPais && validarCidade && validarSigla
-                && validarContacto;
+                && validarContacto && validarImagem;
     }
 
     @FXML
     public void confirmar(ActionEvent event) {
         if (testar()) {
             ClubeBLL.criarClube(nome.getText(), sigla.getText(), pais.getValue(), cidade.getValue(),
-                    data.getValue(),  contacto.getText());
+                    data.getValue(),  contacto.getText(), path);
+
+            ControladorGlobal.adicionarClube();
+
+            ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-clube.fxml", event);
         }
 
         labelErro.setText("Preencha todos os campos");
+    }
+
+    @FXML
+    public void escolherFoto(ActionEvent event){
+
+        final FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
+
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
+
+        File file = fileChooser.showOpenDialog(null);
+
+        path = file.getAbsolutePath();
+        path = path.substring(path.indexOf("proj2/") + 1);
+        path = path.substring(path.indexOf("/") + 1);
+
+        System.out.println(path);
+
+        imagem.setImage(new Image(new File(path).toURI().toString()));
+
+        btnFoto.setText("");
+
     }
 
     public void setBtnNavMenu(ActionEvent event) {

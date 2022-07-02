@@ -116,7 +116,7 @@
                         </ImageView>
                         <Label text="Naturalidade:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <ComboBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <ImageView fx:id="erroNacionalidade1" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                        <ImageView fx:id="erroNaturalidade" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets right="5.0" />
                            </GridPane.margin>

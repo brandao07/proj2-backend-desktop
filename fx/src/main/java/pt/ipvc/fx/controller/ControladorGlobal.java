@@ -54,6 +54,14 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
+    public static void adicionarClube() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação do clube realizada com sucesso!");
+        alert.showAndWait();
+    }
+
     public static void adicionarEquipa() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
@@ -83,6 +91,14 @@ public class ControladorGlobal {
         alert.setTitle("Informação");
         alert.setHeaderText(null);
         alert.setContentText("Criação do tipo de prémio realizado com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void adicionarPosicao() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Criação da posição realizada com sucesso!");
         alert.showAndWait();
     }
 

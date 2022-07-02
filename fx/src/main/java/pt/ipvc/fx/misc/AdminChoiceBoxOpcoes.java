@@ -17,7 +17,9 @@ public class AdminChoiceBoxOpcoes {
         opcoesAdmin.add("Tipos de Prémio");
         opcoesAdmin.add("Tipos de Recinto");
         opcoesAdmin.add("Recintos");
-         Collections.sort(opcoesAdmin);
+        opcoesAdmin.add("Posições");
+
+        Collections.sort(opcoesAdmin);
         return opcoesAdmin;
     }
 

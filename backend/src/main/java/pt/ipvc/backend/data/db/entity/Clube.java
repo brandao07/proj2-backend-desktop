@@ -29,17 +29,22 @@ public class Clube {
     @Column(name = "contacto")
     private String contacto;
 
+    @Basic
+    @Column(name = "image")
+    private String image;
+
     public Clube(String nome) {
         this.nome = nome;
     }
 
-    public Clube(String nome, String sigla, String pais, String cidade, Date dataFundacao, String contacto) {
+    public Clube(String nome, String sigla, String pais, String cidade, Date dataFundacao, String contacto, String image) {
         this.nome = nome;
         this.sigla = sigla;
         this.pais = pais;
         this.cidade = cidade;
         this.dataFundacao = dataFundacao;
         this.contacto = contacto;
+        this.image = image;
     }
 
     public Clube() {
@@ -100,6 +105,14 @@ public class Clube {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 

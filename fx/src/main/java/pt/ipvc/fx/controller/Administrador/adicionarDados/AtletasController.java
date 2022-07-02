@@ -19,6 +19,7 @@ import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -58,10 +59,10 @@ public class AtletasController implements Initializable {
     protected ComboBox naturalidade;
 
     @FXML
-    protected ChoiceBox posicao;
+    protected ChoiceBox<String> posicao;
 
     @FXML
-    protected ChoiceBox modalidades;
+    protected ChoiceBox<String> modalidades;
 
 
     @FXML
@@ -201,7 +202,7 @@ public class AtletasController implements Initializable {
             erroPeso.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarString(altura.getText()) || Float.parseFloat(altura.getText()) > 3.00){
+        if (!ValidarInput.validarString(altura.getText())){
             erroAltura.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarAltura = false;
             labelErro.setText("Altura Inválida.");
@@ -283,6 +284,7 @@ public class AtletasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         naturalidade.setDisable(true);
+        posicao.setDisable(true);
 
         choiceBoxOpcoes.setValue("Atletas");
 
@@ -328,6 +330,28 @@ public class AtletasController implements Initializable {
                     }
                 }
                 naturalidade.setVisibleRowCount(11);
+
+            }
+        });
+
+        modalidades.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                posicao.setDisable(false);
+                posicao.getItems().clear();
+
+                List<Modalidade> listaModalidades = ModalidadeBLL.getModalidades();
+                List<String> posicoesPretendidas = new ArrayList<>();
+
+
+                for (Modalidade md: listaModalidades){
+                    if (md.getNome().equals(modalidades.getSelectionModel().getSelectedItem()))
+                        for (Posicao psc: md.getPosicoes()){
+                            posicoesPretendidas.add(psc.getNome());
+                        }
+                }
+
+                posicao.getItems().addAll(posicoesPretendidas);
 
             }
         });

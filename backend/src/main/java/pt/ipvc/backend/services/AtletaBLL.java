@@ -50,7 +50,7 @@ public class AtletaBLL {
     }
 
     public static List getAtletaPesquisa(String pesquisa) {
-        return atletaRepository.findAllArbitrosNomePesquisa(pesquisa);
+        return atletaRepository.findAllAtletasNomePesquisa(pesquisa);
     }
 
     public static List atletasSemEquipa(String modalidade) {

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -19,25 +18,25 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.EquipasController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.adicionarDados.PosicoesController">
     <children>
         <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>
                 <DropShadow />
             </effect>
             <children>
-            <ImageView fitHeight="600.0" fitWidth="708.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="609.0" fitWidth="712.0" layoutX="-5.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../icons/adicionarEquipa.png" />
+                  <Image url="@../../../icons/posicoes.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="508.0" layoutX="12.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="675.0" />
-                <Button fx:id="confirmar" layoutX="573.0" layoutY="497.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox layoutX="103.0" layoutY="84.0" prefHeight="218.0" prefWidth="383.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffc0" height="287.0" layoutX="137.0" layoutY="149.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="444.0" />
+                <Button layoutX="457.0" layoutY="374.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox layoutX="175.0" layoutY="224.0" prefHeight="101.0" prefWidth="352.0">
                <children>
                   <GridPane vgap="30.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -46,14 +45,14 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                             <Label text="O que pretende adicionar:" GridPane.columnIndex="1" />
-                            <ChoiceBox fx:id="choiceBoxOpcoes" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" />
                             <Label text="Nome:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="167.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                            <Label prefHeight="17.0" prefWidth="78.0" text="Modalidade:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="Modalidade:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="5.0" />
@@ -64,33 +63,22 @@
                               <Insets right="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label text="Selecione os Atletas:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                   </GridPane>
                </children>
             </VBox>
-            <Line endX="389.30706787109375" endY="419.20001220703125" layoutX="280.0" layoutY="122.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
-            <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="262.0" layoutY="73.0" startX="-158.0" startY="-3.9071044921875" stroke="#0f4c83" />
-            <Label layoutX="58.0" layoutY="58.0" text="Equipa" textFill="#0f4c83">
+            <Line endX="389.5" endY="211.45623779296875" layoutX="176.0" layoutY="207.0" startX="389.5" startY="-41.79998779296875" stroke="#0f4c83" />
+            <Label layoutX="181.0" layoutY="157.0" text="Posições" textFill="#0f4c83">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="131.0" layoutY="81.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
-            <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="32.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
-            <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
-            <Label fx:id="labelErro" layoutX="327.0" layoutY="502.0" textFill="RED" />
-            <ListView fx:id="jogadores" layoutX="160.0" layoutY="335.0" prefHeight="180.0" prefWidth="170.0" />
-            <ListView fx:id="jogadoresEscolhidos" layoutX="390.0" layoutY="335.0" prefHeight="180.0" prefWidth="170.0" />
-            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="524.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../icons/remove1.png" />
-               </image>
-            </ImageView>
+            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="254.0" layoutY="179.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
+            <Line endX="-0.5" endY="324.45623779296875" layoutX="155.0" layoutY="94.0" startX="-0.5" startY="71.79998779296875" stroke="#0f4c83" />
+            <Line endX="408.00006103515625" endY="-3.507080078125" layoutX="158.0" layoutY="422.0" startX="-2.999969482421875" startY="-2.58807373046875" stroke="#0f4c83" />
+            <Line endX="402.0" endY="-3.29998779296875" layoutX="163.0" layoutY="169.0" startX="85.0" startY="-3.29998779296875" stroke="#0f4c83" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="328.0" prefHeight="17.0" prefWidth="230.0" style="-fx-background-radius: 10;" textFill="RED" />
+            <Label fx:id="labelErro" contentDisplay="CENTER" layoutX="268.0" layoutY="379.0" prefHeight="17.0" prefWidth="165.0" textFill="RED" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
@@ -101,7 +89,7 @@
                     </effect>
                 </AnchorPane>
                 <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
-                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="61.0" text="Sistema" textFill="WHITE" />
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="53.0" text="Sistema" textFill="WHITE" />
                 <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Dados" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
@@ -129,7 +117,6 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
                 <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#setBtnNavMenu" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
                         <Font size="21.0" />

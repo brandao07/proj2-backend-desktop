@@ -58,6 +58,8 @@ public class ValidarInput {
             case "Tipos de Recinto" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-tipoRecinto.fxml", event);
             case "Recintos" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
             case "Clubes" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-clube.fxml", event);
+            case "Posições" -> ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-posicao.fxml", event);
+
 
             default -> System.out.println("ERRO");
         }
