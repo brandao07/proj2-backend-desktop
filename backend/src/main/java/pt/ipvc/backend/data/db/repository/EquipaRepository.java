@@ -5,7 +5,6 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 
-
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +21,7 @@ public class EquipaRepository extends Repository {
         _entityManager.getTransaction().begin();
         Equipa objectToUpdate = (Equipa) find(((Equipa) object).getId());
         objectToUpdate.setNome(((Equipa) object).getNome());
+        objectToUpdate.setClube(objectToUpdate.getClube());
         _entityManager.getTransaction().commit();
     }
 

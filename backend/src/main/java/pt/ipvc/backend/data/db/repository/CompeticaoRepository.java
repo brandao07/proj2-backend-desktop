@@ -6,7 +6,6 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Objects;
 
@@ -132,7 +131,21 @@ public class CompeticaoRepository extends Repository {
 
     public List findAllCompeticoesGestor(Long id) {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome, c.id) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id WHERE c.gestor.id = '" + id  + "'", CompeticaoNomeModalidade.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.CompeticaoNomeModalidade(c.nome, c.dataInicio, c.dataFim, c.genero, m.nome, c.id) FROM Competicao AS c INNER JOIN Modalidade as m ON m.id = c.modalidade.id WHERE c.gestor.id = '" + id + "'", CompeticaoNomeModalidade.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem competicoes");
+            return null;
+        }
+    }
+
+    public List findCompeticoesModalidadeActive(String modalidade) {
+        try {
+            Query query = _entityManager.createQuery("SELECT c FROM Competicao AS c " +
+                    "INNER JOIN Modalidade as m " +
+                    "ON m.id = c.modalidade.id " +
+                    "WHERE m.nome ='" + modalidade + "' " +
+                    "AND c.dataFim > current_date");
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem competicoes");
