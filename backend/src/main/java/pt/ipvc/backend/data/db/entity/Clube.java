@@ -28,6 +28,11 @@ public class Clube {
     @Column(name = "contacto")
     private String contacto;
 
+    @Basic
+    @Column(name = "image")
+    private String image;
+
+
     public String getContacto() {
         return contacto;
     }
@@ -84,5 +89,11 @@ public class Clube {
         this.id = id;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
