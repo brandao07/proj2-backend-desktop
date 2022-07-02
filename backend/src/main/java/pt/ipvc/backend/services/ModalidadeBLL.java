@@ -1,6 +1,7 @@
 package pt.ipvc.backend.services;
 
 import pt.ipvc.backend.data.db.entity.Modalidade;
+import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.db.repository.ModalidadeRepository;
 
 import java.util.List;
@@ -37,5 +38,13 @@ public class ModalidadeBLL {
 
     public static void removerModalidade(String nome) {
         modalidadeRepository.delete(ModalidadeBLL.getModalidade(nome));
+    }
+
+    public static void addPosicao(Modalidade modalidade, Posicao posicao) {
+        modalidadeRepository.addPosicao(modalidade, posicao);
+    }
+
+    public static void removePosicao(Modalidade modalidade, Posicao posicao) {
+        modalidadeRepository.removePosicao(modalidade, posicao);
     }
 }

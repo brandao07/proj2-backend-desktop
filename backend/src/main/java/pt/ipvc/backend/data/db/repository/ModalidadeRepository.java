@@ -1,9 +1,12 @@
 package pt.ipvc.backend.data.db.repository;
 
+import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Modalidade;
+import pt.ipvc.backend.data.db.entity.Posicao;
 
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Objects;
 
 public class ModalidadeRepository extends Repository {
 
@@ -39,6 +42,31 @@ public class ModalidadeRepository extends Repository {
         } catch (Exception e) {
             System.out.println("Sem modalidade");
             return null;
+        }
+    }
+
+    public void addPosicao(@NotNull Modalidade modalidade, Posicao posicao) {
+        try {
+            start();
+            _entityManager.getTransaction().begin();
+            Modalidade m = (Modalidade) find(modalidade.getId());
+            m.getPosicoes().removeIf(tp -> Objects.equals(tp.getId(), posicao.getId()));
+            m.getPosicoes().add(posicao);
+            _entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Posicao ja na modalidade!");
+        }
+    }
+
+    public void removePosicao(@NotNull Modalidade modalidade, Posicao posicao) {
+        try {
+            start();
+            _entityManager.getTransaction().begin();
+            Modalidade m = (Modalidade) find(modalidade.getId());
+            m.getPosicoes().removeIf(p -> Objects.equals(p.getId(), posicao.getId()));
+            _entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Posicao nao esta na modalidade!");
         }
     }
 }
