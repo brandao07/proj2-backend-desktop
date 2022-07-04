@@ -3,7 +3,7 @@ package pt.ipvc.backend.data.db.repository;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
+import pt.ipvc.backend.data.db.entity.Prova;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -71,15 +71,58 @@ public class EquipaRepository extends Repository {
         }
     }
 
-    public List findEquipa(String pesquisa) {
+//    public List findEquipa(String pesquisa) {
+//        try {
+//            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade  as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", AtletaNomeEquipa_Modalidade.class);
+//            query.setParameter(1, pesquisa);
+//            return query.getResultList();
+//        } catch (Exception e) {
+//            System.out.println("Sem Atletas");
+//            return null;
+//        }
+//    }
+
+    public List findProvasCompeticao(Long idCompeticao, Long idEquipa) {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade  as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", AtletaNomeEquipa_Modalidade.class);
-            query.setParameter(1, pesquisa);
-            return query.getResultList();
+            Query queryC = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE p.equipaCasa.id = :idE " +
+                    "AND p.competicao.id = :idC");
+            queryC.setParameter("idE", idEquipa);
+            queryC.setParameter("idC", idCompeticao);
+            List<Prova> provas = queryC.getResultList();
+
+            Query queryF = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE p.equipaFora.id = :idE " +
+                    "AND p.competicao.id = :idC");
+            queryF.setParameter("idE", idEquipa);
+            queryF.setParameter("idC", idCompeticao);
+            provas.addAll(queryF.getResultList());
+            return provas;
         } catch (Exception e) {
-            System.out.println("Sem Atletas");
+            e.printStackTrace();
             return null;
         }
     }
 
+    public List findProvasCompeticaoNOT(Long idCompeticao, Long idEquipa) {
+        try {
+            Query queryC = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE p.equipaCasa.id = :idE " +
+                    "AND p.competicao.id < :idC OR p.competicao.id > :idC");
+            queryC.setParameter("idE", idEquipa);
+            queryC.setParameter("idC", idCompeticao);
+            List<Prova> provas = queryC.getResultList();
+
+            Query queryF = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE p.equipaFora.id = :idE " +
+                    "AND p.competicao.id < :idC OR p.competicao.id > :idC");
+            queryF.setParameter("idE", idEquipa);
+            queryF.setParameter("idC", idCompeticao);
+            provas.addAll(queryF.getResultList());
+            return provas;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

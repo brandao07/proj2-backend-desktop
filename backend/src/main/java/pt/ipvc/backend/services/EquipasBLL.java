@@ -48,8 +48,16 @@ public class EquipasBLL {
     public static void removerEquipa(String nome) {
         equipasRepository.delete(EquipasBLL.getEquipa(nome));
     }
-    
+
     public static Equipa getEquipa(Long id) {
         return (Equipa) equipasRepository.find(id);
+    }
+
+    public static List getProvasCompeticao(Long idCompeticao, Long idEquipa) {
+        return equipasRepository.findProvasCompeticao(idCompeticao, idEquipa);
+    }
+
+    public static List getProvasSemCompeticao(Long idCompeticao, Long idEquipa) {
+        return equipasRepository.findProvasCompeticaoNOT(idCompeticao, idEquipa);
     }
 }
