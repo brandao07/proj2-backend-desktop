@@ -17,6 +17,11 @@ public class Equipa {
     @Column(name = "nome", unique = true)
     private String nome;
 
+    @ManyToOne
+    @JoinColumn(name = "clube_id")
+    private Clube clube;
+
+
     @OneToMany(mappedBy = "equipa", orphanRemoval = true)
     private Set<Atleta> atletas = new LinkedHashSet<>();
     @OneToMany(mappedBy = "equipaCasa", orphanRemoval = true)
@@ -33,9 +38,7 @@ public class Equipa {
             inverseJoinColumns = @JoinColumn(name = "modalidades_id"))
     private Set<Modalidade> modalidades = new LinkedHashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "clube_id")
-    private Clube clube;
+
 
     public Clube getClube() {
         return clube;

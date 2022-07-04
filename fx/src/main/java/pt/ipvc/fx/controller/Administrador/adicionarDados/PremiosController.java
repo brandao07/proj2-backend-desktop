@@ -6,13 +6,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class PremiosController implements Initializable {
 
@@ -26,13 +34,48 @@ public class PremiosController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
-    public void confirmar(ActionEvent event) {
-        if (ValidarInput.validarString(nome.getText())) {
-            TipoPremioBLL.criarTipoRecinto(nome.getText());
-            return;
+    protected ImageView erroNome;
+
+
+
+    public boolean testar() {
+        boolean validarNome = true;
+
+
+        if (!ValidarInput.validarString(nome.getText())) {
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            validarNome = false;
+        } else {
+            nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
+                    new CornerRadii(10),
+                    BorderWidths.DEFAULT)));
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
-        labelErro.setText("Preencha todos os campos");
+
+        return validarNome;
     }
+
+    @FXML
+    public void confirmar(ActionEvent event) throws InterruptedException {
+        if (testar()){
+            labelErro.setTextFill(Color.web("#32CD32"));
+            labelErro.setText("Sucesso.");
+            TimeUnit.SECONDS.sleep(1);
+
+            TipoPremioBLL.criarTipoRecinto(nome.getText());
+
+            ControladorGlobal.adicionarPremio();
+
+            ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-premio.fxml", event);
+        }
+        else{
+            labelErro.setText("Preencha todos os campos.");
+        }
+    }
+
 
 
 

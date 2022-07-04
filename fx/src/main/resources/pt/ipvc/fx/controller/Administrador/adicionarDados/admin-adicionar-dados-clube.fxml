@@ -115,6 +115,11 @@
             <Line endX="-0.5000152587890625" endY="536.5029296875" layoutX="32.0" layoutY="4.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
             <Label fx:id="labelErro" layoutX="327.0" layoutY="502.0" textFill="RED" />
+            <Button fx:id="btnFoto" contentDisplay="CENTER" layoutX="478.0" layoutY="305.0" mnemonicParsing="false" onAction="#escolherFoto" prefHeight="97.0" prefWidth="121.0" style="-fx-background-color: #fff;" text="Adicionar Foto" textFill="#0f4c83">
+               <graphic>
+                  <ImageView fx:id="imagem" fitHeight="118.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">

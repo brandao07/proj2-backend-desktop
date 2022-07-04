@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.io.File;
@@ -55,6 +56,10 @@ public class PosicoesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxOpcoes.setValue("Posições");
+        choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
+        choiceBoxOpcoes.setOnAction(actionEvent -> {
+            ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
+        });
         List<Modalidade> listaModalidades = ModalidadeBLL.getModalidades();
 
         for (Modalidade item: listaModalidades){

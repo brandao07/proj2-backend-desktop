@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -35,6 +36,7 @@
                <children>
                   <GridPane>
                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="10.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -44,10 +46,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                            <Label text="O que pretende adicionar:" />
-                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
-                            <Label text="Nome:" GridPane.rowIndex="2" />
-                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <Label text="O que pretende adicionar:" GridPane.columnIndex="1" />
+                            <ChoiceBox fx:id="choiceBoxOpcoes" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" />
+                            <Label text="Nome:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>

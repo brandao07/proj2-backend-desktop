@@ -13,14 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Atleta;
+import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
-import pt.ipvc.backend.services.AtletaBLL;
-import pt.ipvc.backend.services.EquipasBLL;
-import pt.ipvc.backend.services.ModalidadeBLL;
-import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.backend.services.*;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
+import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -58,15 +57,25 @@ public class EquipasController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
+    protected ImageView erroClube;
+
+
+    @FXML
+    protected ChoiceBox clube;
+
+    @FXML
     protected ListView jogadores;
 
     @FXML
     protected ListView jogadorEscolhidos;
 
+    private ObservableList<String> listaJogadoresEscolhidos;
+
 
     public boolean testar() {
         boolean validarNome = true;
         boolean validarModalidades = true;
+        boolean validarClube = true;
 
         if (!ValidarInput.validarString(nome.getText())) {
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
@@ -82,19 +91,42 @@ public class EquipasController implements Initializable {
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
+        if (!ValidarInput.validarChoiceBox(clube.getValue())) {
+            erroClube.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            validarClube = false;
+        } else {
+            erroClube.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
         if (!ValidarInput.validarChoiceBox(modalidades.getValue())) {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarModalidades = false;
         } else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
-
-
-        return validarNome && validarModalidades;
+        return validarNome && validarModalidades && validarClube;
     }
 
     @FXML
     public void confirmar(ActionEvent event) {
+        if (testar()) {
+            EquipasBLL.criarEquipa(nome.getText(), ClubeBLL.getClube((String) clube.getValue()));
+            List<Atleta> jogadoresDaEquipa = new ArrayList<>();
+            System.out.println(listaJogadoresEscolhidos);
+            for (String player: listaJogadoresEscolhidos){
+                jogadoresDaEquipa.add(AtletaBLL.getAtleta(player));
+                Atleta atleta = AtletaBLL.getAtleta(player);
+                atleta.setEquipa(EquipasBLL.getEquipa(nome.getText()));
+                AtletaBLL.updateAtleta(atleta);
+            }
+
+
+
+            ControladorGlobal.adicionarClube();
+
+            ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
+        }
+
         labelErro.setText("Preencha todos os campos");
     }
 
@@ -113,6 +145,15 @@ public class EquipasController implements Initializable {
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
+
+        List<Clube> listaClubes = ClubeBLL.getClubes();
+        List<String> nomeClubes =   FXCollections.observableArrayList();
+
+        for (Clube c : listaClubes){
+            nomeClubes.add(c.getNome());;
+        }
+
+        clube.getItems().addAll(nomeClubes);
 
         List<Modalidade> modalidadeObjeto = ModalidadeBLL.getModalidades();
         System.out.println("testeeeee");
@@ -142,6 +183,8 @@ public class EquipasController implements Initializable {
 
         jogadores.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
+
         modalidades.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
@@ -158,31 +201,21 @@ public class EquipasController implements Initializable {
         jogadores.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
-                ObservableList<String> selectedItems = jogadores.getSelectionModel().getSelectedItems();
-                ObservableList<Atleta> selectedItemsObjetos = FXCollections.observableArrayList();
-                ObservableList<String> selectedItemsObjetosString = FXCollections.observableArrayList();
-
-                for (String a : selectedItems){
-                   selectedItemsObjetos.add(AtletaBLL.getAtleta(a));
+                listaJogadoresEscolhidos = jogadorEscolhidos.getItems();
+                if (!listaJogadoresEscolhidos.contains(jogadores.getSelectionModel().getSelectedItem())){
+                    listaJogadoresEscolhidos.add((String) jogadores.getSelectionModel().getSelectedItem());
                 }
-
-
-                for (Atleta a:
-                        selectedItemsObjetos) {
-                    selectedItemsObjetosString.add(a.getNome());
-                }
-
-                jogadorEscolhidos.setItems(selectedItemsObjetosString);
-
+                jogadorEscolhidos.setItems(listaJogadoresEscolhidos);
             }
         });
 
     }
 
-
     @FXML
     public void remove(ActionEvent event){
-        jogadorEscolhidos.getItems().remove(jogadorEscolhidos.getSelectionModel().getSelectedItem());
+        listaJogadoresEscolhidos.remove(jogadorEscolhidos.getSelectionModel().getSelectedItem());
+        jogadorEscolhidos.setItems(listaJogadoresEscolhidos);
     }
+
 
 }

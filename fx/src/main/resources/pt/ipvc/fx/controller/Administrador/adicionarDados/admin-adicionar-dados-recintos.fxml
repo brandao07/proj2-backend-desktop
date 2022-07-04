@@ -90,15 +90,17 @@
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="187.0" layoutY="544.0" startX="-154.50001525878906" startY="-2.9970703125" stroke="#0f4c83" />
             <Line endX="482.80706787109375" endY="-3.29998779296875" layoutX="186.0" layoutY="72.0" startX="-54.0" startY="-3.29998779296875" stroke="#0f4c83" />
             <ListView fx:id="tipo" layoutX="150.0" layoutY="325.0" prefHeight="180.0" prefWidth="170.0" />
-            <Button fx:id="remove" layoutX="492.0" layoutY="459.0" mnemonicParsing="false" onAction="#remove" prefHeight="54.0" prefWidth="77.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="remove" layoutX="501.0" layoutY="498.0" mnemonicParsing="false" onAction="#remove" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/remove1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <ListView fx:id="tipoFinal" layoutX="380.0" layoutY="325.0" prefHeight="180.0" prefWidth="170.0" />
             <Label fx:id="label1" layoutX="263.0" layoutY="505.0" />
             <Label fx:id="labelErro" alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="514.0" prefHeight="17.0" prefWidth="230.0" textFill="RED" />
-            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="514.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../icons/remove1.png" />
-               </image>
-            </ImageView>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">

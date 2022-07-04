@@ -123,7 +123,7 @@ public class RecintosController implements Initializable {
             labelErro.setText("Sucesso.");
             TimeUnit.SECONDS.sleep(1);
             Recinto recinto = new Recinto();
-            recinto.setCapacidade(Long.valueOf(capacidade.getText()));
+            recinto.setCapacidade(Long.parseLong(capacidade.getText()));
             recinto.setNome(nome.getText());
             recinto.setPais((String) pais.getValue());
             RecintoBLL.criarRecinto(recinto);
