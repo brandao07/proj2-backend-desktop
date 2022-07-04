@@ -55,8 +55,6 @@ public class Arbitro {
         this.naturalidade = naturalidade;
     }
 
-
-
     public Set<Prova> getProvas() {
         return provas;
     }

@@ -2,15 +2,10 @@ package pt.ipvc.backend.services;
 
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Clube;
-import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.data.db.entity.users.Gestor;
 import pt.ipvc.backend.data.db.repository.EquipaRepository;
-import pt.ipvc.backend.services.users.UtilizadorBLL;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 public class EquipasBLL {
@@ -53,9 +48,8 @@ public class EquipasBLL {
     public static void removerEquipa(String nome) {
         equipasRepository.delete(EquipasBLL.getEquipa(nome));
     }
-
-
-
-
-
+    
+    public static Equipa getEquipa(Long id) {
+        return (Equipa) equipasRepository.find(id);
+    }
 }

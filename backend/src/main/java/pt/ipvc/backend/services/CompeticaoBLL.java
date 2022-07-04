@@ -81,4 +81,8 @@ public class CompeticaoBLL {
     public static void removerCompeticao(String nome) {
         competicaoRepository.delete(CompeticaoBLL.getCompeticao(nome));
     }
+
+    public static Competicao getCompeticao(Long id) {
+        return (Competicao) competicaoRepository.find(id);
+    }
 }
