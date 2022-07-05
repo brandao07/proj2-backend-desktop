@@ -1,13 +1,10 @@
 package pt.ipvc.backend.data.db.repository;
 
-import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Equipa;
-import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Prova;
 
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Objects;
 
 public class EquipaRepository extends Repository {
     @Override
@@ -21,33 +18,9 @@ public class EquipaRepository extends Repository {
         _entityManager.getTransaction().begin();
         Equipa objectToUpdate = (Equipa) find(((Equipa) object).getId());
         objectToUpdate.setNome(((Equipa) object).getNome());
+        objectToUpdate.setModalidade(((Equipa) object).getModalidade());
         objectToUpdate.setClube(objectToUpdate.getClube());
         _entityManager.getTransaction().commit();
-    }
-
-    public void addModalidade(@NotNull Equipa equipa, Modalidade modalidade) {
-        try {
-            start();
-            _entityManager.getTransaction().begin();
-            Equipa e = (Equipa) find(equipa.getId());
-            e.getModalidades().removeIf(m -> Objects.equals(m.getId(), modalidade.getId()));
-            e.getModalidades().add(modalidade);
-            _entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println("Equipa ja tem modalidade!");
-        }
-    }
-
-    public void removeModalidade(@NotNull Equipa equipa, Modalidade modalidade) {
-        try {
-            start();
-            _entityManager.getTransaction().begin();
-            Equipa e = (Equipa) find(equipa.getId());
-            e.getModalidades().removeIf(m -> Objects.equals(m.getId(), modalidade.getId()));
-            _entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println("Equipa nao tem modalidade!");
-        }
     }
 
     public List findAll() {
@@ -84,19 +57,12 @@ public class EquipaRepository extends Repository {
 
     public List findProvasCompeticao(Long idCompeticao, Long idEquipa) {
         try {
-            Query queryC = _entityManager.createQuery("SELECT p from Prova p " +
-                    "WHERE p.equipaCasa.id = :idE " +
-                    "AND p.competicao.id = :idC");
-            queryC.setParameter("idE", idEquipa);
-            queryC.setParameter("idC", idCompeticao);
-            List<Prova> provas = queryC.getResultList();
-
-            Query queryF = _entityManager.createQuery("SELECT p from Prova p " +
-                    "WHERE p.equipaFora.id = :idE " +
-                    "AND p.competicao.id = :idC");
-            queryF.setParameter("idE", idEquipa);
-            queryF.setParameter("idC", idCompeticao);
-            provas.addAll(queryF.getResultList());
+            Query query = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE p.competicao.id = :idC " +
+                    "AND (p.equipaCasa.id = :idE OR p.equipaFora.id = :idE)");
+            query.setParameter("idE", idEquipa);
+            query.setParameter("idC", idCompeticao);
+            List<Prova> provas = query.getResultList();
             return provas;
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,19 +72,13 @@ public class EquipaRepository extends Repository {
 
     public List findProvasCompeticaoNOT(Long idCompeticao, Long idEquipa) {
         try {
-            Query queryC = _entityManager.createQuery("SELECT p from Prova p " +
-                    "WHERE p.equipaCasa.id = :idE " +
-                    "AND p.competicao.id < :idC OR p.competicao.id > :idC");
-            queryC.setParameter("idE", idEquipa);
-            queryC.setParameter("idC", idCompeticao);
-            List<Prova> provas = queryC.getResultList();
+            Query query = _entityManager.createQuery("SELECT p from Prova p " +
+                    "WHERE (p.equipaCasa.id = :idE OR p.equipaFora.id = :idE) " +
+                    "AND (p.competicao.id < :idC OR p.competicao.id > :idC)");
+            query.setParameter("idE", idEquipa);
+            query.setParameter("idC", idCompeticao);
+            List<Prova> provas = query.getResultList();
 
-            Query queryF = _entityManager.createQuery("SELECT p from Prova p " +
-                    "WHERE p.equipaFora.id = :idE " +
-                    "AND p.competicao.id < :idC OR p.competicao.id > :idC");
-            queryF.setParameter("idE", idEquipa);
-            queryF.setParameter("idC", idCompeticao);
-            provas.addAll(queryF.getResultList());
             return provas;
         } catch (Exception e) {
             e.printStackTrace();

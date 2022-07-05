@@ -16,27 +16,17 @@ public class Modalidade {
     @Column(name = "nome", unique = true)
     private String nome;
 
-
     @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
     private Set<Arbitro> arbitros = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
     private Set<Competicao> competicoes = new LinkedHashSet<>();
 
-
-    @ManyToMany(mappedBy = "modalidades")
-    private Set<Equipa> equipas = new LinkedHashSet<>();
-
     @ManyToMany
     private Set<Posicao> posicoes = new HashSet<>();
 
-    public Set<Posicao> getPosicoes() {
-        return posicoes;
-    }
-
-    public void setPosicoes(Set<Posicao> posicoes) {
-        this.posicoes = posicoes;
-    }
+    @OneToMany(mappedBy = "modalidade", orphanRemoval = true)
+    private Set<Equipa> equipas = new LinkedHashSet<>();
 
     public Set<Equipa> getEquipas() {
         return equipas;
@@ -46,7 +36,13 @@ public class Modalidade {
         this.equipas = equipas;
     }
 
+    public Set<Posicao> getPosicoes() {
+        return posicoes;
+    }
 
+    public void setPosicoes(Set<Posicao> posicoes) {
+        this.posicoes = posicoes;
+    }
 
     public Set<Competicao> getCompeticoes() {
         return competicoes;

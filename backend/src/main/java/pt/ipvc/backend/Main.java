@@ -2,6 +2,7 @@ package pt.ipvc.backend;
 
 
 import pt.ipvc.backend.data.misc.LocalRepository;
+import pt.ipvc.backend.services.ModalidadeBLL;
 
 import java.io.IOException;
 
@@ -10,7 +11,7 @@ public class Main {
         //não eliminar
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
-     //   ModalidadeBLL.criarModalidade("Futebol");
+        ModalidadeBLL.criarModalidade("teste");
 
 
     }

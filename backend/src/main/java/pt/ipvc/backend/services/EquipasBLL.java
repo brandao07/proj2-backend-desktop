@@ -1,6 +1,7 @@
 package pt.ipvc.backend.services;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
@@ -12,10 +13,12 @@ public class EquipasBLL {
 
     private final static EquipaRepository equipasRepository = new EquipaRepository();
 
-    public static Equipa criarEquipa(String nome, @NotNull Clube clube) {
+    @Nullable
+    public static Equipa criarEquipa(String nome, @NotNull Clube clube, @NotNull Modalidade modalidade) {
 
         Equipa equipa = new Equipa(nome);
         equipa.setClube(ClubeBLL.getClube(clube.getNome()));
+        equipa.setModalidade(ModalidadeBLL.getModalidade(modalidade.getNome()));
         if (equipasRepository.add(equipa) == null) {
             System.out.println("Erro ao criar equipa");
             return null;
@@ -35,14 +38,6 @@ public class EquipasBLL {
 
     public static void updateEquipa(Equipa equipa) {
         equipasRepository.update(equipa);
-    }
-
-    public static void addModalidade(Equipa equipa, Modalidade modalidade) {
-        equipasRepository.addModalidade(equipa, modalidade);
-    }
-
-    public static void removeModalidade(Equipa equipa, Modalidade modalidade) {
-        equipasRepository.addModalidade(equipa, modalidade);
     }
 
     public static void removerEquipa(String nome) {

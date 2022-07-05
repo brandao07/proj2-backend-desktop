@@ -15,23 +15,19 @@ import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.data.db.entity.TipoRecinto;
-import pt.ipvc.backend.data.misc.LocalRepository;
-import pt.ipvc.backend.services.*;
-import pt.ipvc.backend.services.users.UtilizadorBLL;
+import pt.ipvc.backend.services.AtletaBLL;
+import pt.ipvc.backend.services.ClubeBLL;
+import pt.ipvc.backend.services.EquipasBLL;
+import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class EquipasController implements Initializable {
 
@@ -110,6 +106,7 @@ public class EquipasController implements Initializable {
     @FXML
     public void confirmar(ActionEvent event) {
         if (testar()) {
+            //TODO: FALTA ADICIONAR MODALIDADE
             EquipasBLL.criarEquipa(nome.getText(), ClubeBLL.getClube((String) clube.getValue()));
             List<Atleta> jogadoresDaEquipa = new ArrayList<>();
             System.out.println(listaJogadoresEscolhidos);
