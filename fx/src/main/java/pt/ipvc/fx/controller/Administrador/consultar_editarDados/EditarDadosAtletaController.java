@@ -1,23 +1,28 @@
 package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.fx.controller.BufferedImage;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -42,15 +47,26 @@ public class EditarDadosAtletaController implements Initializable {
     protected ComboBox nacionalidade;
 
     @FXML
-    protected ChoiceBox modalidades;
+    protected ComboBox naturalidade;
 
     @FXML
-    protected ChoiceBox equipa;
+    protected ChoiceBox modalidades;
 
     @FXML
     protected ChoiceBox genero;
     @FXML
     protected ChoiceBox posicao;
+
+    @FXML
+    protected ImageView imagem;
+
+    @FXML
+    protected Button btnFoto;
+
+    @FXML
+    protected ChoiceBox equipa;
+
+    private static String path = null;
 
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
@@ -66,10 +82,11 @@ public class EditarDadosAtletaController implements Initializable {
         atleta.setPeso(Double.valueOf(peso.getPromptText()));
         atleta.setAltura(Double.valueOf(altura.getPromptText()));
         atleta.setDataNascimento(java.sql.Date.valueOf(data.getPromptText()));
+        atleta.setImage(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImage());
+
 
         if (!nome.getText().isEmpty()){
             atleta.setNome(nome.getText());
-            nomeAtleta = nome.getText();
         }
 
         if (!peso.getText().isEmpty()){
@@ -84,16 +101,19 @@ public class EditarDadosAtletaController implements Initializable {
             atleta.setDataNascimento(java.sql.Date.valueOf(data.getValue()));
         }
 
+        if (path != null){
+            atleta.setImage(path);
+        }
+
         atleta.setId(AtletaBLL.getAtleta(nome.getPromptText()).getId());
         atleta.setNacionalidade((String) nacionalidade.getSelectionModel().getSelectedItem());
+        atleta.setNaturalidade((String) naturalidade.getSelectionModel().getSelectedItem());
         atleta.setGenero((String) genero.getValue());
         atleta.setModalidade(ModalidadeBLL.getModalidade((String) modalidades.getSelectionModel().getSelectedItem()));
-        atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
         atleta.setPosicao(String.valueOf(posicao.getValue()));
-
-
-
+        atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
         AtletaBLL.updateAtleta(atleta);
+        ControladorGlobal.editarAtleta();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
     }
 
@@ -101,11 +121,11 @@ public class EditarDadosAtletaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             LocalRepository.paises_e_cidades();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+        imagem.setImage(new Image(new File(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImage()).toURI().toString()));
         Set<String> modalidade = ((List<Modalidade>) ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
@@ -115,6 +135,8 @@ public class EditarDadosAtletaController implements Initializable {
 
         List<Posicao> posicoes = PosicaoBLL.getPosicoes();
         List<String> nomePosicoes = new ArrayList<>();
+
+
 
         for (Posicao nome: posicoes){
             nomePosicoes.add(nome.getNome());
@@ -129,7 +151,6 @@ public class EditarDadosAtletaController implements Initializable {
 
         posicao.getItems().addAll(nomePosicoes);
 
-        equipa.getItems().addAll(nomeEquipa);
 
         nome.setPromptText(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNome());
         modalidades.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getModalidade().getNome());
@@ -138,12 +159,12 @@ public class EditarDadosAtletaController implements Initializable {
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
 
         nacionalidade.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNacionalidade());
+        naturalidade.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNaturalidade());
 
+        equipa.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getEquipa().getNome());
         genero.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getGenero());
 
         posicao.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getPosicao());
-
-        equipa.setValue(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getEquipa().getNome());
 
         altura.setPromptText(String.valueOf(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getAltura()));
 
@@ -160,7 +181,68 @@ public class EditarDadosAtletaController implements Initializable {
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
 
+        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                naturalidade.setDisable(false);
+
+                naturalidade.getItems().clear();
+                for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
+                        naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
+                        break;
+                    }
+                }
+                naturalidade.setVisibleRowCount(11);
+            }
+        });
+
+//        modalidades.valueProperty().addListener(new ChangeListener<String>() {
+//            @Override
+//            public void changed(ObservableValue ov, String t, String t1) {
+//                equipa.getItems().clear();
+//                List<Equipa> listaEquipas = EquipasBLL.getEquipas();
+//                List<String> nomeEquipas = new ArrayList<>();
+//
+////                for (Equipa eq : listaEquipas){
+////                    if (EquipasBLL.getEquipa(eq.getNome())){
+////                        if (!nomeEquipas.contains(eq.getNome())){
+////                            nomeEquipas.add(eq.getNome());
+////                        }
+////
+////                    }
+//
+//                }
+//                //equipa.getItems().addAll(nomeEquipas);
+//            }
+//        });
+
+
+
     }
+
+    @FXML
+    public void escolherFoto(ActionEvent event){
+
+        final FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
+
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
+
+        File file = fileChooser.showOpenDialog(null);
+
+        path = file.getAbsolutePath();
+        path = path.substring(path.indexOf("proj2/") + 1);
+        path = path.substring(path.indexOf("/") + 1);
+
+        System.out.println(path);
+
+        imagem.setImage(new Image(new File(path).toURI().toString()));
+
+    }
+
+
 
 
 }

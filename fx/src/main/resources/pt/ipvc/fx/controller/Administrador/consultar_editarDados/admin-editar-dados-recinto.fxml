@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -24,8 +25,8 @@
                 <DropShadow />
             </effect>
             <children>
-                <Button layoutX="498.0" layoutY="384.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <VBox alignment="CENTER" layoutX="159.0" layoutY="217.0" prefHeight="167.0" prefWidth="417.0">
+                <Button layoutX="570.0" layoutY="511.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox alignment="CENTER" layoutX="92.0" layoutY="65.0" prefHeight="167.0" prefWidth="551.0">
                <children>
                   <GridPane alignment="CENTER" vgap="30.0">
                     <columnConstraints>
@@ -36,6 +37,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                             <Label text="Nome:" />
@@ -44,21 +46,33 @@
                         <Label text="Capacidade:" GridPane.rowIndex="2" />
                         <ComboBox fx:id="pais" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Spinner fx:id="capacidade" editable="true" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Selecione o/s tipo/s de recinto/s:" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
             </VBox>
-            <Line endX="389.30712890625" endY="308.5" layoutX="212.0" layoutY="121.0" startX="389.0999755859375" startY="71.5928955078125" stroke="#0f4c83" />
-            <Line endX="236.5999755859375" endY="-3.9071044921875" layoutX="364.0" layoutY="197.0" startX="-86.0" startY="-3.9071044921875" stroke="#0f4c83" />
-            <Label layoutX="159.0" layoutY="184.0" text="Editar Recintos" textFill="#0f4c83">
+            <Line endX="389.30712890625" endY="508.0" layoutX="275.0" layoutY="55.0" startX="389.30712890625" startY="-16.0" stroke="#0f4c83" />
+            <Line endX="359.80712890625" endY="-3.5" layoutX="305.0" layoutY="42.0" startX="-109.0" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="90.0" layoutY="28.0" text="Editar Recintos" textFill="#0f4c83">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="225.0" layoutY="207.0" startX="-102.00001525878906" startY="-12.700004577636719" stroke="#0f4c83" />
-            <Line endX="-0.5000152587890625" endY="553.2088012695312" layoutX="123.0" layoutY="-125.0" startX="-0.5" startY="320.29290771484375" stroke="#0f4c83" />
-            <Line endX="486.30706787109375" endY="-3.0841064453125" layoutX="113.0" layoutY="433.0" startX="10.0" startY="-3.0841064453125" stroke="#0f4c83" />
+            <Line endX="-101.0" endY="-12.70001220703125" layoutX="182.0" layoutY="50.0" startX="-133.0" startY="-12.70001220703125" stroke="#0f4c83" />
+            <Line endX="-0.5" endY="844.0" layoutX="48.0" layoutY="-282.0" startX="-0.5" startY="320.29290771484375" stroke="#0f4c83" />
+            <Line endX="603.80712890625" endY="-1.5" layoutX="61.0" layoutY="565.0" startX="-14.0" startY="-2.5" stroke="#0f4c83" />
             <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="320.0" layoutY="506.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            <ListView fx:id="tiposRecinto" layoutX="108.0" layoutY="256.0" prefHeight="220.0" prefWidth="200.0" />
+            <ListView fx:id="tiposRecintoEscolhidos" layoutX="356.0" layoutY="256.0" prefHeight="220.0" prefWidth="200.0" />
+            <Button fx:id="remove" layoutX="507.0" layoutY="471.0" mnemonicParsing="false" onAction="#remove" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/remove1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">

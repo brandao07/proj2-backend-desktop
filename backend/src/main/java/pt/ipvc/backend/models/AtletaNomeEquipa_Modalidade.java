@@ -25,7 +25,9 @@ public class AtletaNomeEquipa_Modalidade {
 
     private String modalidade;
 
-    public AtletaNomeEquipa_Modalidade(long id, String nome, String genero, Date dataNascimento, Double peso, Double altura, String nacionalidade, String posicao, String equipa, String modalidade) {
+    private String naturalidade;
+
+    public AtletaNomeEquipa_Modalidade(long id, String nome, String genero, Date dataNascimento, Double peso, Double altura, String nacionalidade, String naturalidade, String posicao, String equipa, String modalidade) {
         this.id = id;
         this.nome = nome;
         this.genero = genero;
@@ -33,6 +35,7 @@ public class AtletaNomeEquipa_Modalidade {
         this.peso = peso;
         this.altura = altura;
         this.nacionalidade = nacionalidade;
+        this.naturalidade = naturalidade;
         this.posicao = posicao;
         this.equipa = equipa;
         this.modalidade = modalidade;
@@ -120,15 +123,25 @@ public class AtletaNomeEquipa_Modalidade {
         this.modalidade = modalidade;
     }
 
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public void setNaturalidade(String naturalidade) {
+        this.naturalidade = naturalidade;
+    }
+
     @Override
     public String toString(){
         return "AtletaNomeEquipa_Modalidade{"+
+                "id='" + id + '\'' +
                 "nome='" + nome + '\'' +
                 ",genero='" + genero + '\'' +
                 ",dataNascimento='" + dataNascimento +
                 ",peso='" + peso + '\'' +
                 ",altura='" + altura + '\'' +
                 ",nacionalidade='" + nacionalidade + '\'' +
+                ",naturalidade='" + naturalidade + '\'' +
                 ",posicao='" + posicao + '\'' +
                 ",equipa='" + equipa + '\'' +
                 ",modalidade='" + modalidade + '\'' +

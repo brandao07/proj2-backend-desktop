@@ -82,8 +82,7 @@
                         <TableColumn fx:id="colunaData" minWidth="0.0" prefWidth="124.5" text="Data Nascimento" />
                         <TableColumn fx:id="colunaGenero" prefWidth="99.0" text="Gênero" />
                         <TableColumn fx:id="colunaNacionalidade" prefWidth="142.0" text="Nacionalidade" />
-                        <TableColumn fx:id="colunaAssociacao" prefWidth="69.5" text="Associação" />
-                  <TableColumn fx:id="colunaCategoria" prefWidth="108.0" text="Categoria" />
+                        <TableColumn fx:id="colunaNaturalidade" prefWidth="115.0" text="Naturalidade" />
                   <TableColumn fx:id="colunaModalidade" prefWidth="75.0" text="Modalidade" />
                     </columns>
                 </TableView>
@@ -113,6 +112,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="labelErro" contentDisplay="CENTER" layoutX="231.0" layoutY="460.0" prefHeight="17.0" prefWidth="250.0" textFill="RED" />
             </children>
         </AnchorPane>
     </children>

@@ -3,7 +3,6 @@ package pt.ipvc.fx.controller.Administrador.adicionarDados;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -12,8 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.data.db.repository.ModalidadeRepository;
-import pt.ipvc.backend.data.db.repository.Repository;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
@@ -34,20 +31,19 @@ public class ArbitrosController implements Initializable {
     protected TextField nome;
 
     @FXML
-    protected ComboBox<String> nacionalidade;
+    protected ComboBox < String > nacionalidade;
 
     @FXML
-    protected ComboBox<String> naturalidade;
+    protected ComboBox < String > naturalidade;
 
     @FXML
-    protected ChoiceBox<String> modalidades;
-
+    protected ChoiceBox < String > modalidades;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
-    protected ChoiceBox<String> genero;
+    protected ChoiceBox < String > genero;
 
     @FXML
     protected DatePicker data;
@@ -66,7 +62,6 @@ public class ArbitrosController implements Initializable {
     @FXML
     protected ImageView erroNacionalidade;
 
-
     @FXML
     protected ImageView erroGenero;
 
@@ -75,7 +70,7 @@ public class ArbitrosController implements Initializable {
 
     @FXML
     protected Button confirma;
-    public boolean testar(){
+    public boolean testar() {
         boolean validarNome = true;
         boolean validarData = true;
         boolean validarNacionalidade = true;
@@ -83,75 +78,68 @@ public class ArbitrosController implements Initializable {
         boolean validarGenero = true;
         boolean validarModalidade = true;
 
-        if (!ValidarInput.validarString(nome.getText())){
+        if (!ValidarInput.validarString(nome.getText())) {
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
                     new CornerRadii(10),
                     BorderWidths.DEFAULT)));
             nome.setPromptText("Por favor introduza um nome.");
             validarNome = false;
-        }
-        else {
+        } else {
             nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
                     new CornerRadii(10),
                     BorderWidths.DEFAULT)));
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarDataPicker(data.getValue())){
+        if (!ValidarInput.validarDataPicker(data.getValue())) {
             erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarData = false;
-        }
-        else {
+        } else {
             erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(nacionalidade.getValue())){
+        if (!ValidarInput.validarChoiceBox(nacionalidade.getValue())) {
             erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarNacionalidade = false;
-        }
-        else {
+        } else {
             erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())){
+        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())) {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarNaturalidade = false;
-        }
-        else {
+        } else {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())){
+        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())) {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarNaturalidade = false;
-        }
-        else {
+        } else {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(genero.getValue())){
+        if (!ValidarInput.validarChoiceBox(genero.getValue())) {
             erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarGenero = false;
-        }
-        else {
+        } else {
             erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
+        if (!ValidarInput.validarChoiceBox(modalidades.getValue())) {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarModalidade = false;
-        }
-        else {
+        } else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
-            return validarNome && validarData && validarNacionalidade && validarNaturalidade
-                    && validarModalidade && validarGenero;
+        return validarNome && validarData && validarNacionalidade && validarNaturalidade &&
+                validarModalidade && validarGenero;
     }
 
     @FXML
     public void confirmar(ActionEvent event) throws InterruptedException {
-        if (testar()){
+        if (testar()) {
             labelErro.setTextFill(Color.web("#32CD32"));
             labelErro.setText("Sucesso.");
             TimeUnit.SECONDS.sleep(1);
@@ -163,20 +151,15 @@ public class ArbitrosController implements Initializable {
                     naturalidade.getSelectionModel().getSelectedItem(),
                     modalidades.getSelectionModel().getSelectedItem());
 
-                    ControladorGlobal.adicionarArbitro();
-
+            ControladorGlobal.adicionarArbitro();
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-arbitro.fxml", event);
-
-        }else{
+        } else {
             labelErro.setText("Preencha todos os campos.");
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        naturalidade.setDisable(true);
-        choiceBoxOpcoes.setValue("Árbitros");
         try {
             LocalRepository.paises_e_cidades();
             LocalRepository.associacoes_portuguesas();
@@ -184,33 +167,28 @@ public class ArbitrosController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        naturalidade.setDisable(true);
+        choiceBoxOpcoes.setValue("Árbitros");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
-
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
-
-
-        ArrayList<String> lista_associacoes = new ArrayList<>();
-        for (String t : LocalRepository.getMapAssosiacoesPortuguesas().values()){
-                lista_associacoes.add(t);
+        ArrayList < String > lista_associacoes = new ArrayList < > ();
+        for (String t: LocalRepository.getMapAssosiacoesPortuguesas().values()) {
+            lista_associacoes.add(t);
         }
         Collections.sort(lista_associacoes);
         lista_associacoes.remove(0);
 
-
-        Set<String> modalidade = ((List<Modalidade>)ModalidadeBLL.getModalidades()).stream().
+        Set < String > modalidade = ((List < Modalidade > ) ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
         modalidades.getItems().addAll(modalidade);
         genero.getItems().addAll(StringGeneros.generos());
 
-
-        //adicionar pais à choiceBox nacionalidade
-        ArrayList paises = new ArrayList<>();
-        for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+        ArrayList paises = new ArrayList < > ();
+        for (String pais: LocalRepository.getMapCidadesPais().keySet()) {
             if (!paises.contains(LocalRepository.getMapCidadesPais().get(pais))) {
                 paises.add(pais);
             }
@@ -219,22 +197,19 @@ public class ArbitrosController implements Initializable {
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
 
-
-        //adicionar cidades à choiceBox naturalidade
-        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+        nacionalidade.valueProperty().addListener(new ChangeListener < String > () {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
                 naturalidade.setDisable(false);
 
                 naturalidade.getItems().clear();
-                for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+                for (String pais: LocalRepository.getMapCidadesPais().keySet()) {
                     if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
                         naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
                         break;
                     }
                 }
                 naturalidade.setVisibleRowCount(11);
-
             }
         });
     }

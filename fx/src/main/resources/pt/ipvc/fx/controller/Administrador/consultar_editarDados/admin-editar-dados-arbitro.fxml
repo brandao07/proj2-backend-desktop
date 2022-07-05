@@ -41,23 +41,20 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                             <Label text="Nome:" />
                             <Label prefHeight="17.0" prefWidth="135.0" text="Data de Nascimento:" GridPane.rowIndex="1" />
                             <Label text="Nacionalidade:" GridPane.rowIndex="2" />
-                            <Label text="Associação:" GridPane.rowIndex="3" />
-                            <Label text="Categoria:" GridPane.rowIndex="4" />
-                            <Label text="Genêro:" GridPane.rowIndex="5" />
-                            <Label text="Modalidade:" GridPane.rowIndex="6" />
+                            <Label text="Naturalidade:" GridPane.rowIndex="3" />
+                            <Label text="Genêro:" GridPane.rowIndex="4" />
+                            <Label text="Modalidade:" GridPane.rowIndex="5" />
                             <TextField fx:id="nome" prefHeight="26.0" prefWidth="378.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
                             <DatePicker fx:id="data" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <ChoiceBox fx:id="associacao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <ChoiceBox fx:id="categoria" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                            <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                            <ChoiceBox fx:id="modalidades" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                            <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <ChoiceBox fx:id="modalidades" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <ComboBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

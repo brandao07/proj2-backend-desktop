@@ -81,7 +81,6 @@ public class ClubesController implements Initializable {
     @FXML
     protected Button btnFoto;
 
-
     public boolean testar(){
         boolean validarNome = true;
         boolean validarData = true;

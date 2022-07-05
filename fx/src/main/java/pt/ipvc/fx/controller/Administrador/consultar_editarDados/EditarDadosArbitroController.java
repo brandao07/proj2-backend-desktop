@@ -1,5 +1,7 @@
 package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,10 +39,8 @@ public class EditarDadosArbitroController implements Initializable {
 
 
     @FXML
-    protected ChoiceBox associacao;
+    protected ComboBox naturalidade;
 
-    @FXML
-    protected ChoiceBox categoria;
 
     @FXML
     protected ChoiceBox genero;
@@ -73,19 +73,20 @@ public class EditarDadosArbitroController implements Initializable {
 
         arbitro.setId(ArbitroBLL.getArbitro(nome.getPromptText()).getId());
         arbitro.setNacionalidade((String) nacionalidade.getSelectionModel().getSelectedItem());
+        arbitro.setNaturalidade((String) naturalidade.getSelectionModel().getSelectedItem());
         arbitro.setGenero((String) genero.getValue());
         arbitro.setModalidade(ModalidadeBLL.getModalidade(modalidades.getSelectionModel().getSelectedItem()));
 
-    ArbitroBLL.updateArbitro(arbitro);
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
+        ArbitroBLL.updateArbitro(arbitro);
+        ControladorGlobal.editarArbitro();
+        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        naturalidade.setDisable(true);
         try {
             LocalRepository.paises_e_cidades();
-            LocalRepository.associacoes_portuguesas();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -102,26 +103,9 @@ public class EditarDadosArbitroController implements Initializable {
 
         Date data_nascimento = ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getDataNascimento();
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
-
-
-
         nacionalidade.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getNacionalidade());
-
-
+        naturalidade.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getNaturalidade());
         genero.setValue(ArbitroBLL.getArbitroId(ConsultarDadosArbitroController.arbitroSceneConsultar).getGenero());
-
-
-        categoria.getItems().addAll("Internacional", "Nacional");
-
-
-        ArrayList<String> lista_associacoes = new ArrayList<>();
-        for (String t : LocalRepository.getMapAssosiacoesPortuguesas().values()){
-            lista_associacoes.add(t);
-        }
-        Collections.sort(lista_associacoes);
-        lista_associacoes.remove(0);
-        associacao.getItems().addAll(lista_associacoes);
-
         genero.getItems().addAll(StringGeneros.generos());
 
 
@@ -134,5 +118,21 @@ public class EditarDadosArbitroController implements Initializable {
         }
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
+        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String t, String t1) {
+                naturalidade.setDisable(false);
+
+                naturalidade.getItems().clear();
+                for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+                    if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
+                        naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
+                        break;
+                    }
+                }
+                naturalidade.setVisibleRowCount(11);
+
+            }
+        });
     }
 }

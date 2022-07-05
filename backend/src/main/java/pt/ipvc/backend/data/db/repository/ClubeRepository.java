@@ -19,6 +19,12 @@ public class ClubeRepository extends Repository {
         _entityManager.getTransaction().begin();
         Clube objectToUpdate = (Clube) find(((Clube) object).getId());
         objectToUpdate.setNome(((Clube) object).getNome());
+        objectToUpdate.setCidade(((Clube) object).getCidade());
+        objectToUpdate.setContacto(((Clube) object).getContacto());
+        objectToUpdate.setDataFundacao(((Clube) object).getDataFundacao());
+        objectToUpdate.setImage(((Clube) object).getImage());
+        objectToUpdate.setPais(((Clube) object).getPais());
+        objectToUpdate.setSigla(((Clube) object).getSigla());
         _entityManager.getTransaction().commit();
     }
 

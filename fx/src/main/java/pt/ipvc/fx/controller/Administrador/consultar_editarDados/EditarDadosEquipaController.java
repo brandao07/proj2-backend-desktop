@@ -5,31 +5,21 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
+import javafx.scene.control.*;
 import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.misc.LocalRepository;
-import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ClubeBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
-public class EditarDadosClubeController implements Initializable {
+public class EditarDadosEquipaController implements Initializable {
     @FXML
     protected TextField nome;
     @FXML
@@ -47,35 +37,9 @@ public class EditarDadosClubeController implements Initializable {
     @FXML
     protected ComboBox<String> cidade;
 
-    @FXML
-    protected ImageView imagem;
-    @FXML
-    protected Button btnFoto;
 
     @FXML
     protected Button button;
-
-    private static String path = null;
-
-    @FXML
-    public void escolherFoto(ActionEvent event){
-
-        final FileChooser fileChooser = new FileChooser();
-
-        fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
-
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
-
-        File file = fileChooser.showOpenDialog(null);
-
-        path = file.getAbsolutePath();
-        path = path.substring(path.indexOf("proj2/") + 1);
-        path = path.substring(path.indexOf("/") + 1);
-
-        imagem.setImage(new Image(new File(path).toURI().toString()));
-
-    }
-
 
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -87,31 +51,25 @@ public class EditarDadosClubeController implements Initializable {
 
     public void confirmar(ActionEvent event){
         Clube clube = new Clube();
-        String nomeClube = nome.getPromptText();
-        clube.setNome(nomeClube);
+        clube.setNome(nome.getPromptText());
         clube.setSigla(sigla.getPromptText());
         clube.setContacto(contacto.getPromptText());
         clube.setDataFundacao(java.sql.Date.valueOf(data.getPromptText()));
-        clube.setImage(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImage());
 
-        if (!nome.getText().isEmpty()){
+        if (!ValidarInput.validarString(nome.getText())){
             clube.setNome(nome.getText());
         }
 
-        if (!sigla.getText().isEmpty()){
+        if (!ValidarInput.validarString(sigla.getText())){
             clube.setSigla(sigla.getText());
         }
 
-        if (!contacto.getText().isEmpty()){
+        if (!ValidarInput.validarString(contacto.getText())){
             clube.setContacto(contacto.getText());
         }
 
-        if (data.getValue() != null){
+        if (!ValidarInput.validarDataPicker(data.getValue())){
             clube.setDataFundacao(java.sql.Date.valueOf(data.getValue()));
-        }
-
-        if (path != null){
-            clube.setImage(path);
         }
 
         clube.setId(ClubeBLL.getClube(nome.getPromptText()).getId());
@@ -119,7 +77,7 @@ public class EditarDadosClubeController implements Initializable {
         clube.setCidade(cidade.getValue());
 
         ClubeBLL.updateClube(clube);
-        ControladorGlobal.editarClube();
+        ControladorGlobal.editarEquipa();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-clube.fxml", event);
     }
 
@@ -133,14 +91,17 @@ public class EditarDadosClubeController implements Initializable {
         }
 
 
-        nome.setPromptText(ConsultarDadosClubeController.clubeSceneConsultar);
-        sigla.setPromptText(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getSigla());
-        contacto.setPromptText(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getContacto());
-        Date data_nascimento = ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getDataFundacao();
+        nome.setPromptText(ConsultarDadosEquipaController.clubeSceneConsultar);
+        sigla.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getSigla());
+        contacto.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getContacto());
+
+        Date data_nascimento = ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getDataFundacao();
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
-        pais.setValue(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getPais());
-        cidade.setValue(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getCidade());
-        imagem.setImage(new Image(new File(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImage()).toURI().toString()));
+
+        pais.setValue(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getPais());
+
+        cidade.setValue(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getCidade());
+
 
         //adicionar pais à choiceBox nacionalidade
         ArrayList paises = new ArrayList<>();
@@ -151,6 +112,7 @@ public class EditarDadosClubeController implements Initializable {
         }
         pais.getItems().addAll(paises);
         pais.setVisibleRowCount(11);
+
 
         pais.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -166,5 +128,8 @@ public class EditarDadosClubeController implements Initializable {
             }
         });
     }
+
+
+
 
 }

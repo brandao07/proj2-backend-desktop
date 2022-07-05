@@ -81,6 +81,8 @@ public class ValidarInput {
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-premio.fxml", event);
             case "Tipos de Recintos" ->
                     ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-recinto.fxml", event);
+            case "Clubes" ->
+                    ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-clube.fxml", event);
             default -> System.out.println("ERRO");
         }
     }

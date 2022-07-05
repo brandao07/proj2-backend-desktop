@@ -34,6 +34,8 @@ public class RecintoBLL {
     public static void removeTipo(Recinto recinto, TipoRecinto tipoRecinto) {
         recintoRepository.removeTipoRecinto(recinto, tipoRecinto);
     }
+
+
     
     public static void updateRecinto(Recinto recinto) {
         recintoRepository.update(recinto);
