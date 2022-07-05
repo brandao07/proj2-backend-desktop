@@ -2,6 +2,8 @@ package pt.ipvc.backend.data.db.repository;
 
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Prova;
+import pt.ipvc.backend.models.ArbitroNomeModalidade;
+import pt.ipvc.backend.models.EquipaInfo;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -44,16 +46,17 @@ public class EquipaRepository extends Repository {
         }
     }
 
-//    public List findEquipa(String pesquisa) {
-//        try {
-//            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.(a.nome, a.genero, a.dataNascimento, a.peso, a.altura, a.nacionalidade, a.posicao, e.nome, m.nome) FROM Atleta AS a INNER JOIN Equipa as e ON e.id = a.equipa.id INNER JOIN Modalidade  as m ON m.id = a.modalidade.id WHERE a.nome LIKE CONCAT('%',?1,'%') ", AtletaNomeEquipa_Modalidade.class);
-//            query.setParameter(1, pesquisa);
-//            return query.getResultList();
-//        } catch (Exception e) {
-//            System.out.println("Sem Atletas");
-//            return null;
-//        }
-//    }
+   public List findEquipa(String pesquisa) {
+       try {
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome, (select count(e) from Equipa AS e INNER JOIN Atleta as a ON a.equipa.id = e.id GROUP BY e.nome)) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id WHERE e.nome LIKE CONCAT('%',?1,'%') ", EquipaInfo.class);
+            query.setParameter(1, pesquisa);
+            return query.getResultList();
+        } catch (Exception e) {
+           System.out.println("Sem Atletas");
+       }
+            return null;
+        }
+
 
     public List findProvasCompeticao(Long idCompeticao, Long idEquipa) {
         try {
@@ -85,4 +88,16 @@ public class EquipaRepository extends Repository {
             return null;
         }
     }
+
+    public List equipaInfo() {
+        try {
+            //                                                                                 select e.nome, c.nome, m.nome, (select count(e) from Equipa AS e INNER JOIN Atleta as a ON a.equipa_id = e.id GROUP BY e.nome) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade_id INNER JOIN Clube as c ON e.clube_id = c.id
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome, (select count(e) from Equipa AS e INNER JOIN Atleta as a ON a.equipa.id = e.id GROUP BY e.nome)) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id", EquipaInfo.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Sem arbitros");
+            return null;
+        }
+    }
+
 }

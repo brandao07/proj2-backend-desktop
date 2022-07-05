@@ -50,6 +50,8 @@ public class RecintoRepository extends Repository {
         }
     }
 
+
+
     public List findAll() {
         try {
             Query query = _entityManager.createQuery("SELECT r FROM Recinto AS r");

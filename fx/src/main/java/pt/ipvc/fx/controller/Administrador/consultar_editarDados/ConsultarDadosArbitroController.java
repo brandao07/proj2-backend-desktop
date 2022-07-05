@@ -30,6 +30,9 @@ public class ConsultarDadosArbitroController implements Initializable {
     private TextField pesquisa;
 
     @FXML
+    protected Label labelErro;
+
+    @FXML
     private TableView tableArbitros;
 
     @FXML
@@ -51,10 +54,7 @@ public class ConsultarDadosArbitroController implements Initializable {
     protected TableColumn<ArbitroNomeModalidade, String> colunaNacionalidade;
 
     @FXML
-    protected TableColumn<ArbitroNomeModalidade, String> colunaAssociacao;
-
-    @FXML
-    protected TableColumn<ArbitroNomeModalidade, String> colunaCategoria;
+    protected TableColumn<ArbitroNomeModalidade, String> colunaNaturalidade;
 
     @FXML
     protected TableColumn<ArbitroNomeModalidade, String> colunaModalidade;
@@ -73,11 +73,13 @@ public class ConsultarDadosArbitroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        labelErro.setText("");
+
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
 
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         itemPesquisar.setValue("Árbitros");
         itemPesquisar.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -89,16 +91,14 @@ public class ConsultarDadosArbitroController implements Initializable {
         colunaData.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("dataNascimento"));
         colunaGenero.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("genero"));
         colunaNacionalidade.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("nacionalidade"));
-        colunaAssociacao.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("associacao"));
-        colunaCategoria.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("categoria"));
+        colunaNaturalidade.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("naturalidade"));
         colunaModalidade.setCellValueFactory(new PropertyValueFactory<ArbitroNomeModalidade, String>("modalidade"));
 
         tabela.getColumns().add(colunaNome);
         tabela.getColumns().add(colunaData);
         tabela.getColumns().add(colunaGenero);
         tabela.getColumns().add(colunaNacionalidade);
-        tabela.getColumns().add(colunaAssociacao);
-        tabela.getColumns().add(colunaCategoria);
+        tabela.getColumns().add(colunaNaturalidade);
         tabela.getColumns().add(colunaModalidade);
 
         tabela.setItems(dados);
@@ -114,15 +114,25 @@ public class ConsultarDadosArbitroController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        ArbitroBLL.removerArbitroById(tabela.getSelectionModel().getSelectedItem().getId());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
-
+            try {
+                ArbitroBLL.removerArbitroById(tabela.getSelectionModel().getSelectedItem().getId());
+                ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-arbitros.fxml", event);
+            }catch (Exception e){
+                System.out.println("Selecione um árbitro.");
+                labelErro.setText("Selecione um árbitro.");
+            }
     }
 
     public void setBtnEditar(ActionEvent event){
-        System.out.printf("id:" + tabela.getSelectionModel().getSelectedItem().getId());
-        arbitroSceneConsultar = tabela.getSelectionModel().getSelectedItem().getId();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
+        try {
+            arbitroSceneConsultar = tabela.getSelectionModel().getSelectedItem().getId();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-arbitro.fxml", event);
+        }catch (Exception e){
+            System.out.println("Selecione um árbitro.");
+            labelErro.setText("Selecione um árbitro.");
+        }
+
+
     }
 
 }

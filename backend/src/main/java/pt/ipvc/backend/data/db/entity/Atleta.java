@@ -172,7 +172,7 @@ public class Atleta {
                 ", nacionalidade='" + nacionalidade + '\'' +
                 ", posicao='" + posicao + '\'' +
                 ", equipa=" + equipa + '\'' +
-                ", image=" + image +
+                ", image=" + image + '\'' +
                 '}';
     }
 

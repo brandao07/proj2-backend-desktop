@@ -36,6 +36,12 @@ public class EquipasBLL {
         return (Equipa) equipasRepository.find(nome);
     }
 
+    public static List findEquipa(String pesquisa) {
+        return equipasRepository.findEquipa(pesquisa);
+    }
+
+
+
     public static void updateEquipa(Equipa equipa) {
         equipasRepository.update(equipa);
     }
@@ -55,4 +61,9 @@ public class EquipasBLL {
     public static List getProvasSemCompeticao(Long idCompeticao, Long idEquipa) {
         return equipasRepository.findProvasCompeticaoNOT(idCompeticao, idEquipa);
     }
+
+    public static List equipasConsultar() {
+        return equipasRepository.equipaInfo();
+    }
+
 }

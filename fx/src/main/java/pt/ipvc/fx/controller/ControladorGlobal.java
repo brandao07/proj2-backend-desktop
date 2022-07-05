@@ -37,7 +37,6 @@ public class ControladorGlobal {
             stage.close();
         }
     }
-
     public static void adicionarArbitro() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
@@ -61,7 +60,6 @@ public class ControladorGlobal {
         alert.setContentText("Criação do clube realizada com sucesso!");
         alert.showAndWait();
     }
-
     public static void adicionarEquipa() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
@@ -69,7 +67,6 @@ public class ControladorGlobal {
         alert.setContentText("Criação da equipa realizada com sucesso!");
         alert.showAndWait();
     }
-
     public static void adicionarRecinto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
@@ -77,7 +74,6 @@ public class ControladorGlobal {
         alert.setContentText("Criação do recinto realizado com sucesso!");
         alert.showAndWait();
     }
-
     public static void adicionarTipoRecinto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
@@ -93,12 +89,59 @@ public class ControladorGlobal {
         alert.setContentText("Criação do tipo de prémio realizado com sucesso!");
         alert.showAndWait();
     }
-
     public static void adicionarPosicao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
         alert.setHeaderText(null);
         alert.setContentText("Criação da posição realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarArbitro() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos do árbitro realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarAtleta() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos do atleta realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarClube() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos do clube realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarEquipa() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos da equipa realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarModalidade() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos da modalidade realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarRecinto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos do recinto realizada com sucesso!");
         alert.showAndWait();
     }
 

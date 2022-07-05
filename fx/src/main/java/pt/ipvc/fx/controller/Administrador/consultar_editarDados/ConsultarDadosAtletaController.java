@@ -57,6 +57,9 @@ public class ConsultarDadosAtletaController implements Initializable {
     @FXML
     protected TextField pesquisa;
 
+    @FXML
+    protected Label labelErro;
+
 
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
@@ -75,7 +78,7 @@ public class ConsultarDadosAtletaController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         choiceBoxOpcoes.setValue("Atletas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -104,8 +107,6 @@ public class ConsultarDadosAtletaController implements Initializable {
         tabela1.getColumns().add(colunaAltura);
         tabela1.getColumns().add(colunaPosicao);
         tabela1.getColumns().add(colunaEquipa);
-
-
     }
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -116,14 +117,21 @@ public class ConsultarDadosAtletaController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        AtletaBLL.removerAtleta(tabela1.getSelectionModel().getSelectedItem().getNome());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
-
+        try {
+            AtletaBLL.removerAtleta(tabela1.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um atleta.");
+        }
     }
 
     public void setBtnEditar(ActionEvent event){
-        atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().getId();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-atleta.fxml", event);
+        try {
+            atletaSceneConsultar = tabela1.getSelectionModel().getSelectedItem().getId();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-atleta.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um atleta.");
+        }
     }
 
     //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS

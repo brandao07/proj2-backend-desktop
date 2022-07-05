@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.EditarDadosClubeController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.EditarDadosEquipaController">
     <children>
         <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
             <effect>

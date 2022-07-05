@@ -5,12 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.db.entity.Equipa;
+import pt.ipvc.backend.services.ClubeBLL;
 import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -27,37 +26,40 @@ public class ConsultarDadosClubeController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
-    protected TableView<Equipa> tabelaEquipas;
+    protected TableView<Clube> tabelaClubes;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaNome;
+    protected TableColumn<Clube, String> colunaNome;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaData;
+    protected TableColumn<Clube, String> colunaData;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaPais;
+    protected TableColumn<Clube, String> colunaPais;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaCidade;
+    protected TableColumn<Clube, String> colunaCidade;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaSigla;
+    protected TableColumn<Clube, String> colunaSigla;
 
     @FXML
-    protected TableColumn<Equipa, String> colunaContacto;
+    protected TableColumn<Clube, String> colunaContacto;
 
     @FXML
     protected TextField pesquisa;
+
+    @FXML
+    protected Label labelErro;
 
 
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
         if (!ValidarInput.validarString(pesquisa.getText())) {
-            tabelaEquipas.setItems(FXCollections.observableArrayList(EquipasBLL.getEquipas()));
+            tabelaClubes.setItems(FXCollections.observableArrayList(ClubeBLL.getClubes()));
             return;
         }
-        tabelaEquipas.setItems(FXCollections.observableArrayList(EquipasBLL.getEquipa(pesquisa.getText())));
+        tabelaClubes.setItems(FXCollections.observableArrayList(ClubeBLL.getClube(pesquisa.getText())));
     }
 
     @Override
@@ -65,29 +67,29 @@ public class ConsultarDadosClubeController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
-        choiceBoxOpcoes.setValue("Equipas");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.setValue("Clubes");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
-        tabelaEquipas.getColumns().clear();
-        ObservableList<Equipa> dados = FXCollections.observableArrayList(EquipasBLL.getEquipas());
+        tabelaClubes.getColumns().clear();
+        ObservableList<Clube> dados = FXCollections.observableArrayList(ClubeBLL.getClubes());
 
-        colunaNome.setCellValueFactory(new PropertyValueFactory<Equipa, String>("nome"));
-        colunaPais.setCellValueFactory(new PropertyValueFactory<Equipa, String>("pais"));
-        colunaCidade.setCellValueFactory(new PropertyValueFactory<Equipa, String>("cidade"));
-        colunaSigla.setCellValueFactory(new PropertyValueFactory<Equipa, String>("sigla"));
-        colunaContacto.setCellValueFactory(new PropertyValueFactory<Equipa, String>("contacto"));
-        colunaData.setCellValueFactory(new PropertyValueFactory<Equipa, String>("dataFundacao"));
+        colunaNome.setCellValueFactory(new PropertyValueFactory<Clube, String>("nome"));
+        colunaPais.setCellValueFactory(new PropertyValueFactory<Clube, String>("pais"));
+        colunaCidade.setCellValueFactory(new PropertyValueFactory<Clube, String>("cidade"));
+        colunaSigla.setCellValueFactory(new PropertyValueFactory<Clube, String>("sigla"));
+        colunaContacto.setCellValueFactory(new PropertyValueFactory<Clube, String>("contacto"));
+        colunaData.setCellValueFactory(new PropertyValueFactory<Clube, String>("dataFundacao"));
 
-        tabelaEquipas.setItems(dados);
+        tabelaClubes.setItems(dados);
 
-        tabelaEquipas.getColumns().add(colunaNome);
-        tabelaEquipas.getColumns().add(colunaCidade);
-        tabelaEquipas.getColumns().add(colunaPais);
-        tabelaEquipas.getColumns().add(colunaContacto);
-        tabelaEquipas.getColumns().add(colunaData);
-        tabelaEquipas.getColumns().add(colunaSigla);
+        tabelaClubes.getColumns().add(colunaNome);
+        tabelaClubes.getColumns().add(colunaCidade);
+        tabelaClubes.getColumns().add(colunaPais);
+        tabelaClubes.getColumns().add(colunaContacto);
+        tabelaClubes.getColumns().add(colunaData);
+        tabelaClubes.getColumns().add(colunaSigla);
 
 
     }
@@ -100,15 +102,25 @@ public class ConsultarDadosClubeController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        EquipasBLL.removerEquipa(tabelaEquipas.getSelectionModel().getSelectedItem().getNome());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-equipa.fxml", event);
+        try {
+            ClubeBLL.removerClube(tabelaClubes.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-clube.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um clube.");
+        }
+
 
     }
 
     public void setBtnEditar(ActionEvent event){
-        clubeSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-equipa.fxml", event);
-    }
+        try {
+            clubeSceneConsultar = tabelaClubes.getSelectionModel().getSelectedItem().getNome();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-clube.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um clube.");
+            }
+        }
+
 
     //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
 //        ArbitroBLL.getArbitros();

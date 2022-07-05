@@ -76,7 +76,6 @@ public class TipoRecintosController implements Initializable {
 
     }
 
-
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
@@ -88,7 +87,6 @@ public class TipoRecintosController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxOpcoes.setValue("Tipos de Recinto");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
-
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });

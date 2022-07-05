@@ -107,8 +107,6 @@ public class RecintosController implements Initializable {
             validarTipoFinal = false;
         }
 
-
-
         return validarNome && validarCapacidade && validarPais && validarTipoFinal;
     }
     @FXML
@@ -135,7 +133,6 @@ public class RecintosController implements Initializable {
             }
 
             ControladorGlobal.adicionarRecinto();
-
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-recintos.fxml", event);
         }else{
             labelErro.setText("Preencha todos os campos.");

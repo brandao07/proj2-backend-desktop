@@ -106,8 +106,7 @@ public class EquipasController implements Initializable {
     @FXML
     public void confirmar(ActionEvent event) {
         if (testar()) {
-            //TODO: FALTA ADICIONAR MODALIDADE
-            EquipasBLL.criarEquipa(nome.getText(), ClubeBLL.getClube((String) clube.getValue()));
+            EquipasBLL.criarEquipa(nome.getText(), ClubeBLL.getClube((String) clube.getValue()), ModalidadeBLL.getModalidade(modalidades.getValue()));
             List<Atleta> jogadoresDaEquipa = new ArrayList<>();
             System.out.println(listaJogadoresEscolhidos);
             for (String player: listaJogadoresEscolhidos){
@@ -116,11 +115,7 @@ public class EquipasController implements Initializable {
                 atleta.setEquipa(EquipasBLL.getEquipa(nome.getText()));
                 AtletaBLL.updateAtleta(atleta);
             }
-
-
-
             ControladorGlobal.adicionarClube();
-
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
         }
 

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,10 +41,13 @@ public class ConsultarDadosRecintoController implements Initializable {
     @FXML
     protected TableColumn<Recinto, Double> colunaCapacidade;
 
+    @FXML
+    protected Label labelErro;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Equipas", "Modalidades", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
         choiceBoxOpcoes.setValue("Recintos");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -70,22 +74,21 @@ public class ConsultarDadosRecintoController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        RecintoBLL.removerRecinto(tabelaRecintos.getSelectionModel().getSelectedItem().getNome());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-recinto.fxml", event);
-
-    }
+        try {
+            RecintoBLL.removerRecinto(tabelaRecintos.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-recinto.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um recinto.");
+        }
+        }
 
     public void setBtnEditar(ActionEvent event){
-        recintoSceneConsultar = tabelaRecintos.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-recinto.fxml", event);
+        try {
+            recintoSceneConsultar = tabelaRecintos.getSelectionModel().getSelectedItem().getNome();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-recinto.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione um recinto.");
+        }
     }
-
-    //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
-//        ArbitroBLL.getArbitros();
-    //TUDO: HUGO JA TENS PARA OBTER Arbitro
-//        Arbitro arbitro = ArbitroBLL.getArbitro(nome);
-    //TUDO: HUGO JA TENS UPDATE
-    //ArbitroBLL.updateArbitro(arbitro);
-
 
 }

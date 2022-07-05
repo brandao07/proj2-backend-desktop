@@ -10,16 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
-import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
-import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -28,14 +24,11 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class AtletasController implements Initializable {
-
-    //apagar os contratos e adicionar a modalidade
 
     @FXML
     protected TextField nome;
@@ -59,11 +52,10 @@ public class AtletasController implements Initializable {
     protected ComboBox naturalidade;
 
     @FXML
-    protected ChoiceBox<String> posicao;
+    protected ChoiceBox < String > posicao;
 
     @FXML
-    protected ChoiceBox<String> modalidades;
-
+    protected ChoiceBox < String > modalidades;
 
     @FXML
     protected Label labelErro;
@@ -98,7 +90,6 @@ public class AtletasController implements Initializable {
     @FXML
     protected ImageView erroPosicao;
 
-
     @FXML
     protected ImageView imagem;
 
@@ -107,15 +98,11 @@ public class AtletasController implements Initializable {
 
     private static String path;
 
-
-
     @FXML
-    public void escolherFoto(ActionEvent event){
-
+    public void escolherFoto(ActionEvent event) {
         final FileChooser fileChooser = new FileChooser();
 
         fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
-
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
 
         File file = fileChooser.showOpenDialog(null);
@@ -124,17 +111,11 @@ public class AtletasController implements Initializable {
         path = path.substring(path.indexOf("proj2/") + 1);
         path = path.substring(path.indexOf("/") + 1);
 
-        System.out.println(path);
-
         imagem.setImage(new Image(new File(path).toURI().toString()));
-
         btnFoto.setText("");
-
     }
 
-
-
-    public boolean testar(){
+    public boolean testar() {
         boolean validarNome = true;
         boolean validarData = true;
         boolean validarModalidade = true;
@@ -146,107 +127,92 @@ public class AtletasController implements Initializable {
         boolean validarPosicao = true;
         boolean validarImagem = true;
 
-
-        if (!ValidarInput.validarString(nome.getText())){
+        if (!ValidarInput.validarString(nome.getText())) {
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             nome.setBorder(new Border(new BorderStroke(Color.valueOf("#FF0000"), BorderStrokeStyle.SOLID,
                     new CornerRadii(10),
                     BorderWidths.DEFAULT)));
             nome.setPromptText("Por favor introduza um nome.");
             validarNome = false;
-        }
-        else {
+        } else {
             nome.setBorder(new Border(new BorderStroke(Color.valueOf("#32CD32"), BorderStrokeStyle.SOLID,
                     new CornerRadii(10),
                     BorderWidths.DEFAULT)));
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarDataPicker(data.getValue())){
+        if (!ValidarInput.validarDataPicker(data.getValue())) {
             erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarData = false;
-        }
-        else {
+        } else {
             erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(nacionalidade.getValue())){
+        if (!ValidarInput.validarChoiceBox(nacionalidade.getValue())) {
             erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarNacionalidade = false;
-        }
-        else {
+        } else {
             erroNacionalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())){
+        if (!ValidarInput.validarChoiceBox(naturalidade.getValue())) {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarNaturalidade = false;
-        }
-        else {
+        } else {
             erroNaturalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
+        if (!ValidarInput.validarChoiceBox(modalidades.getValue())) {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarModalidade = false;
-        }
-        else {
+        } else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarString(peso.getText()) || Float.parseFloat(peso.getText()) > 200){
+        if (!ValidarInput.validarString(peso.getText()) || Float.parseFloat(peso.getText()) > 200) {
             erroPeso.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarPeso = false;
-        }
-        else {
+        } else {
             erroPeso.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarString(altura.getText())){
+        if (!ValidarInput.validarString(altura.getText())) {
             erroAltura.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarAltura = false;
             labelErro.setText("Altura Inválida.");
-        }
-        else {
+        } else {
             erroAltura.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(genero.getValue())){
+        if (!ValidarInput.validarChoiceBox(genero.getValue())) {
             erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarGenero = false;
-        }
-        else {
+        } else {
             erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(modalidades.getValue())){
+        if (!ValidarInput.validarChoiceBox(modalidades.getValue())) {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarModalidade = false;
-        }
-        else {
+        } else {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-
-
-        if (!ValidarInput.validarChoiceBox(posicao.getValue())){
+        if (!ValidarInput.validarChoiceBox(posicao.getValue())) {
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarPosicao = false;
-        }
-        else {
+        } else {
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-
-        if (imagem.getImage() == null){
-          btnFoto.setTextFill(Color.web("#ff0000"));
+        if (imagem.getImage() == null) {
+            btnFoto.setTextFill(Color.web("#ff0000"));
             validarImagem = false;
         }
 
-        return validarNome && validarData && validarNacionalidade && validarNaturalidade && validarAltura && validarPeso && validarPosicao
-                && validarModalidade && validarGenero && validarImagem;
+        return validarNome && validarData && validarNacionalidade && validarNaturalidade && validarAltura && validarPeso && validarPosicao &&
+                validarModalidade && validarGenero && validarImagem;
     }
-
 
     @FXML
     public void confirmar(ActionEvent event) throws InterruptedException {
@@ -261,14 +227,13 @@ public class AtletasController implements Initializable {
                     nacionalidade.getSelectionModel().getSelectedItem().toString(),
                     naturalidade.getSelectionModel().getSelectedItem().toString(),
                     data.getValue(),
-                    Double.parseDouble(peso.getText()) ,
-                    Double.parseDouble(altura.getText()) ,
+                    Double.parseDouble(peso.getText()),
+                    Double.parseDouble(altura.getText()),
                     posicao.getSelectionModel().getSelectedItem().toString(),
                     modalidades.getSelectionModel().getSelectedItem().toString(),
                     path);
 
             ControladorGlobal.adicionarAtleta();
-
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);
         }
         labelErro.setText("Preencha todos os campos.");
@@ -283,32 +248,28 @@ public class AtletasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        naturalidade.setDisable(true);
-        posicao.setDisable(true);
-
-        choiceBoxOpcoes.setValue("Atletas");
-
         try {
             LocalRepository.paises_e_cidades();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
+        naturalidade.setDisable(true);
+        posicao.setDisable(true);
 
+        choiceBoxOpcoes.setValue("Atletas");
+        choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminAdicionarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
 
-
-
-        Set<String> modalidade = ((List<Modalidade>) ModalidadeBLL.getModalidades()).stream().
+        Set < String > modalidade = ((List < Modalidade > ) ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 
         modalidades.getItems().addAll(modalidade);
         genero.getItems().addAll(StringGeneros.generos());
 
-        ArrayList paises = new ArrayList<>();
-        for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+        ArrayList paises = new ArrayList < > ();
+        for (String pais: LocalRepository.getMapCidadesPais().keySet()) {
             if (!paises.contains(LocalRepository.getMapCidadesPais().get(pais))) {
                 paises.add(pais);
             }
@@ -317,13 +278,13 @@ public class AtletasController implements Initializable {
         nacionalidade.getItems().addAll(paises);
         nacionalidade.setVisibleRowCount(11);
 
-        nacionalidade.valueProperty().addListener(new ChangeListener<String>() {
+        nacionalidade.valueProperty().addListener(new ChangeListener < String > () {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
                 naturalidade.setDisable(false);
 
                 naturalidade.getItems().clear();
-                for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
+                for (String pais: LocalRepository.getMapCidadesPais().keySet()) {
                     if (nacionalidade.getSelectionModel().getSelectedItem().equals(pais)) {
                         naturalidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(pais));
                         break;
@@ -334,30 +295,24 @@ public class AtletasController implements Initializable {
             }
         });
 
-        modalidades.valueProperty().addListener(new ChangeListener<String>() {
+        modalidades.valueProperty().addListener(new ChangeListener < String > () {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
                 posicao.setDisable(false);
                 posicao.getItems().clear();
 
-                List<Modalidade> listaModalidades = ModalidadeBLL.getModalidades();
-                List<String> posicoesPretendidas = new ArrayList<>();
+                List < Modalidade > listaModalidades = ModalidadeBLL.getModalidades();
+                List < String > posicoesPretendidas = new ArrayList < > ();
 
-
-                for (Modalidade md: listaModalidades){
+                for (Modalidade md: listaModalidades) {
                     if (md.getNome().equals(modalidades.getSelectionModel().getSelectedItem()))
-                        for (Posicao psc: md.getPosicoes()){
+                        for (Posicao psc: md.getPosicoes()) {
                             posicoesPretendidas.add(psc.getNome());
                         }
                 }
 
                 posicao.getItems().addAll(posicoesPretendidas);
-
             }
         });
-
-
-
-
     }
 }
