@@ -92,7 +92,7 @@ public class EditarDadosEquipaController implements Initializable {
 
 
         nome.setPromptText(ConsultarDadosEquipaController.clubeSceneConsultar);
-        sigla.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getSigla());
+        //sigla.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getSigla());
         contacto.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getContacto());
 
         Date data_nascimento = ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getDataFundacao();

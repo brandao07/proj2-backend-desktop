@@ -111,5 +111,4 @@ public class ConsultarDadosEquipaController implements Initializable {
             labelErro.setText("Selecione uma Equipa.");
         }
     }
-
 }

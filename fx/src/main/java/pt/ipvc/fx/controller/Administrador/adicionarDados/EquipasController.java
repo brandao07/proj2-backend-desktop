@@ -165,8 +165,8 @@ public class EquipasController implements Initializable {
             public void changed(ObservableValue ov, String t, String t1) {
                 List<Atleta> listaAtletas = AtletaBLL.atletasSemEquipa(modalidades.getValue());
                 ObservableList<String> items = FXCollections.observableArrayList();
-                for (Atleta a:
-                     listaAtletas) {
+                for (Atleta a: listaAtletas) {
+                    System.out.println("ENNNNNNNNNNNNNNNNNNTREIIIIIIIIIIIIIIIIIII");
                     items.add(a.getNome());
                 }
                 jogadores.setItems(items);
