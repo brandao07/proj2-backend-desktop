@@ -105,14 +105,20 @@ public class AtletasController implements Initializable {
         fileChooser.setInitialDirectory(new File("fx/src/main/resources/pt/ipvc/fx/modalidades/"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
 
-        File file = fileChooser.showOpenDialog(null);
+        try {
+            File  file = fileChooser.showOpenDialog(null);
+            path = file.getAbsolutePath();
+            path = path.substring(path.indexOf("proj2/") + 1);
+            path = path.substring(path.indexOf("/") + 1);
 
-        path = file.getAbsolutePath();
-        path = path.substring(path.indexOf("proj2/") + 1);
-        path = path.substring(path.indexOf("/") + 1);
+            imagem.setImage(new Image(new File(path).toURI().toString()));
+            btnFoto.setText("");
+        } catch (Exception e) {
+            System.out.println("Selecione uma imagem.");
+        }
 
-        imagem.setImage(new Image(new File(path).toURI().toString()));
-        btnFoto.setText("");
+
+
     }
 
     public boolean testar() {

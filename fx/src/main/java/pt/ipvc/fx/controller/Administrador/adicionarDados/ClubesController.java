@@ -179,17 +179,17 @@ public class ClubesController implements Initializable {
 
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All filles", "*.*"));
 
-        File file = fileChooser.showOpenDialog(null);
+        try {
+            File  file = fileChooser.showOpenDialog(null);
+            path = file.getAbsolutePath();
+            path = path.substring(path.indexOf("proj2/") + 1);
+            path = path.substring(path.indexOf("/") + 1);
 
-        path = file.getAbsolutePath();
-        path = path.substring(path.indexOf("proj2/") + 1);
-        path = path.substring(path.indexOf("/") + 1);
-
-        System.out.println(path);
-
-        imagem.setImage(new Image(new File(path).toURI().toString()));
-
-        btnFoto.setText("");
+            imagem.setImage(new Image(new File(path).toURI().toString()));
+            btnFoto.setText("");
+        } catch (Exception e) {
+            System.out.println("Selecione uma imagem.");
+        }
 
     }
 
