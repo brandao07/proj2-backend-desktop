@@ -3,6 +3,7 @@ package pt.ipvc.backend.data.db.repository;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
+import pt.ipvc.backend.data.db.entity.Prova;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -67,6 +68,21 @@ public class ModalidadeRepository extends Repository {
             _entityManager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Posicao nao esta na modalidade!");
+        }
+    }
+
+    public List getPosicoes(String modalidade) {
+        try {
+            Query query = _entityManager.createNativeQuery("SELECT p FROM posicao as p " +
+                    "INNER JOIN modalidade_posicao mp on p.id = mp.posicoes_id " +
+                    "INNER JOIN modalidade m on mp.modalidades_id = m.id " +
+                    "WHERE m.nome like :nome");
+            query.setParameter("nome", modalidade);
+            List<Prova> provas = query.getResultList();
+            return provas;
+        } catch (Exception e) {
+            System.out.println("Sem posicoes");
+            return null;
         }
     }
 }

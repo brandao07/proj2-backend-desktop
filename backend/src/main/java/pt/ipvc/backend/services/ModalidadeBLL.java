@@ -47,4 +47,8 @@ public class ModalidadeBLL {
     public static void removePosicao(Modalidade modalidade, Posicao posicao) {
         modalidadeRepository.removePosicao(modalidade, posicao);
     }
+
+    public static List getPosicoes(String modalidade) {
+        return modalidadeRepository.getPosicoes(modalidade);
+    }
 }
