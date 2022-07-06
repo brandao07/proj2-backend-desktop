@@ -108,7 +108,6 @@ public class EquipasController implements Initializable {
         if (testar()) {
             EquipasBLL.criarEquipa(nome.getText(), ClubeBLL.getClube((String) clube.getValue()), ModalidadeBLL.getModalidade(modalidades.getValue()));
             List<Atleta> jogadoresDaEquipa = new ArrayList<>();
-            System.out.println(listaJogadoresEscolhidos);
             for (String player: listaJogadoresEscolhidos){
                 jogadoresDaEquipa.add(AtletaBLL.getAtleta(player));
                 Atleta atleta = AtletaBLL.getAtleta(player);

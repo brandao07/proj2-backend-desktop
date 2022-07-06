@@ -33,11 +33,10 @@ public class EditarDadosTipoPremioController implements Initializable {
 
         if (!nome.getText().isEmpty()){
             tipoPremio.setNome(nome.getText());
-            nomeTipoPremio = nome.getText();
         }
 
         tipoPremio.setId(TipoPremioBLL.getTipoPremio(nome.getPromptText()).getId());
-        tipoPremio.setNome((String) nome.getText());
+        tipoPremio.setNome(nome.getText());
 
         TipoPremioBLL.updateTipoPremio(tipoPremio);
         ControladorGlobal.editarTipoPremio();

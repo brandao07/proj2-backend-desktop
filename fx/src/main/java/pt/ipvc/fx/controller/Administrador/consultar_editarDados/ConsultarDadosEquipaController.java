@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ConsultarDadosEquipaController implements Initializable {
 
-    public static String clubeSceneConsultar;
+    public static String equipaSceneConsultar;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
@@ -105,7 +105,7 @@ public class ConsultarDadosEquipaController implements Initializable {
 
     public void setBtnEditar(ActionEvent event){
         try {
-            clubeSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
+            equipaSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
             ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-equipa.fxml", event);
         }catch (Exception e){
             labelErro.setText("Selecione uma Equipa.");

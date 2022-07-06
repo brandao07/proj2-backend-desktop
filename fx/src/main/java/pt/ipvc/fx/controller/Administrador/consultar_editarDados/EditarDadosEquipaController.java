@@ -2,13 +2,19 @@ package pt.ipvc.fx.controller.Administrador.consultar_editarDados;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Clube;
+import pt.ipvc.backend.data.db.entity.Equipa;
+import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
-import pt.ipvc.backend.services.ClubeBLL;
+import pt.ipvc.backend.services.*;
+import pt.ipvc.fx.controller.Administrador.adicionarDados.EquipasController;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -23,23 +29,23 @@ public class EditarDadosEquipaController implements Initializable {
     @FXML
     protected TextField nome;
     @FXML
-    protected TextField sigla;
+    protected ChoiceBox clube;
+    @FXML
+    protected ComboBox modalidade;
 
     @FXML
-    protected TextField contacto;
+    protected ListView<String> jogadores;
 
     @FXML
-    protected DatePicker data;
-
-    @FXML
-    protected ComboBox<String> pais;
-
-    @FXML
-    protected ComboBox<String> cidade;
-
+    protected ListView<String> jogadoresEquipa;
 
     @FXML
     protected Button button;
+
+    private ObservableList<String> listaJogadoresEscolhidos;
+
+    private List<String> jogadoresNaoEscolhidos;
+
 
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -50,86 +56,93 @@ public class EditarDadosEquipaController implements Initializable {
     }
 
     public void confirmar(ActionEvent event){
-        Clube clube = new Clube();
-        clube.setNome(nome.getPromptText());
-        clube.setSigla(sigla.getPromptText());
-        clube.setContacto(contacto.getPromptText());
-        clube.setDataFundacao(java.sql.Date.valueOf(data.getPromptText()));
+        Equipa equipa = new Equipa();
+        equipa.setNome(nome.getPromptText());
 
-        if (!ValidarInput.validarString(nome.getText())){
-            clube.setNome(nome.getText());
+        if (ValidarInput.validarString(nome.getText())){
+            equipa.setNome(nome.getText());
         }
 
-        if (!ValidarInput.validarString(sigla.getText())){
-            clube.setSigla(sigla.getText());
+        for (String player: jogadoresNaoEscolhidos){
+            if (!jogadoresNaoEscolhidos.isEmpty()){
+                Atleta atleta = AtletaBLL.getAtleta(player);
+                atleta.setEquipa(null);
+                AtletaBLL.updateAtleta(atleta);
+            }
+
         }
 
-        if (!ValidarInput.validarString(contacto.getText())){
-            clube.setContacto(contacto.getText());
-        }
 
-        if (!ValidarInput.validarDataPicker(data.getValue())){
-            clube.setDataFundacao(java.sql.Date.valueOf(data.getValue()));
-        }
+        for (String player: listaJogadoresEscolhidos){
+            Atleta atleta = AtletaBLL.getAtleta(player);
+            atleta.setEquipa(EquipasBLL.getEquipa(equipa.getNome()));
+            AtletaBLL.updateAtleta(atleta);
+          }
 
-        clube.setId(ClubeBLL.getClube(nome.getPromptText()).getId());
-        clube.setPais(pais.getValue());
-        clube.setCidade(cidade.getValue());
+        equipa.setClube(ClubeBLL.getClube((String) clube.getValue()));
+        equipa.setModalidade(ModalidadeBLL.getModalidade((String) modalidade.getValue()));
+        equipa.setId(EquipasBLL.getEquipa(equipa.getNome()).getId());
 
-        ClubeBLL.updateClube(clube);
+
+
+        EquipasBLL.updateEquipa(equipa);
         ControladorGlobal.editarEquipa();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-clube.fxml", event);
+        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-equipa.fxml", event);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            LocalRepository.paises_e_cidades();
+        nome.setPromptText(ConsultarDadosEquipaController.equipaSceneConsultar);
+        clube.setValue(EquipasBLL.getEquipa(ConsultarDadosEquipaController.equipaSceneConsultar).getNome());
+        modalidade.setValue(EquipasBLL.getEquipa(ConsultarDadosEquipaController.equipaSceneConsultar).getModalidade().getNome());
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        nome.setPromptText(ConsultarDadosEquipaController.clubeSceneConsultar);
-        //sigla.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getSigla());
-        contacto.setPromptText(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getContacto());
-
-        Date data_nascimento = ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getDataFundacao();
-        data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
-
-        pais.setValue(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getPais());
-
-        cidade.setValue(ClubeBLL.getClube(ConsultarDadosEquipaController.clubeSceneConsultar).getCidade());
+        List<Equipa> listaEquipas = EquipasBLL.getEquipas();
+        List<Atleta> listaAtletasEquipa = new ArrayList<>();
+        List<Atleta> listaAtletas = AtletaBLL.getAtletas();
 
 
-        //adicionar pais à choiceBox nacionalidade
-        ArrayList paises = new ArrayList<>();
-        for (String pais : LocalRepository.getMapCidadesPais().keySet()) {
-            if (!paises.contains(LocalRepository.getMapCidadesPais().get(pais))) {
-                paises.add(pais);
+        for (Equipa eq: listaEquipas){
+            if (eq.getNome().equals(nome.getPromptText())){
+                listaAtletasEquipa.addAll(eq.getAtletas());
             }
         }
-        pais.getItems().addAll(paises);
-        pais.setVisibleRowCount(11);
 
+        for (Atleta at : listaAtletas){
+            if ((!at.getModalidade().getNome().equals("Ténis")) && at.getEquipa() == (null)){
+                jogadores.getItems().add(at.getNome());
+            }
+        }
 
-        pais.valueProperty().addListener(new ChangeListener<String>() {
+        jogadoresNaoEscolhidos = jogadores.getItems();
+
+        for (Atleta a: listaAtletasEquipa){
+            jogadoresEquipa.getItems().add(a.getNome());
+            listaJogadoresEscolhidos = FXCollections.observableArrayList(a.getNome());
+
+        }
+
+        jogadores.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
-                cidade.getItems().clear();
-                for (String p : LocalRepository.getMapCidadesPais().keySet()) {
-                    if (pais.getSelectionModel().getSelectedItem().equals(p)) {
-                        cidade.getItems().addAll(LocalRepository.getMapCidadesPais().get(p));
-                        break;
-                    }
+                listaJogadoresEscolhidos = jogadoresEquipa.getItems();
+                if (!listaJogadoresEscolhidos.contains(jogadores.getSelectionModel().getSelectedItem())){
+                    listaJogadoresEscolhidos.add(jogadores.getSelectionModel().getSelectedItem());
                 }
-                cidade.setVisibleRowCount(11);
+                jogadoresEquipa.setItems(listaJogadoresEscolhidos);
             }
         });
+
     }
 
+    @FXML
+    public void remove(ActionEvent event){
+        String jogador = jogadoresEquipa.getSelectionModel().getSelectedItem();
+        if (!jogadores.getItems().contains(jogador)) jogadores.getItems().add(jogador);
+        jogadoresEquipa.getItems().remove(jogador);
+        listaJogadoresEscolhidos.remove(jogador);
+        if (!jogadoresNaoEscolhidos.contains(jogador)) jogadoresNaoEscolhidos.add(jogador);
 
-
+    }
 
 }
+

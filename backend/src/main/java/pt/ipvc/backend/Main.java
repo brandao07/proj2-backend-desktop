@@ -15,7 +15,5 @@ public class Main {
         LocalRepository.paises_e_cidades();
         LocalRepository.associacoes_portuguesas();
 
-        RecintoBLL.removeTipo(RecintoBLL.getRecinto("teste"), TipoRecintoBLL.getTipoRecinto("Estádio"));
-
     }
 }
