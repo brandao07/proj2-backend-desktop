@@ -161,5 +161,13 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
+    public static void editarPassword() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração da password realizada com sucesso!");
+        alert.showAndWait();
+    }
+
 
 }

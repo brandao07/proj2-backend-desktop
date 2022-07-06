@@ -116,9 +116,6 @@ public class AtletasController implements Initializable {
         } catch (Exception e) {
             System.out.println("Selecione uma imagem.");
         }
-
-
-
     }
 
     public boolean testar() {
@@ -204,10 +201,10 @@ public class AtletasController implements Initializable {
             erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        if (!ValidarInput.validarChoiceBox(posicao.getValue())) {
+        if (!ValidarInput.validarChoiceBox(posicao.getValue()) && !modalidades.getValue().equals("Ténis")) {
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             validarPosicao = false;
-        } else {
+        } if (ValidarInput.validarChoiceBox(posicao.getValue()) || modalidades.getValue().equals("Ténis")){
             erroPosicao.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
@@ -226,6 +223,13 @@ public class AtletasController implements Initializable {
             labelErro.setTextFill(Color.web("#32CD32"));
             labelErro.setText("Sucesso.");
             TimeUnit.SECONDS.sleep(1);
+            String posicao_excepcao;
+
+            if (modalidades.getSelectionModel().getSelectedItem().equals("Ténis")){
+                posicao_excepcao = null;
+            }else{
+                posicao_excepcao = posicao.getSelectionModel().getSelectedItem();
+            }
 
             AtletaBLL.criarAtleta(
                     nome.getText(),
@@ -235,7 +239,7 @@ public class AtletasController implements Initializable {
                     data.getValue(),
                     Double.parseDouble(peso.getText()),
                     Double.parseDouble(altura.getText()),
-                    posicao.getSelectionModel().getSelectedItem().toString(),
+                   posicao_excepcao,
                     modalidades.getSelectionModel().getSelectedItem().toString(),
                     path);
 
@@ -297,14 +301,17 @@ public class AtletasController implements Initializable {
                     }
                 }
                 naturalidade.setVisibleRowCount(11);
-
             }
         });
 
         modalidades.valueProperty().addListener(new ChangeListener < String > () {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
-                posicao.setDisable(false);
+                if (modalidades.getValue().equals("Ténis")){
+                    posicao.setDisable(true);
+                }else{
+                    posicao.setDisable(false);
+                }
                 posicao.getItems().clear();
 
                 List < Modalidade > listaModalidades = ModalidadeBLL.getModalidades();

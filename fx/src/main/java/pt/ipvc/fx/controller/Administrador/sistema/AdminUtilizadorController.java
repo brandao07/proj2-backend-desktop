@@ -86,5 +86,9 @@ public class AdminUtilizadorController implements Initializable {
         ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-criar-utilizador.fxml", event);
     }
 
+    public void setEditar(ActionEvent event){
+        ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-editar-password.fxml", event);
+    }
+
 }
 

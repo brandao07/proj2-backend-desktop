@@ -1,5 +1,7 @@
 package pt.ipvc.backend.data.db.repository.users;
 
+import pt.ipvc.backend.data.db.entity.Arbitro;
+import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.data.db.repository.Repository;
 import pt.ipvc.backend.models.CountByDate;
 import pt.ipvc.backend.models.UserTypeModel;
@@ -11,12 +13,22 @@ import java.util.List;
 public class UtilizadorRepository extends Repository {
     @Override
     public Object find(Long id) {
-        return null;
+        return _entityManager.find(Utilizador.class, id);
+
     }
 
     @Override
     public void update(Object object) {
+        start();
+        _entityManager.getTransaction().begin();
+        Utilizador objectToUpdate = (Utilizador) find(((Utilizador) object).getId());
+        objectToUpdate.setUsername(((Utilizador) object).getUsername());
+        objectToUpdate.setPassword(((Utilizador) object).getPassword());
+        objectToUpdate.setEmail(((Utilizador) object).getEmail());
+        objectToUpdate.setDataCriacao(((Utilizador) object).getDataCriacao());
+        _entityManager.getTransaction().commit();
     }
+
 
     public List findAll() {
         try {
@@ -51,6 +63,10 @@ public class UtilizadorRepository extends Repository {
             return null;
         }
     }
+
+
+
+
 
     public List findUserTypeModel(String username) {
         try{

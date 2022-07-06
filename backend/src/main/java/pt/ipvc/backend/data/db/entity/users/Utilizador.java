@@ -80,4 +80,16 @@ public class Utilizador {
         return this.getClass().getSimpleName();
     }
 
+    @Override
+    public String toString() {
+        return "Utilizador{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", dataCriacao=" + dataCriacao +
+                '}';
+    }
+
+
 }

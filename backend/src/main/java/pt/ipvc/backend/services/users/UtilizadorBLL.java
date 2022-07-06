@@ -1,5 +1,6 @@
 package pt.ipvc.backend.services.users;
 
+import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.data.db.repository.users.UtilizadorRepository;
 import pt.ipvc.backend.models.UserTypeModel;
@@ -23,12 +24,19 @@ public class UtilizadorBLL {
         return userSession = (Utilizador) utilizadorRepository.find(username, password);
     }
 
+    public static Utilizador find(Long id) {
+        return (Utilizador) utilizadorRepository.find(id);
+    }
     public static Utilizador getUtilizador(String username) {
         return (Utilizador) utilizadorRepository.findUser(username);
     }
 
     public static List findUserTypeModel(String username) {
         return  utilizadorRepository.findUserTypeModel(username);
+    }
+
+    public static void updateUtilizador(Utilizador user) {
+        utilizadorRepository.update(user);
     }
 
     public static Utilizador getUtilizadoByIdr(String username) {

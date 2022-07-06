@@ -76,8 +76,8 @@ public class LoginController  {
     }
 
     @FXML
-    protected void setLinkRegistar(ActionEvent event) {
-        ControladorGlobal.chamaScene("registo-view.fxml", event);
+    protected void setForgotPassword(ActionEvent event) {
+        ControladorGlobal.chamaScene("forgot-password-view.fxml", event);
     }
 
 }
