@@ -48,24 +48,24 @@
                      <children>
                             <Label text="Nome:" />
                             <Label text="Data de Nascimento:" GridPane.rowIndex="1" />
-                            <Label text="Modalidade:" GridPane.rowIndex="8" />
+                            <Label text="Modalidade:" GridPane.rowIndex="7" />
                             <Label text="Nacionalidade:" GridPane.rowIndex="2" />
                             <Label text="Genêro:" GridPane.rowIndex="4" />
                             <Label text="Peso:" GridPane.rowIndex="5" />
                             <Label text="Altura:" GridPane.rowIndex="6" />
-                            <Label text="Posição:" GridPane.rowIndex="7" />
                             <DatePicker fx:id="data" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                            <ChoiceBox fx:id="modalidades" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                             <ChoiceBox fx:id="genero" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                             <TextField fx:id="peso" prefHeight="26.0" prefWidth="167.0" promptText="kg" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             <TextField fx:id="altura" prefHeight="26.0" prefWidth="57.0" promptText="m" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                            <ChoiceBox fx:id="posicao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                             <TextField fx:id="nome" prefHeight="26.0" prefWidth="284.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
                         <ComboBox fx:id="nacionalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Naturalidade:" GridPane.rowIndex="3" />
                         <ComboBox fx:id="naturalidade" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Equipa:" GridPane.rowIndex="9" />
                         <ChoiceBox fx:id="equipa" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                            <Label text="Posição:" GridPane.rowIndex="8" />
+                            <ChoiceBox fx:id="posicao" prefWidth="150.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                </children>

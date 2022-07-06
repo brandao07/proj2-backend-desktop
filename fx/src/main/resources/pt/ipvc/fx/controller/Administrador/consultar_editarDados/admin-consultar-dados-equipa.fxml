@@ -110,6 +110,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="239.0" layoutY="459.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
             </children>
         </AnchorPane>
     </children>

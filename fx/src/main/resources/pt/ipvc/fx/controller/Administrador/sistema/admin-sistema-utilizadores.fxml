@@ -82,6 +82,7 @@
                     <columns>
                         <TableColumn fx:id="colunaEmail" prefWidth="271.0" text="email" />
                         <TableColumn fx:id="colunaUsername" minWidth="0.0" prefWidth="217.0" text="username" />
+                  <TableColumn fx:id="colunaTipo" prefWidth="75.0" text="Tipo" />
                     </columns>
                 </TableView>
                 <Button fx:id="remover" layoutX="529.0" layoutY="452.0" mnemonicParsing="false" style="-fx-background-color: #0f4c83;" text="Remover" textFill="WHITE" />

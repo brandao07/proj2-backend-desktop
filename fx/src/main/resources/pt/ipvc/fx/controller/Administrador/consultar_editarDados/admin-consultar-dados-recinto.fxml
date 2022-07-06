@@ -101,6 +101,7 @@
                 <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
             <Button fx:id="editar" layoutX="505.0" layoutY="456.0" mnemonicParsing="false" onAction="#setBtnEditar" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Editar" textFill="WHITE" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="460.0" prefHeight="17.0" prefWidth="201.0" textFill="RED" />
+            <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="460.0" prefHeight="17.0" prefWidth="269.0" textFill="RED" />
             </children>
         </AnchorPane>
     </children>

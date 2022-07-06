@@ -129,11 +129,19 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
-    public static void editarModalidade() {
+    public static void editarTipoPremio() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
         alert.setHeaderText(null);
-        alert.setContentText("Alteração dos campos da modalidade realizada com sucesso!");
+        alert.setContentText("Alteração dos campos do tipo de prémio realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarTipoRecinto() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos do tipo de recinto realizada com sucesso!");
         alert.showAndWait();
     }
 
@@ -142,6 +150,14 @@ public class ControladorGlobal {
         alert.setTitle("Informação");
         alert.setHeaderText(null);
         alert.setContentText("Alteração dos campos do recinto realizada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void editarPosicao() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Alteração dos campos da posição realizada com sucesso!");
         alert.showAndWait();
     }
 

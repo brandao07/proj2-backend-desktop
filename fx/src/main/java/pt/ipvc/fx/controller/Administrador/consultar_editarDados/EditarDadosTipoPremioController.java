@@ -40,6 +40,7 @@ public class EditarDadosTipoPremioController implements Initializable {
         tipoPremio.setNome((String) nome.getText());
 
         TipoPremioBLL.updateTipoPremio(tipoPremio);
+        ControladorGlobal.editarTipoPremio();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-premio.fxml", event);
     }
 

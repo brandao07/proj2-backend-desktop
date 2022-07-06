@@ -79,7 +79,7 @@ public class ConsultarDadosArbitroController implements Initializable {
             pesquisar();
         }
 
-        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        itemPesquisar.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         itemPesquisar.setValue("Árbitros");
         itemPesquisar.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) itemPesquisar.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);

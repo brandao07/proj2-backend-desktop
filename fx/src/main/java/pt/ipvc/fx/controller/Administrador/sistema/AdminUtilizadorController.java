@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.TipoPremio;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
+import pt.ipvc.backend.models.UserTypeModel;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
@@ -27,18 +28,20 @@ public class AdminUtilizadorController implements Initializable {
     protected Hyperlink adicionar;
 
     @FXML
-    protected TableView<Utilizador> tabelaUtilizadores;
+    protected TableView<UserTypeModel> tabelaUtilizadores;
 
     @FXML
-    protected TableColumn<Utilizador, String> colunaEmail;
+    protected TableColumn<UserTypeModel, String> colunaEmail;
 
     @FXML
-    protected TableColumn<Utilizador, String> colunaTipo;
+    protected TableColumn<UserTypeModel, String> colunaTipo;
     @FXML
-    protected TableColumn<Utilizador, String> colunaUsername;
+    protected TableColumn<UserTypeModel, String> colunaUsername;
 
     @FXML
     protected TextField pesquisa;
+
+    ObservableList<UserTypeModel> dados;
 
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
@@ -47,7 +50,7 @@ public class AdminUtilizadorController implements Initializable {
 
             return;
         }
-        tabelaUtilizadores.setItems(FXCollections.observableArrayList(UtilizadorBLL.getUtilizador(pesquisa.getText())));
+        tabelaUtilizadores.setItems(FXCollections.observableArrayList(UtilizadorBLL.findUserTypeModel(pesquisa.getText())));
     }
 
 
@@ -57,17 +60,17 @@ public class AdminUtilizadorController implements Initializable {
             pesquisar();
         }
         tabelaUtilizadores.getColumns().clear();
-        ObservableList<Utilizador> dados = FXCollections.observableArrayList(UtilizadorBLL.getUtilizadores());
+        dados = FXCollections.observableArrayList(UtilizadorBLL.findUserTypes());
 
-        colunaEmail.setCellValueFactory(new PropertyValueFactory<Utilizador, String>("email"));
-        colunaUsername.setCellValueFactory(new PropertyValueFactory<Utilizador, String>("username"));
-        //colunaTipo.setCellValueFactory(new PropertyValueFactory<Utilizador, String>("username"));
+        colunaEmail.setCellValueFactory(new PropertyValueFactory<UserTypeModel, String>("email"));
+        colunaUsername.setCellValueFactory(new PropertyValueFactory<UserTypeModel, String>("username"));
+        colunaTipo.setCellValueFactory(new PropertyValueFactory<UserTypeModel, String>("type"));
 
         tabelaUtilizadores.setItems(dados);
 
         tabelaUtilizadores.getColumns().add(colunaEmail);
         tabelaUtilizadores.getColumns().add(colunaUsername);
-        //tabelaUtilizadores.getColumns().add(colunaTipo);
+        tabelaUtilizadores.getColumns().add(colunaTipo);
 
     }
 
@@ -81,12 +84,7 @@ public class AdminUtilizadorController implements Initializable {
 
     public void setAdicionar(ActionEvent event){
         ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-criar-utilizador.fxml", event);
-
     }
-    //TODO: HUGO JA TENS ADICIONAR ADMINISTRADOR
-    //AdministradorBLL.criarAdministrador("username", "password");
 
-    //TODO: HUGO JA TENS ADICIONAR GESTOR
-    // String password = GestorBLL.criarGestor(username);
 }
 
