@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +29,9 @@ public class ConsultarDadosTipoRecintoController implements Initializable {
     protected ChoiceBox choiceBoxOpcoes;
 
     @FXML
+    protected Label labelErro;
+
+    @FXML
     protected TableView<TipoRecinto> tabelaTipoRecintos;
 
     @FXML
@@ -36,7 +40,7 @@ public class ConsultarDadosTipoRecintoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Tipos de Recintos");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -59,22 +63,24 @@ public class ConsultarDadosTipoRecintoController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        TipoRecintoBLL.removeTipoRecinto(tabelaTipoRecintos.getSelectionModel().getSelectedItem().getNome());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-recinto.fxml", event);
-
+        try {
+            TipoRecintoBLL.removeTipoRecinto(tabelaTipoRecintos.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-recinto.fxml", event);
+        } catch (Exception e){
+            labelErro.setText("Selecione um tipo de recinto.");
+        }
     }
 
     public void setBtnEditar(ActionEvent event){
-        tipoRecintoSceneConsultar = tabelaTipoRecintos.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-tipo-recinto.fxml", event);
+        try {
+            tipoRecintoSceneConsultar = tabelaTipoRecintos.getSelectionModel().getSelectedItem().getNome();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-tipo-recinto.fxml", event);
+        } catch (Exception e){
+            labelErro.setText("Selecione um tipo de recinto.");
+        }
     }
 
-    //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
-//        ArbitroBLL.getArbitros();
-    //TUDO: HUGO JA TENS PARA OBTER Arbitro
-//        Arbitro arbitro = ArbitroBLL.getArbitro(nome);
-    //TUDO: HUGO JA TENS UPDATE
-    //ArbitroBLL.updateArbitro(arbitro);
+
 
 
 }

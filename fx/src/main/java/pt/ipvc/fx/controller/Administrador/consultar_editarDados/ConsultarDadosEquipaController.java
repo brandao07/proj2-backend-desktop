@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.models.EquipaInfo;
@@ -31,6 +28,9 @@ public class ConsultarDadosEquipaController implements Initializable {
     protected TableView<EquipaInfo> tabelaEquipas;
 
     @FXML
+    protected Label labelErro;
+
+    @FXML
     protected TableColumn<EquipaInfo, String> colunaNome;
 
     @FXML
@@ -45,6 +45,7 @@ public class ConsultarDadosEquipaController implements Initializable {
 
     @FXML
     protected TextField pesquisa;
+
 
     ObservableList<EquipaInfo> dados;
 
@@ -65,7 +66,7 @@ public class ConsultarDadosEquipaController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Equipas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -94,14 +95,21 @@ public class ConsultarDadosEquipaController implements Initializable {
     }
 
     public void setBtnRemover(ActionEvent event){
-        EquipasBLL.removerEquipa(tabelaEquipas.getSelectionModel().getSelectedItem().getNome());
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-equipa.fxml", event);
-
+        try {
+            EquipasBLL.removerEquipa(tabelaEquipas.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-equipa.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione uma Equipa.");
+        }
     }
 
     public void setBtnEditar(ActionEvent event){
-        clubeSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
-        ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-equipa.fxml", event);
+        try {
+            clubeSceneConsultar = tabelaEquipas.getSelectionModel().getSelectedItem().getNome();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-equipa.fxml", event);
+        }catch (Exception e){
+            labelErro.setText("Selecione uma Equipa.");
+        }
     }
 
 }

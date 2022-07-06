@@ -83,6 +83,13 @@ public class EditarDadosAtletaController implements Initializable {
         atleta.setAltura(Double.valueOf(altura.getPromptText()));
         atleta.setDataNascimento(java.sql.Date.valueOf(data.getPromptText()));
         atleta.setImage(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImage());
+        atleta.setPosicao(String.valueOf(posicao.getValue()));
+        atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
+
+        if (modalidades.getValue().equals("Ténis")){
+            atleta.setPosicao(null);
+            atleta.setEquipa(null);
+        }
 
 
         if (!nome.getText().isEmpty()){
@@ -110,8 +117,7 @@ public class EditarDadosAtletaController implements Initializable {
         atleta.setNaturalidade((String) naturalidade.getSelectionModel().getSelectedItem());
         atleta.setGenero((String) genero.getValue());
         atleta.setModalidade(ModalidadeBLL.getModalidade((String) modalidades.getSelectionModel().getSelectedItem()));
-        atleta.setPosicao(String.valueOf(posicao.getValue()));
-        atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
+
         AtletaBLL.updateAtleta(atleta);
         ControladorGlobal.editarAtleta();
         ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-atleta.fxml", event);
@@ -132,24 +138,6 @@ public class EditarDadosAtletaController implements Initializable {
         modalidades.getItems().addAll(modalidade);
 
         genero.getItems().addAll(StringGeneros.generos());
-
-        List<Posicao> posicoes = PosicaoBLL.getPosicoes();
-        List<String> nomePosicoes = new ArrayList<>();
-
-
-
-        for (Posicao nome: posicoes){
-            nomePosicoes.add(nome.getNome());
-        }
-
-        List<Equipa> equipas = EquipasBLL.getEquipas();
-        List<String> nomeEquipa = new ArrayList<>();
-
-        for (Equipa equipa: equipas){
-            nomeEquipa.add(equipa.getNome());
-        }
-
-        posicao.getItems().addAll(nomePosicoes);
 
 
         nome.setPromptText(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getNome());
@@ -197,25 +185,33 @@ public class EditarDadosAtletaController implements Initializable {
             }
         });
 
-//        modalidades.valueProperty().addListener(new ChangeListener<String>() {
-//            @Override
-//            public void changed(ObservableValue ov, String t, String t1) {
-//                equipa.getItems().clear();
-//                List<Equipa> listaEquipas = EquipasBLL.getEquipas();
-//                List<String> nomeEquipas = new ArrayList<>();
-//
-////                for (Equipa eq : listaEquipas){
-////                    if (EquipasBLL.getEquipa(eq.getNome())){
-////                        if (!nomeEquipas.contains(eq.getNome())){
-////                            nomeEquipas.add(eq.getNome());
-////                        }
-////
-////                    }
-//
-//                }
-//                //equipa.getItems().addAll(nomeEquipas);
-//            }
-//        });
+       modalidades.valueProperty().addListener(new ChangeListener<String>() {
+           @Override
+           public void changed(ObservableValue ov, String t, String t1) {
+               if (modalidades.getValue().equals("Ténis")){
+                   posicao.setDisable(true);
+                   equipa.setDisable(true);
+               }else{
+                   posicao.setDisable(false);
+                   equipa.setDisable(false);
+               }
+               equipa.getItems().clear();
+               posicao.getItems().clear();
+               List<Equipa> listaEquipas = EquipasBLL.getEquipas();
+               List<String> nomeEquipas = new ArrayList<>();
+               for (Equipa eq : listaEquipas){
+                   if (eq.getModalidade().getNome().equals(modalidades.getValue())){
+                       nomeEquipas.add(eq.getNome());
+                   }
+               }
+
+               equipa.getItems().addAll(nomeEquipas);
+
+
+
+
+            }
+       });
 
 
 

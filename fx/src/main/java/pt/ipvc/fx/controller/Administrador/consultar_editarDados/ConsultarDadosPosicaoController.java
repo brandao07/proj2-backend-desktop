@@ -10,10 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import pt.ipvc.backend.data.db.entity.Modalidade;
-import pt.ipvc.backend.data.db.entity.TipoPremio;
-import pt.ipvc.backend.services.ModalidadeBLL;
-import pt.ipvc.backend.services.TipoPremioBLL;
+import pt.ipvc.backend.data.db.entity.Posicao;
+import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -21,9 +19,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ConsultarDadosTipoPremioController implements Initializable {
+public class ConsultarDadosPosicaoController implements Initializable {
 
-    public static String tipoPremioSceneConsultar;
+    public static String posicaoSceneConsultar;
 
     @FXML
     protected ChoiceBox choiceBoxOpcoes;
@@ -32,27 +30,25 @@ public class ConsultarDadosTipoPremioController implements Initializable {
     protected Label labelErro;
 
     @FXML
-    protected TableView<TipoPremio> tabelaTipoPremios;
+    protected TableView<Posicao> tabelaPosicao;
 
     @FXML
-    protected TableColumn<TipoPremio, String> colunaNome;
+    protected TableColumn<Posicao, String> colunaNome;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
-        choiceBoxOpcoes.setValue("Tipos de Prémios");
+        choiceBoxOpcoes.setValue("Posições");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
-        tabelaTipoPremios.getColumns().clear();
-        ObservableList<TipoPremio> dados = FXCollections.observableArrayList(TipoPremioBLL.getTiposPremio());
+        tabelaPosicao.getColumns().clear();
+        ObservableList<Posicao> dados = FXCollections.observableArrayList(PosicaoBLL.getPosicoes());
 
-        colunaNome.setCellValueFactory(new PropertyValueFactory<TipoPremio, String>("nome"));
-
-        tabelaTipoPremios.setItems(dados);
-
-        tabelaTipoPremios.getColumns().add(colunaNome);
+        colunaNome.setCellValueFactory(new PropertyValueFactory<Posicao, String>("nome"));
+        tabelaPosicao.setItems(dados);
+        tabelaPosicao.getColumns().add(colunaNome);
     }
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -64,23 +60,20 @@ public class ConsultarDadosTipoPremioController implements Initializable {
 
     public void setBtnRemover(ActionEvent event){
         try {
-            TipoPremioBLL.removerTipoPremio(tabelaTipoPremios.getSelectionModel().getSelectedItem().getNome());
-            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-tipo-premio.fxml", event);
+            PosicaoBLL.removerPosicao(tabelaPosicao.getSelectionModel().getSelectedItem().getNome());
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-posicao.fxml", event);
         }catch (Exception e){
-            labelErro.setText("Selecione um tipo de prémio.");
+            labelErro.setText("Selecione uma posição.");
         }
-
-
     }
 
     public void setBtnEditar(ActionEvent event){
         try {
-            tipoPremioSceneConsultar = tabelaTipoPremios.getSelectionModel().getSelectedItem().getNome();
-            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-tipo-premio.fxml", event);
+            posicaoSceneConsultar = tabelaPosicao.getSelectionModel().getSelectedItem().getNome();
+            ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-posicao.fxml", event);
         }catch (Exception e){
             labelErro.setText("Selecione um tipo de prémio.");
         }
-
     }
 
 

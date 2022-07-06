@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipvc.fx.controller.Administrador.consultar_editarDados.EditarDadosPosicaoController">
+    <children>
+        <AnchorPane layoutX="201.0" prefHeight="600.0" prefWidth="702.0" style="-fx-background-color: #fff;">
+            <effect>
+                <DropShadow />
+            </effect>
+            <children>
+                <Button layoutX="487.0" layoutY="333.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83 #0f4c83;" text="Confirmar" textFill="WHITE" />
+            <VBox alignment="CENTER" layoutX="146.0" layoutY="282.0" prefHeight="37.0" prefWidth="417.0">
+               <children>
+                  <GridPane alignment="CENTER" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.0" minWidth="10.0" prefWidth="66.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="351.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                            <Label text="Nome:" />
+                            <TextField fx:id="nome" prefHeight="26.0" prefWidth="356.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <Line endX="389.30706787109375" endY="246.4158935546875" layoutX="197.0" layoutY="121.0" startX="389.30706787109375" startY="119.5928955078125" stroke="#0f4c83" />
+            <Line endX="342.80706787109375" endY="-3.9071197509765625" layoutX="243.0" layoutY="245.0" startX="33.0" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="171.0" layoutY="231.0" text="Editar Posição" textFill="#0f4c83">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="-70.60498046875" endY="-12.414199829101562" layoutX="236.0" layoutY="253.0" startX="-99.79290771484375" startY="-12.414199829101562" stroke="#0f4c83" />
+            <Line endX="-0.29290771484375" endY="191.4158935546875" layoutX="136.0" layoutY="177.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
+            <Line endX="310.8089599609375" endY="-3.0841064453125" layoutX="276.0" layoutY="372.0" startX="-139.79290771484375" startY="-3.0841064453125" stroke="#0f4c83" />
+            <Label fx:id="labelErro" alignment="BASELINE_CENTER" layoutX="320.0" layoutY="506.0" prefHeight="17.0" prefWidth="94.0" textFill="RED" />
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83 #0f4c83;">
+            <children>
+                <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="32.0" style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </AnchorPane>
+                <Label layoutX="40.0" layoutY="137.0" prefHeight="17.0" prefWidth="31.0" text="Gerir" textFill="WHITE" />
+                <Label alignment="BASELINE_LEFT" graphicTextGap="0.0" layoutX="40.0" layoutY="353.0" prefHeight="17.0" prefWidth="53.0" text="Sistema" textFill="WHITE" />
+                <JFXButton fx:id="btnConsultardados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="206.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4 #e3ebf4 #e3ebf4 #e3ebf4;" text="Consultar Dados" textFill="#0f4c83">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/folder.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnCriarUtilizadores" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="388.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Utilizadores" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/user.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="btnConsultarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="425.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Consultar Sistema" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/tools.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#setBtnNavMenu" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                    <font>
+                        <Font size="21.0" />
+                    </font>
+                </Button>
+                <JFXButton fx:id="btnAdicionarDados" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" text="Adicicionar Dados" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../icons/add.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+    </children>
+</AnchorPane>

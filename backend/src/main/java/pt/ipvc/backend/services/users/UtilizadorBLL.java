@@ -2,6 +2,7 @@ package pt.ipvc.backend.services.users;
 
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.data.db.repository.users.UtilizadorRepository;
+import pt.ipvc.backend.models.UserTypeModel;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class UtilizadorBLL {
         return (Utilizador) utilizadorRepository.findUser(username);
     }
 
+    public static List findUserTypeModel(String username) {
+        return  utilizadorRepository.findUserTypeModel(username);
+    }
+
     public static Utilizador getUtilizadoByIdr(String username) {
         return (Utilizador) utilizadorRepository.findUserById(username);
     }
@@ -42,8 +47,9 @@ public class UtilizadorBLL {
         utilizadorRepository.delete(UtilizadorBLL.getUtilizador(username));
     }
 
-
-
+    public static List findUserTypes() {
+        return utilizadorRepository.findUserTypes();
+    }
 
 
     public static long numeroUtilizadores(){

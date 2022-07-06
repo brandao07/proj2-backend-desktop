@@ -84,7 +84,7 @@
                 </TableView>
                 <ChoiceBox fx:id="choiceBoxOpcoes" layoutX="229.0" layoutY="102.0" prefWidth="150.0" />
                 <Label layoutX="61.0" layoutY="106.0" text="O que pretende consultar:" />
-                <Button fx:id="remover" layoutX="526.0" layoutY="456.0" mnemonicParsing="false" onAction="#setBtnRemover" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Remover" textFill="WHITE" />
+                <Button fx:id="remover" layoutX="570.0" layoutY="457.0" mnemonicParsing="false" onAction="#setBtnRemover" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Remover" textFill="WHITE" />
                 <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0f4c83" />
                 <Line endX="389.51422119140625" endY="396.992919921875" layoutX="284.0" layoutY="120.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />
                 <Line endX="407.80706787109375" endY="-3.9071121215820312" layoutX="266.0" layoutY="71.0" startX="-30.5" startY="-3.9071044921875" stroke="#0f4c83" />
@@ -97,7 +97,8 @@
                 <Line endX="-0.7071075439453125" endY="514.992919921875" layoutX="36.0" layoutY="2.0" startX="-0.5000152587890625" startY="64.29289245605469" stroke="#0f4c83" />
                 <Label fx:id="verDetalhesInvalido" alignment="CENTER" layoutX="505.0" layoutY="488.0" prefHeight="18.0" prefWidth="159.0" textFill="RED" />
                 <Label fx:id="pesquisaInvalida" alignment="CENTER" layoutX="417.0" layoutY="167.0" prefHeight="18.0" prefWidth="226.0" textFill="RED" />
-            <Button fx:id="editar" layoutX="454.0" layoutY="457.0" mnemonicParsing="false" onAction="#setBtnEditar" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Editar" textFill="WHITE" />
+            <Button fx:id="editar" layoutX="497.0" layoutY="457.0" mnemonicParsing="false" onAction="#setBtnEditar" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Editar" textFill="WHITE" />
+            <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="462.0" prefHeight="17.0" prefWidth="188.0" textFill="RED" />
             </children>
         </AnchorPane>
     </children>

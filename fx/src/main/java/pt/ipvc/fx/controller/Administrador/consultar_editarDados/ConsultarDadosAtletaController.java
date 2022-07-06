@@ -78,7 +78,7 @@ public class ConsultarDadosAtletaController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
-        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios");
+        choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Atletas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
@@ -133,13 +133,5 @@ public class ConsultarDadosAtletaController implements Initializable {
             labelErro.setText("Selecione um atleta.");
         }
     }
-
-    //TUDO: HUGO JA TENS PARA LISTAR TODOS ARBITROS
-//        ArbitroBLL.getArbitros();
-    //TUDO: HUGO JA TENS PARA OBTER Arbitro
-//        Arbitro arbitro = ArbitroBLL.getArbitro(nome);
-    //TUDO: HUGO JA TENS UPDATE
-    //ArbitroBLL.updateArbitro(arbitro);
-
 
 }

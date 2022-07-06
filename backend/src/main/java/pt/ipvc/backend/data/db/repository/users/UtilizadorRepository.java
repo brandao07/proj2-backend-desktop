@@ -2,6 +2,7 @@ package pt.ipvc.backend.data.db.repository.users;
 
 import pt.ipvc.backend.data.db.repository.Repository;
 import pt.ipvc.backend.models.CountByDate;
+import pt.ipvc.backend.models.UserTypeModel;
 import pt.ipvc.backend.services.util.Encrypt;
 
 import javax.persistence.Query;
@@ -47,6 +48,41 @@ public class UtilizadorRepository extends Repository {
             return query.getSingleResult();
         } catch (Exception e) {
             System.out.println("Utilizador nao encontrado!");
+            return null;
+        }
+    }
+
+    public List findUserTypeModel(String username) {
+        try{
+            Query queryAdmin = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Administrador') FROM Utilizador u INNER JOIN Administrador a ON u.id = a.id WHERE u.username LIKE CONCAT('%',?1,'%') ");
+            Query queryGestor = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Gestor') FROM Utilizador u INNER JOIN Gestor g ON u.id = g.id WHERE u.username LIKE CONCAT('%',?1,'%') ");
+            Query queryCliente = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Cliente') FROM Utilizador u INNER JOIN Cliente c ON u.id = c.id WHERE u.username LIKE CONCAT('%',?1,'%') ");
+            queryAdmin.setParameter(1, username);
+            queryGestor.setParameter(1, username);
+            queryCliente.setParameter(1, username);
+
+
+            List<UserTypeModel> users = queryAdmin.getResultList();
+            users.addAll(queryCliente.getResultList());
+            users.addAll(queryGestor.getResultList());
+            return users;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List findUserTypes(){
+        try{
+            Query queryAdmin = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Administrador') FROM Utilizador u INNER JOIN Administrador a ON u.id = a.id");
+            Query queryGestor = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Gestor') FROM Utilizador u INNER JOIN Gestor g ON u.id = g.id");
+            Query queryCliente = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.UserTypeModel(u.id, u.username, u.email, 'Cliente') FROM Utilizador u INNER JOIN Cliente c ON u.id = c.id");
+            List<UserTypeModel> users = queryAdmin.getResultList();
+            users.addAll(queryCliente.getResultList());
+            users.addAll(queryGestor.getResultList());
+            return users;
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
