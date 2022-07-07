@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.models.EquipaInfo;
 import pt.ipvc.backend.services.EquipasBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -49,6 +50,9 @@ public class ConsultarDadosEquipaController implements Initializable {
 
     ObservableList<EquipaInfo> dados;
 
+    @FXML
+    protected Label usernameLabel;
+
 
 
     public void pesquisar() {
@@ -66,6 +70,9 @@ public class ConsultarDadosEquipaController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Equipas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

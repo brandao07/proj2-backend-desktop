@@ -61,7 +61,6 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <Label fx:id="labelNome" layoutX="85.0" layoutY="86.0" prefHeight="17.0" prefWidth="70.0" />
                 <Button layoutX="145.0" layoutY="548.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
                 <Button fx:id="btnHome" layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#setBtnNavMenu" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
@@ -110,5 +109,15 @@
             <Button fx:id="remover1" layoutX="419.0" layoutY="452.0" mnemonicParsing="false" onAction="#setAdicionar" style="-fx-background-color: #0f4c83;" text="Criar Utilizador" textFill="WHITE" />
             </children>
         </AnchorPane>
+      <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="52.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icons/user-gestor.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usernameLabel" layoutX="95.0" layoutY="96.0" prefHeight="20.0" prefWidth="102.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

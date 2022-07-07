@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.Administrador.adicionarDados.EquipasController;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -45,6 +46,9 @@ public class EditarDadosEquipaController implements Initializable {
     private ObservableList<String> listaJogadoresEscolhidos;
 
     private List<String> jogadoresNaoEscolhidos;
+
+    @FXML
+    protected Label usernameLabel;
 
 
 
@@ -92,6 +96,8 @@ public class EditarDadosEquipaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         nome.setPromptText(ConsultarDadosEquipaController.equipaSceneConsultar);
         clube.setValue(EquipasBLL.getEquipa(ConsultarDadosEquipaController.equipaSceneConsultar).getNome());
         modalidade.setValue(EquipasBLL.getEquipa(ConsultarDadosEquipaController.equipaSceneConsultar).getModalidade().getNome());

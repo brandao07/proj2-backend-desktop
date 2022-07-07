@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -70,6 +71,9 @@ public class ArbitrosController implements Initializable {
 
     @FXML
     protected Button confirma;
+
+    @FXML
+    protected Label usernameLabel;
     public boolean testar() {
         boolean validarNome = true;
         boolean validarData = true;
@@ -167,6 +171,8 @@ public class ArbitrosController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
         naturalidade.setDisable(true);
         choiceBoxOpcoes.setValue("Árbitros");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());

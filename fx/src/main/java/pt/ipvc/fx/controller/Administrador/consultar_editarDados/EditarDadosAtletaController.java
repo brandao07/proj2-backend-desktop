@@ -15,6 +15,7 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.*;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.BufferedImage;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -67,6 +68,9 @@ public class EditarDadosAtletaController implements Initializable {
     protected ChoiceBox equipa;
 
     private static String path = null;
+
+    @FXML
+    protected Label usernameLabel;
 
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
@@ -125,6 +129,8 @@ public class EditarDadosAtletaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         try {
             LocalRepository.paises_e_cidades();
         } catch (IOException e) {

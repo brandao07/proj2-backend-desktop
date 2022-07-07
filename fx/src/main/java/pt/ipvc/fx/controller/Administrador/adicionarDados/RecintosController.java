@@ -16,6 +16,7 @@ import pt.ipvc.backend.data.db.entity.TipoRecinto;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.RecintoBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -63,6 +64,9 @@ public class RecintosController implements Initializable {
 
     @FXML
     protected ImageView erroCapacidade;
+
+    @FXML
+    protected Label usernameLabel;
 
     public boolean testar(){
         boolean validarNome = true;
@@ -149,6 +153,8 @@ public class RecintosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.setValue("Recintos");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
 

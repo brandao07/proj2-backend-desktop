@@ -82,7 +82,7 @@
                         <TableColumn fx:id="colunaNome" prefWidth="200.0" text="Nome" />
                     </columns>
                 </TableView>
-                <ChoiceBox fx:id="choiceBoxOpcoes" layoutX="229.0" layoutY="102.0" prefWidth="150.0" />
+                <ChoiceBox fx:id="choiceBoxOpcoes" layoutX="229.0" layoutY="102.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
                 <Label layoutX="61.0" layoutY="106.0" text="O que pretende consultar:" />
                 <Button fx:id="remover" layoutX="570.0" layoutY="457.0" mnemonicParsing="false" onAction="#setBtnRemover" style="-fx-background-color: #0f4c83 #0f4c83 #0f4c83 #0f4c83;" text="Remover" textFill="WHITE" />
                 <Line endX="367.80706787109375" endY="326.6999816894531" layoutX="305.0" layoutY="191.0" startX="-269.0" startY="327.6000061035156" stroke="#0f4c83" />
@@ -101,5 +101,15 @@
             <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="462.0" prefHeight="17.0" prefWidth="188.0" textFill="RED" />
             </children>
         </AnchorPane>
+      <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="52.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icons/user-gestor.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usernameLabel" layoutX="95.0" layoutY="96.0" prefHeight="20.0" prefWidth="102.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

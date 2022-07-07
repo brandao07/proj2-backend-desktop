@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.services.PosicaoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -35,9 +36,14 @@ public class ConsultarDadosPosicaoController implements Initializable {
     @FXML
     protected TableColumn<Posicao, String> colunaNome;
 
+    @FXML
+    protected Label usernameLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Posições");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

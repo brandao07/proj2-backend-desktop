@@ -41,6 +41,9 @@ public class AdminCriarUtilizadorController implements Initializable {
     @FXML
     protected Button confirmar;
 
+    @FXML
+    protected Label usernameLabel;
+
     public void setBtnNavMenu(ActionEvent event) {
         String nome_scene = String.valueOf(event.getTarget());
         nome_scene = nome_scene.substring(nome_scene.indexOf("'") + 1);
@@ -50,6 +53,8 @@ public class AdminCriarUtilizadorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         tipo.getItems().addAll("Administrador", "Gestor");
         tipo.setValue("Administrador");
 

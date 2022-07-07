@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.models.ArbitroNomeModalidade;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -59,6 +60,9 @@ public class ConsultarDadosArbitroController implements Initializable {
     @FXML
     protected TableColumn<ArbitroNomeModalidade, String> colunaModalidade;
 
+    @FXML
+    protected Label usernameLabel;
+
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
         if (!ValidarInput.validarString(pesquisa.getText())) {
@@ -74,6 +78,9 @@ public class ConsultarDadosArbitroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelErro.setText("");
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
 
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();

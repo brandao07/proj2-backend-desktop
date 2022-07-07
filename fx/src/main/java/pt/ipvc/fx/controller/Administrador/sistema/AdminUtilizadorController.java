@@ -41,6 +41,9 @@ public class AdminUtilizadorController implements Initializable {
     @FXML
     protected TextField pesquisa;
 
+    @FXML
+    protected Label usernameLabel;
+
     ObservableList<UserTypeModel> dados;
 
     public void pesquisar() {
@@ -59,6 +62,8 @@ public class AdminUtilizadorController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         tabelaUtilizadores.getColumns().clear();
         dados = FXCollections.observableArrayList(UtilizadorBLL.findUserTypes());
 

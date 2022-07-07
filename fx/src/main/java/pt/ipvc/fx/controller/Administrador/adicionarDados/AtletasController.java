@@ -16,6 +16,7 @@ import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.StringGeneros;
@@ -97,6 +98,9 @@ public class AtletasController implements Initializable {
     protected Button btnFoto;
 
     private static String path;
+
+    @FXML
+    protected Label usernameLabel;
 
     @FXML
     public void escolherFoto(ActionEvent event) {
@@ -263,6 +267,8 @@ public class AtletasController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         naturalidade.setDisable(true);
         posicao.setDisable(true);
 

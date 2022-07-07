@@ -15,6 +15,7 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.RecintoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -44,9 +45,14 @@ public class ConsultarDadosRecintoController implements Initializable {
     @FXML
     protected Label labelErro;
 
+    @FXML
+    protected Label usernameLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Recintos");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

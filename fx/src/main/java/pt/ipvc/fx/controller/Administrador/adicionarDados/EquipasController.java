@@ -19,6 +19,7 @@ import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ClubeBLL;
 import pt.ipvc.backend.services.EquipasBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -64,6 +65,9 @@ public class EquipasController implements Initializable {
 
     @FXML
     protected ListView jogadorEscolhidos;
+
+    @FXML
+    protected Label usernameLabel;
 
     private ObservableList<String> listaJogadoresEscolhidos;
 
@@ -131,6 +135,8 @@ public class EquipasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.setValue("Equipas");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
         choiceBoxOpcoes.setOnAction(actionEvent -> {

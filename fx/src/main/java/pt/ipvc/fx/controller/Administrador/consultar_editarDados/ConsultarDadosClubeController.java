@@ -11,6 +11,7 @@ import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.services.ClubeBLL;
 import pt.ipvc.backend.services.EquipasBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -52,6 +53,9 @@ public class ConsultarDadosClubeController implements Initializable {
     @FXML
     protected Label labelErro;
 
+    @FXML
+    protected Label usernameLabel;
+
 
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
@@ -67,6 +71,9 @@ public class ConsultarDadosClubeController implements Initializable {
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
+
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes", "Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Clubes");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

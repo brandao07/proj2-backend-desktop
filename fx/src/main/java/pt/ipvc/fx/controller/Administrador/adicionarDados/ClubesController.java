@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ClubeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -80,6 +81,9 @@ public class ClubesController implements Initializable {
 
     @FXML
     protected Button btnFoto;
+
+    @FXML
+    protected Label usernameLabel;
 
     public boolean testar(){
         boolean validarNome = true;
@@ -203,6 +207,8 @@ public class ClubesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxOpcoes.setValue("Clubes");
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
 
         try {
             LocalRepository.paises_e_cidades();

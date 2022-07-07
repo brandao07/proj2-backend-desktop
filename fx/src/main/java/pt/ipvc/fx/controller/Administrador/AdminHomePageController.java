@@ -47,6 +47,9 @@ public class AdminHomePageController implements Initializable {
     @FXML
     private Label tamanho;
 
+    @FXML
+    protected Label usernameLabel;
+
     public void logout(ActionEvent event){
         UtilizadorBLL.setUserSession(null);
         ControladorGlobal.chamaScene("login-view.fxml", event);
@@ -63,6 +66,7 @@ public class AdminHomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
         ZoneId defaultZoneId = ZoneId.systemDefault();
         LocalDate date = LocalDate.now();
         Date dateBefore = UtilizadorBLL.getUserSession().getDataCriacao();

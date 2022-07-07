@@ -5,10 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -16,6 +13,7 @@ import pt.ipvc.backend.data.db.entity.Clube;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.AtletaBLL;
 import pt.ipvc.backend.services.ClubeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -56,6 +54,9 @@ public class EditarDadosClubeController implements Initializable {
     protected Button button;
 
     private static String path = null;
+
+    @FXML
+    protected Label usernameLabel;
 
     @FXML
     public void escolherFoto(ActionEvent event){
@@ -129,6 +130,8 @@ public class EditarDadosClubeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         try {
             LocalRepository.paises_e_cidades();
 

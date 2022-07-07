@@ -119,5 +119,15 @@
             <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="241.0" layoutY="466.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
             </children>
         </AnchorPane>
+      <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="52.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icons/user-gestor.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usernameLabel" layoutX="95.0" layoutY="96.0" prefHeight="20.0" prefWidth="102.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

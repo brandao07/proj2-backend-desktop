@@ -5,16 +5,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.ModalidadeBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -47,6 +45,9 @@ public class EditarDadosArbitroController implements Initializable {
 
     @FXML
     protected ChoiceBox<String> modalidades;
+
+    @FXML
+    protected Label usernameLabel;
 
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -84,6 +85,8 @@ public class EditarDadosArbitroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         naturalidade.setDisable(true);
         try {
             LocalRepository.paises_e_cidades();

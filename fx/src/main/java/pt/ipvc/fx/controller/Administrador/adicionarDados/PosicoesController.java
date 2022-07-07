@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.PosicaoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -43,7 +44,8 @@ public class PosicoesController implements Initializable {
     @FXML
     protected Label labelErro;
 
-
+    @FXML
+    protected Label usernameLabel;
 
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -55,6 +57,8 @@ public class PosicoesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.setValue("Posições");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
         choiceBoxOpcoes.setOnAction(actionEvent -> {

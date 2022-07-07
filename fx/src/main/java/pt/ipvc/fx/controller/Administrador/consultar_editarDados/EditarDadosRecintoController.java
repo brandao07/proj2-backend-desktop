@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.RecintoBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -39,6 +40,9 @@ public class EditarDadosRecintoController implements Initializable {
 
     @FXML
     protected ListView<String> tiposRecintoEscolhidos;
+
+    @FXML
+    protected Label usernameLabel;
 
     @FXML
     public void remove(ActionEvent event){
@@ -89,6 +93,8 @@ public class EditarDadosRecintoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         try {
             LocalRepository.paises_e_cidades();
         } catch (IOException e) {

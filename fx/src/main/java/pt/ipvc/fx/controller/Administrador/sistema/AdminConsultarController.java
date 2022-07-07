@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import pt.ipvc.backend.data.db.entity.users.Utilizador;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -20,6 +21,9 @@ public class AdminConsultarController implements Initializable {
     @FXML
     private LineChart clientes;
 
+    @FXML
+    protected Label usernameLabel;
+
 
 
 
@@ -33,6 +37,8 @@ public class AdminConsultarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         XYChart.Series series1 = new XYChart.Series();
         XYChart.Series series2 = new XYChart.Series();
 

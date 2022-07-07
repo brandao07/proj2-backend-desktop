@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.TipoPremio;
 import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.TipoPremioBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
@@ -37,9 +38,14 @@ public class ConsultarDadosTipoPremioController implements Initializable {
     @FXML
     protected TableColumn<TipoPremio, String> colunaNome;
 
+    @FXML
+    protected Label usernameLabel;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Tipos de Prémios");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

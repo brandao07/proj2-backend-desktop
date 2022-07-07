@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import pt.ipvc.backend.services.TipoPremioBLL;
 import pt.ipvc.backend.services.TipoRecintoBLL;
+import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.AdminChoiceBoxOpcoes;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -35,7 +36,8 @@ public class TipoRecintosController implements Initializable {
     @FXML
     protected ImageView erroNome;
 
-
+    @FXML
+    protected Label usernameLabel;
 
     public boolean testar() {
         boolean validarNome = true;
@@ -85,6 +87,8 @@ public class TipoRecintosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
+
         choiceBoxOpcoes.setValue("Tipos de Recinto");
         choiceBoxOpcoes.getItems().addAll(AdminChoiceBoxOpcoes.opcoesAdmin());
         choiceBoxOpcoes.setOnAction(actionEvent -> {
