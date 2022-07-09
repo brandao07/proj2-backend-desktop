@@ -21,6 +21,7 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -161,10 +162,14 @@ public class ClubesController implements Initializable {
     }
 
     @FXML
-    public void confirmar(ActionEvent event) {
+    public void confirmar(ActionEvent event) throws IOException {
+
+        File fi = new File(path);
+        byte[] fileContent = Files.readAllBytes(fi.toPath());
+
         if (testar()) {
             ClubeBLL.criarClube(nome.getText(), sigla.getText(), pais.getValue(), cidade.getValue(),
-                    data.getValue(),  contacto.getText(), path);
+                    data.getValue(),  contacto.getText(), fileContent);
 
             ControladorGlobal.adicionarClube();
 

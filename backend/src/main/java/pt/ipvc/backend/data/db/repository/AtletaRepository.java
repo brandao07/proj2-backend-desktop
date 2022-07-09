@@ -28,7 +28,7 @@ public class AtletaRepository extends Repository {
         objectToUpdate.setPosicao(((Atleta) object).getPosicao());
         objectToUpdate.setNacionalidade(((Atleta) object).getNacionalidade());
         objectToUpdate.setNaturalidade(((Atleta) object).getNaturalidade());
-        objectToUpdate.setImage(((Atleta) object).getImage());
+        objectToUpdate.setImagemByte(((Atleta) object).getImagemByte());
         _entityManager.getTransaction().commit();
     }
 

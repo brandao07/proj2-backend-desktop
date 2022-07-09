@@ -21,10 +21,12 @@ import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.*;
@@ -79,14 +81,14 @@ public class EditarDadosAtletaController implements Initializable {
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
-    public void confirmar(ActionEvent event){
+    public void confirmar(ActionEvent event) throws IOException {
         Atleta atleta = new Atleta();
         String nomeAtleta = nome.getPromptText();
         atleta.setNome(nomeAtleta);
         atleta.setPeso(Double.valueOf(peso.getPromptText()));
         atleta.setAltura(Double.valueOf(altura.getPromptText()));
         atleta.setDataNascimento(java.sql.Date.valueOf(data.getPromptText()));
-        atleta.setImage(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImage());
+        atleta.setImagemByte(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImagemByte());
         atleta.setPosicao(String.valueOf(posicao.getValue()));
         atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
 
@@ -113,7 +115,9 @@ public class EditarDadosAtletaController implements Initializable {
         }
 
         if (path != null){
-            atleta.setImage(path);
+            File fi = new File(path);
+            byte[] fileContent = Files.readAllBytes(fi.toPath());
+            atleta.setImagemByte(fileContent);
         }
 
         atleta.setId(AtletaBLL.getAtleta(nome.getPromptText()).getId());
@@ -136,8 +140,7 @@ public class EditarDadosAtletaController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        imagem.setImage(new Image(new File(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImage()).toURI().toString()));
+        imagem.setImage(new Image(new ByteArrayInputStream(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImagemByte())));
         Set<String> modalidade = ((List<Modalidade>) ModalidadeBLL.getModalidades()).stream().
                 map(Modalidade::getNome).collect(Collectors.toSet());
 

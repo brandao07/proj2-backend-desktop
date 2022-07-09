@@ -66,10 +66,6 @@ public class ConsultarDadosAtletaController implements Initializable {
     @FXML
     protected Label labelErro;
 
-    @FXML
-    protected ImageView teste;
-
-
     public void pesquisar() {
         //pesquisar pelo nome da competicao e mandar os daods da query para a tabela
         if (!ValidarInput.validarString(pesquisa.getText())) {
@@ -84,10 +80,6 @@ public class ConsultarDadosAtletaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Image img = new Image(new ByteArrayInputStream(AtletaBLL.getAtletaById(2).getImagem()));
-
-        teste.setImage(img);
 
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();

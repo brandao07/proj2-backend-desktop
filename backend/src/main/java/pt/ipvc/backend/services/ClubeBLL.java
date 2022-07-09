@@ -12,9 +12,9 @@ public class ClubeBLL {
 
     private final static ClubeRepository clubesRepository = new ClubeRepository();
 
-    public static void criarClube(String nome, String sigla, String pais, String cidade, LocalDate data, String contato, String image){
+    public static void criarClube(String nome, String sigla, String pais, String cidade, LocalDate data, String contato, byte[] imagemByte){
 
-        Clube clube = new Clube(nome, sigla, pais, cidade, Date.valueOf(data), contato, image);
+        Clube clube = new Clube(nome, sigla, pais, cidade, Date.valueOf(data), contato, imagemByte);
 
         if (clubesRepository.add(clube) == null) {
             System.out.println("Erro ao criar clube");

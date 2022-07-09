@@ -22,7 +22,7 @@ public class ClubeRepository extends Repository {
         objectToUpdate.setCidade(((Clube) object).getCidade());
         objectToUpdate.setContacto(((Clube) object).getContacto());
         objectToUpdate.setDataFundacao(((Clube) object).getDataFundacao());
-        objectToUpdate.setImage(((Clube) object).getImage());
+        objectToUpdate.setImagemByte(((Clube) object).getImagemByte());
         objectToUpdate.setPais(((Clube) object).getPais());
         objectToUpdate.setSigla(((Clube) object).getSigla());
         _entityManager.getTransaction().commit();

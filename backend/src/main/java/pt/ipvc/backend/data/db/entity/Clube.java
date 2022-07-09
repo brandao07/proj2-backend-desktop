@@ -30,21 +30,24 @@ public class Clube {
     private String contacto;
 
     @Basic
-    @Column(name = "image")
-    private String image;
+    @Column(name = "imagem_web")
+    private String imagemWeb;
+
+    @Column(name = "imagem_byte")
+    private byte[] imagemByte;
 
     public Clube(String nome) {
         this.nome = nome;
     }
 
-    public Clube(String nome, String sigla, String pais, String cidade, Date dataFundacao, String contacto, String image) {
+    public Clube(String nome, String sigla, String pais, String cidade, Date dataFundacao, String contacto, byte[] imagemByte) {
         this.nome = nome;
         this.sigla = sigla;
         this.pais = pais;
         this.cidade = cidade;
         this.dataFundacao = dataFundacao;
         this.contacto = contacto;
-        this.image = image;
+        this.imagemByte = imagemByte;
     }
 
     public Clube() {
@@ -107,13 +110,19 @@ public class Clube {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagemWeb() {
+        return imagemWeb;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagemWeb(String imagemWeb) {
+        this.imagemWeb = imagemWeb;
     }
 
+    public byte[] getImagemByte() {
+        return imagemByte;
+    }
 
+    public void setImagemByte(byte[] imagemByte) {
+        this.imagemByte = imagemByte;
+    }
 }

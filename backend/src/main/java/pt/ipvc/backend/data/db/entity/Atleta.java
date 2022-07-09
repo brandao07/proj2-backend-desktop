@@ -41,22 +41,14 @@ public class Atleta {
     @JoinColumn(name = "modalidade_id")
     private Modalidade modalidade;
     @Basic
-    @Column(name = "image")
-    private String image;
+    @Column(name = "imagem_web")
+    private String imagemWeb;
 
     @Column(name = "naturalidade")
     private String naturalidade;
 
-    @Column(name = "imagem")
-    private byte[] imagem;
-
-    public byte[] getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
-    }
+    @Column(name = "imagem_byte")
+    private byte[] imagemByte;
 
     public String getNaturalidade() {
         return naturalidade;
@@ -70,7 +62,7 @@ public class Atleta {
     }
 
     public Atleta(String nome, String genero, Date dataNascimento, Double peso, Double altura,
-                  String nacionalidade, String naturalidade,String posicao, String image, byte[] imagem) {
+                  String nacionalidade, String naturalidade,String posicao, byte[] imagemByte) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -79,8 +71,7 @@ public class Atleta {
         this.nacionalidade = nacionalidade;
         this.naturalidade = naturalidade;
         this.posicao = posicao;
-        this.image = image;
-        this.imagem = imagem;
+        this.imagemByte = imagemByte;
     }
 
     public Modalidade getModalidade() {
@@ -163,12 +154,20 @@ public class Atleta {
         this.equipa = equipa;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagemWeb() {
+        return imagemWeb;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagemWeb(String imagemWeb) {
+        this.imagemWeb = imagemWeb;
+    }
+
+    public byte[] getImagemByte() {
+        return imagemByte;
+    }
+
+    public void setImagemByte(byte[] imagemByte) {
+        this.imagemByte = imagemByte;
     }
 
     @Override
@@ -183,8 +182,7 @@ public class Atleta {
                 ", nacionalidade='" + nacionalidade + '\'' +
                 ", posicao='" + posicao + '\'' +
                 ", equipa=" + equipa + '\'' +
-                ", image=" + image + '\'' +
-                ", imagem=" + imagem + '\'' +
+                ", imagemByte=" + imagemByte + '\'' +
                 '}';
     }
 

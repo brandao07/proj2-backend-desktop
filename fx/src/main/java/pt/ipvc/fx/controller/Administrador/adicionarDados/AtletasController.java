@@ -252,7 +252,7 @@ public class AtletasController implements Initializable {
                     Double.parseDouble(altura.getText()),
                     posicao_excepcao,
                     modalidades.getSelectionModel().getSelectedItem().toString(),
-                    path, fileContent);
+                    fileContent);
 
             ControladorGlobal.adicionarAtleta();
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);

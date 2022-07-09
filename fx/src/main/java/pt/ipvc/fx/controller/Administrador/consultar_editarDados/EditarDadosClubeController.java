@@ -17,9 +17,11 @@ import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -90,14 +92,14 @@ public class EditarDadosClubeController implements Initializable {
         ValidarInput.sideMenuBarButtonLink(nome_scene, event);
     }
 
-    public void confirmar(ActionEvent event){
+    public void confirmar(ActionEvent event) throws IOException {
         Clube clube = new Clube();
         String nomeClube = nome.getPromptText();
         clube.setNome(nomeClube);
         clube.setSigla(sigla.getPromptText());
         clube.setContacto(contacto.getPromptText());
         clube.setDataFundacao(java.sql.Date.valueOf(data.getPromptText()));
-        clube.setImage(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImage());
+        clube.setImagemByte(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImagemByte());
 
         if (!nome.getText().isEmpty()){
             clube.setNome(nome.getText());
@@ -116,7 +118,9 @@ public class EditarDadosClubeController implements Initializable {
         }
 
         if (path != null){
-            clube.setImage(path);
+            File fi = new File(path);
+            byte[] fileContent = Files.readAllBytes(fi.toPath());
+            clube.setImagemByte(fileContent);
         }
 
         clube.setId(ClubeBLL.getClube(nome.getPromptText()).getId());
@@ -147,7 +151,7 @@ public class EditarDadosClubeController implements Initializable {
         data.setPromptText(String.valueOf(Instant.ofEpochMilli(data_nascimento.getTime()).atZone(ZoneId.systemDefault()).toLocalDate()));
         pais.setValue(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getPais());
         cidade.setValue(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getCidade());
-        imagem.setImage(new Image(new File(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImage()).toURI().toString()));
+        imagem.setImage(new Image(new ByteArrayInputStream(ClubeBLL.getClube(ConsultarDadosClubeController.clubeSceneConsultar).getImagemByte())));
 
         //adicionar pais à choiceBox nacionalidade
         ArrayList paises = new ArrayList<>();
