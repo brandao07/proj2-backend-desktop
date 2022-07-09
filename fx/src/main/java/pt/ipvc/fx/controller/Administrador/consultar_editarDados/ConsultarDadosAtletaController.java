@@ -7,14 +7,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 import pt.ipvc.backend.services.ArbitroBLL;
 import pt.ipvc.backend.services.AtletaBLL;
-import pt.ipvc.backend.services.users.UtilizadorBLL;
+import pt.ipvc.fx.controller.BufferedImage;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 
 
@@ -62,7 +67,7 @@ public class ConsultarDadosAtletaController implements Initializable {
     protected Label labelErro;
 
     @FXML
-    protected Label usernameLabel;
+    protected ImageView teste;
 
 
     public void pesquisar() {
@@ -79,12 +84,14 @@ public class ConsultarDadosAtletaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Image img = new Image(new ByteArrayInputStream(AtletaBLL.getAtletaById(2).getImagem()));
+
+        teste.setImage(img);
+
         if (ValidarInput.validarString(pesquisa.getText())) {
             pesquisar();
         }
-
-        usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
-
         choiceBoxOpcoes.getItems().addAll("Árbitros", "Atletas", "Clubes","Equipas", "Recintos", "Tipos de Recintos", "Tipos de Prémios", "Posições");
         choiceBoxOpcoes.setValue("Atletas");
         choiceBoxOpcoes.setOnAction(actionEvent -> {

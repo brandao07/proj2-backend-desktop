@@ -30,7 +30,6 @@ public class Atleta {
     @Column(name = "nacionalidade")
     private String nacionalidade;
 
-
     @Column(name = "posicao")
     private String posicao;
 
@@ -48,6 +47,17 @@ public class Atleta {
     @Column(name = "naturalidade")
     private String naturalidade;
 
+    @Column(name = "imagem")
+    private byte[] imagem;
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
     public String getNaturalidade() {
         return naturalidade;
     }
@@ -60,7 +70,7 @@ public class Atleta {
     }
 
     public Atleta(String nome, String genero, Date dataNascimento, Double peso, Double altura,
-                  String nacionalidade, String naturalidade,String posicao, String image) {
+                  String nacionalidade, String naturalidade,String posicao, String image, byte[] imagem) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -70,6 +80,7 @@ public class Atleta {
         this.naturalidade = naturalidade;
         this.posicao = posicao;
         this.image = image;
+        this.imagem = imagem;
     }
 
     public Modalidade getModalidade() {
@@ -173,6 +184,7 @@ public class Atleta {
                 ", posicao='" + posicao + '\'' +
                 ", equipa=" + equipa + '\'' +
                 ", image=" + image + '\'' +
+                ", imagem=" + imagem + '\'' +
                 '}';
     }
 

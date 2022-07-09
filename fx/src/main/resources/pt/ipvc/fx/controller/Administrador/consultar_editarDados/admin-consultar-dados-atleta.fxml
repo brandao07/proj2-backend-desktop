@@ -117,6 +117,7 @@
                </graphic>
             </Button>
             <Label fx:id="labelErro" alignment="CENTER" contentDisplay="CENTER" layoutX="241.0" layoutY="466.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
+            <ImageView fx:id="teste" fitHeight="150.0" fitWidth="200.0" layoutX="443.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
       <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="52.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">

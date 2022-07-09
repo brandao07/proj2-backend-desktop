@@ -25,6 +25,7 @@ import pt.ipvc.fx.misc.ValidarInput;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -93,6 +94,9 @@ public class AtletasController implements Initializable {
 
     @FXML
     protected ImageView imagem;
+
+    @FXML
+    protected ImageView teste;
 
     @FXML
     protected Button btnFoto;
@@ -222,7 +226,7 @@ public class AtletasController implements Initializable {
     }
 
     @FXML
-    public void confirmar(ActionEvent event) throws InterruptedException {
+    public void confirmar(ActionEvent event) throws InterruptedException, IOException {
         if (testar()) {
             labelErro.setTextFill(Color.web("#32CD32"));
             labelErro.setText("Sucesso.");
@@ -235,6 +239,9 @@ public class AtletasController implements Initializable {
                 posicao_excepcao = posicao.getSelectionModel().getSelectedItem();
             }
 
+            File fi = new File(path);
+            byte[] fileContent = Files.readAllBytes(fi.toPath());
+
             AtletaBLL.criarAtleta(
                     nome.getText(),
                     genero.getSelectionModel().getSelectedItem().toString(),
@@ -243,9 +250,9 @@ public class AtletasController implements Initializable {
                     data.getValue(),
                     Double.parseDouble(peso.getText()),
                     Double.parseDouble(altura.getText()),
-                   posicao_excepcao,
+                    posicao_excepcao,
                     modalidades.getSelectionModel().getSelectedItem().toString(),
-                    path);
+                    path, fileContent);
 
             ControladorGlobal.adicionarAtleta();
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);

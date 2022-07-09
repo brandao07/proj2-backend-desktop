@@ -13,10 +13,10 @@ public class AtletaBLL {
 
 
 
-    public static void criarAtleta(String nome, String genero, String nacionalidade, String naturalidade,  LocalDate dataNascimento,
-                                   double peso, double altura, String posicao, String modalidade, String image) {
+    public static void criarAtleta(String nome, String genero, String nacionalidade, String naturalidade, LocalDate dataNascimento,
+                                   double peso, double altura, String posicao, String modalidade, String image, byte[] imagem) {
 
-        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, naturalidade, posicao, image);
+        Atleta atleta = new Atleta(nome, genero, Date.valueOf(dataNascimento), peso, altura, nacionalidade, naturalidade, posicao, image, imagem);
         atleta.setModalidade(ModalidadeBLL.getModalidade(modalidade));
         if (atletaRepository.add(atleta) == null) {
             System.out.println("Erro ao criar atleta");
