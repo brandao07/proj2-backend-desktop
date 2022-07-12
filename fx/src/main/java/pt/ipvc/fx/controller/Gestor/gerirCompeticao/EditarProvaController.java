@@ -83,7 +83,7 @@ public class EditarProvaController implements Initializable {
         Set<String> arbitros = new HashSet<>();
         List<Arbitro> arbitrosList = ArbitroBLL.getArbitros();
         for (Arbitro a : arbitrosList) {
-            if(a.getModalidade().getNome().equals(CompeticaoBLL.getCompeticao(GerirProvaController.aux.getId()).getModalidade().getNome())){
+            if(a.getModalidade().getNome().equals(ProvaBLL.getProva(GerirProvaController.aux.getId()).getCompeticao().getModalidade().getNome())){
                 arbitros.add(a.getNome());
             }
         }

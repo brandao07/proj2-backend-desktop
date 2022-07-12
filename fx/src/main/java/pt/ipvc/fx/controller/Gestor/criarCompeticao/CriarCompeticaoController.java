@@ -171,7 +171,7 @@ public class CriarCompeticaoController implements Initializable {
             erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
 
             CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
-                    dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getValue()));
+                        dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getValue()));
 
             //atribuir os varios podios a base de dados
             for(int i = 0; i < Integer.parseInt(podio.getValue()); i++) {

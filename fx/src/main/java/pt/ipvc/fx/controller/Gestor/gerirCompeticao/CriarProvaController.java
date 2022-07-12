@@ -180,7 +180,7 @@ public class CriarProvaController implements Initializable {
         CompeticaoBLL.addEquipa(competicao, EquipasBLL.getEquipa(equipaCasa.getValue()));
         CompeticaoBLL.addEquipa(competicao, EquipasBLL.getEquipa(equipaFora.getValue()));
         ControladorGlobal.criarProva();
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-provas.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
     }
 
     public void anterior(ActionEvent event) {

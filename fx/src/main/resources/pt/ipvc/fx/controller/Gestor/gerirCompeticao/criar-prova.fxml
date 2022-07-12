@@ -115,7 +115,7 @@
                         <Image url="@../icons/ellipsis-vertical-outline.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
+                <Button layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#homePage" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
                     <font>
                         <Font size="21.0" />
                     </font>
