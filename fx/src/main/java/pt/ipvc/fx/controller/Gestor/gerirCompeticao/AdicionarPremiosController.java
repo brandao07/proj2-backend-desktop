@@ -74,12 +74,16 @@ public class AdicionarPremiosController implements Initializable {
 
         premio.setLugar(nLugar + 1);
         // validacoes para o adicionar um premio
-        if(!ValidarInput.validarChoiceBox(tipoPremio.getValue()))
+        if(!ValidarInput.validarChoiceBox(tipoPremio.getValue())){
             checkDados.setText("Selecione uma opção no Campo Tipo Prémio");
+            return;
+        }
         premio.setTipoPremio(TipoPremioBLL.getTipoPremio(tipoPremio.getValue()));
 
-        if(!ValidarInput.validarString(descricao.getText()))
+        if(!ValidarInput.validarString(descricao.getText())){
             checkDados.setText("Preencha o Campo Descrição");
+            return;
+        }
         premio.setValor(descricao.getText());
 
         PremioBLL.criarPremio(premio, competicao.getNome(), tipoPremio.getValue());

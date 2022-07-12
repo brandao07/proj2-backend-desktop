@@ -154,7 +154,7 @@ public class EditarProvaController implements Initializable {
     }
 
     public void anterior(ActionEvent event) {
-        ControladorGlobal.chamaScene("Gestor/criarCompeticao/gerir-prova.fxml", event);
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
     }
 
     public void setBtnNavMenu(@NotNull ActionEvent event) {

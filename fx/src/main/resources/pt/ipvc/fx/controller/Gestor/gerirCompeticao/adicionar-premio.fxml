@@ -46,7 +46,7 @@
                 <Button layoutX="26.0" layoutY="544.0" mnemonicParsing="false" onAction="#anterior" style="-fx-background-color: #0f4c83;" text="Anterior " textFill="WHITE" />
                 <Line endX="-78.39996337890625" endY="-12.700004577636719" layoutX="228.0" layoutY="203.0" startX="-99.0" startY="-12.700004577636719" stroke="#0f4c83" />
                 <Button layoutX="317.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-color: #0f4c83;" text="Confirmar" textFill="WHITE" />
-            <Label fx:id="checkDados" layoutX="130.0" layoutY="411.0" prefHeight="18.0" prefWidth="443.0" textFill="RED">
+            <Label fx:id="checkDados" alignment="CENTER" layoutX="130.0" layoutY="411.0" prefHeight="18.0" prefWidth="443.0" textFill="RED">
                <font>
                   <Font size="13.0" />
                </font>

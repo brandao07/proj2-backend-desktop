@@ -190,9 +190,9 @@ public class CriarCompeticaoController implements Initializable {
         }
 
         if(!checkBox.isSelected()){
-            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
             CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
                     dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getValue()));
+            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
             ControladorGlobal.criarCompeticao();
             ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
         }
