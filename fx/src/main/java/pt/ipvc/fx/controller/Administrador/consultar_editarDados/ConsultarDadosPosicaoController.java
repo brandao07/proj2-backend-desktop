@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
+import pt.ipvc.backend.models.PosicaoModalidade;
 import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
@@ -32,10 +33,13 @@ public class ConsultarDadosPosicaoController implements Initializable {
     protected Label labelErro;
 
     @FXML
-    protected TableView<Posicao> tabelaPosicao;
+    protected TableView<PosicaoModalidade> tabelaPosicao;
 
     @FXML
-    protected TableColumn<Posicao, String> colunaNome;
+    protected TableColumn<PosicaoModalidade, String> colunaModalidade;
+
+    @FXML
+    protected TableColumn<PosicaoModalidade, String> colunaPosicao;
 
 
     @FXML
@@ -52,12 +56,15 @@ public class ConsultarDadosPosicaoController implements Initializable {
             ValidarInput.choiceBoxAdminConsultarDados((String) choiceBoxOpcoes.getSelectionModel().getSelectedItem(), (ActionEvent) actionEvent);
         });
         tabelaPosicao.getColumns().clear();
-        ObservableList<Posicao> dados = FXCollections.observableArrayList(PosicaoBLL.getPosicoes());
+        ObservableList<PosicaoModalidade> dados = FXCollections.observableArrayList(PosicaoBLL.getPosicoesModalidade());
 
-        colunaNome.setCellValueFactory(new PropertyValueFactory<Posicao, String>("nome"));
+        colunaPosicao.setCellValueFactory(new PropertyValueFactory<PosicaoModalidade, String>("nomePosicao"));
+        colunaModalidade.setCellValueFactory(new PropertyValueFactory<PosicaoModalidade, String>("nomeModalidade"));
 
         tabelaPosicao.setItems(dados);
-        tabelaPosicao.getColumns().add(colunaNome);
+        tabelaPosicao.getColumns().add(colunaPosicao);
+        tabelaPosicao.getColumns().add(colunaModalidade);
+
     }
 
     public void setBtnNavMenu(ActionEvent event) {
@@ -69,7 +76,7 @@ public class ConsultarDadosPosicaoController implements Initializable {
 
     public void setBtnRemover(ActionEvent event){
         try {
-            PosicaoBLL.removerPosicao(tabelaPosicao.getSelectionModel().getSelectedItem().getNome());
+            PosicaoBLL.removerPosicao(tabelaPosicao.getSelectionModel().getSelectedItem().getNomePosicao());
             ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-consultar-dados-posicao.fxml", event);
         }catch (Exception e){
             labelErro.setText("Selecione uma posição.");
@@ -78,7 +85,7 @@ public class ConsultarDadosPosicaoController implements Initializable {
 
     public void setBtnEditar(ActionEvent event){
         try {
-            posicaoSceneConsultar = tabelaPosicao.getSelectionModel().getSelectedItem().getNome();
+            posicaoSceneConsultar = tabelaPosicao.getSelectionModel().getSelectedItem().getNomePosicao();
             ControladorGlobal.chamaScene("Administrador/consultar_editarDados/admin-editar-dados-posicao.fxml", event);
         }catch (Exception e){
             labelErro.setText("Selecione um tipo de prémio.");

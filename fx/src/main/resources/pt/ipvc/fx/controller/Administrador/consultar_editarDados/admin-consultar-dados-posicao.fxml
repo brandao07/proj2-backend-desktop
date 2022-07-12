@@ -77,9 +77,10 @@
                 <DropShadow />
             </effect>
             <children>
-                <TableView fx:id="tabelaPosicao" layoutX="254.0" layoutY="181.0" prefHeight="239.0" prefWidth="201.0">
+                <TableView fx:id="tabelaPosicao" layoutX="153.0" layoutY="181.0" prefHeight="239.0" prefWidth="402.0" stylesheets="@../../../sytle/tables.css">
                     <columns>
-                        <TableColumn fx:id="colunaNome" prefWidth="200.0" text="Nome" />
+                        <TableColumn fx:id="colunaPosicao" prefWidth="200.0" text="Posicao" />
+                  <TableColumn fx:id="colunaModalidade" prefWidth="200.0" text="Modalidade" />
                     </columns>
                 </TableView>
                 <ChoiceBox fx:id="choiceBoxOpcoes" layoutX="229.0" layoutY="102.0" prefWidth="150.0" />

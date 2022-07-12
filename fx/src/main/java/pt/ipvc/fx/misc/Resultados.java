@@ -6,6 +6,7 @@ import java.util.Set;
 public class Resultados {
     public static Set<String> resultados(){
         Set<String> resultados = new HashSet<>();
+        resultados.add("0");
         resultados.add("1");
         resultados.add("2");
         resultados.add("3");

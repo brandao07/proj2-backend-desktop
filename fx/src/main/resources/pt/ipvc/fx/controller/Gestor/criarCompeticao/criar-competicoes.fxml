@@ -94,8 +94,8 @@
                </children>
             </VBox>
             <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="-93.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="erroPodio" fitHeight="35.0" fitWidth="35.0" layoutX="223.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" layoutX="143.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="erroPodio" fitHeight="27.0" fitWidth="21.0" layoutX="244.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" layoutX="160.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">

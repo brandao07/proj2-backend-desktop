@@ -10,13 +10,11 @@ public class EquipaInfo {
 
     private String modalidade;
 
-    private long n_jogadores;
 
-    public EquipaInfo(String nome, String clube, String modalidade, long n_jogadores) {
+    public EquipaInfo(String nome, String clube, String modalidade) {
         this.nome = nome;
         this.clube = clube;
         this.modalidade = modalidade;
-        this.n_jogadores = n_jogadores;
     }
 
     public EquipaInfo(){}
@@ -53,13 +51,7 @@ public class EquipaInfo {
         this.modalidade = modalidade;
     }
 
-    public long getN_jogadores() {
-        return n_jogadores;
-    }
 
-    public void setN_jogadores(long n_jogadores) {
-        this.n_jogadores = n_jogadores;
-    }
 
     @Override
     public String toString() {
@@ -67,7 +59,6 @@ public class EquipaInfo {
                 "nome='" + nome + '\'' +
                 ", clube='" + clube + '\'' +
                 ", modalidade=" + modalidade +
-                ", n_jogadores='" + n_jogadores + '\'' +
                 '}';
     }
 }

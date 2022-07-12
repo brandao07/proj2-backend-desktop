@@ -14,6 +14,7 @@ import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
+import pt.ipvc.backend.models.PosicaoModalidade;
 import pt.ipvc.backend.services.*;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.BufferedImage;
@@ -89,12 +90,11 @@ public class EditarDadosAtletaController implements Initializable {
         atleta.setAltura(Double.valueOf(altura.getPromptText()));
         atleta.setDataNascimento(java.sql.Date.valueOf(data.getPromptText()));
         atleta.setImagemByte(AtletaBLL.getAtletaById(ConsultarDadosAtletaController.atletaSceneConsultar).getImagemByte());
-        atleta.setPosicao(String.valueOf(posicao.getValue()));
         atleta.setEquipa(EquipasBLL.getEquipa((String) equipa.getValue()));
+
 
         if (modalidades.getValue().equals("Ténis")){
             atleta.setPosicao(null);
-            atleta.setEquipa(null);
         }
 
 
@@ -214,9 +214,21 @@ public class EditarDadosAtletaController implements Initializable {
                    }
                }
 
-               equipa.getItems().addAll(nomeEquipas);
+               List<PosicaoModalidade> listaPosicoes = PosicaoBLL.getPosicoesModalidade();
+               List<String> nomePosicao = new ArrayList<>();
+               for (PosicaoModalidade ps : listaPosicoes){
+                   if (ps.getNomeModalidade().equals(modalidades.getValue())){
+                       nomePosicao.add(ps.getNomePosicao());
+                   }
+               }
 
-            }
+
+
+               equipa.getItems().addAll(nomeEquipas);
+               posicao.getItems().addAll(nomePosicao);
+
+
+           }
        });
 
 

@@ -76,7 +76,7 @@
                 <DropShadow />
             </effect>
             <children>
-                <TableView fx:id="tabela" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0">
+                <TableView fx:id="tabela" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0" stylesheets="@../../../sytle/tables.css">
                     <columns>
                         <TableColumn fx:id="colunaNome" prefWidth="148.0" text="Nome" />
                   <TableColumn fx:id="colunaModalidade" prefWidth="108.0" text="Modalidade" />

@@ -85,12 +85,10 @@ public class ConsultarDadosEquipaController implements Initializable {
         colunaNome.setCellValueFactory(new PropertyValueFactory<EquipaInfo, String>("nome"));
         colunaClube.setCellValueFactory(new PropertyValueFactory<EquipaInfo, String>("clube"));
         colunaModalidade.setCellValueFactory(new PropertyValueFactory<EquipaInfo, String>("modalidade"));
-        colunaJogadores.setCellValueFactory(new PropertyValueFactory<EquipaInfo, Long>("n_jogadores"));
         tabelaEquipas.setItems(dados);
 
         tabelaEquipas.getColumns().add(colunaNome);
         tabelaEquipas.getColumns().add(colunaClube);
-        tabelaEquipas.getColumns().add(colunaJogadores);
         tabelaEquipas.getColumns().add(colunaModalidade);
     }
 

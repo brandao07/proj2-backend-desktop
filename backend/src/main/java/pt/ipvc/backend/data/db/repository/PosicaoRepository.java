@@ -45,7 +45,7 @@ public class PosicaoRepository extends Repository {
 
     public List getPosicoesModalidade() {
         try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.PosicaoModalidade(p.nome, m.nome) FROM Posicao as p JOIN p.modalidades m");
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.PosicaoModalidade(m.nome, p.nome) FROM Posicao as p JOIN p.modalidades m");
             List<Prova> provas = query.getResultList();
             return provas;
         } catch (Exception e) {

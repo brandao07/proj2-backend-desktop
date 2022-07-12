@@ -62,6 +62,8 @@ public class EditarDadosEquipaController implements Initializable {
     public void confirmar(ActionEvent event){
         Equipa equipa = new Equipa();
         equipa.setNome(nome.getPromptText());
+        equipa.setId(EquipasBLL.getEquipa(equipa.getNome()).getId());
+
 
         if (ValidarInput.validarString(nome.getText())){
             equipa.setNome(nome.getText());
@@ -75,18 +77,14 @@ public class EditarDadosEquipaController implements Initializable {
             }
 
         }
-
-
         for (String player: listaJogadoresEscolhidos){
             Atleta atleta = AtletaBLL.getAtleta(player);
-            atleta.setEquipa(EquipasBLL.getEquipa(equipa.getNome()));
+            atleta.setEquipa(EquipasBLL.getEquipa(equipa.getId()));
             AtletaBLL.updateAtleta(atleta);
           }
 
         equipa.setClube(ClubeBLL.getClube((String) clube.getValue()));
         equipa.setModalidade(ModalidadeBLL.getModalidade((String) modalidade.getValue()));
-        equipa.setId(EquipasBLL.getEquipa(equipa.getNome()).getId());
-
 
 
         EquipasBLL.updateEquipa(equipa);
@@ -135,13 +133,15 @@ public class EditarDadosEquipaController implements Initializable {
                     listaJogadoresEscolhidos.add(jogadores.getSelectionModel().getSelectedItem());
                 }
                 jogadoresEquipa.setItems(listaJogadoresEscolhidos);
+                jogadores.getItems().remove(jogadores.getSelectionModel().getSelectedItem());
+                jogadoresNaoEscolhidos.remove(jogadores.getSelectionModel().getSelectedItem());
             }
         });
 
     }
 
     @FXML
-    public void remove(ActionEvent event){
+    public void remove(){
         String jogador = jogadoresEquipa.getSelectionModel().getSelectedItem();
         if (!jogadores.getItems().contains(jogador)) jogadores.getItems().add(jogador);
         jogadoresEquipa.getItems().remove(jogador);

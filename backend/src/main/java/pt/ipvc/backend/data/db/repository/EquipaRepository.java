@@ -48,7 +48,7 @@ public class EquipaRepository extends Repository {
 
    public List findEquipa(String pesquisa) {
        try {
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome, (select count(e) from Equipa AS e INNER JOIN Atleta as a ON a.equipa.id = e.id GROUP BY e.nome)) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id WHERE e.nome LIKE CONCAT('%',?1,'%') ", EquipaInfo.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id WHERE e.nome LIKE CONCAT('%',?1,'%') ", EquipaInfo.class);
             query.setParameter(1, pesquisa);
             return query.getResultList();
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class EquipaRepository extends Repository {
     public List equipaInfo() {
         try {
             //                                                                                 select e.nome, c.nome, m.nome, (select count(e) from Equipa AS e INNER JOIN Atleta as a ON a.equipa_id = e.id GROUP BY e.nome) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade_id INNER JOIN Clube as c ON e.clube_id = c.id
-            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome, (select count(eq) from Equipa AS eq INNER JOIN Atleta as a ON a.equipa.id = eq.id where eq.id= e.id GROUP BY eq.nome)) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id", EquipaInfo.class);
+            Query query = _entityManager.createQuery("SELECT NEW pt.ipvc.backend.models.EquipaInfo(e.nome, c.nome, m.nome) FROM Equipa AS e INNER JOIN Modalidade as m ON m.id = e.modalidade.id INNER JOIN Clube as c ON e.clube.id = c.id", EquipaInfo.class);
             return query.getResultList();
         } catch (Exception e) {
             System.out.println("Sem arbitros");
