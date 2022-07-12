@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.db.entity.Prova;
+import pt.ipvc.backend.models.AtletaNomeEquipa_Modalidade;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -70,6 +71,8 @@ public class ModalidadeRepository extends Repository {
             System.out.println("Posicao nao esta na modalidade!");
         }
     }
+
+
 
     public List getPosicoes(String modalidade) {
         try {

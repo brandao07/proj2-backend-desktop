@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class AdminUtilizadorController implements Initializable {
 
     @FXML
-    private Button btnAdicionarDados;
+    private Label labelErro;
 
     @FXML
     protected Hyperlink adicionar;
@@ -93,6 +93,16 @@ public class AdminUtilizadorController implements Initializable {
 
     public void setEditar(ActionEvent event){
         ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-editar-password.fxml", event);
+    }
+
+    public void setBtnRemover(ActionEvent event){
+        try {
+            UtilizadorBLL.removerUtilizador(tabelaUtilizadores.getSelectionModel().getSelectedItem().getUsername());
+            ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-utilizadores.fxml", event);
+        }catch (Exception e){
+            System.out.println("Selecione um utilizador.");
+            labelErro.setText("Selecione um utilizador.");
+        }
     }
 
 }

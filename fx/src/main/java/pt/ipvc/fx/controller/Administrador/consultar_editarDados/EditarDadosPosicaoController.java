@@ -50,7 +50,6 @@ public class EditarDadosPosicaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(UtilizadorBLL.getUserSession().getUsername());
-
         nome.setPromptText(ConsultarDadosPosicaoController.posicaoSceneConsultar);
     }
 

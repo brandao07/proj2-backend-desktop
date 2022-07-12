@@ -79,11 +79,11 @@
                 <TableView fx:id="tabela" layoutX="44.0" layoutY="197.0" prefHeight="239.0" prefWidth="616.0">
                     <columns>
                         <TableColumn fx:id="colunaNome" prefWidth="148.0" text="Nome" />
-                        <TableColumn fx:id="colunaData" minWidth="0.0" prefWidth="124.5" text="Data Nascimento" />
-                        <TableColumn fx:id="colunaGenero" prefWidth="99.0" text="Gênero" />
-                        <TableColumn fx:id="colunaNacionalidade" prefWidth="142.0" text="Nacionalidade" />
-                        <TableColumn fx:id="colunaNaturalidade" prefWidth="115.0" text="Naturalidade" />
-                  <TableColumn fx:id="colunaModalidade" prefWidth="75.0" text="Modalidade" />
+                  <TableColumn fx:id="colunaModalidade" prefWidth="108.0" text="Modalidade" />
+                        <TableColumn fx:id="colunaData" minWidth="0.0" prefWidth="114.5" text="Data Nascimento" />
+                        <TableColumn fx:id="colunaGenero" prefWidth="109.0" text="Gênero" />
+                        <TableColumn fx:id="colunaNacionalidade" prefWidth="119.0" text="Nacionalidade" />
+                        <TableColumn fx:id="colunaNaturalidade" prefWidth="105.0" text="Naturalidade" />
                     </columns>
                 </TableView>
                 <ChoiceBox fx:id="itemPesquisar" layoutX="228.0" layoutY="102.0" prefWidth="150.0" />
