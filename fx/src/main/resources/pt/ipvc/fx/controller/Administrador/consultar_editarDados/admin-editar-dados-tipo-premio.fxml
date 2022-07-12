@@ -41,8 +41,8 @@
                </children>
             </VBox>
             <Line endX="389.30706787109375" endY="246.4158935546875" layoutX="197.0" layoutY="121.0" startX="389.30706787109375" startY="119.5928955078125" stroke="#0f4c83" />
-            <Line endX="342.80706787109375" endY="-3.9071197509765625" layoutX="243.0" layoutY="245.0" startX="130.0" startY="-3.9071044921875" stroke="#0f4c83" />
-            <Label layoutX="171.0" layoutY="231.0" text="Editar Tipos de Modalidade" textFill="#0f4c83">
+            <Line endX="342.80706787109375" endY="-3.9071197509765625" layoutX="243.0" layoutY="245.0" startX="90.5" startY="-3.9071044921875" stroke="#0f4c83" />
+            <Label layoutX="171.0" layoutY="231.0" text="Editar Tipos de Prêmios" textFill="#0f4c83">
                <font>
                   <Font size="15.0" />
                </font>

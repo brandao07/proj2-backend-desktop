@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import pt.ipvc.backend.data.db.entity.Atleta;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.data.misc.LocalRepository;
@@ -253,6 +254,9 @@ public class AtletasController implements Initializable {
                     posicao_excepcao,
                     modalidades.getSelectionModel().getSelectedItem().toString(),
                     fileContent);
+
+            Atleta atleta = AtletaBLL.getAtleta(nome.getText());
+            atleta.setEquipa(null);
 
             ControladorGlobal.adicionarAtleta();
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-atleta.fxml", event);

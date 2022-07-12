@@ -35,4 +35,7 @@ public class PosicaoBLL {
     public static void removerPosicao(String nome) {
         posicaoRepository.delete(PosicaoBLL.getPosicao(nome));
     }
+
+
+
 }

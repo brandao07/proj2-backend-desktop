@@ -118,7 +118,7 @@ public class EquipasController implements Initializable {
                 atleta.setEquipa(EquipasBLL.getEquipa(nome.getText()));
                 AtletaBLL.updateAtleta(atleta);
             }
-            ControladorGlobal.adicionarClube();
+            ControladorGlobal.adicionarEquipa();
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-equipa.fxml", event);
         }
 

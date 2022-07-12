@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Posicao;
 import pt.ipvc.backend.services.PosicaoBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
@@ -36,6 +37,7 @@ public class ConsultarDadosPosicaoController implements Initializable {
     @FXML
     protected TableColumn<Posicao, String> colunaNome;
 
+
     @FXML
     protected Label usernameLabel;
 
@@ -53,6 +55,7 @@ public class ConsultarDadosPosicaoController implements Initializable {
         ObservableList<Posicao> dados = FXCollections.observableArrayList(PosicaoBLL.getPosicoes());
 
         colunaNome.setCellValueFactory(new PropertyValueFactory<Posicao, String>("nome"));
+
         tabelaPosicao.setItems(dados);
         tabelaPosicao.getColumns().add(colunaNome);
     }

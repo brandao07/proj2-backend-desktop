@@ -13,6 +13,9 @@ import pt.ipvc.backend.data.misc.LocalRepository;
 import pt.ipvc.backend.services.users.AdministradorBLL;
 import pt.ipvc.backend.services.users.GestorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
+import pt.ipvc.backend.services.util.Encrypt;
+import pt.ipvc.backend.services.util.PasswordGenerator;
+import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
 
 import java.net.URL;
@@ -26,17 +29,8 @@ public class AdminCriarUtilizadorController implements Initializable {
 
     @FXML
     protected ChoiceBox tipo;
-    @FXML
-    protected PasswordField password;
 
-    @FXML
-    protected Label label1_password;
 
-    @FXML
-    protected Label label2_password;
-
-    @FXML
-    protected PasswordField password1;
 
     @FXML
     protected Button confirmar;
@@ -58,29 +52,13 @@ public class AdminCriarUtilizadorController implements Initializable {
         tipo.getItems().addAll("Administrador", "Gestor");
         tipo.setValue("Administrador");
 
-        tipo.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue ov, String t, String t1) {
-                if (tipo.getValue().equals("Administrador")){
-                    password.setDisable(false);
-                    password1.setDisable(false);
-                    label1_password.setDisable(false);
-                    label2_password.setDisable(false);
-                }else{
-                    password.setDisable(true);
-                    password1.setDisable(true);
-                    label1_password.setDisable(true);
-                    label2_password.setDisable(true);
-                }
-            }
-        });
     }
 
     public void confirmar(ActionEvent event) {
         if (ValidarInput.validarChoiceBox(tipo) &&
                 ValidarInput.validarString(nome.getText())) {
             String tipo_user = (String) tipo.getValue();
-            String password_gerada = "";
+            String password_gerada;
 
             List<Utilizador> lista_utilizadores = new ArrayList<>();
             lista_utilizadores = UtilizadorBLL.getUtilizadores();
@@ -93,17 +71,15 @@ public class AdminCriarUtilizadorController implements Initializable {
             }
 
             if (tipo_user.equals("Administrador")) {
-                AdministradorBLL.criarAdministrador(nome.getText(), password.getText());
-                Utilizador utilizador = AdministradorBLL.getAdministrador(nome.getText());
+                password_gerada = PasswordGenerator.generatePassword(10);
+                AdministradorBLL.criarAdministrador(nome.getText(), password_gerada);
             } else {
                 GestorBLL.criarGestor(nome.getText());
-                password_gerada = GestorBLL.criarGestor(nome.getText());
-                Utilizador utilizador = GestorBLL.getGestor(nome.getText());
                 }
-
             }
 
-
+        ControladorGlobal.criarUtilizador();
+        ControladorGlobal.chamaScene("Administrador/sistema/admin-sistema-utilizadores.fxml", event);
 
     }
 }

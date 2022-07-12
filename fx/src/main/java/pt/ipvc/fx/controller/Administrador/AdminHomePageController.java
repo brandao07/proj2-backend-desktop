@@ -51,9 +51,10 @@ public class AdminHomePageController implements Initializable {
     protected Label usernameLabel;
 
     public void logout(ActionEvent event){
-        UtilizadorBLL.setUserSession(null);
-        ControladorGlobal.chamaScene("login-view.fxml", event);
-
+        if (ControladorGlobal.logout()){
+            UtilizadorBLL.setUserSession(null);
+            ControladorGlobal.chamaScene("login-view.fxml", event);
+        }
     }
 
     public void setBtnNavMenu(ActionEvent event) {
