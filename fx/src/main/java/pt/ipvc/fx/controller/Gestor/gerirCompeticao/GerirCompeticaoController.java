@@ -7,8 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import pt.ipvc.backend.data.db.entity.Competicao;
+import pt.ipvc.backend.data.db.entity.Equipa;
 import pt.ipvc.backend.models.CompeticaoNomeModalidade;
 import pt.ipvc.backend.services.CompeticaoBLL;
+import pt.ipvc.backend.services.EquipasBLL;
+import pt.ipvc.backend.services.ProvaBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
 import pt.ipvc.fx.misc.ValidarInput;
@@ -141,6 +145,11 @@ public class GerirCompeticaoController implements Initializable {
         if (aux == null){
             verDetalhesInvalido.setText("Selecione uma Competição!");
             return;
+        }
+
+        Set<Equipa> equipaList = CompeticaoBLL.getCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome()).getEquipas();
+        for (Equipa e : equipaList) {
+            CompeticaoBLL.removeEquipa(CompeticaoBLL.getCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome()), EquipasBLL.getEquipa(e.getNome()));
         }
         CompeticaoBLL.removerCompeticao(competicoes.getSelectionModel().getSelectedItem().getNome());
         ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-competicao.fxml", event);

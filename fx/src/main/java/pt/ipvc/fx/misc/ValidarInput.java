@@ -43,7 +43,7 @@ public class ValidarInput {
             return !value.equals(null);
         return false;
     }
-    public static boolean validarDatas(@NotNull LocalDate dInicio, @NotNull LocalDate dFim) {
+    public static boolean validarDatas(LocalDate dInicio, LocalDate dFim) {
         //Data Inico ocorre antes da Data Fim ou Data Inicio ocorre quando a Data Fimantes da Data Fim ou Data Inicio ocorre quando a Data Fim
         return !(dInicio.compareTo(dFim) > 0);
     }

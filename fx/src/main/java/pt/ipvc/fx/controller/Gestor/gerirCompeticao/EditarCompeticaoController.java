@@ -11,7 +11,6 @@ import pt.ipvc.backend.services.ModalidadeBLL;
 import pt.ipvc.backend.services.users.GestorBLL;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
-import pt.ipvc.fx.misc.PodiosAux;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 

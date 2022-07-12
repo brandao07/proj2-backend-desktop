@@ -169,5 +169,22 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
+    public static void criarCompeticao() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Competição criada com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static void criarProva() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Prova criada com sucesso!");
+        alert.showAndWait();
+    }
+
+
 
 }

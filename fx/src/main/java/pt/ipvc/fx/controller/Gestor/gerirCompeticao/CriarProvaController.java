@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.jetbrains.annotations.NotNull;
 import pt.ipvc.backend.data.db.entity.Arbitro;
 import pt.ipvc.backend.data.db.entity.Competicao;
@@ -16,8 +18,10 @@ import pt.ipvc.backend.data.db.entity.Recinto;
 import pt.ipvc.backend.services.*;
 import pt.ipvc.backend.services.users.UtilizadorBLL;
 import pt.ipvc.fx.controller.ControladorGlobal;
+import pt.ipvc.fx.controller.Gestor.criarCompeticao.CriarCompeticaoController;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.*;
@@ -47,6 +51,21 @@ public class CriarProvaController implements Initializable {
     @FXML
     private Label usernameLabel;
 
+    @FXML
+    private ImageView erroEquipaCasa;
+
+    @FXML
+    private ImageView erroEquipaFora;
+
+    @FXML
+    private ImageView erroRecinto;
+
+    @FXML
+    private ImageView erroData;
+
+    @FXML
+    private ImageView erroArbitro;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -54,14 +73,24 @@ public class CriarProvaController implements Initializable {
 
         competicao = CompeticaoBLL.getCompeticao(GerirCompeticaoController.comp);
         //dados para as choiceboxes so os nomes
-        Set<String> equipas = ((List<Equipa>) EquipasBLL.getEquipas()).stream().
-                map(Equipa::getNome).collect(Collectors.toSet());
+        Set<String> equipas = new HashSet<>();
+        List<Equipa> equipasList = EquipasBLL.getEquipas();
+        for (Equipa e : equipasList) {
+            if(e.getModalidade().getNome().equals(competicao.getModalidade().getNome())){
+                equipas.add(e.getNome());
+            }
+        }
 
         Set<String> recintos = ((List<Recinto>) RecintoBLL.getRecintos()).stream().
                 map(Recinto::getNome).collect(Collectors.toSet());
 
-        Set<String> arbitros = ((List<Arbitro>) ArbitroBLL.getArbitros()).stream().
-                map(Arbitro::getNome).collect(Collectors.toSet());
+        Set<String> arbitros = new HashSet<>();
+        List<Arbitro> arbitrosList = ArbitroBLL.getArbitros();
+        for (Arbitro a : arbitrosList) {
+            if(a.getModalidade().getNome().equals(competicao.getModalidade().getNome())){
+                arbitros.add(a.getNome());
+            }
+        }
 
         Set<String> equipasFora = new HashSet<>();
 
@@ -86,34 +115,72 @@ public class CriarProvaController implements Initializable {
     }
 
     public void confirmar(ActionEvent event){
-        //validacoes para criar uma prova
-        if (!ValidarInput.validarChoiceBox(equipaCasa.getValue()))
+        boolean controlo = true;
+        //validacoes para criar prova
+        if (!ValidarInput.validarChoiceBox(equipaCasa.getValue())){
             invalidDados.setText("Selecione uma opção no Campo Equipa Casa");
+            erroEquipaCasa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            controlo = false;
+        } else {
+            erroEquipaCasa.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
 
-        else if (!ValidarInput.validarChoiceBox(equipaFora.getValue()))
+        if (!ValidarInput.validarChoiceBox(equipaFora.getValue())){
             invalidDados.setText("Selecione uma opção no Campo Equipa Fora");
+            erroEquipaFora.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            controlo = false;
+        }  else {
+            erroEquipaFora.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
 
-        else if (!ValidarInput.validarChoiceBox(recinto.getValue()))
+        if (!ValidarInput.validarChoiceBox(recinto.getValue())){
             invalidDados.setText("Selecione um opção no Campo Recinto");
+            erroRecinto.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            controlo = false;
+        } else {
+            erroRecinto.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
 
-        else if (!ValidarInput.validarDataPicker(data.getValue()))
+        if (!ValidarInput.validarDataPicker(data.getValue())){
             invalidDados.setText("Seleciona uma data no campo Data");
+            erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            controlo = false;
+        } else {
+            erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
 
-        else if (!ValidarInput.validarChoiceBox(arbitro.getValue()))
+        if (!ValidarInput.validarChoiceBox(arbitro.getValue())){
             invalidDados.setText("Selecione uma opção no campo Árbitro");
+            erroArbitro.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            controlo = false;
+        } else {
+            erroArbitro.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
 
-        else if (data.getValue() != null){
+        //verificar se a data prova esta entre as datas da competicao
+        if (data.getValue() != null){
             Date dt = Date.from((data.getValue()).atStartOfDay(ZoneId.systemDefault()).toInstant());
             if(!((competicao.getDataInicio().compareTo(dt) <= 0)
                     && (competicao.getDataFim().compareTo(dt) >= 0))){
                 invalidDados.setText("A data da Prova tem de estar entre as datas: " + competicao.getDataInicio() +
                         " e a Data: " + competicao.getDataFim() + "!");
-                return;
+                erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+                controlo = false;
+            } else {
+                erroData.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
             }
         }
+
+        if (!controlo){
+            return;
+        }
+
         ProvaBLL.criarProva(data.getValue(), competicao.getNome(), equipaCasa.getValue(),
                 equipaFora.getValue(), recinto.getValue(), arbitro.getValue());
-        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-prova.fxml", event);
+        CompeticaoBLL.addEquipa(competicao, EquipasBLL.getEquipa(equipaCasa.getValue()));
+        CompeticaoBLL.addEquipa(competicao, EquipasBLL.getEquipa(equipaFora.getValue()));
+        ControladorGlobal.criarProva();
+        ControladorGlobal.chamaScene("Gestor/gerirCompeticao/gerir-provas.fxml", event);
     }
 
     public void anterior(ActionEvent event) {

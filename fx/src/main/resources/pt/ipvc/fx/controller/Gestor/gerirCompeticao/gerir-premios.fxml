@@ -33,11 +33,11 @@
                 <Line endX="-1.70001220703125" endY="269.6000061035156" layoutX="105.0" layoutY="167.0" startX="0.29998779296875" startY="-67.20000457763672" stroke="#0f4c83" />
                 <Line endX="394.52117919921875" endY="273.1000061035156" layoutX="225.0" layoutY="164.0" startX="395.31402587890625" startY="-63.20000457763672" stroke="#0f4c83" />
                 <Line endX="-75.20001220703125" endY="-12.700004577636719" layoutX="211.0" layoutY="113.0" startX="-105.20001220703125" startY="-12.700004577636719" stroke="#0f4c83" />
-            <TableView fx:id="tableView" layoutX="151.0" layoutY="144.0" prefHeight="200.0" prefWidth="434.0" style="-fx-background-color: #cfdbe6;">
+            <TableView fx:id="tableView" layoutX="151.0" layoutY="144.0" prefHeight="200.0" prefWidth="434.0" stylesheets="@../../../sytle/tables.css">
               <columns>
-                <TableColumn fx:id="colunaPosicao" prefWidth="144.00006103515625" style="-fx-background-color: #b7c9da;" text="Posição" />
-                <TableColumn fx:id="colunaTipoPremio" prefWidth="138.39996337890625" style="-fx-background-color: #b7c9da;" text="Tipo Prémio" />
-                  <TableColumn fx:id="colunaPremioAtribuido" prefWidth="152.800048828125" style="-fx-background-color: #b7c9da;" text="Prémio Atribuido" />
+                <TableColumn fx:id="colunaPosicao" prefWidth="144.00006103515625" text="Posição" />
+                <TableColumn fx:id="colunaTipoPremio" prefWidth="138.39996337890625" text="Tipo Prémio" />
+                  <TableColumn fx:id="colunaPremioAtribuido" prefWidth="152.800048828125" text="Prémio Atribuido" />
               </columns>
             </TableView>
             <Label fx:id="checkDados" alignment="CENTER" layoutX="103.0" layoutY="398.0" prefHeight="18.0" prefWidth="516.0" textFill="RED" />

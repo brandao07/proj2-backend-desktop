@@ -69,6 +69,11 @@
                         <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="132.0" text="Arbitro:" GridPane.rowIndex="3" />
                             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="135.0" text="Recinto:" GridPane.rowIndex="2" />
                             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="127.0" text="Equipa Fora:" GridPane.rowIndex="1" />
+                        <ImageView fx:id="erroEquipaCasa" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="erroEquipaFora" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="erroRecinto" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView fx:id="erroArbitro" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                        <ImageView fx:id="erroData" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>

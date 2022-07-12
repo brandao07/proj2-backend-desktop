@@ -85,6 +85,9 @@ public class GerirProvaController implements Initializable {
         provas.getColumns().add(colData);
         provas.getColumns().add(colArbitro);
 
+        colResultadoEquipaCasa.getStyleClass().add("foo");
+
+
         nomeCompeticao.setText("Competição: " + GerirCompeticaoController.comp);
     }
 

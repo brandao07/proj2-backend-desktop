@@ -22,9 +22,6 @@ public class EditarPremiosController implements Initializable {
     private Label infoComp;
 
     @FXML
-    private Label checkDados;
-
-    @FXML
     private ChoiceBox<String> tipoPremio;
 
     @FXML

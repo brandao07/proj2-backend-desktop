@@ -68,14 +68,25 @@ public class EditarProvaController implements Initializable {
         resultadoEC.setValue(GerirProvaController.aux.getResultadoEquipaCasa());
         resultadoEF.setValue(GerirProvaController.aux.getResultadoEquipaFora());
 
-        Set<String> equipas = ((List<Equipa>) EquipasBLL.getEquipas()).stream().
-                map(Equipa::getNome).collect(Collectors.toSet());
+        //dados para as choiceboxes so os nomes
+        Set<String> equipas = new HashSet<>();
+        List<Equipa> equipasList = EquipasBLL.getEquipas();
+        for (Equipa e : equipasList) {
+            if(e.getModalidade().getNome().equals(CompeticaoBLL.getCompeticao(GerirProvaController.aux.getId()).getModalidade().getNome())){
+                equipas.add(e.getNome());
+            }
+        }
 
         Set<String> recintos = ((List<Recinto>) RecintoBLL.getRecintos()).stream().
                 map(Recinto::getNome).collect(Collectors.toSet());
 
-        Set<String> arbitros = ((List<Arbitro>) ArbitroBLL.getArbitros()).stream().
-                map(Arbitro::getNome).collect(Collectors.toSet());
+        Set<String> arbitros = new HashSet<>();
+        List<Arbitro> arbitrosList = ArbitroBLL.getArbitros();
+        for (Arbitro a : arbitrosList) {
+            if(a.getModalidade().getNome().equals(CompeticaoBLL.getCompeticao(GerirProvaController.aux.getId()).getModalidade().getNome())){
+                arbitros.add(a.getNome());
+            }
+        }
 
         Set<String> equipasFora = new HashSet<>();
 

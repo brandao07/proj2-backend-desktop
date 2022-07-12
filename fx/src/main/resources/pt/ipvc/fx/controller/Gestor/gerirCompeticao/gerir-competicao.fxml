@@ -23,13 +23,13 @@
             <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfdbe6" height="600.0" layoutX="-1.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffcc" height="454.0" layoutX="17.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="669.0" />
-                <TableView fx:id="competicoes" layoutX="48.0" layoutY="177.0" prefHeight="239.0" prefWidth="616.0" style="-fx-background-color: #cfdbe6;">
+                <TableView fx:id="competicoes" layoutX="48.0" layoutY="177.0" prefHeight="239.0" prefWidth="616.0" stylesheets="@../../../sytle/tables.css">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="180.8000030517578" style="-fx-background-color: #b7c9da;" text="Nome" />
-                        <TableColumn fx:id="colDataInicio" minWidth="0.0" prefWidth="103.99993896484375" style="-fx-background-color: #b7c9da;" text="Data Inico" />
-                        <TableColumn fx:id="colDataFim" prefWidth="95.20001220703125" style="-fx-background-color: #b7c9da;" text="Data Fim" />
-                        <TableColumn fx:id="colGenero" prefWidth="102.4000244140625" style="-fx-background-color: #b7c9da;" text="Genero" />
-                        <TableColumn fx:id="colModalidade" prefWidth="135.2000732421875" style="-fx-background-color: #b7c9da;" text="Modalidade" />
+                        <TableColumn fx:id="colNome" prefWidth="180.8000030517578" text="Nome" />
+                        <TableColumn fx:id="colDataInicio" minWidth="0.0" prefWidth="103.99993896484375" text="Data Inico" />
+                        <TableColumn fx:id="colDataFim" prefWidth="95.20001220703125" text="Data Fim" />
+                        <TableColumn fx:id="colGenero" prefWidth="102.4000244140625" text="Genero" />
+                        <TableColumn fx:id="colModalidade" prefWidth="135.2000732421875" text="Modalidade" />
                     </columns>
                 </TableView>
                 <Line endX="389.30706787109375" endY="355.9000244140625" layoutX="284.0" layoutY="163.0" startX="389.30706787109375" startY="-52.40711212158203" stroke="#0f4c83" />

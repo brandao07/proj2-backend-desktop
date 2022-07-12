@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import pt.ipvc.backend.data.db.entity.Competicao;
 import pt.ipvc.backend.data.db.entity.Modalidade;
 import pt.ipvc.backend.data.db.entity.Premio;
@@ -16,8 +18,10 @@ import pt.ipvc.fx.misc.PodiosAux;
 import pt.ipvc.fx.misc.StringGeneros;
 import pt.ipvc.fx.misc.ValidarInput;
 
+import java.io.File;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class CriarCompeticaoController implements Initializable {
@@ -34,7 +38,7 @@ public class CriarCompeticaoController implements Initializable {
 
     @FXML
     private ChoiceBox<String> genero;
-    //FIXED carregar os generos para a choiceBox
+
     @FXML
     private ChoiceBox<String> modalidade;
 
@@ -49,9 +53,27 @@ public class CriarCompeticaoController implements Initializable {
     @FXML
     private Label invalidDados1;
 
+
     @FXML
     private Label usernameLabel;
 
+    @FXML
+    private ImageView erroNome;
+
+    @FXML
+    private ImageView erroDataInicio;
+
+    @FXML
+    private ImageView erroDataFim;
+
+    @FXML
+    private ImageView erroGenero;
+
+    @FXML
+    private ImageView erroModalidade;
+
+    @FXML
+    private ImageView erroPodio;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,51 +89,112 @@ public class CriarCompeticaoController implements Initializable {
         podio.setDisable(true);
     }
 
-    public void seguinte(ActionEvent event) {
+    public void seguinte(ActionEvent event) throws InterruptedException {
+        boolean controlo = true;
         //restricoes para criar prova
-        if (!ValidarInput.validarString(nomeCompeticao.getText()))
+        if (!ValidarInput.validarString(nomeCompeticao.getText())) {
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
             invalidDados.setText("Preencha o campo Nome");
-
-        else if (!ValidarInput.validarDataPicker(dataInicio.getValue()))
-            invalidDados.setText("Preencha o campo Data Início");
-
-        else if (!ValidarInput.validarDataPicker(dataFim.getValue()))
-            invalidDados.setText("Preencha o campo Data Fim");
-
-        else if (!ValidarInput.validarChoiceBox(genero.getValue()))
-            invalidDados.setText("Selecione uma opção no campo Genero");
-
-        else if (!ValidarInput.validarChoiceBox(modalidade.getValue()))
-            invalidDados.setText("Selecione uma opção no campo Modalidade");
-
-        else if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue()))
-            invalidDados.setText("Data Início com início posteior a Data Fim");
-        //se a choicebox estiver selecionada faz isto
-        else if (checkBox.isSelected()){
-            if(ValidarInput.validarChoiceBox(podio.getValue())){
-                CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
-                        dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem()));
-
-                //atribuir os varios podios a base de dados
-                for(int i = 0; i < Integer.parseInt(podio.getValue()); i++) {
-                    Premio p = new Premio(i+1,null);
-                    PremioBLL.criarPremio(p, nomeCompeticao.getText(), null);
-                }
-
-                compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
-                ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
-                return;
-            }
-            invalidDados1.setText("Selecione uma opção no Campo Pódio");
-
-        } else if ((!checkBox.isSelected()) && (CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
-                dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) != null)){
-            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
-            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+            controlo = false;
+        } else {
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
         }
 
-        else
+        if (!ValidarInput.validarDataPicker(dataInicio.getValue())) {
+            erroDataInicio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            invalidDados.setText("Preencha o campo Data Início");
+            controlo = false;
+        } else {
+            erroDataInicio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarDataPicker(dataFim.getValue())){
+            erroDataFim.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            invalidDados.setText("Preencha o campo Data Fim");
+            controlo = false;
+        } else {
+            erroDataFim.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(genero.getValue())){
+            erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            invalidDados.setText("Selecione uma opção no campo Genero");
+            controlo = false;
+        } else {
+            erroGenero.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!ValidarInput.validarChoiceBox(modalidade.getValue())){
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            invalidDados.setText("Selecione uma opção no campo Modalidade");
+            controlo = false;
+        } else {
+            erroModalidade.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if(dataInicio.getValue() != null && dataFim.getValue() != null){
+            if (!ValidarInput.validarDatas(dataInicio.getValue(), dataFim.getValue())){
+                erroDataInicio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+                erroDataFim.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+                invalidDados.setText("Data Início com início posteior a Data Fim");
+                controlo = false;
+            } else {
+                erroDataInicio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+                erroDataFim.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+            }
+        }
+
+        if (!controlo && !checkBox.isSelected()){
+            return;
+        }
+
+        //se a choicebox estiver selecionada faz isto
+        if (checkBox.isSelected()){
+            if(!ValidarInput.validarChoiceBox(podio.getValue())){
+                erroPodio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+                invalidDados1.setText("Selecione uma opção no Campo Pódio");
+                return;
+            }
+
+            if (CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                    dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) == null){
+                invalidDados.setText("Nome da Competição já Utilizado!");
+                erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+            } else {
+                erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+            }
+
+            CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                        dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem()));
+
+            //atribuir os varios podios a base de dados
+            for(int i = 0; i < Integer.parseInt(podio.getValue()); i++) {
+                Premio p = new Premio(i+1,null);
+                PremioBLL.criarPremio(p, nomeCompeticao.getText(), null);
+            }
+
+            erroPodio.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
+            ControladorGlobal.criarCompeticao();
+            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-detalhes.fxml", event);
+        }
+
+        if (CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem())) == null){
             invalidDados.setText("Nome da Competição já Utilizado!");
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/erro.png").toURI().toString()));
+        }
+        else {
+            erroNome.setImage(new Image(new File("fx/src/main/resources/pt/ipvc/fx/icons/correct.png").toURI().toString()));
+        }
+
+        if (!checkBox.isSelected()) {
+            compSelecionada = CompeticaoBLL.getCompeticao(nomeCompeticao.getText());
+            CompeticaoBLL.criarCompeticao(nomeCompeticao.getText(), genero.getValue(), dataInicio.getValue(),
+                    dataFim.getValue(), ModalidadeBLL.getModalidade(modalidade.getSelectionModel().getSelectedItem()));
+            ControladorGlobal.criarCompeticao();
+            ControladorGlobal.chamaScene("Gestor/criarCompeticao/adicionar-prova.fxml", event);
+        }
     }
 
     public void check(){

@@ -60,11 +60,11 @@
             <Label layoutX="146.0" layoutY="385.0" prefHeight="18.0" prefWidth="316.0" textFill="#0f4c83b8" />
             <CheckBox fx:id="checkBox" layoutX="166.0" layoutY="385.0" mnemonicParsing="false" onAction="#check" style="-fx-background-radius: 10;" text="Se desejar preencher o conjunto de dados ative esta opção" />
             <Label fx:id="invalidDados1" alignment="CENTER" layoutX="100.0" layoutY="468.0" prefHeight="18.0" prefWidth="468.0" textFill="#ef0000" />
-            <VBox layoutX="184.0" layoutY="77.0" prefHeight="162.0" prefWidth="298.0">
+            <VBox layoutX="183.0" layoutY="76.0" prefHeight="174.0" prefWidth="335.0">
                <children>
                   <GridPane hgap="10.0" vgap="30.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.39996337890625" minWidth="10.0" prefWidth="117.79998779296875" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -75,7 +75,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="148.0" text="Nome da Competição:" />
+                            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="121.0" text="Nome da Competição:" />
                             <TextField fx:id="nomeCompeticao" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
                             <DatePicker fx:id="dataInicio" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <DatePicker fx:id="dataFim" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -85,10 +85,17 @@
                             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="148.0" text="Género:" GridPane.rowIndex="3" />
                             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="141.0" text="Data Fim:" GridPane.rowIndex="2" />
                             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="143.0" text="Data Inicio:" GridPane.rowIndex="1" />
+                        <ImageView fx:id="erroDataInicio" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="erroDataFim" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView fx:id="erroGenero" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                        <ImageView fx:id="erroModalidade" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
             </VBox>
+            <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="-93.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="erroPodio" fitHeight="35.0" fitWidth="35.0" layoutX="223.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="erroNome" fitHeight="27.0" fitWidth="21.0" layoutX="143.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="201.0" style="-fx-background-color: #0f4c83;">
@@ -127,11 +134,6 @@
                         <Image url="@../icons/ellipsis-vertical-outline.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="41.0" layoutY="14.0" mnemonicParsing="false" onAction="#homePage" style="-fx-background-color: transparent;" text="SportEX" textFill="WHITE">
-                    <font>
-                        <Font size="21.0" />
-                    </font>
-                </Button>
                 <JFXButton fx:id="criarCompeticao" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="169.0" onAction="#setBtnNavMenu" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #e3ebf4;" text="Criar Competição" textFill="#0f4c83">
                     <graphic>
                         <ImageView fitHeight="29.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">

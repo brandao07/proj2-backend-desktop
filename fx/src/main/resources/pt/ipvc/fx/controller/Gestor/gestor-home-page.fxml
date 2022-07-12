@@ -22,13 +22,13 @@
             <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfdbe6" height="600.0" layoutX="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffbf" height="400.0" layoutX="52.0" layoutY="68.0" stroke="#ffffffbd" strokeType="INSIDE" strokeWidth="0.0" width="617.0" />
-                <TableView fx:id="competicoes" layoutX="95.0" layoutY="111.0" prefHeight="274.0" prefWidth="538.0" style="-fx-background-color: #cfdbe6;">
+                <TableView fx:id="competicoes" layoutX="95.0" layoutY="111.0" prefHeight="274.0" prefWidth="538.0" stylesheets="@../../sytle/tables.css">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="128.0" style="-fx-background-color: #b7c9da;" text="Nome" />
-                        <TableColumn fx:id="colModalidade" prefWidth="97.60003662109375" style="-fx-background-color: #b7c9da;" text="Modalidade" />
-                        <TableColumn fx:id="colDataInicio" prefWidth="123.20001220703125" style="-fx-background-color: #b7c9da;" text="Data Início" />
-                        <TableColumn fx:id="colDataFim" prefWidth="94.39996337890625" style="-fx-background-color: #b7c9da;" text="Data Fim" />
-                        <TableColumn fx:id="colGenero" prefWidth="96.0" style="-fx-background-color: #b7c9da;" text="Genero" />
+                        <TableColumn fx:id="colNome" prefWidth="128.0" text="Nome" />
+                        <TableColumn fx:id="colModalidade" prefWidth="97.60003662109375" text="Modalidade" />
+                        <TableColumn fx:id="colDataInicio" prefWidth="123.20001220703125" text="Data Início" />
+                        <TableColumn fx:id="colDataFim" prefWidth="94.39996337890625" text="Data Fim" />
+                        <TableColumn fx:id="colGenero" prefWidth="96.0" text="Genero" />
                     </columns>
                 </TableView>
                 <Button layoutX="401.0" layoutY="401.0" mnemonicParsing="false" onAction="#historico" style="-fx-background-color: #0f4c83;" text="Visualizar Histórico de Competições" textFill="WHITE" />
