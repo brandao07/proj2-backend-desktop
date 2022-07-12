@@ -163,11 +163,10 @@ public class ClubesController implements Initializable {
 
     @FXML
     public void confirmar(ActionEvent event) throws IOException {
-
-        File fi = new File(path);
-        byte[] fileContent = Files.readAllBytes(fi.toPath());
-
         if (testar()) {
+            File fi = new File(path);
+            byte[] fileContent = Files.readAllBytes(fi.toPath());
+
             ClubeBLL.criarClube(nome.getText(), sigla.getText(), pais.getValue(), cidade.getValue(),
                     data.getValue(),  contacto.getText(), fileContent);
 
@@ -175,7 +174,6 @@ public class ClubesController implements Initializable {
 
             ControladorGlobal.chamaScene("Administrador/adicionarDados/admin-adicionar-dados-clube.fxml", event);
         }
-
         labelErro.setText("Preencha todos os campos");
     }
 
