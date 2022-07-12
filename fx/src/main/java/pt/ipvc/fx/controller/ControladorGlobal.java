@@ -186,10 +186,9 @@ public class ControladorGlobal {
         ButtonType okButton = new ButtonType("Sim", ButtonBar.ButtonData.YES);
         ButtonType noButton = new ButtonType("Não", ButtonBar.ButtonData.NO);
         alert.getButtonTypes().setAll(okButton, noButton);
-
-
         return alert.showAndWait().get() == okButton;
     }
+
     public static void criarCompeticao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
