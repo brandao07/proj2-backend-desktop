@@ -36,6 +36,8 @@ public class PosicaoBLL {
         posicaoRepository.delete(PosicaoBLL.getPosicao(nome));
     }
 
-
-
+    public static List getPosicoesModalidade() {
+        return posicaoRepository.getPosicoesModalidade();
+    }
+    
 }
