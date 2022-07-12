@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -169,6 +170,26 @@ public class ControladorGlobal {
         alert.showAndWait();
     }
 
+    public static void criarUtilizador() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informação");
+        alert.setHeaderText(null);
+        alert.setContentText("Utilizador registado com sucesso!");
+        alert.showAndWait();
+    }
+
+    public static boolean logout() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Pretende terminar sessão?");
+        alert.setContentText("Tens a certeza?");
+        ButtonType okButton = new ButtonType("Sim", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("Não", ButtonBar.ButtonData.NO);
+        alert.getButtonTypes().setAll(okButton, noButton);
+
+
+        return alert.showAndWait().get() == okButton;
+    }
     public static void criarCompeticao() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
